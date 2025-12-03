@@ -1,0 +1,896 @@
+path,level,prefLabel,synonym,definition
+symptom,0,symptom,,"A symptom is a perceived change in function, sensation, loss, disturbance or appearance reported by a patient indicative of a disease."
+symptom/musculoskeletal system symptom,1,musculoskeletal system symptom,,
+symptom/musculoskeletal system symptom/torticollis,2,torticollis,twisted neck|wry neck,
+symptom/musculoskeletal system symptom/loss of height,2,loss of height,,
+symptom/musculoskeletal system symptom/abnormal posture,2,abnormal posture,,
+symptom/musculoskeletal system symptom/tetany,2,tetany,,
+symptom/musculoskeletal system symptom/postural reaction,2,postural reaction,,
+symptom/musculoskeletal system symptom/postural reaction/abnormal hemiwalking,3,abnormal hemiwalking,,
+symptom/musculoskeletal system symptom/postural reaction/wheelbarrowing,3,wheelbarrowing,,
+symptom/musculoskeletal system symptom/postural reaction/hopping,3,hopping,,
+symptom/musculoskeletal system symptom/postural reaction/conscious proprioception,3,conscious proprioception,,
+symptom/musculoskeletal system symptom/postural reaction/abnormal hemiwalking hemistanding,3,abnormal hemiwalking hemistanding,,
+symptom/musculoskeletal system symptom/postural reaction/abnormal hemistanding,3,abnormal hemistanding,,
+symptom/musculoskeletal system symptom/muscle symptom,2,muscle symptom,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle tightness,3,muscle tightness,,
+symptom/musculoskeletal system symptom/muscle symptom/opisthotonus,3,opisthotonus,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness,3,muscle weakness,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness/limb weakness,4,limb weakness,extremities weakness,
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness/limb weakness/leg weakness,5,leg weakness,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness/limb weakness/arm weakness,5,arm weakness,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness/hand weakness,4,hand weakness,,"A muscle weakness that is characterized by a reduction in muscle strength, which may be the result of a variety of conditions, such as carpal tunnel syndrome, arthritis, peripheral neuropathy, tendon damage, and ganglion cysts."
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness/deltoid muscle weakness,4,deltoid muscle weakness,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness/sternocleidomastoid weakness,4,sternocleidomastoid weakness,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle weakness/peripheral muscle weakness,4,peripheral muscle weakness,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle cramp,3,muscle cramp,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle cramp/leg cramp,4,leg cramp,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle twitching,3,muscle twitching,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle twitching/facial muscle twitching,4,facial muscle twitching,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle necrosis,3,muscle necrosis,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle soreness,3,muscle soreness,,
+symptom/musculoskeletal system symptom/muscle symptom/muscle tenderness,3,muscle tenderness,,
+symptom/musculoskeletal system symptom/muscle symptom/flaccid muscle tone,3,flaccid muscle tone,,
+symptom/musculoskeletal system symptom/muscle symptom/cataplexy,3,cataplexy,,"Cataplexy is a muscle symptom characterized by a sudden loss of muscle control with retention of clear consciousness that follows a strong emotional stimulus (as elation, surprise, or anger) and is a characteristic symptom of narcolepsy."
+symptom/musculoskeletal system symptom/contracture,2,contracture,,"A musculoskeletal system symptom that is characterized by a permanent tightening of the muscles, tendons, skin, and nearby tissues that causes the joints to shorten and become very stiff."
+symptom/musculoskeletal system symptom/arthritis,2,arthritis,,"Arthritis is a musculoskeletal system symptom characterized as an inflammation of joints due to infectious, metabolic, or constitutional causes.|doid/symp duplicate"
+symptom/musculoskeletal system symptom/arthritis/acute arthritis,3,acute arthritis,,
+symptom/musculoskeletal system symptom/motor weakness,2,motor weakness,,
+symptom/musculoskeletal system symptom/motor weakness/inibility to stand,3,inibility to stand,,
+symptom/musculoskeletal system symptom/joint symptom,2,joint symptom,,
+symptom/musculoskeletal system symptom/joint symptom/joint inflammation,3,joint inflammation,,
+symptom/musculoskeletal system symptom/joint symptom/joint inflammation/synovitis,4,synovitis,,Synovitis is a joint inflammation characterized by an inflammation of a synovial membrane usually with pain and swelling of the joint.|doid/symp duplicate
+symptom/musculoskeletal system symptom/inability to lie flat,2,inability to lie flat,,
+symptom/musculoskeletal system symptom/soft tissue necrosis,2,soft tissue necrosis,,"A musculoskeletal system symptom that is characterized by necrosis (i.e. tissue death) of soft tissue, including muscle, fat, blood vessels, nerves, tendons, and tissues that surround the bones and joints."
+symptom/musculoskeletal system symptom/soft tissue necrosis/muscle necrosis,3,muscle necrosis,,
+symptom/musculoskeletal system symptom/clubbing of fingers,2,clubbing of fingers,,
+symptom/musculoskeletal system symptom/cellulitis,2,cellulitis,,Cellulitis is a musculoskeletal system symptom characterized as a diffuse and especially subcutaneous inflammation of connective tissue.|doid/symp duplicate
+symptom/musculoskeletal system symptom/recumbency,2,recumbency,,
+symptom/musculoskeletal system symptom/uncoordinated gait,2,uncoordinated gait,,
+symptom/musculoskeletal system symptom/decreased jaw tone,2,decreased jaw tone,,
+symptom/musculoskeletal system symptom/staggering gait,2,staggering gait,,
+symptom/musculoskeletal system symptom/hypokinesia,2,hypokinesia,,Hypokinesia is a musculoskeletal system  symptom characterized by the slow or diminished movement of body musculature. It may be associated with basal ganglia diseases; mental disorders; prolonged inactivity due to illness; experimental protocols used to evaluate the physiologic effects of immobility; and other conditions.
+symptom/musculoskeletal system symptom/hypokinesia/postural instability hypokinesia,3,postural instability hypokinesia,,Postural instability hypokinesia is a hypokinesia described as a loss of ability to maintain an upright posture.
+symptom/musculoskeletal system symptom/hypokinesia/freezing hypokinesia,3,freezing hypokinesia,,Freezing hypokinesia is a hypkinesia where a person can not move their muscles how they want them to.
+symptom/musculoskeletal system symptom/hypokinesia/bradykinesia,3,bradykinesia,,Bradykinesia is a hypokinesia characterized by an extreme slowness in the execution of movements and reflexes.
+symptom/musculoskeletal system symptom/hypokinesia/rigidity hypokinesia,3,rigidity hypokinesia,,Rigidity hypokinesia a type of hypokinesia described as the increase in muscle tension when moved by an outside force.
+symptom/musculoskeletal system symptom/abnormality of gait,2,abnormality of gait,,Abnormality of gait is a nervous system and musculoskeletal system symptom characterized by a difficulty in the manner of walking or moving on foot.
+symptom/musculoskeletal system symptom/abnormality of gait/wobble,3,wobble,,
+symptom/musculoskeletal system symptom/lameness,2,lameness,,Lameness is a musculoskeletal system symptom where a person is physically disabled as the result of having a body part and especially a limb so disabled as to impair freedom of movement.
+symptom/hemic and immune system symptom,1,hemic and immune system symptom,,
+symptom/hemic and immune system symptom/hematopoietic system symptom,2,hematopoietic system symptom,,
+symptom/hemic and immune system symptom/immune system symptom,2,immune system symptom,,
+symptom/hemic and immune system symptom/immune system symptom/anaphylactic shock,3,anaphylactic shock,anaphylaxis,An acute allergic reaction to an antigen to which the body has become hypersensitive.
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom,3,lymphatic system symptom,,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/enlargement of lymph nodes,4,enlargement of lymph nodes,swelling of lymph nodes|swollen lymph glands,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/enlargement of lymph nodes/lymphadenopathy,5,lymphadenopathy,adenopathy,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/enlargement of lymph nodes/lymphadenopathy/painful reginal lymphadenopathy,6,painful reginal lymphadenopathy,,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/enlargement of lymph nodes/lymphadenopathy/cervical lymphadenopathy,6,cervical lymphadenopathy,,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/lymphoblastoma,4,lymphoblastoma,,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/lymphopenia,4,lymphopenia,,doid/symp duplicate
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/lymphangitis,4,lymphangitis,,doid/symp duplicate
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/lymphadenitis,4,lymphadenitis,,doid/symp duplicate
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/lymphadenitis/bubo,5,bubo,buboes,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/lymphadenitis/hilar lymphadenitis,5,hilar lymphadenitis,,
+symptom/hemic and immune system symptom/immune system symptom/lymphatic system symptom/lymphadenitis/acute mesenteric lymphadenitis,5,acute mesenteric lymphadenitis,,
+symptom/hemic and immune system symptom/immune system symptom/spleen symptom,3,spleen symptom,,
+symptom/hemic and immune system symptom/immune system symptom/spleen symptom/hepatosplenomegaly,4,hepatosplenomegaly,,
+symptom/hemic and immune system symptom/immune system symptom/spleen symptom/splenomegaly,4,splenomegaly,esplenomegaly,
+symptom/hemic and immune system symptom/immune system symptom/spleen symptom/spleen abscess,4,spleen abscess,,
+symptom/hemic and immune system symptom/immune system symptom/thymus symptom,3,thymus symptom,,
+symptom/hemic and immune system symptom/immune system symptom/allergic reaction,3,allergic reaction,,An immune system symptom that is characterized by sensitivities to substances called allergens.
+symptom/hemic and immune system symptom/hemic system symptom,2,hemic system symptom,,
+symptom/hemic and immune system symptom/hemic system symptom/toxemia,3,toxemia,,
+symptom/hemic and immune system symptom/hemic system symptom/toxemia/intense toxemia,4,intense toxemia,,
+symptom/hemic and immune system symptom/hemic system symptom/microangiopathy,3,microangiopathy,,
+symptom/hemic and immune system symptom/hemic system symptom/coagulopathy,3,coagulopathy,,
+symptom/hemic and immune system symptom/hemic system symptom/hyponatremia,3,hyponatremia,,
+symptom/hemic and immune system symptom/hemic system symptom/septicemia,3,septicemia,,
+symptom/hemic and immune system symptom/hemic system symptom/thrombocytopenia,3,thrombocytopenia,,doid/symp duplicate
+symptom/hemic and immune system symptom/hemic system symptom/vasculitis,3,vasculitis,,doid/symp duplicate
+symptom/hemic and immune system symptom/hemic system symptom/leukocytosis,3,leukocytosis,,
+symptom/hemic and immune system symptom/hemic system symptom/anemia,3,anemia,anaemia,"doid/symp duplicate - reviewed 10/2022, both DO & SYMP"
+symptom/hemic and immune system symptom/hemic system symptom/anemia/hemolytic anemia,4,hemolytic anemia,,doid/symp duplicate
+symptom/hemic and immune system symptom/hemic system symptom/anemia/hemolytic anemia/microangiopathic hemolytic anemia,5,microangiopathic hemolytic anemia,,
+symptom/hemic and immune system symptom/hemic system symptom/anemia/moderate anemia,4,moderate anemia,,
+symptom/hemic and immune system symptom/hemic system symptom/ischemia,3,ischemia,,
+symptom/hemic and immune system symptom/hemic system symptom/hemolysis,3,hemolysis,haemolysis,
+symptom/hemic and immune system symptom/hemic system symptom/hyperemia,3,hyperemia,hyperaemia|hyperemic,Hyperemia is a hemic system symptom consisting of an excess of blood in a body part as from an increased flow of blood due to vasodilation.
+symptom/hemic and immune system symptom/hemic system symptom/hyperemia/functional hyperemia,4,functional hyperemia,,Functional hyperemia is a hyperemia occurring due to an increase in blood flow to a tissue due to the presence of metabolites and a change in general conditions.
+symptom/hemic and immune system symptom/hemic system symptom/hyperemia/reactive hyperemia,4,reactive hyperemia,,Reactive hyperemia is a hyperemia occurring due to the dilation of arteriolar smooth muscle to increase blood flow in response to a profound increase in blood flow to an organ after being occluded. There will be a shortage of oxygen and a build-up of metabolic waste.
+symptom/hemic and immune system symptom/hemic system symptom/hyperemia/active hyperemia,4,active hyperemia,,Active hyperemia is a hyperemia occurring due to the dilation of arteriolar smooth muscle to increase blood flow in response to an increase in metabolism.
+symptom/hemic and immune system symptom/hemic system symptom/hyperemia/congested sclera,4,congested sclera,,Congested sclera is a hyperemia characterized as the congestion of the vessels of the outer layer of the eye containing collagen and elastic fibers.
+symptom/hemic and immune system symptom/hemic system symptom/hypotension,3,hypotension,,
+symptom/hemic and immune system symptom/hemic system symptom/hypotension/mild hypotension,4,mild hypotension,,
+symptom/hemic and immune system symptom/hemic system symptom/hypoxemia,3,hypoxemia,hypoxaemia,
+symptom/hemic and immune system symptom/hemic system symptom/hemodynamic instability,3,hemodynamic instability,,
+symptom/hemic and immune system symptom/hemic system symptom/low white blood cell count,3,low white blood cell count,,
+symptom/hemic and immune system symptom/hemic system symptom/hematogenous,3,hematogenous,,
+symptom/hemic and immune system symptom/hemic system symptom/plasmacytosis,3,plasmacytosis,,
+symptom/hemic and immune system symptom/hemic system symptom/cytopenia,3,cytopenia,,
+symptom/hemic and immune system symptom/hemic system symptom/reticulocytosis,3,reticulocytosis,,
+symptom/hemic and immune system symptom/hemic system symptom/macrocytosis,3,macrocytosis,,
+symptom/digestive system symptom,1,digestive system symptom,,
+symptom/digestive system symptom/flatulence,2,flatulence,gas production|gas,
+symptom/digestive system symptom/tenesmus,2,tenesmus,,
+symptom/digestive system symptom/terminal ileitis,2,terminal ileitis,,
+symptom/digestive system symptom/vomiting,2,vomiting,emesis,Vomiting is a digestive system symptom characterized by throwing up the stomach contents.
+symptom/digestive system symptom/vomiting/hematemesis,3,hematemesis,haematemesis|bloody vomit|vomiting blood,A vomiting where there is vomiting of blood.
+symptom/digestive system symptom/liver symptom,2,liver symptom,,
+symptom/digestive system symptom/liver symptom/hepatic necrosis,3,hepatic necrosis,,
+symptom/digestive system symptom/liver symptom/hepatic necrosis/massive hepatic necrosis,4,massive hepatic necrosis,,
+symptom/digestive system symptom/liver symptom/hepatosplenomegaly,3,hepatosplenomegaly,,
+symptom/digestive system symptom/liver symptom/hepatitis,3,hepatitis,,doid/symp duplicate
+symptom/digestive system symptom/liver symptom/hepatic dysfunction,3,hepatic dysfunction,,
+symptom/digestive system symptom/liver symptom/hepatic abscess,3,hepatic abscess,hepatic abscesses,hepatic abscess is a liver symptom characterized by a pus-filled mass in the liver that can develop from injury to the liver or an intraabdominal infection disseminated from the portal circulation.
+symptom/digestive system symptom/liver symptom/hepatomegaly,3,hepatomegaly,enlargement of the liver,
+symptom/digestive system symptom/liver symptom/liver inflammation,3,liver inflammation,,
+symptom/digestive system symptom/nausea,2,nausea,,Nausea is a digestive system symptom characterized by an uneasy or unsettled feeling in the stomach together with an urge to vomit.
+symptom/digestive system symptom/visible peristalsis,2,visible peristalsis,,
+symptom/digestive system symptom/enteritis,2,enteritis,,Enteritis is a digestive system symptom involving the inflammation of the small intestines and especially of the human ileum.
+symptom/digestive system symptom/enteritis/chronic enteritis,3,chronic enteritis,,"Chronic enteritis is a enteritis with slow progress, long duration, or frequent recurrence which can be due to Crohn's disease, giardiasis, tuberculosis, coeliac disease, or rarely due to Whipple's disease."
+symptom/digestive system symptom/enteritis/acute enteritis,3,acute enteritis,,Acute enteritis is a enteritis with either or both a rapid onset and a short course which is usually due to bacteria or virus.
+symptom/digestive system symptom/gastrointestinal bleeding,2,gastrointestinal bleeding,,"A digestive system symptom characterized by bleeding from one or more of the areas of the digestive or gastrointestinal (GI) tract that includes the espophagus, stomach, small intestine, large intestine or colon, rectum and anus."
+symptom/digestive system symptom/feces and droppings symptom,2,feces and droppings symptom,fecal,
+symptom/digestive system symptom/feces and droppings symptom/constipation,3,constipation,,"Constipation is a feces and droppings symptom involving the abnormally delayed or infrequent passage of dry hardened feces. Constipation may be categorized into three subtypes: normal-transit, slow-transit, and pelvic floor dysfunction.|doid/symp duplicate"
+symptom/digestive system symptom/feces and droppings symptom/constipation/outlet dysfunction constipation,4,outlet dysfunction constipation,,"A constipation that is characterized by difficulty passing bowel movements after they reach the rectum. One experiences difficulty evacuating the stool and often has to strain or press the fingers into the vagina or in front of or into the rectum to help remove the stool. Outlet dysfunction can be caused by inappropriate or abnormal muscle contraction of the pelvic floor (called pelvic floor dyssynergia or dyssynergic defecation) which can respond to biofeedback. It may also be due to a rectocele or other structural changes in the pelvic floor that will require medical or at times, surgical treatment."
+symptom/digestive system symptom/feces and droppings symptom/melena,3,melena,melaena,"A feces and droppings symptom that is characterized by the passage of dark tarry stools containing decomposing blood that is usually an indication of bleeding in the upper part of the alimentary canal and especially the esophagus, stomach, and duodenum."
+symptom/digestive system symptom/feces and droppings symptom/bloody stool,3,bloody stool,blood in stool,
+symptom/digestive system symptom/feces and droppings symptom/diarrhea,3,diarrhea,incontinence of feces|bacterial gastroenteritis|fecal incontinence|loose bowel|loose bowels|diarrhoea|the runs,"Diarrhea is a feces and droppng symptom involving the abnormally frequent intestinal evacuations with more or less fluid stools.|doid/symp duplicate - reviewed 10/2022, both DO & SYMP"
+symptom/digestive system symptom/feces and droppings symptom/diarrhea/severe diarrhea,4,severe diarrhea,,
+symptom/digestive system symptom/feces and droppings symptom/diarrhea/bloody diarrhea,4,bloody diarrhea,,
+symptom/digestive system symptom/feces and droppings symptom/diarrhea/hemorrhagic diarrhea,4,hemorrhagic diarrhea,,
+symptom/digestive system symptom/feces and droppings symptom/diarrhea/acute diarrhea,4,acute diarrhea,,Acute diarrhea is a diarrhea with either or both a rapid onset or a short course.|doid/symp duplicate
+symptom/digestive system symptom/feces and droppings symptom/diarrhea/yellowish green diarrhea,4,yellowish green diarrhea,,
+symptom/digestive system symptom/feces and droppings symptom/steatorrhea,3,steatorrhea,,doid/symp duplicate
+symptom/digestive system symptom/feces and droppings symptom/yellow dropping,3,yellow dropping,,
+symptom/digestive system symptom/feces and droppings symptom/abnormal feces,3,abnormal feces,,
+symptom/digestive system symptom/feces and droppings symptom/acholic stool,3,acholic stool,clay-colored bowel movement,
+symptom/digestive system symptom/feces and droppings symptom/hematochezia,3,hematochezia,,"hematochezia is a feces and droppings symptom characterized by the passage of fresh blood per anus, usually in or with stools."
+symptom/digestive system symptom/intestinal hemorrhage,2,intestinal hemorrhage,,
+symptom/digestive system symptom/rectorrhagia,2,rectorrhagia,rectal bleeding,
+symptom/digestive system symptom/intestinal hypermotility,2,intestinal hypermotility,,
+symptom/digestive system symptom/abnormal bowel sound,2,abnormal bowel sound,,
+symptom/digestive system symptom/salivary gland symptom,2,salivary gland symptom,,
+symptom/digestive system symptom/salivary gland symptom/salivation,3,salivation,,
+symptom/digestive system symptom/salivary gland symptom/salivation/continuous profuse salivation,4,continuous profuse salivation,,
+symptom/digestive system symptom/salivary gland symptom/salivation/excess salivation,4,excess salivation,profuse salivation,
+symptom/digestive system symptom/salivary gland symptom/acute suppurative parotiditis,3,acute suppurative parotiditis,,
+symptom/digestive system symptom/salivary gland symptom/parotid abscess,3,parotid abscess,,
+symptom/digestive system symptom/necrosis of jejunum,2,necrosis of jejunum,,
+symptom/digestive system symptom/necrosis of jejunum/ischemic necrosis of jejunum,3,ischemic necrosis of jejunum,,
+symptom/digestive system symptom/belching,2,belching,eructation,Belching is a digestive system symptom involving the sudden expulsion of gas from the stomach through the mouth.
+symptom/digestive system symptom/diminished gastro-intestinal motility,2,diminished gastro-intestinal motility,,
+symptom/digestive system symptom/gastroenteritis,2,gastroenteritis,,doid/symp duplicate
+symptom/digestive system symptom/gastroenteritis/hemorrhagic gastroenteritis,3,hemorrhagic gastroenteritis,haemorrhagic gastroenteritis,
+symptom/digestive system symptom/gastroenteritis/acute gastroenteritis,3,acute gastroenteritis,,
+symptom/digestive system symptom/lesions in pancreas,2,lesions in pancreas,,
+symptom/digestive system symptom/distended loops of intestines on rectal,2,distended loops of intestines on rectal,,
+symptom/digestive system symptom/pyrosis,2,pyrosis,acid indigestion|heartburn,From synonym: Heartburn is a pain characterized by a painful burning feeling in your chest or throat that happens when stomach acid backs up into your esophagus.
+symptom/digestive system symptom/bloating,2,bloating,,Bloating is a digestive system symptom involving the accumulation of gas in the digestive tract and resulting in abdominal distension.
+symptom/digestive system symptom/dyspepsia,2,dyspepsia,indigestion,"Dyspepsia is a digestive system symptom referred to as indigestion resulting from an impairment to digestion caused by ulcer, gall bladder disease or inflamed colon. Related symptoms include weakness, loss of appetite, and depression.|doid/symp duplicate"
+symptom/cardiovascular system symptom,1,cardiovascular system symptom,,
+symptom/cardiovascular system symptom/endocarditis,2,endocarditis,,doid/symp duplicate
+symptom/cardiovascular system symptom/shock,2,shock,,"A cardiovascular system symptom that is characterized as a state of profound depression of the vital processes of the body that is characterized by pallor, rapid but weak pulse, rapid and shallow respiration, reduced total blood volume, and low blood pressure and that is caused usually by severe especially crushing injuries, hemorrhage, burns, or major surgery."
+symptom/cardiovascular system symptom/shock/cardiogenic shock,3,cardiogenic shock,,
+symptom/cardiovascular system symptom/shock/septic shock,3,septic shock,,
+symptom/cardiovascular system symptom/undiagnosed cardiac murmur,2,undiagnosed cardiac murmur,,
+symptom/cardiovascular system symptom/blood vessel infection,2,blood vessel infection,,
+symptom/cardiovascular system symptom/hemorrhage,2,hemorrhage,,A cardiovascular system symptom that is characterized by an acute loss of blood from a damaged blood vessel.
+symptom/cardiovascular system symptom/hemorrhage/intracranial hemorrhage,3,intracranial hemorrhage,,A hemorrhage that is characterized by any bleeding occurring within the skull.
+symptom/cardiovascular system symptom/hemorrhage/intracerebral hemorrhage,3,intracerebral hemorrhage,,A hemorrhage that is characterized by bleeding within the brain tissue itself.
+symptom/cardiovascular system symptom/hemorrhage/subdural hemorrhage,3,subdural hemorrhage,subdural hematoma,A hemorrhage that is characterized by bleeding that occurs within the skull of head but outside the actual brain tissue.
+symptom/cardiovascular system symptom/palpitation,2,palpitation,abnormal heart beats,"Palpitation is a cardiovascykar system symptom characterized by an abnormal awareness of the beating of the heart,whether it is too slow, too fast, irregular, or at its normal frequency when excited by violent exertion, strong emotion, or disease."
+symptom/cardiovascular system symptom/myocarditis,2,myocarditis,,doid/symp duplicate
+symptom/cardiovascular system symptom/heart failure,2,heart failure,,
+symptom/cardiovascular system symptom/hypergammaglobulinemia,2,hypergammaglobulinemia,,
+symptom/cardiovascular system symptom/vascular alteration,2,vascular alteration,,
+symptom/cardiovascular system symptom/gangrene,2,gangrene,,
+symptom/cardiovascular system symptom/chest hyperemia,2,chest hyperemia,,Hyperemia of the chest is a cardiovascular system symptom consisting of an excess of blood in the tissues of the chest as from an increased flow of blood due to vasodilation.
+symptom/cardiovascular system symptom/lesions in myocardium,2,lesions in myocardium,,
+symptom/cardiovascular system symptom/pericardial effusion,2,pericardial effusion,,Pericardial effusion is a cardiovascular system symptom where there is an abnormal accumulation of fluid in the pericardial cavity.|doid/symp duplicate
+symptom/cardiovascular system symptom/postphlebitic ulcer,2,postphlebitic ulcer,,
+symptom/cardiovascular system symptom/phlebitis,2,phlebitis,inflammation of a vein,doid/symp duplicate
+symptom/cardiovascular system symptom/arrhythmia,2,arrhythmia,fluctuation of heart rate|irregular heartbeat|dysrhythmia|abnormal heart beat|heart rhythm symptom|abnormal heart rhythm,Arrhythmia is a cardiovascular system symptom consisting of an alteration in rhythm of the heartbeat either in time or force.
+symptom/cardiovascular system symptom/arrhythmia/cardiac fibrillation,3,cardiac fibrillation,,"An arrhythmia characterized by rapid, irregular, and unsynchronized contraction of muscle fibers within the heart."
+symptom/cardiovascular system symptom/arrhythmia/cardiac fibrillation/ventricular fibrillation,4,ventricular fibrillation,v-fib,"A cardiac fibrillation associated with quivering of the lower chambers of the heart, preventing blood from being pumped and causing cardiac arrest."
+symptom/cardiovascular system symptom/arrhythmia/cardiac fibrillation/atrial fibrillation,4,atrial fibrillation,auricular fibrillation|AF|AFib|a-fib,"A cardiac fibrillation consisting of a very rapid uncoordinated contractions of the atria of the heart resulting in a lack of synchronism between heartbeat and pulse beat.|doid/symp duplicate - reviewed 10/2022, both DO & SYMP"
+symptom/cardiovascular system symptom/arrhythmia/bradycardia,3,bradycardia,,Bradycardia is a cardiovascular system symptom consisting of a relatively slow heart action whether physiological or pathological.
+symptom/cardiovascular system symptom/arrhythmia/bradycardia/sinus bradycardia,4,sinus bradycardia,,Sinus bradycardia is a bradycardia where the sinus rhythm is abnormally slow bradycardia consisting of a sinus rhythm at a rate lower than 60 beats per minute.
+symptom/cardiovascular system symptom/arrhythmia/bradycardia/ventricular bradycardia,4,ventricular bradycardia,ventricular escape rhythm|idioventricular rhythm,"A bradycardia associated with the generation of impules in the ventricles when impules from the atria fail to reach them, characterized by an electrocardiogram showing a heart rate below 50 BPM and a broad QRS complex."
+symptom/cardiovascular system symptom/arrhythmia/tachycardia,3,tachycardia,,Tachycardia is a cardiovascular system symptom consisting of a relatively rapid heart action whether physiological (as after exercise) or pathological.
+symptom/cardiovascular system symptom/arrhythmia/tachycardia/sinus tachycardia,4,sinus tachycardia,,Sinus tachycardia is a tachychardia characterized by an abnormally rapid sinus rhythm specifically a sinus rhythm at a rate greater than 100 beats per minute.
+symptom/cardiovascular system symptom/arrhythmia/tachycardia/paroxysmal tachycardia,4,paroxysmal tachycardia,,Paroxysmal tachycardia is a tachycardia that begins and ends abruptly and that is initiated by a premature supraventricular beat originating in the atrium or in the atrioventricular node or bundle of His or by a premature ventricular beat.
+symptom/cardiovascular system symptom/arrhythmia/tachycardia/ventricular tachycardia,4,ventricular tachycardia,V-tach|VT,"A tachycardia that is associated with the generation of improper electrical impulses within the ventricles, characterized by an electrocardiogram showing a rate of greater than 120 BPM and three or more wide QRS complexes in a row."
+symptom/cardiovascular system symptom/arrhythmia/tachycardia/junctional tachycardia,4,junctional tachycardia,,Junctional tachycardia is a tachycardia associated with the generation of impulses in a locus in the region of the atrioventricular node.
+symptom/urinary system symptom,1,urinary system symptom,,
+symptom/urinary system symptom/extravasation of urine,2,extravasation of urine,,"A urinary system symptom that is characterized by an injury of the urethra in its bulbous or membranous portion, which leads to a collection of urine in other cavities, such as the perineal space, the scrotum, the penis and the connective tissue of the anterior abdominal wall."
+symptom/urinary system symptom/renal involvement,2,renal involvement,,
+symptom/urinary system symptom/renal abscess,2,renal abscess,kidney abscess|perirenal abscess,A urinary system symptom that is characterized by a pocket (a walled-off cavity) of pus that develops in the kidney tissue. It results from the migration of bacteria from another infection site on the body to the kidneys.
+symptom/urinary system symptom/hematuria,2,hematuria,,A urinary system symptom that is characterized by the presence of blood or blood cells in the urine.
+symptom/urinary system symptom/hematuria/gross hematuria,3,gross hematuria,,A hematuria that is characterized by the production of a visible redness in the urine.
+symptom/urinary system symptom/urinary stream symptom,2,urinary stream symptom,,
+symptom/urinary system symptom/urinary stream symptom/slowing of urinary stream,3,slowing of urinary stream,,A urinary stream symptom that is characterized by a slow or weak stream of urine.
+symptom/urinary system symptom/urinary stream symptom/splitting of urinary stream,3,splitting of urinary stream,,A urinary stream symptom that is characterized by a split in the urine flow resulting in it streaming in two directions.
+symptom/urinary system symptom/dysuria,2,dysuria,painful urine discharge|difficult urine discharge,"A urinary system symptom that is characterized by the difficult, or painful, discharge of urine."
+symptom/urinary system symptom/urethral discharge,2,urethral discharge,,"A urinary system symptom that is characterized by abnormal purulent or mucoid secretions from the penis or, rarely, the female urethra."
+symptom/urinary system symptom/urinary incontinence,2,urinary incontinence,incontinence,A urinary system symptom that is characterized by the an inability of the body to control the evacuative functions.
+symptom/urinary system symptom/urinary incontinence/mixed incontinence (female) (male),3,mixed incontinence (female) (male),,"A urinary incontinence that is characterized by urine leakage when you sneeze, cough, laugh, do jarring exercise, or lift something heavy. It is typically a combination of stress and urge incontinence."
+symptom/urinary system symptom/urinary incontinence/overflow incontinence,3,overflow incontinence,,"A urinary incontinence that is characterized by a bladder that does not empty completely, resulting in a bladder that is too full, which leads to overflow and unexpected leaking."
+symptom/urinary system symptom/urinary incontinence/incontinence without sensory awareness,3,incontinence without sensory awareness,,
+symptom/urinary system symptom/urinary incontinence/post-void dribbling,3,post-void dribbling,,A urinary incontinence that is characterized by urine remaining in the urethra after voiding the bladder that slowly leaks out after urination.
+symptom/urinary system symptom/urinary incontinence/urge incontinence,3,urge incontinence,,"A urinary incontinence that is characterized by an involuntary leakage of urine from the bladder when a sudden strong need to urinate is felt, even when the bladder isn't full."
+symptom/urinary system symptom/urinary incontinence/continuous leakage of urine,3,continuous leakage of urine,,
+symptom/urinary system symptom/urinary incontinence/stress incontinence,3,stress incontinence,,"A urinary incontinence that is characterized by an involuntary leakage of urine from the bladder accompanying physical activity (as in laughing, coughing, sneezing, or physical exercise) which places increased pressure on the abdomen."
+symptom/urinary system symptom/urinary incontinence/stress incontinence/male stress incontinence,4,male stress incontinence,,A stress incontinence that is characterized by a compromised external urinary sphincter muscle resulting from surgical or radiotherapeutic manipulation.
+symptom/urinary system symptom/urinary incontinence/nocturnal enuresis,3,nocturnal enuresis,bed wetting|nighttime incontinence,A urinary incontinence that is characterized by involuntary urination at night in children five years of age or older.
+symptom/urinary system symptom/nephritis,2,nephritis,,"A urinary system symptom that is characterized by the acute or chronic inflammation of the kidney affecting the structure (as of the glomerulus or parenchyma) and caused by infection, a degenerative process, or vascular disease.|doid/symp duplicate"
+symptom/urinary system symptom/genitourinary hemorrhage,2,genitourinary hemorrhage,,
+symptom/urinary system symptom/proteinuria,2,proteinuria,,A urinary system symptom characterized by the presence of excess protein in the urine.|doid/symp duplicate
+symptom/urinary system symptom/incomplete bladder emptying,2,incomplete bladder emptying,,A urinary system symptom that is characterized by a bladder that is not empty.
+symptom/urinary system symptom/urinary retention,2,urinary retention,inability to urinate|retention of urine|ischuria,A urinary system symptom that is characterized by an inability to empty the bladder completely during the process of voiding (urination).
+symptom/urinary system symptom/renal alteration,2,renal alteration,,
+symptom/urinary system symptom/urinary urgency,2,urinary urgency,urgency of urination,"A urinary system symptom that is characterized by a strong and immediate need to urinate due to an increase in pressure in the bladder, resulting in difficulty to hold in the urine. This can occur regardless of whether the bladder is full."
+symptom/urinary system symptom/urinary frequency,2,urinary frequency,nocturia|frequent urination,"A urinary system symptom that is characterized by the need to urinate many times during the day, at night, or both but in normal or less-than-normal volumes.  Frequency may be accompanied by a sensation of an urgent need to void (urgency of urination)."
+symptom/urinary system symptom/polyuria,2,polyuria,excessive secretion of urine,A urinary system symptom that is characterized by the excessive secretion of urine.
+symptom/urinary system symptom/nocturia,2,nocturia,nycturia,A urinary system symptom that is characterized by urination at night especially when excessive.
+symptom/urinary system symptom/oliguria,2,oliguria,,A urinary system symptom that is characterized by the reduced excretion of urine.
+symptom/urinary system symptom/dark urine,2,dark urine,,"A urinary system symptom that is characterized by an elevation in the concentration of the the pigments from foods, dyes, and medications in urine. The dilution of these pigment is dependent on the amount of water intake and severe dehydration can lead to a dark color."
+symptom/urinary system symptom/anuria,2,anuria,,"A urinary system symptom that is characterized by the absence of, or by defective, urine excretion.|doid/symp duplicate"
+symptom/urinary system symptom/renal failure,2,renal failure,,"A urinary system symptom that is characterized by a loss of excretory function in one or both kidneys, leading to retention of nitrogenous waste products from the blood."
+symptom/urinary system symptom/renal failure/acute renal failure,3,acute renal failure,,A renal failure that is characterized by a severe and sudden onset of renal failure.
+symptom/skin and integumentary tissue symptom,1,skin and integumentary tissue symptom,,"A skin and integumentary tissue symptom that is characterized by the outer layer of the skin starting to replace itself. Often, this happens when skin is damaged, either by disease or injury."
+symptom/skin and integumentary tissue symptom/cold clammy skin,2,cold clammy skin,,"A skin and integumentary tissue symptom that is characterized by cold, moist and sticky skin."
+symptom/skin and integumentary tissue symptom/abnormal scar formation,2,abnormal scar formation,,
+symptom/skin and integumentary tissue symptom/nail discoloration,2,nail discoloration,,
+symptom/skin and integumentary tissue symptom/ruffled feather,2,ruffled feather,,
+symptom/skin and integumentary tissue symptom/dry mucous membrane,2,dry mucous membrane,dry mucous membranes,
+symptom/skin and integumentary tissue symptom/change in skin color,2,change in skin color,,
+symptom/skin and integumentary tissue symptom/urticaria,2,urticaria,nettle rash|hives|uredo,"A skin and integumentary tissue symptom that is characterized by raised red skin wheals (welts) commonly caused by an allergic reaction with wheals that may vary in size from about 5 mm (0.2 inches) in diameter to the size of a dinner plate that are described as severely itchy a stingnig or burning sensation, and having a pale border.|doid/symp duplicate"
+symptom/skin and integumentary tissue symptom/paresthesia,2,paresthesia,,"A skin and integumentary tissue symptom that is characterized by a sensation of pricking, tingling, or creeping on the skin having no objective cause and usually associated with injury or irritation of a sensory nerve or nerve root."
+symptom/skin and integumentary tissue symptom/itching,2,itching,pruritus,A skin and integumentary tissue symptom that is characterized by an uneasy irritating sensation in the upper surface of the skin usually held to result from mild stimulation of pain receptors.
+symptom/skin and integumentary tissue symptom/localized superficial swelling,2,localized superficial swelling,,
+symptom/skin and integumentary tissue symptom/localized superficial mass,2,localized superficial mass,,
+symptom/skin and integumentary tissue symptom/pustule,2,pustule,,A skin and integumentary tissue symptom that is characterized by a small circumscribed elevation of the skin containing pus and having an inflamed base.
+symptom/skin and integumentary tissue symptom/boil,2,boil,furuncle,"A skin and integumentary tissue symptom that is characterized by a localized swelling and inflammation of the skin resulting from usually bacterial infection of a hair follicle and adjacent tissue, having a hard central core, and forming pus."
+symptom/skin and integumentary tissue symptom/flat keratotic capsule,2,flat keratotic capsule,,
+symptom/skin and integumentary tissue symptom/keratotic nodules of the skin,2,keratotic nodules of the skin,,
+symptom/skin and integumentary tissue symptom/disturbance of skin sensation,2,disturbance of skin sensation,,
+symptom/skin and integumentary tissue symptom/jaundice,2,jaundice,icteric|icterus,"A skin and integumentary tissue symptom that is characterized by a yellowish pigmentation of the skin, tissues, and certain body fluids is caused by the deposition of bile pigments that follows interference with normal production and discharge of bile (as in certain liver diseases) or excessive breakdown of red blood cells (as after internal hemorrhage or in various hemolytic states)."
+symptom/skin and integumentary tissue symptom/cyanosis,2,cyanosis,,A skin and integumentary tissue symptom that is characterized by a bluish or purplish discoloration (as of skin) due to deficient oxygenation of the blood.
+symptom/skin and integumentary tissue symptom/edema,2,edema,dropsy,A skin and integumentary tissue symptom that is characterized by an abnormal excess accumulation of serous fluid in connective tissue or in a serous cavity.
+symptom/skin and integumentary tissue symptom/edema/anasarca,3,anasarca,generalized edema,Anasarca is a edema characterized as generalized edema with accumulation of serum in the connective tissue.
+symptom/skin and integumentary tissue symptom/edema/limb edema,3,limb edema,limb oedema|oedema of the limbs,An adema that is characterized by an abnormal excess accumulation of serous fluid in connective tissue of the limbs.
+symptom/skin and integumentary tissue symptom/edema/palpebral edema,3,palpebral edema,edema of the eyelid,An adema that is characterized by an abnormal excess accumulation of serous fluid in connective tissue of the eyelids.
+symptom/skin and integumentary tissue symptom/edema/facial edema,3,facial edema,facial swelling,An adema that is characterized by an abnormal excess accumulation of serous fluid in connective tissue of the face.
+symptom/skin and integumentary tissue symptom/change in skin texture,2,change in skin texture,,
+symptom/skin and integumentary tissue symptom/spontaneous ecchymoses,2,spontaneous ecchymoses,,A skin and integumentary tissue symptom that is characterized by the spontaneous escape of blood into the tissues from ruptured blood vessels marked by a livid black-and-blue or purple spot or area.
+symptom/skin and integumentary tissue symptom/sweaty,2,sweaty,perspire,A skin and integumentary tissue symptom that is characterized by the excretion of moisture in visible quantities through the opening of the sweat glands.
+symptom/skin and integumentary tissue symptom/sweaty/diaphoresis,3,diaphoresis,profuse perspiration,A sweat that is characterized by excessive sweating commonly associated with shock and other medical emergency conditions.
+symptom/skin and integumentary tissue symptom/necrotic lesion,2,necrotic lesion,,"A skin and integumentary tissue symptom that is characterized by regions of cell death to living tissue in an organ, which has suffered damage through injury or disease, such as a wound, ulcer, abscess, or tumor."
+symptom/skin and integumentary tissue symptom/rash,2,rash,skin redness|skin eruption|erythema|rubor|skin rash,A skin and integumentary tissue symptom that is characterized by an eruption on the body typically with little or no elevation above the surface.
+symptom/skin and integumentary tissue symptom/rash/ankle rash,3,ankle rash,redness of ankle,A rash characterized by an inflammatory reaction of the skin on the ankles.
+symptom/skin and integumentary tissue symptom/rash/papular rash,3,papular rash,,"A rash characterized by papule(s), which are a raised area of the skin."
+symptom/skin and integumentary tissue symptom/rash/maculopapular rash,3,maculopapular rash,,"A rash characterized by papule(s), which are a raised area of the skin and macule(s), which are a flat red area of the skin."
+symptom/skin and integumentary tissue symptom/rash/blotchy red rash,3,blotchy red rash,,
+symptom/skin and integumentary tissue symptom/rash/purpuric rash,3,purpuric rash,,A rash characterized by a red or purple hued small spots of blood appear on the skin caused by conditions that result in blood leaking into the skin and other body surfaces that does not fade when pressed upon.
+symptom/skin and integumentary tissue symptom/rash/diffuse rash,3,diffuse rash,diffuse erythema,"A rash characterized by large patches of red skin, without overlying changes in the epidermis."
+symptom/skin and integumentary tissue symptom/rash/exanthema,3,exanthema,,A rash characterized by a widespread skin eruption usually occurring in children that is a symptom of a more general disease.
+symptom/skin and integumentary tissue symptom/skin lesion,2,skin lesion,,A skin and integumentary tissue symptom that is characterized by an abnormal change in structure of the skin that is especially circumscribed and well defined due to injury or disease.
+symptom/skin and integumentary tissue symptom/skin lesion/abnormal wound healing,3,abnormal wound healing,,
+symptom/skin and integumentary tissue symptom/skin lesion/poor wound healing,3,poor wound healing,,
+symptom/skin and integumentary tissue symptom/skin lesion/skin ulcer,3,skin ulcer,,"A skin lesion that is characterized by a break in skin with loss of surface tissue, disintegration and necrosis of epithelial tissue, and often pus."
+symptom/skin and integumentary tissue symptom/skin lesion/skin ulcer/tache noire,4,tache noire,,A skin ulcer that is characterized by a a small dark-centered ulcer that appears at the site of a tick bite and is the primary lesion of boutonneuse fever.
+symptom/skin and integumentary tissue symptom/skin lesion/skin ulcer/extensive ulcer,4,extensive ulcer,,
+symptom/skin and integumentary tissue symptom/skin lesion/skin ulcer/apthous ulcer,4,apthous ulcer,aphthous stomatitis|canker sore,"A skin ulcer that is characterized by a small recurrent, painful, round or ovoid ulcers with well-defined erythematous margins, like a halo, and a central yellow or gray floor found in the soft tissue of the oral cavity."
+symptom/skin and integumentary tissue symptom/papule,2,papule,,"A skin and integumentary tissue symptom that is characterized by a small solid usually conical elevation of the skin caused by inflammation, accumulated secretion, or hypertrophy of tissue elements."
+symptom/skin and integumentary tissue symptom/hyperpigmentation,2,hyperpigmentation,,"A skin and integumentary tissue symptom that is characterized by an excess pigmentation in a bodily part or tissue, as the skin."
+symptom/skin and integumentary tissue symptom/pale mucous membrane,2,pale mucous membrane,,
+symptom/skin and integumentary tissue symptom/mammary gland inflammation,2,mammary gland inflammation,inflammation of mammary breast|mammitis,A skin and integumentary tissue symptom that is characterized by an inflammation of the mammary gland or udder and usually caused by infection.
+symptom/skin and integumentary tissue symptom/mammary gland inflammation/severe mammary gland inflammation,3,severe mammary gland inflammation,,A mammary gland inflammation that is characterized by an increased intensity or severity of the condition.
+symptom/skin and integumentary tissue symptom/enanthem,2,enanthem,,A skin and integumentary tissue symptom that is characterized by an eruption on a mucous surface.
+symptom/skin and integumentary tissue symptom/flushing,2,flushing,,"A skin and integumentary tissue symptom that is characterized by a markedly red flush in a persons face and often other areas of the skin, from various physiological conditions. Flushing is generally distinguished, despite a close physiological relation between them, from blushing, which is milder, generally restricted to the face or cheeks, and generally assumed to reflect embarrassment. Flushing is also a cardinal symptom of carcinoid syndrome the syndrome that results from hormones (often serotonin or histamine) being secreted into systemic circulation."
+symptom/skin and integumentary tissue symptom/pallor,2,pallor,paleness,A skin and integumentary tissue symptom that is characterized by a deficiency of color especially of the face.
+symptom/skin and integumentary tissue symptom/localized superficial lump,2,localized superficial lump,,
+symptom/skin and integumentary tissue symptom/petechiae,2,petechiae,petechial rash,A skin and integumentary tissue symptom that is characterized by a minute reddish or purplish spot containing blood that appears in skin or mucous membrane as a result of localized hemorrhage.
+symptom/skin and integumentary tissue symptom/blister,2,blister,,A skin and integumentary tissue symptom that is characterized by a fluid-filled elevation of the epidermis.
+symptom/skin and integumentary tissue symptom/dermal abscess,2,dermal abscess,cutaneous abscess|skin abscess|subcutaneous abscess|dermal abscesses,"A skin and integumentary tissue symptom that is characterized by a pus-filled pocket in the skin, similar to a pimple, but larger and deeper.  The pocket is filled with bacteria, white blood cells, and dead skin and typcally result from the bacteria Staphylococcus aureus prentrating the skin through a cut or hair follicle."
+symptom/skin and integumentary tissue symptom/eschar,2,eschar,,A skin and integumentary tissue symptom that is characterized by a scab formed especially after a burn.
+symptom/skin and integumentary tissue symptom/skin peeling,2,skin peeling,,
+symptom/skin and integumentary tissue symptom/skin peeling/skin desquamation,3,skin desquamation,,A skin and integumentary tissue symptom that is characterized by the peeling off of skin in the form of scales.
+symptom/skin and integumentary tissue symptom/hair symptom,2,hair symptom,,
+symptom/skin and integumentary tissue symptom/hair symptom/hair loss,3,hair loss,,"A hair symptom that is characterized by the stopping of hair growth (regeneration), which may be a result of hereditary hair loss, immune system overreacts, drugs and treatments, harsh hair-care products, and other factors."
+symptom/skin and integumentary tissue symptom/hair symptom/hair loss/patches of hair loss with a black dot pattern,4,patches of hair loss with a black dot pattern,,"A hair symptom that is characterized by patchy hair loss and the presence of comedo-like cadaver hairs, which appear as black dots."
+symptom/skin and integumentary tissue symptom/hair symptom/corkscrew hair,3,corkscrew hair,,"A hair symptom that is characterized by coiled “corkscrew” hairs on the surface of the arms, legs and chest, which can occur as a result low level of ascorbic acid (vitamin C)."
+symptom/skin and integumentary tissue symptom/hair symptom/hair shedding,3,hair shedding,,"A hair symptom that is characterized by significant falling out of hair, which may be a result of stress, high fever, and other factors."
+symptom/skin and integumentary tissue symptom/peritonitis,2,peritonitis,,A skin and integumentary tissue symptom that is characterized by an inflammation of the peritoneum.|doid/symp duplicate
+symptom/skin and integumentary tissue symptom/pleural effusion,2,pleural effusion,,A skin and integumentary tissue symptom that is characterized by an exudation of fluid from the blood or lymph into a pleural cavity.
+symptom/skin and integumentary tissue symptom/decreased facial sensation,2,decreased facial sensation,,
+symptom/skin and integumentary tissue symptom/hemorrhage into skin,2,hemorrhage into skin,,
+symptom/skin and integumentary tissue symptom/hemorrhage into mucous membrane,2,hemorrhage into mucous membrane,,
+symptom/skin and integumentary tissue symptom/hematoma,2,hematoma,,"A skin and integumentary tissue symptom that is characterized by a mass of usually clotted blood that forms in a tissue, organ, or body space as a result of a broken blood vessel generally the result of hemorrhage, or more specifically, internal bleeding."
+symptom/skin and integumentary tissue symptom/icteric skin,2,icteric skin,,A skin and integumentary tissue symptom that is characterized by yellowed skin due to bile or bilirubin accumulation.
+symptom/skin and integumentary tissue symptom/icteric mucous membrane,2,icteric mucous membrane,,A skin and integumentary tissue symptom that is characterized by yellowed mucous membranes due to bile or bilirubin accumulation.
+symptom/skin and integumentary tissue symptom/bruise,2,bruise,bruises|bruising|contusion|ecchymosis,A skin and integumentary tissue symptom that is characterized by an injury transmitted through unbroken skin to underlying tissue causing rupture of small blood vessels and escape of blood into the tissue with resulting discoloration.
+symptom/skin and integumentary tissue symptom/eczema,2,eczema,,"A skin and integumentary tissue symptom that is characterized by an inflammatory condition of the skin with redness, itching, and oozing vesicular lesions, which become scaly, crusted, or hardened."
+symptom/skin and integumentary tissue symptom/darkening of skin,2,darkening of skin,,
+symptom/nervous system symptom,1,nervous system symptom,,
+symptom/nervous system symptom/sensation perception,2,sensation perception,,A nervous system symptom that is characterized by interpretation of the information perceived by sensory receptors.
+symptom/nervous system symptom/sensation perception/pain,3,pain,,"A sensation perception that is characterized by an unpleasant sensation that usually indicates the body is threatened or damaged. The sensation may be sharp or dull, short-lived or chronic, intermittent or continual, confined to one area or spread over the entire body."
+symptom/nervous system symptom/sensation perception/pain/neck pain,4,neck pain,,"A pain that is characterized by an unpleasant sensation localized in the neck that usually indicates the body is threatened or damaged. The sensation may be sharp or dull, short-lived or chronic, intermittent or continual."
+symptom/nervous system symptom/sensation perception/pain/throat pain,4,throat pain,sore throat,A pain that is characterized by a painful throat due to inflammation of the fauces and pharynx.
+symptom/nervous system symptom/sensation perception/pain/headache,4,headache,cephalalgia,A pain that is characterized by a pain in the head.
+symptom/nervous system symptom/sensation perception/pain/headache/frontal headache,5,frontal headache,,
+symptom/nervous system symptom/sensation perception/pain/headache/severe headache,5,severe headache,,
+symptom/nervous system symptom/sensation perception/pain/headache/bifrontal headache,5,bifrontal headache,,
+symptom/nervous system symptom/sensation perception/pain/bone pain,4,bone pain,,
+symptom/nervous system symptom/sensation perception/pain/colicky pain,4,colicky pain,,"A pain that is characterized by an attack of acute abdominal pain localized in a hollow organ or part (as the small intestine, ureter, or bile duct) and often caused by spasm, obstruction, or twisting."
+symptom/nervous system symptom/sensation perception/pain/colic,4,colic,,A pain that is characterized by the condition marked by recurrent episodes of prolonged and uncontrollable crying and irritability in an otherwise healthy infant that is of unknown cause and usually subsides after three to four months of age.
+symptom/nervous system symptom/sensation perception/pain/colic/renal colic,5,renal colic,,A colic that is characterized by a severe pain produced by the passage of a calculus from the kidney through the ureter.
+symptom/nervous system symptom/sensation perception/pain/body ache,4,body ache,,
+symptom/nervous system symptom/sensation perception/pain/earache,4,earache,,
+symptom/nervous system symptom/sensation perception/pain/toothache,4,toothache,,"A pain that is characterized by a pain in, or about, a tooth or teeth."
+symptom/nervous system symptom/sensation perception/pain/abdominal pain,4,abdominal pain,,"A pain that is characterized by occurring in the abdomen, i.e. between the chest and groin."
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/periumbilic abdominal pain,5,periumbilic abdominal pain,,
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/left upper quadrant abdominal pain,5,left upper quadrant abdominal pain,,"An abdominal pain that is characterized by occurring in the left upper quadrant abdominal pain of the abdomen that can be caused by a stomach ulcer, acute gastritis, a viral infection, or indigestion, or may be an issue with one's lungs."
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/right upper quadrant abdominal pain,5,right upper quadrant abdominal pain,,
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/right lower quadrant abdominal pain,5,right lower quadrant abdominal pain,,
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/epigastric abdominal pain,5,epigastric abdominal pain,,"An abdominal pain that is characterized by occurring in the epigastrium, i.e. the upper part of the abdomen below the rib cage."
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/generalized abdominal pain,5,generalized abdominal pain,,An abdominal pain that is characterized by being diffuse or widespread and affecting or involving all of the abdomen.
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/multiple sites abdominal pain,5,multiple sites abdominal pain,,
+symptom/nervous system symptom/sensation perception/pain/abdominal pain/left lower quadrant abdominal pain,5,left lower quadrant abdominal pain,,"An abdominal pain that is characterized by occurring in the left lower quadrant of the abdomen that is often related to the digestive tract, but can also be related to conditions of the body wall, skin, blood vessels, urinary tract, or reproductive organs."
+symptom/nervous system symptom/sensation perception/pain/muscle pain,4,muscle pain,myalgia,A pain that is characterized by a pain in one or more muscles.
+symptom/nervous system symptom/sensation perception/pain/muscle pain/severe myalgia,5,severe myalgia,,"A muscle pain that is characterized by being severe in nature.  Myalgia may be acute in nature, stemming from overuse of a muscle group or viral infection.  It may also be chronic and caused by  metabolic myopathy, some nutritional deficiencies, and chronic fatigue syndrome."
+symptom/nervous system symptom/sensation perception/pain/muscle pain/muscle ache,5,muscle ache,,A pain that is characterized by a continuous or prolonged dull pain.
+symptom/nervous system symptom/sensation perception/pain/referred pain,4,referred pain,,A pain that is characterized by pain which is subjectively localized in one region although it is due to irritation in another region.
+symptom/nervous system symptom/sensation perception/pain/chest pain,4,chest pain,,
+symptom/nervous system symptom/sensation perception/pain/chest pain/pleuritic chest pain,5,pleuritic chest pain,,A chest pain that is characterized by an inflammation of the pleural cavity with a sharp pain resulting from the exansion of the lungs as the inflammed pleural layers rub against each other.
+symptom/nervous system symptom/sensation perception/pain/chest pain/precordial pain,5,precordial pain,,
+symptom/nervous system symptom/sensation perception/pain/chest pain/severe chest pain,5,severe chest pain,intense chest pain,
+symptom/nervous system symptom/sensation perception/pain/joint pain,4,joint pain,arthromyalgia|arthralgia,"A pain that is characterized by a pain situated, or occurring, in or around a joint."
+symptom/nervous system symptom/sensation perception/pain/joint pain/shoulder pain,5,shoulder pain,,"A joint pain that is characterized by a pain situated, or occurring, in or around the shoulder."
+symptom/nervous system symptom/sensation perception/pain/joint pain/elbow pain,5,elbow pain,,"A joint pain that is characterized by a pain situated, or occurring, in or around the elbow."
+symptom/nervous system symptom/sensation perception/pain/joint pain/knee pain,5,knee pain,,"A joint pain that is characterized by a pain situated, or occurring, in or around the knee."
+symptom/nervous system symptom/sensation perception/pain/joint pain/hip pain,5,hip pain,,"A joint pain that is characterized by a pain situated, or occurring, in or around the hip."
+symptom/nervous system symptom/sensation perception/pain/joint pain/severe joint pain,5,severe joint pain,intense join pain,"A joint pain that is characterized by a pain situated, or occurring, in or around a joint that is intense (severe)."
+symptom/nervous system symptom/sensation perception/pain/acute painful vision loss,4,acute painful vision loss,,
+symptom/nervous system symptom/sensation perception/pain/painful lymph glands,4,painful lymph glands,painful lymph nodes,"A pain that is characterized by a pain situated, or occurring, in the lymph gland (lymph node). Pain is often associated with swelling of the gland, which is a sign that one's body is fighting an infection."
+symptom/nervous system symptom/sensation perception/pain/gas pain,4,gas pain,,
+symptom/nervous system symptom/sensation perception/pain/neuropathic pain,4,neuropathic pain,,"A pain that is characterized by being experienced by cancer patients and which is caused by radiotherapy or chemotherapy damage to nerves, when cancer invades or compresses nerves, or when, during cancer treatment. This type of pain is typically described as burning, electrical, or strange feeling."
+symptom/nervous system symptom/sensation perception/pain/visceral pain,4,visceral pain,,"A pain that is characterized by originating from organ tissues of the thorax, abdomen, or pelvis.  It characterizes as deep, vague, and difficult to locate pain, that radiates away from the affected organ."
+symptom/nervous system symptom/sensation perception/pain/acute pain,4,acute pain,sudden pain,A pain that is characterized by being severe but lasting a relatively short time.
+symptom/nervous system symptom/sensation perception/pain/nociceptive pain,4,nociceptive pain,,"A pain that is characterized by originating from other than the peripheral and central nervous systems, and which is caused by activation of nociceptive fibers."
+symptom/nervous system symptom/sensation perception/pain/chronic pain,4,chronic pain,,A pain that is characterized by ranging from mild to severe and which continues beyond the expected healing phase.
+symptom/nervous system symptom/sensation perception/pain/phantom pain,4,phantom pain,,A pain that is characterized by a painful sensation that is perceived to originate in the amputated portion of the extremety. Patients may have localized pain that originates in the stump.
+symptom/nervous system symptom/sensation perception/pain/breakthrough pain,4,breakthrough pain,,"A pain that is characterized by occurring with movement and is not controlled by a scheduled pain medication regimen, such that the pain breaks through the current regimen. This is usually referred to in the context of a short and long acting opioid, the short acting opioid being used to treat the breakthrough pain."
+symptom/nervous system symptom/sensation perception/pain/retrobulbar pain,4,retrobulbar pain,,"A pain that is characterized by a pain situated, or occurring, behind the eyeball."
+symptom/nervous system symptom/sensation perception/pain/testicular pain,4,testicular pain,,"A pain that is characterized by a pain in, or about, a testis (testicle) or testes. Testicular pain can be caused by nerve damage, sexually transmitted infections, gangrene, swelling, hernia, kidney stones, inflammation, enlarged veins, fluid in the testicle, or a severe condition known as testicular torsion."
+symptom/nervous system symptom/sensation perception/pain/backache,4,backache,back pain,A pain that is characterized by occurring in the lower back.
+symptom/nervous system symptom/sensation perception/pain/backache/inflammatory low back pain,5,inflammatory low back pain,,
+symptom/nervous system symptom/sensation perception/pain/backache/low backache,5,low backache,low back pain,
+symptom/nervous system symptom/sensation perception/pain/backache/severe backache,5,severe backache,intense back pain,
+symptom/nervous system symptom/sensation perception/pain/allodynia,4,allodynia,,"A pain that is characterized by a painful sensation with a normal, non-painful stimulation."
+symptom/nervous system symptom/sensation perception/pain/parotid pain,4,parotid pain,salivary gland pain,"A pain that is characterized by a pain situated, or occurring, in the parotid gland, which is a salivary gland located in front of the ears. (Additional salivary glands include the submandibular and sublingual glands.) Pain is attributed to swelling of the gland."
+symptom/nervous system symptom/sensation perception/pain/dyspareunia,4,dyspareunia,painful sexual intercourse|difficult sexual intercourse,
+symptom/nervous system symptom/sensation perception/pain/claudication,4,claudication,blockage of leg arteries,"A pain that is characterized by a leg pain in the calf, or thigh, which is caused by inadequate blood flow to the leg muscles and is brought on by leg exercise such as walking."
+symptom/nervous system symptom/sensation perception/hypoalgesia,3,hypoalgesia,,A sensation perception that is characterized by a diminished sensitivity to painful stimulation.
+symptom/nervous system symptom/sensation perception/hyperalgesia,3,hyperalgesia,,A sensation perception that is characterized by an increased response to a painful stimulus.
+symptom/nervous system symptom/sensation perception/hypoesthesia,3,hypoesthesia,numbness,"A sensation perception that is characterized by a reduced sense of touch or sensation, or a partial loss of sensitivity to sensory stimuli."
+symptom/nervous system symptom/sensation perception/hyperesthesia,3,hyperesthesia,hyperaesthesia,A sensation perception that is characterized by an increased sensitivity to stimulation.
+symptom/nervous system symptom/aphasia,2,aphasia,inability to comprehend language,A nervous system symptom that is characterized by a loss or impairment of the power to use or comprehend words usually resulting from brain damage.|doid/symp duplicate
+symptom/nervous system symptom/aphasia/poor enunciation,3,poor enunciation,,An aphasia that is characterized by a loss of ability to properly enunciate words.
+symptom/nervous system symptom/aphasia/inability to comprehend speech,3,inability to comprehend speech,,An aphasia that is characterized by a loss of ability to comprehend speech.
+symptom/nervous system symptom/aphasia/inability to comprehend speech/receptive aphasia,4,receptive aphasia,"sensory aphasia|fluent aphasia|Wernicke's aphasia|inability to perceive pitch, rhythm, and emotional tone of speech","An inability to comprehend speech that is characterized by an inability to understand spoken, written, or tactile speech symbols that results from damage (as by a brain lesion) to an area of the brain (as Wernicke's area) concerned with language."
+symptom/nervous system symptom/aphasia/inability to speak,3,inability to speak,,An aphasia that is characterized by a loss of ability to speak.
+symptom/nervous system symptom/aphasia/anomia,3,anomia,anomic aphasia|amnesic aphasia|inability to name objects|amnestic aphasia|nominal aphasia,"An aphasia that is characterized by a severe problem with recalling words or names.|doid/symp duplicate - reviewed 10/2022, both DO & SYMP"
+symptom/nervous system symptom/aphasia/inability to form words,3,inability to form words,,An aphasia that is characterized by a loss of ability to form words.
+symptom/nervous system symptom/aphasia/agraphia,3,agraphia,inability to write,An aphasia that is characterized by a pathological loss of the ability to write.
+symptom/nervous system symptom/aphasia/alexia,3,alexia,,An aphasia that is characterized by a loss of ability to read.|doid/symp duplicate
+symptom/nervous system symptom/aphasia/expressive aphasia,3,expressive aphasia,Broca's aphasia|agrammatic aphasia,"An aphasia that is characterized by damage to, or a developmental issues in, the anterior regions of the brain, including (but not limited to) the left inferior frontal region known as Broca's area. Sufferers of this form of aphasia exhibit the common problem of agrammatism. For them, speech is difficult to initiate, non-fluent, labored, and halting."
+symptom/nervous system symptom/behavioral symptom,2,behavioral symptom,,"A nervous system symptom that is characterized by an involvement, or relation to, or emphasizes behavior."
+symptom/nervous system symptom/behavioral symptom/communication difficulty,3,communication difficulty,,"A behavioral symptom that is characterized by speech, language and communication needs or communication disabilities."
+symptom/nervous system symptom/behavioral symptom/limited attention,3,limited attention,,A behavioral symptom that is characterized by a restricted rate of information processing by the brain.
+symptom/nervous system symptom/behavioral symptom/hyperactivity,3,hyperactivity,,"A behavioral symptom that is characterized by an increase in movement, impulsive actions, a shorter attention span, and being easily distracted."
+symptom/nervous system symptom/behavioral symptom/obsessive interests,3,obsessive interests,,A behavioral symptom that is characterized by obsessive and highly-focused interests.
+symptom/nervous system symptom/behavioral symptom/repetitive behavior,3,repetitive behavior,stimming,A behavioral symptom that is characterized by an unusual repetitive motor movements or manipulation of objects.
+symptom/nervous system symptom/behavioral symptom/irritability,3,irritability,Inconsolability,"A behavioral symptom that is characterized by a quick excitability to annoyance, impatience, or anger."
+symptom/nervous system symptom/behavioral symptom/abnormal behavior,3,abnormal behavior,,"A behavioral symptom that is characterized by behavior that is atypical or statistically uncommon within a particular culture, or that is maladaptive, or detrimental to an individual, or those around that individual."
+symptom/nervous system symptom/behavioral symptom/aggressive behavior,3,aggressive behavior,,"A behavioral symptom that is characterized by behavior aimed at harming a person, or animal, or damaging physical property."
+symptom/nervous system symptom/paralysis,2,paralysis,,A nervous system symptom that is characterized by a complete or partial loss of function especially when involving the power of motion or of sensation in any part of the body.
+symptom/nervous system symptom/paralysis/respiratory paralysis,3,respiratory paralysis,,A paralysis that is characterized by a complete or severe weakness of the muscles of respiration.
+symptom/nervous system symptom/paralysis/transient paralysis of limb,3,transient paralysis of limb,,"A paralysis that is characterized by a loss of some, or all, muscle control in a limb, and which lasts for only a short time (i.e. is temporary)."
+symptom/nervous system symptom/paralysis/lip paralysis,3,lip paralysis,paralysed lips,
+symptom/nervous system symptom/paralysis/throat muscle paralysis,3,throat muscle paralysis,,
+symptom/nervous system symptom/paralysis/paraplegia,3,paraplegia,,"A paralysis that is characterized by a complete, or partial, loss of function of the lower half of the body with involvement of both legs that is usually due to injury or disease of the spinal cord in the thoracic or lumbar region.|doid/symp duplicate"
+symptom/nervous system symptom/paralysis/hemiparesis,3,hemiparesis,,A paralysis that is characterized by a weakness or the inability to move on one side of the body.
+symptom/nervous system symptom/paralysis/pareses,3,pareses,partial paralysis,A paralysis that is charachterized by a slight or partial paralysis.
+symptom/nervous system symptom/paralysis/extraocular muscles paralysis,3,extraocular muscles paralysis,,
+symptom/nervous system symptom/paralysis/hind limb paralysis,3,hind limb paralysis,,
+symptom/nervous system symptom/paralysis/hind limb paralysis/partial hind limb paralysis,4,partial hind limb paralysis,,
+symptom/nervous system symptom/paralysis/proximal paralysis of arm and leg,3,proximal paralysis of arm and leg,,
+symptom/nervous system symptom/paralysis/motor paralysis,3,motor paralysis,,A paralysis that is characterized by a complete or partial loss of function the voluntary muscles.
+symptom/nervous system symptom/paralysis/spastic paralysis,3,spastic paralysis,,A paralysis that is characterized by a tonic spasm of the affected muscles and with increased tendon reflexes.
+symptom/nervous system symptom/paralysis/descending muscle paralysis,3,descending muscle paralysis,,"A paralysis that is characterized by a loss of motor function in one or more muscles, which can also be accompanied by a loss of feeling (sensory loss). Descending paralysis contrasts with ascending paralysis in that descending paralysis presents in the upper limbs before the lower limbs. Descending paralysis occurs in conditions such as botulism."
+symptom/nervous system symptom/paralysis/facial paralysis,3,facial paralysis,,doid/symp duplicate
+symptom/nervous system symptom/paralysis/flaccid paralysis,3,flaccid paralysis,,A paralysis that is charicterized by a lack of muscle tone in the affected muscles and in which tendon reflexes are decreased or absent.
+symptom/nervous system symptom/spasticity,2,spasticity,,"A nervous system symptom that is characterized by an abnormal increase in muscle tone or stiffness of muscle, which might interfere with movement, speech, or be associated with discomfort or pain."
+symptom/nervous system symptom/meningitis,2,meningitis,,A nervous system symptom that is characterized by an inflammation of the meninges and especially of the pia mater and the arachnoid.
+symptom/nervous system symptom/spondylitis,2,spondylitis,,A nervous system symptom that is characterized by an inflammation of the vertebrae.|doid/symp duplicate
+symptom/nervous system symptom/encephalitis,2,encephalitis,,"A nervous system symptom that is characterized by inflammation of the brain tissue, which is typically caused by a viral infection, but it may also be caused by bacterial or parasitic infections, cancer, or certain drugs or toxins.|doid/symp duplicate"
+symptom/nervous system symptom/encephalitis/mild encephalitis,3,mild encephalitis,,An encephalitis that is not intense (not severe).
+symptom/nervous system symptom/reflex symptom,2,reflex symptom,,
+symptom/nervous system symptom/reflex symptom/areflexia,3,areflexia,absence of neurological reflexes,
+symptom/nervous system symptom/reflex symptom/areflexia/absence of knee jerk reflex,4,absence of knee jerk reflex,,
+symptom/nervous system symptom/reflex symptom/areflexia/absent gag reflex,4,absent gag reflex,,
+symptom/nervous system symptom/reflex symptom/loss of tendon reflex,3,loss of tendon reflex,,
+symptom/nervous system symptom/reflex symptom/hyperreflexia,3,hyperreflexia,,
+symptom/nervous system symptom/reflex symptom/impaired gag reflex,3,impaired gag reflex,,
+symptom/nervous system symptom/reflex symptom/decreased flexor withdrawal reflex,3,decreased flexor withdrawal reflex,,
+symptom/nervous system symptom/reflex symptom/diminished gag reflex,3,diminished gag reflex,,
+symptom/nervous system symptom/acute mental dysfunction,2,acute mental dysfunction,,"A nervous system symptom that is characterized by a severe and sudden onset of disturbance in the normal operation of one's cognition, emotional regulation, or behaviour."
+symptom/nervous system symptom/cerebrovascular accident,2,cerebrovascular accident,cerebral hemorrhage|cerebral accident|apoplexy,"A nervous system symptom that is characterized by a loss of blood flow to part of the brain, which damages brain tissue. Cerebrovascular accidents are caused by blood clots and broken blood vessels in the brain."
+symptom/nervous system symptom/meningoencephalitis,2,meningoencephalitis,,A nervous system symptom that is characterized by an inflammation of the brain and meninges.|doid/symp duplicate
+symptom/nervous system symptom/meningoencephalitis/acute meningoencephalitis,3,acute meningoencephalitis,,A meningoencephalitis that is characterized by a severe and sudden onset.
+symptom/nervous system symptom/meningismus,2,meningismus,,A nervous system symptom that is characterized by a state of meningeal irritation with symptoms suggesting meningitis that often occurs at the onset of acute febrile diseases especially in children.
+symptom/nervous system symptom/neurologic neglect syndrome,2,neurologic neglect syndrome,,
+symptom/nervous system symptom/disturbances of sensation of smell and taste,2,disturbances of sensation of smell and taste,taste alteration,
+symptom/nervous system symptom/disturbances of sensation of smell and taste/ageusia,3,ageusia,loss of taste,A disturbances of sensation of smell and taste that is characterized by a complete loss of taste function of the tongue.
+symptom/nervous system symptom/seizure,2,seizure,,
+symptom/nervous system symptom/seizure/generalized seizure,3,generalized seizure,,
+symptom/nervous system symptom/seizure/generalized seizure/tonic-clonic seizure,4,tonic-clonic seizure,grand mal seizure,
+symptom/nervous system symptom/seizure/generalized seizure/tonic seizure,4,tonic seizure,,
+symptom/nervous system symptom/seizure/generalized seizure/myoclonic seizure,4,myoclonic seizure,,
+symptom/nervous system symptom/seizure/generalized seizure/atonic seizure,4,atonic seizure,,
+symptom/nervous system symptom/seizure/generalized seizure/clonic seizure,4,clonic seizure,,
+symptom/nervous system symptom/seizure/focal seizure,3,focal seizure,partial seizure,
+symptom/nervous system symptom/seizure/focal seizure/complex partial seizure,4,complex partial seizure,,
+symptom/nervous system symptom/seizure/focal seizure/simple partial seizure,4,simple partial seizure,,
+symptom/nervous system symptom/seizure/epileptic seizure,3,epileptic seizure,,
+symptom/nervous system symptom/neurological dysfunction,2,neurological dysfunction,,
+symptom/nervous system symptom/neurological dysfunction/acute cranial nerve dysfunction,3,acute cranial nerve dysfunction,,
+symptom/nervous system symptom/convulsion,2,convulsion,,A nervous system symptom that is characterized by an abnormal violent and involuntary contraction or series of contractions of the muscles.
+symptom/nervous system symptom/convulsion/tetanic convulsion,3,tetanic convulsion,tetanic convulsions,"A convulsion that is characterized by a tonic spasm (prolonged contraction of the muscles), without loss of consciousness and often associated with hypocalcemia."
+symptom/nervous system symptom/convulsion/tetanic convulsion/mild tetanic convulsion,4,mild tetanic convulsion,,A tetanic convulsion that is not intense (not severe).
+symptom/nervous system symptom/convulsion/febrile convulsion,3,febrile convulsion,febrile seizure,A convulsion that is characterized by occurring in young children between six months and five years of age and which is triggered by fever.
+symptom/nervous system symptom/abnormal involuntary movement,2,abnormal involuntary movement,,"A nervous system symptom that is characterized by an inability to control bodily movement and may be a symptom of cerebrovascular diseases, dyskinesia, tremor, chorea, dystonia and myoclonus."
+symptom/nervous system symptom/abnormal involuntary movement/circling movement,3,circling movement,,An abnormal involuntary movement that is characterized by an inability to walk in a straight line.
+symptom/nervous system symptom/decreased motor response,2,decreased motor response,,
+symptom/nervous system symptom/neurological alteration,2,neurological alteration,,
+symptom/nervous system symptom/coordination symptom,2,coordination symptom,,A nervous system symptom that is characterized by the harmonious functioning of interrelated organs and body parts; in particular the working together of muscle groups in the execution of complicated movements.
+symptom/nervous system symptom/coordination symptom/incoordination,3,incoordination,lack of coordination,"A coordination symptom that is characterized by a loss of complicated body movements, which may be caused by disease, injury, or toxins."
+symptom/nervous system symptom/coordination symptom/impaired coordination,3,impaired coordination,,"A coordination symptom that is characterized by weakened or imperfect body complicated  movement, which may be caused by disease, injury, or toxins."
+symptom/nervous system symptom/brain cyst,2,brain cyst,,
+symptom/nervous system symptom/altered mental status,2,altered mental status,,"A nervous system symptom that is characterized by a host of presentations that include changes in cognition, mood, behavior, and/or level of arousal."
+symptom/nervous system symptom/diminished spontaneous movement,2,diminished spontaneous movement,,
+symptom/reproductive system symptom,1,reproductive system symptom,,
+symptom/reproductive system symptom/epididymitis,2,epididymitis,inflammation of the epididymis,A reproductive system symptom that is characterized by an inflammation of the epididymis.|doid/symp duplicate
+symptom/reproductive system symptom/epididymorchitis,2,epididymorchitis,epididymo-orchitis,A reproductive system symptom that is characterized by inflammation of the epididymis and/or testicle (testis).
+symptom/reproductive system symptom/scrotal abscess,2,scrotal abscess,,"A reproductive system symptom that is characterized by an abscess that is either superficial or intrascrotal.  Superficial scrotal abscess may occur from an infected hair follicle, infection of a scrotal laceration, or minor scrotal surgery.  Intrascrotal abscess most commonly arises from bacterial epididymitis, but may also be related to tuberculous infection of the epididymis, a testicular abscess that ruptures through the tunica albuginea, or drainage of appendicitis into scrotum through a patent processus vaginalis or as a result of extravasation of infected urine from the urethra in patients with a urethral stricture and neurogenic bladder using an external collection device."
+symptom/reproductive system symptom/abnormal vaginal bleeding,2,abnormal vaginal bleeding,abnormal menstruation,A reproductive system symptom that is characterized by bleeding from the uterus that is longer than usual or that occurs at an irregular time. Bleeding may be heavier or lighter than usual and occur often or randomly.
+symptom/reproductive system symptom/abortion,2,abortion,infectious abortion,A reproductive system symptom that is characterized by the expulsion of a fetus at any time before completion of pregnancy and is often due to infection.
+symptom/reproductive system symptom/abortion/spontaneous abortion,3,spontaneous abortion,,An abortion that is characterized by the natural occurring expulsion of a nonviable fetus.
+symptom/reproductive system symptom/miscarriage,2,miscarriage,,A reproductive system symptom that is characterized by the spontaneous expulsion of a human fetus before it is viable and especially between the 12th and 28th weeks of gestation.
+symptom/reproductive system symptom/infertility,2,infertility,,"A reproductive system symptom that is characterized the biological inability of a man or a woman to contribute to conception; or, the state of a woman who is unable to carry a pregnancy to full term.|doid/symp duplicate"
+symptom/reproductive system symptom/vaginal discharge,2,vaginal discharge,,"A reproductive system symptom that is characterized by fluid made by glands inside the vagina and cervix carrying away dead cells and bacteria. While it is normal for odor and color to vary, vaginal itching or burning may be indicative of an infection.|doid/symp duplicate"
+symptom/reproductive system symptom/prostate symptom,2,prostate symptom,,
+symptom/reproductive system symptom/prostate symptom/prostatic abscess,3,prostatic abscess,,"A prostate symptom that is characterized by a localized collection of purulent fluid within the prostate, often forming as a complication of acute bacterial prostatitis."
+symptom/reproductive system symptom/prostate symptom/prostatic infection,3,prostatic infection,,A prostate symptom that is characterized by inflammation of the prostate and surrounding area.
+symptom/reproductive system symptom/stillbirth,2,stillbirth,,"A reproductive system symptom that is characterized by the birth of a dead fetus; in which  a fetus that has died in the uterus, or during labor, or delivery, exits a woman's body."
+symptom/reproductive system symptom/menorrhagia,2,menorrhagia,,A reproductive system symptom that is characterized an abnormally profuse menstrual flow.
+symptom/reproductive system symptom/menorrhagia/metrorrhagia,3,metrorrhagia,,"A menorrhagia that is characterized by an irregular uterine bleeding, especially between menstrual periods."
+symptom/reproductive system symptom/menorrhagia/hypermenorrhea,3,hypermenorrhea,,A menorrhagia that is characterized by an abnormally profuse or prolonged menstrual flow.
+symptom/reproductive system symptom/vaginismus,2,vaginismus,painful spasmodic vagina contractions,A reproductive system symptom that is characterized by a painful spasmodic contraction of the vagina.
+symptom/reproductive system symptom/premature labor,2,premature labor,,A reproductive system symptom that is characterized by labor occurring before 37 full weeks of pregnancy.
+symptom/respiratory system and chest symptom,1,respiratory system and chest symptom,,
+symptom/respiratory system and chest symptom/swelling in chest,2,swelling in chest,,
+symptom/respiratory system and chest symptom/mass in chest,2,mass in chest,,
+symptom/respiratory system and chest symptom/abnormal chest sound,2,abnormal chest sound,,"A respiratory system and chest symptom that is characterized by a sound of breathing that is not similar to that of the sound of moving air and may include: rhonchi (a low-pitched breath sound), crackles (a high-pitched breath sound), wheezing (a high-pitched whistling sound caused by narrowing of the bronchial tubes), and stridor (a harsh, vibratory sound caused by narrowing of the upper airway)."
+symptom/respiratory system and chest symptom/abnormal chest sound/rales,3,rales,crepitations|crackles,"An abnormal chest sound that is characterized by the clicking, rattling, or crackling noises heard on auscultation of (listening to) the lung with a stethoscope during inhalation. The sounds are caused by the 'popping open' of small airways and alveoli collapsed by fluid, exudate, or lack of aeration during expiration. The word 'rales' derives from the French word rale meaning 'rattle'. Rales can be heard in patients with pneumonia, atelectasis, pulmonary fibrosis, acute bronchitis, or bronchiectasis. Pulmonary edema secondary to left-sided congestive heart failure can also cause rales."
+symptom/respiratory system and chest symptom/abnormal chest sound/stridor,3,stridor,,An abnormal chest sound that is characterized by a harsh vibrating sound heard during respiration in cases of obstruction of the air passages.
+symptom/respiratory system and chest symptom/abnormal chest sound/wheezing,3,wheezing,,An abnormal chest sound that is characterized by breathing with difficulty usually with a whistling sound.
+symptom/respiratory system and chest symptom/caseation,2,caseation,,A respiratory system and chest symptom that is characterized by necrosis of tissue with conversion of damaged tissue into a soft cheesy substance.
+symptom/respiratory system and chest symptom/bronchospasm,2,bronchospasm,,A respiratory system and chest symptom that is characterized by constriction of the air passages of the lung (as in asthma) by spasmodic contraction of the bronchial muscles.
+symptom/respiratory system and chest symptom/cough,2,cough,,A respiratory system and chest symptom that is characterized by an explosive expulsion of air from the lungs acting as a protective mechanism to clear the air passages or as a symptom of pulmonary disturbance.
+symptom/respiratory system and chest symptom/cough/wet cough,3,wet cough,productive cough,A cough that is characterized by a production and expectoration (bringing up) of mucus (phlegm) or sputum.
+symptom/respiratory system and chest symptom/cough/paroxysmal cough,3,paroxysmal cough,,A cough that is characterized by a persistent cough with sudden onset due to difficulty expelling thick mucus from the tracheobronchial tree. This type of cough is associated with diseases such as Pertussis (Whooping Cough).
+symptom/respiratory system and chest symptom/cough/cough with bloody sputum,3,cough with bloody sputum,,A cough that is characterized by production and expectoration (bringing up) of sputum that is bright red or pink and frothy.
+symptom/respiratory system and chest symptom/cough/dry cough,3,dry cough,nonproductive cough,A cough that is characterized by a lack of accompanied phlegm production.
+symptom/respiratory system and chest symptom/cough/dry cough/dry hacking cough,4,dry hacking cough,,A dry cough that is characterized by a rough and loud sound.
+symptom/respiratory system and chest symptom/cough/barking croup cough,3,barking croup cough,,"A cough that is characterized by a tight, low-pitched, and barky (like a barking seal) cough."
+symptom/respiratory system and chest symptom/cough/chronic cough,3,chronic cough,,"A cough that is characterized by an explosive expulsion of air from the lungs acting as a protective mechanism to clear the air passages or as a symptom of pulmonary disturbance marked by long duration, by frequent recurrence over a long time, and often by slowly progressing seriousness."
+symptom/respiratory system and chest symptom/respiratory failure,2,respiratory failure,respiratory dysfunction,"A respiratory system and chest symptom that is characterized by a difficulty to breathe on one's own and develops when the lungs cannot get enough oxygen into the blood.|doid/symp duplicate - reviewed 10/2022, both DO & SYMP"
+symptom/respiratory system and chest symptom/bronchiolitis,2,bronchiolitis,bronchioles inflammation,A respiratory system and chest symptom that is characterized by an inflammation of the bronchioles.|doid/symp duplicate
+symptom/respiratory system and chest symptom/congestion,2,congestion,blocked nose|nasal blockage|stuffed up nose|nasal obstruction|stuffy nose,A respiratory system and chest symptom that is characterized by an excessive accumulation especially of blood or mucus.
+symptom/respiratory system and chest symptom/congestion/nasal congestion,3,nasal congestion,,"A congestion that is characterized by a blockage of the nasal passages, usually due to the membranes lining the nose becoming swollen from inflamed blood vessels."
+symptom/respiratory system and chest symptom/sputum,2,sputum,sputum production,"A respiratory system and chest symptom that is characterized by matter discharged from the air passages in diseases of the lungs, bronchi, or upper respiratory tract that contains mucus and often pus, blood, fibrin, or bacterial products."
+symptom/respiratory system and chest symptom/sputum/bloody sputum,3,bloody sputum,,"A sputum that is characterized by blood or bloody mucus discharged from the air passages caused by common forms of infection in the lungs and airways, such as acute bronchitis or pneumonia. Bloody sputum can also come from cancer of the lung.|Bloody sputum (spitting up blood or bloody mucus) can come from common forms of infection in the lungs and airways, such as acute bronchitis or pneumonia. Bloody sputum can also come from cancer of the lung."
+symptom/respiratory system and chest symptom/sputum/abnormal sputum,3,abnormal sputum,,
+symptom/respiratory system and chest symptom/chest discomfort,2,chest discomfort,,"A respiratory system and chest symptom that is characterized by pain, pressure, tightness, or other discomfort originating in or radiating to the chest, which constitutes an important indicator of potentially serious cardiac or cardiovascular disorders."
+symptom/respiratory system and chest symptom/chest discomfort/chest tightness,3,chest tightness,,A chest discomfort that is characterized by any type of pain or discomfort between your upper belly and lower neck.
+symptom/respiratory system and chest symptom/bronchitis,2,bronchitis,,A respiratory system and chest symptom that is characterized by an acute or chronic inflammation of the bronchial tubes.|doid/symp duplicate
+symptom/respiratory system and chest symptom/bronchitis/mild bronchitis,3,mild bronchitis,,
+symptom/respiratory system and chest symptom/dyspneic enteritis,2,dyspneic enteritis,,"A respiratory system and chest symptom that is characterized by being short or breath or out of air (dyspnea), with inflammation of the small intestine (enteritis)."
+symptom/respiratory system and chest symptom/painful respiration,2,painful respiration,,"A respiratory system and chest symptom that is characterized by a feeling of discomfort when breathing in or out.  The pain may be the result of infection, musculoskeletal injury, and heart problems."
+symptom/respiratory system and chest symptom/pulmonary consolidation,2,pulmonary consolidation,,A respiratory system and chest symptom that is characterized by a region of normally compressible lung tissue that has filled with liquid instead of air.
+symptom/respiratory system and chest symptom/bronchiole inflammation,2,bronchiole inflammation,,"A respiratory system and chest symptom that is characterized by acute inflammation of the bronchi, accompanied by inflamed patches in the nearby lobules of the lungs."
+symptom/respiratory system and chest symptom/bronchiole inflammation/suppurative bronchiole inflammation,3,suppurative bronchiole inflammation,,
+symptom/respiratory system and chest symptom/bronchiole inflammation/severe bronchiole inflammation,3,severe bronchiole inflammation,,
+symptom/respiratory system and chest symptom/lump in chest,2,lump in chest,,
+symptom/respiratory system and chest symptom/hemoptysis,2,hemoptysis,coughing up of blood|expectoration of blood|expectoration of blood-stained sputum|haemoptysis,A respiratory system and chest symptom that is characterized by an expectoration of blood from some part of the respiratory tract.
+symptom/respiratory system and chest symptom/hiccough,2,hiccough,,A respiratory system and chest symptom that is characterized by a spasmodic inhalation with closure of the glottis accompanied by a peculiar sound.
+symptom/respiratory system and chest symptom/lesions in lung,2,lesions in lung,,
+symptom/respiratory system and chest symptom/respiratory abnormality,2,respiratory abnormality,,"A respiratory system and chest symptom that is characterized by a respiration that is not normal and may include, but is not limited to: apnea, eupnea, orthopnea, dyspnea hyperpnea, hyperventilation, hypoventilation, tachypnea, Kussmaul respiration, Cheyne-Stokes respiration, sighing respiration, Biot respiration, apneustic breathing, central neurogenic hyperventilation, and central neurogenic hypoventilation."
+symptom/respiratory system and chest symptom/respiratory abnormality/breathing problems,3,breathing problems,,"A respiratory abnormality that is characterized by a shortness of breath, a hard or uncomfortable intake of air, or the feeling that you're not getting enough air."
+symptom/respiratory system and chest symptom/respiratory abnormality/panting respiration,3,panting respiration,,"A respiratory abnormality that is characterized by short, shallow, and rapid breathing."
+symptom/respiratory system and chest symptom/respiratory abnormality/cheyne-stokes respiration,3,cheyne-stokes respiration,,A respiratory abnormality that is characterized by a specific form of periodic breathing (waxing and waning amplitude of flow or tidal volume) characterized by a crescendo-decrescendo pattern of respiration between central apneas or central hypopneas.
+symptom/respiratory system and chest symptom/respiratory abnormality/dyspnea,3,dyspnea,breathing difficulty|difficulty breathing|breathlessness|shortness of breath|labored respiration,A respiratory abnormality that is characterized by difficult or labored respiration.
+symptom/respiratory system and chest symptom/respiratory abnormality/dyspnea/acute dyspnea,4,acute dyspnea,,A dyspnea that is characterized by a severe and sudden onset.
+symptom/respiratory system and chest symptom/respiratory abnormality/rapid respiration,3,rapid respiration,,"A respiratory abnormality that is characterized by an increased breathing rate, with more than 20 breaths per minute in an adult, while in children, the number of breaths per minute can be a higher resting rate than seen in adults."
+symptom/respiratory system and chest symptom/respiratory abnormality/bradypnea,3,bradypnea,abnormally slow breathing,A respiratory abnormality that is characterized by abnormally slow breathing.
+symptom/respiratory system and chest symptom/respiratory abnormality/hypoventilation,3,hypoventilation,,A respiratory abnormality that is characterized by a deficient ventilation of the lungs that results in reduction in the oxygen content or increase in the carbon dioxide content of the blood or both.
+symptom/respiratory system and chest symptom/respiratory abnormality/tachypnea,3,tachypnea,rapid breathing,A respiratory abnormality that is characterized by an increased rate of respiration and shallow breathing.
+symptom/respiratory system and chest symptom/respiratory abnormality/apnea,3,apnea,,A respiratory abnormality that is characterized by transient cessation of respiration whether normal (as in hibernating animals) or abnormal (as that caused by certain drugs).
+symptom/respiratory system and chest symptom/respiratory abnormality/apnea/sleep apnea,4,sleep apnea,,An apnea that is characterized by brief periods of recurrent cessation of breathing during sleep that is caused especially by obstruction of the airway or a disturbance in the brain's respiratory center and is associated especially with excessive daytime sleepiness.|doid/symp duplicate
+symptom/respiratory system and chest symptom/respiratory abnormality/hyperventilation,3,hyperventilation,,A respiratory abnormality that is characterized by excessive ventilation characterized by excessive rate and depth of respiration leading to abnormal loss of carbon dioxide from the blood.
+symptom/respiratory system and chest symptom/respiratory abnormality/orthopnea,3,orthopnea,,A respiratory abnormality that is characterized by a difficulty in breathing that occurs when lying down and is relieved upon changing to an upright position (as in congestive heart failure).
+symptom/respiratory system and chest symptom/sneezing,2,sneezing,,A respiratory system and chest symptom that is characterized by a sudden violent spasmodic audible expiration of breath through the nose and mouth especially as a reflex act following irritation of the nasal mucous membrane.
+symptom/respiratory system and chest symptom/hemorrhagic mediastinitis,2,hemorrhagic mediastinitis,,"A respiratory abnormality that is characterized by inflammation of the mediastinum (the chest cavity, which contains the heart, the thymus gland, some lymph nodes, and parts of the esophagus, aorta, thyroid, and parathyroid glands) as the result of bleeding."
+symptom/respiratory system and chest symptom/pulmonary edema,2,pulmonary edema,oedematous lungs,A respiratory system and chest symptom that is characterized by an abnormal accumulation of fluid in the lungs.|doid/symp duplicate
+symptom/respiratory system and chest symptom/airway stenosis,2,airway stenosis,,A respiratory system and chest symptom that is characterized by a narrowing in the airway that obstructs the passage of air into the lungs.  Examples include tracheal and laryngotracheal stenosis.
+symptom/respiratory system and chest symptom/bronchopulmonary bleeding,2,bronchopulmonary bleeding,,A respiratory system and chest symptom that is characterized by bleeding (hemorrhage) in either or both the bronchi and the lungs.
+symptom/respiratory system and chest symptom/respiratory tract mucosa ulcer,2,respiratory tract mucosa ulcer,,"A respiratory system and chest symptom that is characterized by an ulceration (dying and sloughing) of the bronchial or bronchiolar epithelium, exposing the underlying basement membrane."
+symptom/respiratory system and chest symptom/pneumonitis,2,pneumonitis,inflammation of lung tissue,"A respiratory system and chest symptom that is characterized by an inflammation of lung tissue. Pneumonia is one type of pneumonitis caused by an infection. Many other factors can cause pneumonitis, including breathing in animal dander, inhaling small food particles 'down the wrong pipe' and receiving radiation therapy to your chest."
+symptom/respiratory system and chest symptom/phlegm,2,phlegm,,A respiratory system and chest symptom that is characterized by a viscid mucus secreted in abnormal quantity in the respiratory passages.
+symptom/abdominal symptom,1,abdominal symptom,,
+symptom/abdominal symptom/abdominal discomfort,2,abdominal discomfort,,
+symptom/abdominal symptom/abdominal rigidity,2,abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/periumbilic abdominal rigidity,3,periumbilic abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/right upper quadrant abdominal rigidity,3,right upper quadrant abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/left lower quadrant abdominal rigidity,3,left lower quadrant abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/generalized abdominal rigidity,3,generalized abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/epigastric abdominal rigidity,3,epigastric abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/right lower quadrant abdominal rigidity,3,right lower quadrant abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/left upper quadrant abdominal rigidity,3,left upper quadrant abdominal rigidity,,
+symptom/abdominal symptom/abdominal rigidity/multiple sites abdominal rigidity,3,multiple sites abdominal rigidity,,
+symptom/abdominal symptom/ascites,2,ascites,hydroperitoneum,An abdominal symptom consisting of an abnormal accumulation of serous fluid in the spaces between tissues and organs in the cavity of the abdomen.
+symptom/abdominal symptom/abdominal tenderness,2,abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/right lower quadrant abdominal tenderness,3,right lower quadrant abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/left lower quadrant abdominal tenderness,3,left lower quadrant abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/periumbilic abdominal tenderness,3,periumbilic abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/epigastric abdominal tenderness,3,epigastric abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/multiple sites abdominal tenderness,3,multiple sites abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/right upper quadrant abdominal tenderness,3,right upper quadrant abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/generalized abdominal tenderness,3,generalized abdominal tenderness,,
+symptom/abdominal symptom/abdominal tenderness/left upper quadrant abdominal tenderness,3,left upper quadrant abdominal tenderness,,
+symptom/abdominal symptom/pelvic symptom,2,pelvic symptom,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling,3,pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/periumbilic pelvic swelling,4,periumbilic pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/left lower quadrant pelvic swelling,4,left lower quadrant pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/multiple sites pelvic swelling,4,multiple sites pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/generalized pelvic swelling,4,generalized pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/left upper quadrant pelvic swelling,4,left upper quadrant pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/right upper quadrant pelvic swelling,4,right upper quadrant pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/epigastric pelvic swelling,4,epigastric pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic swelling/right lower quadrant pelvic swelling,4,right lower quadrant pelvic swelling,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump,3,pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/multiple sites pelvic lump,4,multiple sites pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/periumbilic pelvic lump,4,periumbilic pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/left lower quadrant pelvic lump,4,left lower quadrant pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/epigastric pelvic lump,4,epigastric pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/left upper quadrant pelvic lump,4,left upper quadrant pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/right upper quadrant pelvic lump,4,right upper quadrant pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/right lower quadrant pelvic lump,4,right lower quadrant pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic lump/generalized pelvic lump,4,generalized pelvic lump,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass,3,pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/periumbilic pelvic mass,4,periumbilic pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/right lower quadrant pelvic mass,4,right lower quadrant pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/generalized pelvic mass,4,generalized pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/epigastric pelvic mass,4,epigastric pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/left upper quadrant pelvic mass,4,left upper quadrant pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/right upper quadrant pelvic mass,4,right upper quadrant pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/multiple sites pelvic mass,4,multiple sites pelvic mass,,
+symptom/abdominal symptom/pelvic symptom/pelvic mass/left lower quadrant pelvic mass,4,left lower quadrant pelvic mass,,
+symptom/abdominal symptom/abdominal distention,2,abdominal distention,,
+symptom/abdominal symptom/abdominal cramp,2,abdominal cramp,stomach cramp,
+symptom/abdominal symptom/abdominal cramp/severe abdominal cramp,3,severe abdominal cramp,,
+symptom/abdominal symptom/abdominal mass,2,abdominal mass,,
+symptom/abdominal symptom/abdominal mass/right lower quadrant abdominal mass,3,right lower quadrant abdominal mass,,
+symptom/abdominal symptom/abdominal mass/left upper quadrant abdominal mass,3,left upper quadrant abdominal mass,,
+symptom/abdominal symptom/abdominal mass/generalized abdominal mass,3,generalized abdominal mass,,
+symptom/abdominal symptom/abdominal mass/epigastric abdominal mass,3,epigastric abdominal mass,,
+symptom/abdominal symptom/abdominal mass/right upper quadrant abdominal mass,3,right upper quadrant abdominal mass,,
+symptom/abdominal symptom/abdominal mass/multiple sites abdominal mass,3,multiple sites abdominal mass,,
+symptom/abdominal symptom/abdominal mass/left lower quadrant abdominal mass,3,left lower quadrant abdominal mass,,
+symptom/abdominal symptom/abdominal mass/periumbilic abdominal mass,3,periumbilic abdominal mass,,
+symptom/abdominal symptom/abdominal lump,2,abdominal lump,,
+symptom/abdominal symptom/abdominal lump/left upper quadrant abdominal lump,3,left upper quadrant abdominal lump,,
+symptom/abdominal symptom/abdominal lump/left lower quadrant abdominal lump,3,left lower quadrant abdominal lump,,
+symptom/abdominal symptom/abdominal lump/epigastric abdominal lump,3,epigastric abdominal lump,,
+symptom/abdominal symptom/abdominal lump/generalized abdominal lump,3,generalized abdominal lump,,
+symptom/abdominal symptom/abdominal lump/right upper quadrant abdominal lump,3,right upper quadrant abdominal lump,,
+symptom/abdominal symptom/abdominal lump/right lower quadrant abdominal lump,3,right lower quadrant abdominal lump,,
+symptom/abdominal symptom/abdominal lump/multiple sites abdominal lump,3,multiple sites abdominal lump,,
+symptom/abdominal symptom/abdominal lump/periumbilic abdominal lump,3,periumbilic abdominal lump,,
+symptom/abdominal symptom/abdominal swelling,2,abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/left lower quadrant abdominal swelling,3,left lower quadrant abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/periumbilic abdominal swelling,3,periumbilic abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/multiple sites abdominal swelling,3,multiple sites abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/right lower quadrant abdominal swelling,3,right lower quadrant abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/generalized abdominal swelling,3,generalized abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/left upper quadrant abdominal swelling,3,left upper quadrant abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/right upper quadrant abdominal swelling,3,right upper quadrant abdominal swelling,,
+symptom/abdominal symptom/abdominal swelling/epigastric abdominal swelling,3,epigastric abdominal swelling,,
+symptom/head and neck symptom,1,head and neck symptom,,
+symptom/head and neck symptom/throat symptom,2,throat symptom,,
+symptom/head and neck symptom/throat symptom/hemorrhage from throat,3,hemorrhage from throat,,
+symptom/head and neck symptom/throat symptom/hoarseness,3,hoarseness,,
+symptom/head and neck symptom/throat symptom/lesions in oropharynx,3,lesions in oropharynx,,
+symptom/head and neck symptom/throat symptom/tracheitis,3,tracheitis,,doid/symp duplicate
+symptom/head and neck symptom/throat symptom/laryngitis,3,laryngitis,,doid/symp duplicate
+symptom/head and neck symptom/throat symptom/laryngotracheitis,3,laryngotracheitis,larynx and trachea inflammation,doid/symp duplicate
+symptom/head and neck symptom/throat symptom/tracheobronchitis,3,tracheobronchitis,,
+symptom/head and neck symptom/throat symptom/dysphagia,3,dysphagia,difficulty in swallowing|difficulty swallowing|impaired swallowing,
+symptom/head and neck symptom/throat symptom/thyroid symptom,3,thyroid symptom,,
+symptom/head and neck symptom/throat symptom/thyroid symptom/thyroid abscesses,4,thyroid abscesses,,
+symptom/head and neck symptom/throat symptom/pharynx inflammation,3,pharynx inflammation,,
+symptom/head and neck symptom/throat symptom/inability to swallow,3,inability to swallow,,
+symptom/head and neck symptom/throat symptom/decreased pharyngeal tone,3,decreased pharyngeal tone,,
+symptom/head and neck symptom/neck symptom,2,neck symptom,cervicalgia,
+symptom/head and neck symptom/neck symptom/cervical edema,3,cervical edema,,Cervical edema is a neck symptom characterized by an abnormal excess accumulation of serous fluid in the soft tissue of the cervical area.
+symptom/head and neck symptom/neck symptom/neck weakness,3,neck weakness,,
+symptom/head and neck symptom/neck symptom/hyperemia of the neck,3,hyperemia of the neck,,Hyperemia of the neck is a neck symptom consisting of an excess of blood in the tissues of the neck as from an increased flow of blood due to vasodilation.
+symptom/head and neck symptom/neck symptom/stiff neck,3,stiff neck,,
+symptom/head and neck symptom/head symptom,2,head symptom,,
+symptom/head and neck symptom/head symptom/head swelling,3,head swelling,,
+symptom/head and neck symptom/head symptom/eye symptom,3,eye symptom,,
+symptom/head and neck symptom/head symptom/eye symptom/sore eyes,4,sore eyes,,Sore eyes is a eye symptom characterized by an inflammation of the thin covering of the eyeball and the inner eyelid brought about by a viral infection which may be highly contagious.
+symptom/head and neck symptom/head symptom/eye symptom/exophthalmos,4,exophthalmos,exophthalmus|exophthalmia|proptosis,An abnormal protrusion or displacement of an eye or other body part.|doid/symp duplicate
+symptom/head and neck symptom/head symptom/eye symptom/bloodshot eye,4,bloodshot eye,redness of eye|red eye,
+symptom/head and neck symptom/head symptom/eye symptom/cornea symptom,4,cornea symptom,,
+symptom/head and neck symptom/head symptom/eye symptom/cornea symptom/cloudy cornea,5,cloudy cornea,,
+symptom/head and neck symptom/head symptom/eye symptom/cornea symptom/keratitis,5,keratitis,inflammation of the cornea of the eye|corneitis,doid/symp duplicate
+symptom/head and neck symptom/head symptom/eye symptom/cornea symptom/corneal opacity,5,corneal opacity,,
+symptom/head and neck symptom/head symptom/eye symptom/cornea symptom/corneal ulcers,5,corneal ulcers,,
+symptom/head and neck symptom/head symptom/eye symptom/cornea symptom/corneal scarring,5,corneal scarring,,"A cornea symptom that is characterized by scarring (an opacity or irregularity in the cornea) of the cornea, from trauma; abrasion; bacterial, fungal, viral, or parasitic infection; or disease, and can result in impaired vision, or even blindness."
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom,4,conjunctiva symptom,,
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom/conjunctival degeneration,5,conjunctival degeneration,,
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom/conjunctival suffusion,5,conjunctival suffusion,,An eye symptom that is characterized by (need def conjunctival suffusion - placeholder for xref).
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom/conjunctival swelling,5,conjunctival swelling,,
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom/conjunctival congestion,5,conjunctival congestion,,An eye symptom that is characterized by (need def conjunctival congestion - placeholder for xref).
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom/conjunctivitis,5,conjunctivitis,,doid/symp duplicate
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom/conjunctivitis/severe conjunctivitis,6,severe conjunctivitis,,
+symptom/head and neck symptom/head symptom/eye symptom/conjunctiva symptom/conjunctivitis/mild conjunctivitis,6,mild conjunctivitis,,
+symptom/head and neck symptom/head symptom/eye symptom/light sensitivity,4,light sensitivity,,
+symptom/head and neck symptom/head symptom/eye symptom/light sensitivity/photophobia,5,photophobia,light intolerance,
+symptom/head and neck symptom/head symptom/eye symptom/excessive tearing,4,excessive tearing,,doid/symp duplicate
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom,4,vision symptom,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/loss of vision,5,loss of vision,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/loss of vision/amaurosis,6,amaurosis,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/loss of vision/amaurosis/amaurosis fugax,7,amaurosis fugax,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/blindness,5,blindness,,doid/symp duplicate
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/double vision,5,double vision,diplopia,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/double vision/occasional diplopia,6,occasional diplopia,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/blind spot,5,blind spot,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/acquired color vision deficiency,5,acquired color vision deficiency,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/vision distortion,5,vision distortion,,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/vision distortion/disturbed vision,6,disturbed vision,disturbance of vision,
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/vision distortion/blurred vision,6,blurred vision,,"A vision symptom that is characterized by a decreased clarity or sharpness in vision, which can be caused by eye conditions myopia or hyperopia."
+symptom/head and neck symptom/head symptom/eye symptom/vision symptom/vision distortion/blurred vision/blurred vision with haloes,7,blurred vision with haloes,,
+symptom/head and neck symptom/head symptom/eye symptom/inflamed eyes,4,inflamed eyes,,
+symptom/head and neck symptom/head symptom/eye symptom/ocular lesion,4,ocular lesion,,
+symptom/head and neck symptom/head symptom/eye symptom/moderate conjuctival injection,4,moderate conjuctival injection,,
+symptom/head and neck symptom/head symptom/eye symptom/intraretinal hemorrhage,4,intraretinal hemorrhage,,
+symptom/head and neck symptom/head symptom/eye symptom/decreased tearing,4,decreased tearing,,An eye symptom that is characterized by a reduction in the saline fluid secreted by the lacrimal gland.
+symptom/head and neck symptom/head symptom/eye symptom/hypopyon,4,hypopyon,,doid/symp duplicate
+symptom/head and neck symptom/head symptom/eye symptom/eye strain,4,eye strain,,
+symptom/head and neck symptom/head symptom/eye symptom/asthenopia,4,asthenopia,rapid eye fatigue|eye weakness,doid/symp duplicate
+symptom/head and neck symptom/head symptom/eye symptom/nystagmus,4,nystagmus,rapid involuntary rhythmic eye movement,
+symptom/head and neck symptom/head symptom/eye symptom/subconjunctival bleeding,4,subconjunctival bleeding,,
+symptom/head and neck symptom/head symptom/eye symptom/yellow exudate from eyes,4,yellow exudate from eyes,,
+symptom/head and neck symptom/head symptom/eye symptom/anisocoria,4,anisocoria,enlargement of one pupil|pupils of different size,
+symptom/head and neck symptom/head symptom/eye symptom/anterior scleral inflammation,4,anterior scleral inflammation,,
+symptom/head and neck symptom/head symptom/eye symptom/cranial nerve palsies,4,cranial nerve palsies,,
+symptom/head and neck symptom/head symptom/eye symptom/pupil symptom,4,pupil symptom,,
+symptom/head and neck symptom/head symptom/eye symptom/pupil symptom/dilated pupil,5,dilated pupil,,
+symptom/head and neck symptom/head symptom/eye symptom/pupil symptom/dilated pupil/mydriasis,6,mydriasis,prolonged pupil dilation|excessive pupil dilation,
+symptom/head and neck symptom/head symptom/eye symptom/pupil symptom/dilated pupil/mydriasis/unreactive mydriasis,7,unreactive mydriasis,,
+symptom/head and neck symptom/head symptom/eye symptom/pupil symptom/dilated pupil/fixed dilated pupils,6,fixed dilated pupils,,
+symptom/head and neck symptom/head symptom/eye symptom/pupil symptom/contracted pupil,5,contracted pupil,,
+symptom/head and neck symptom/head symptom/eye symptom/pupil symptom/contracted pupil/miosis,6,miosis,,
+symptom/head and neck symptom/head symptom/eye symptom/icteric eyes,4,icteric eyes,,Icteric eyes is a eye symptom characterized by yellowed eyes due to bile or bilirubin accumulation.
+symptom/head and neck symptom/head symptom/eye symptom/eye discharge,4,eye discharge,ocular discharge,
+symptom/head and neck symptom/head symptom/eye symptom/fixed pupil,4,fixed pupil,fixed pupils,
+symptom/head and neck symptom/head symptom/facial tremor,3,facial tremor,,"Facial tremor is a head symptom characterized by a trembling or shaking of the muscles of the face usually from physical weakness, emotional stress, or disease, may be emphasized by the firm closure of the eyes, elevation of the eyebrows, or drawing down and outward of the corners of the mouth."
+symptom/head and neck symptom/head symptom/lateroventral deviation of the head,3,lateroventral deviation of the head,,
+symptom/head and neck symptom/head symptom/hydrocephalus,3,hydrocephalus,,doid/symp duplicate
+symptom/head and neck symptom/head symptom/head pressing,3,head pressing,,
+symptom/head and neck symptom/head symptom/ear symptom,3,ear symptom,,
+symptom/head and neck symptom/head symptom/ear symptom/bone conduction hyperacusis,4,bone conduction hyperacusis,,An ear symptom - need proper definition - placeholder for xref.
+symptom/head and neck symptom/head symptom/ear symptom/tinnitus,4,tinnitus,sensation of noise,
+symptom/head and neck symptom/head symptom/ear symptom/otitis,4,otitis,,"Otitis is a ear symptom characterized as a general term for inflammation or infection of the ear, in both humans and other animals."
+symptom/head and neck symptom/head symptom/ear symptom/droopy ears,4,droopy ears,,
+symptom/head and neck symptom/head symptom/ear symptom/deafness,4,deafness,,
+symptom/head and neck symptom/head symptom/face hyperemia,3,face hyperemia,,Hyperemia of the face is a head symptom consisting of an excess of blood in the tissues of the face as from an increased flow of blood due to vasodilation.
+symptom/head and neck symptom/head symptom/mouth symptom,3,mouth symptom,,
+symptom/head and neck symptom/head symptom/mouth symptom/dry mouth,4,dry mouth,,
+symptom/head and neck symptom/head symptom/mouth symptom/lesions in mouth,4,lesions in mouth,,
+symptom/head and neck symptom/head symptom/mouth symptom/palate weakness,4,palate weakness,,
+symptom/head and neck symptom/head symptom/mouth symptom/slurred speech,4,slurred speech,,
+symptom/head and neck symptom/head symptom/mouth symptom/thick white exudate on tongue,4,thick white exudate on tongue,,
+symptom/head and neck symptom/head symptom/mouth symptom/mouth bleeding,4,mouth bleeding,,
+symptom/head and neck symptom/head symptom/mouth symptom/mouth bleeding/gum bleeding,5,gum bleeding,gingival hemorrhage,Gum bleeding is a mouth symptom characterized by a copious discharge of blood from the blood vessels of the mucosal tissue that lies over the alveolar bone.
+symptom/head and neck symptom/head symptom/mouth symptom/voice disturbance,4,voice disturbance,,
+symptom/head and neck symptom/head symptom/mouth symptom/voice disturbance/aphonia,5,aphonia,,
+symptom/head and neck symptom/head symptom/mouth symptom/voice disturbance/hoarse voice,5,hoarse voice,,
+symptom/head and neck symptom/head symptom/mouth symptom/voice disturbance/dysphonia,5,dysphonia,,
+symptom/head and neck symptom/head symptom/mouth symptom/mouth sore,4,mouth sore,,
+symptom/head and neck symptom/head symptom/mouth symptom/mouth papules,4,mouth papules,,
+symptom/head and neck symptom/head symptom/mouth symptom/herpetic lesion on upper lip,4,herpetic lesion on upper lip,,
+symptom/head and neck symptom/head symptom/mouth symptom/decreased tongue tone,4,decreased tongue tone,,
+symptom/head and neck symptom/head symptom/nose symptom,3,nose symptom,,
+symptom/head and neck symptom/head symptom/nose symptom/epistaxis,4,epistaxis,nosebleed,A nose symptom that involves a is loss of blood from the tissue lining the nose.
+symptom/head and neck symptom/head symptom/nose symptom/rhinorrhea,4,rhinorrhea,runny nose,A nose symptom that is characterized by an excessive secretion of mucous through the nose.
+symptom/head and neck symptom/head symptom/nose symptom/postnasal drainage,4,postnasal drainage,,A nose symptom that is characterized by an an excessive secretion of mucous down the back of the throat.
+symptom/head and neck symptom/head symptom/nose symptom/nasal bleeding,4,nasal bleeding,,
+symptom/head and neck symptom/head symptom/nose symptom/yellow exudate from nose,4,yellow exudate from nose,,
+symptom/head and neck symptom/head symptom/nose symptom/sinusitis,4,sinusitis,,doid/symp duplicate
+symptom/head and neck symptom/head symptom/nose symptom/nasal discharge,4,nasal discharge,,
+symptom/head and neck symptom/head symptom/facial weakness,3,facial weakness,,
+symptom/general symptom,1,general symptom,,
+symptom/general symptom/flaccidity,2,flaccidity,,
+symptom/general symptom/asthenia,2,asthenia,loss of strength,doid/symp duplicate
+symptom/general symptom/prostration,2,prostration,,Prostration is a general symptom characterized by complete physical or mental exhaustion.
+symptom/general symptom/prostration/extreme prostration,3,extreme prostration,,
+symptom/general symptom/prostration/progressive prostration,3,progressive prostration,,
+symptom/general symptom/thirst,2,thirst,,Thirst is a general symptom characterized by a sensation of dryness in the mouth and throat associated with a desire for liquids.
+symptom/general symptom/inflammation,2,inflammation,,"Inflammation is a general symptom where there is a local response to cellular injury that is marked by capillary dilatation, leukocytic infiltration, redness, heat, pain, swelling, and often loss of function and that serves as a mechanism initiating the elimination of noxious agents and of damaged tissue."
+symptom/general symptom/inflammation/chronic inflammation,3,chronic inflammation,,
+symptom/general symptom/inflammation/granulomatous inflammation,3,granulomatous inflammation,,
+symptom/general symptom/chills,2,chills,rigors,
+symptom/general symptom/tremor,2,tremor,,"Tremor is a generial symptom characterized by a trembling or shaking usually from physical weakness, emotional stress, or disease."
+symptom/general symptom/abscess,2,abscess,,
+symptom/general symptom/abscess/multiple abscesses,3,multiple abscesses,,
+symptom/general symptom/abscess/anal abscess,3,anal abscess,,
+symptom/general symptom/multiple organ failure,2,multiple organ failure,,
+symptom/general symptom/discharge,2,discharge,,
+symptom/general symptom/discharge/wound discharge,3,wound discharge,,
+symptom/general symptom/swelling symptom,2,swelling symptom,,
+symptom/general symptom/swelling symptom/leg swelling,3,leg swelling,,
+symptom/general symptom/swelling symptom/lymph gland swelling,3,lymph gland swelling,,
+symptom/general symptom/change in body sensation,2,change in body sensation,,
+symptom/general symptom/ptosis,2,ptosis,droopiness,"Ptosis is a general symptom characterized by a sagging or prolapse of an organ or part.|doid/symp duplicate - reviewed 10/2022, both DO & SYMP"
+symptom/general symptom/blood pressure,2,blood pressure,,
+symptom/general symptom/blood pressure/high blood pressure,3,high blood pressure,,
+symptom/general symptom/blood pressure/low blood pressure,3,low blood pressure,,
+symptom/general symptom/blood pressure/low blood pressure/hypotensive,4,hypotensive,,"A low blood pressure characterized by or due to abnormally low blood pressure, especially in the arteries of the systemic circulation."
+symptom/general symptom/slow pulse,2,slow pulse,,
+symptom/general symptom/extracellular fluid alteration,2,extracellular fluid alteration,,
+symptom/general symptom/extracellular fluid alteration/excess lymphocytes in cerebrospinal fluid,3,excess lymphocytes in cerebrospinal fluid,,
+symptom/general symptom/sensory disturbance,2,sensory disturbance,,
+symptom/general symptom/bleeding,2,bleeding,,"A general symptom that is characterized as an act, instance, or result of being bled or the process by which something is bled: as a the escape of blood from vessels."
+symptom/general symptom/shakes,2,shakes,trembling,Shakes is a general symptom characterized by a condition of trembling.
+symptom/general symptom/necrosis,2,necrosis,,"Necrosis is a general symptom where death of a portion of tissue differentially affected by local injury (as loss of blood supply, corrosion, burning, or the local lesion of a disease)."
+symptom/general symptom/necrosis/severe necrosis,3,severe necrosis,,
+symptom/general symptom/sleep disturbance,2,sleep disturbance,,
+symptom/general symptom/sleep disturbance/disruptions of 24-hour sleep-wake cycle,3,disruptions of 24-hour sleep-wake cycle,,
+symptom/general symptom/sleep disturbance/sleep related movement disorder,3,sleep related movement disorder,,
+symptom/general symptom/sleep disturbance/hypersomnia,3,hypersomnia,,Hypersomnia is a sleep disturbance characterized by sleeping for excessive periods at intervals with intervening periods of normal duration of sleeping and waking.
+symptom/general symptom/sleep disturbance/hypersomnia/hypersomnia with sleep apnea,4,hypersomnia with sleep apnea,,
+symptom/general symptom/sleep disturbance/dysfunctions associated with sleep stages,3,dysfunctions associated with sleep stages,,
+symptom/general symptom/sleep disturbance/dysfunctions associated with arousal from sleep,3,dysfunctions associated with arousal from sleep,,
+symptom/general symptom/sleep disturbance/insomnia,3,insomnia,agrypnia,Insomnia is a sleep disturbance characterized by prolonged and usually abnormal inability to obtain adequate sleep.
+symptom/general symptom/sleep disturbance/insomnia/insomnia with sleep apnea,4,insomnia with sleep apnea,,
+symptom/general symptom/sleep disturbance/night sweats,3,night sweats,sleep hyperhidrosis,
+symptom/general symptom/weakness,2,weakness,,
+symptom/general symptom/weakness/progressive weakness,3,progressive weakness,,
+symptom/general symptom/weakness/profound weakness,3,profound weakness,,
+symptom/general symptom/listlessness,2,listlessness,languid,
+symptom/general symptom/cramp,2,cramp,,
+symptom/general symptom/infant symptom,2,infant symptom,,
+symptom/general symptom/infant symptom/fussy infant,3,fussy infant,,
+symptom/general symptom/infant symptom/excessive crying of infant,3,excessive crying of infant,,
+symptom/general symptom/infant symptom/weak cry,3,weak cry,,
+symptom/general symptom/hallucination,2,hallucination,,Hallucination is a general symptom where there is a perception of something (as a visual image or a sound) with no external cause usually arising from a disorder of the nervous system (as in delirium tremens or in functional psychosis without known neurological disease) or in response to drugs (as LSD).
+symptom/general symptom/giddiness,2,giddiness,,
+symptom/neurological and physiological symptom,1,neurological and physiological symptom,,
+symptom/neurological and physiological symptom/fever,2,fever,pyrexia,"A neurological and physiological symptom that is characterized by a rise of body temperature above the normal, whether as a natural response (as to infection) or artificially induced for therapeutic reasons."
+symptom/neurological and physiological symptom/fever/relapsing fever,3,relapsing fever,,A fever that is characterized by  body temperature periodically rising and falling.|doid/symp duplicate
+symptom/neurological and physiological symptom/fever/cyclic fever,3,cyclic fever,intermittent fever|recurrent fever,A fever that is characterized by occurring during periodic episodes.
+symptom/neurological and physiological symptom/fever/afebrile,3,afebrile,,A fever that is characterized by the state of being free from fever.
+symptom/neurological and physiological symptom/fever/sudden onset of fever,3,sudden onset of fever,,
+symptom/neurological and physiological symptom/fever/hyperpyrexia,3,hyperpyrexia,,"A fever that is characterized by an extreme elevation of body temperature greater than, or equal to, 41.5 degrees Celsius (106.7 degrees Fahrenheit)."
+symptom/neurological and physiological symptom/fever/remittent fever,3,remittent fever,,A fever that is characterized by a fever where the temperature remains above normal throughout the day and fluctuates more than 1 degree Celsius in 24 hours.
+symptom/neurological and physiological symptom/fever/mild fever,3,mild fever,,A fever that is characterized by being mild in form.
+symptom/neurological and physiological symptom/fever/mild fever/low-grade fever,4,low-grade fever,low grade fever,A mild fever that is characterized by a fever that does not exceed 38.5 degrees Celsius (101.3 degrees Fahrenheit).
+symptom/neurological and physiological symptom/fever/high fever,3,high fever,,A fever that is characterized by an elevated temperature.
+symptom/neurological and physiological symptom/fever/high fever/very high fever,4,very high fever,,A high fever that is characterized by extremely high temperatures.
+symptom/neurological and physiological symptom/fever/high fever/hyperthermia,4,hyperthermia,,A high fever that is characterized by an exceptionally high fever especially when induced artificially for therapeutic purposes.
+symptom/neurological and physiological symptom/fever/Pel-Epstein fever,3,Pel-Epstein fever,,"A fever that is characterized by association with Hodgkin's lymphoma, where the fever alternates weekly from high to low."
+symptom/neurological and physiological symptom/fever/prolonged fever,3,prolonged fever,,A fever that is characterized by as  persisting over a prolonged period of time.
+symptom/neurological and physiological symptom/fever/continuous fever,3,continuous fever,continued fever,A fever that is characterized by a temperature remaining above normal throughout the day and which does not fluctuate more than 1 degree Celsius in 24 hours.
+symptom/neurological and physiological symptom/fever/transient fever,3,transient fever,,A fever that is characterized by a rise of body temperature above the normal that is sustained for only a short period of time.
+symptom/neurological and physiological symptom/fatigue,2,fatigue,,"A neurological and physiological symptom that is characterized by a weariness or exhaustion from labor, exertion, or stress."
+symptom/neurological and physiological symptom/fatigue/exhaustion,3,exhaustion,,"A fatigue that is characterized by a feeling of weariness (bodily or mental) or feeling of weakness.  Exhaustion is a shorter-lived form of fatigue that can be experienced emotionally, mentally, and physically."
+symptom/neurological and physiological symptom/fatigue/exhaustion/extreme exhaustion,4,extreme exhaustion,,"An exhaustion that is characterized by exceeding the ordinary, usual, or expected."
+symptom/neurological and physiological symptom/fatigue/weariness,3,weariness,,"A fatigue that is characterized by a feeling of exhaustion in strength, endurance, and vigor."
+symptom/neurological and physiological symptom/fatigue/tiredness,3,tiredness,,"A fatigue that is characterized by a feeling of a lessened capacity for work and reduced efficiency of accomplishment, usually accompanied by a sense of weariness and fatigue."
+symptom/neurological and physiological symptom/fatigue/lethargy,3,lethargy,,A fatigue that is characterized by abnormal drowsiness.
+symptom/neurological and physiological symptom/fatigue/extreme fatigue,3,extreme fatigue,,"A fatigue that is characterized by exceeding the ordinary, usual, or expected."
+symptom/neurological and physiological symptom/malaise,2,malaise,,"A neurological and physiological symptom that is characterized by an indefinite feeling of debility or lack of health, often indicative of or accompanying the onset of an illness."
+symptom/neurological and physiological symptom/memory loss,2,memory loss,,"A neurological and physiological symptom that is characterized by an unusual forgetfulness. One may not be able to remember new events, recall one or more memories of the past, or both.  Memory loss may be for a short time and then resolve (transient), or it may not go away and get worse over time."
+symptom/neurological and physiological symptom/alteration of consciousness,2,alteration of consciousness,,A neurological and physiological symptom that is characterized by any condition which is significantly different from a normal waking state.
+symptom/neurological and physiological symptom/alteration of consciousness/concentration difficulty,3,concentration difficulty,,"An alteration of consciousness that is characterized by a decreased ability to focus one's thoughts on something. Concentration difficulties can be related to difficulty staying awake, impulsiveness, intrusive thoughts or concerns, overactivity, or inattention. They can be caused by medical, cognitive or psychological problems, or, may be related to sleep disorders, medications, alcohol, or drugs."
+symptom/neurological and physiological symptom/alteration of consciousness/inability to think clearly,3,inability to think clearly,clouded sensorium|decreased sensorium,
+symptom/neurological and physiological symptom/alteration of consciousness/inability to concentrate,3,inability to concentrate,,
+symptom/neurological and physiological symptom/alteration of consciousness/transient alteration of awareness,3,transient alteration of awareness,,An alteration of consciousness that is characterized by a brief (transient) episode of losing normal awareness or behavior.
+symptom/neurological and physiological symptom/alteration of consciousness/persistent vegetative state,3,persistent vegetative state,,"An alteration of consciousness that is characterized by an individual with severe brain damage being in a state of partial arousal rather than true awareness. After four weeks in a vegetative state, the patient is classified as being in a persistent vegetative state. After three months in the US and six months in the UK, the diagnosis is classified as a permanent vegetative state after a non-traumatic brain injury, or, one year after a traumatic injury."
+symptom/neurological and physiological symptom/alteration of consciousness/stupor,3,stupor,,"An alteration of consciousness that is characterized by a lack of critical mental function and a level of consciousness, in which an affected person is almost entirely unresponsive and responds only to intense stimuli such as pain."
+symptom/neurological and physiological symptom/alteration of consciousness/conscious disturbance,3,conscious disturbance,,"An alteration of consciousness that is characterized by a disturbance in sentience (the ability to experience feelings and sensations) or awareness of one's internal and external existence, i.e. inhibited or absent self-awareness."
+symptom/neurological and physiological symptom/alteration of consciousness/syncope,3,syncope,loss of consciousness due to insuffiecient blood flow to the brain|faint|fainting,An alteration of consciousness that is characterized by a loss of consciousness resulting from insufficient blood flow to the brain.
+symptom/neurological and physiological symptom/alteration of consciousness/syncope and collapse,3,syncope and collapse,,An alteration of consciousness that is characterized by a loss of consciousness resulting from insufficient blood flow to the brain and limb weakness progressing to collapse.
+symptom/neurological and physiological symptom/alteration of consciousness/coma,3,coma,,"An alteration of consciousness that is characterized by a deep state of prolonged unconsciousness in which a person cannot be awakened, fails to respond normally to painful stimuli, light, or sound, lacks a normal wake-sleep cycle and does not initiate voluntary actions."
+symptom/neurological and physiological symptom/proprioception symptom,2,proprioception symptom,,"A neurological and physiological symptom that is characterized by one's body’s ability to sense movement, action, and location and results from sensory receptors in one's nervous system and body (muscles, joints, and tendons)."
+symptom/neurological and physiological symptom/proprioception symptom/decreased conscious proprioception,3,decreased conscious proprioception,,A proprioception symptom that is characterized by a decreased ability of an organism to consciously process the reception of stimuli produced within the organism.
+symptom/neurological and physiological symptom/memory impairment,2,memory impairment,,"A neurological and physiological symptom that is characterized by a diminished or reduced ability to remember things such as dates and names, and increased forgetfulness."
+symptom/neurological and physiological symptom/loss of consciousness,2,loss of consciousness,,"A neurological and physiological symptom that is characterized by a state in which an individual lacks normal awareness of self and the surrounding environment and one's ability to remain awake, aware, and oriented is impaired."
+symptom/neurological and physiological symptom/hypothermia,2,hypothermia,,"A neurological and physiological symptom that is characterized by a subnormal temperature of the body, as defined by a temperature under 36.6 degrees Celcius (97.8 degrees Fahrenheit)."
+symptom/neurological and physiological symptom/delirium,2,delirium,,"A neurological and physiological symptom that is characterized by a mental disturbance characterized by confusion, disordered speech, and hallucinations."
+symptom/neurological and physiological symptom/depression,2,depression,,"A neurological and physiological symptom that is characterized by a chronic feeling of emptiness, sadness, or inability to feel pleasure that may appear to happen for no clear reason.  Additionally one may experience feelings of hopelessness, pessimism, irritability, frustration, or restlessness, guilt, worthlessness and thoughts of death or suicide."
+symptom/neurological and physiological symptom/drowsiness,2,drowsiness,drowsy|somnolence,A neurological and physiological symptom that is characterized by a feeling of being more sleepy than normal during the day. People who are drowsy may fall asleep in when they do not want to or at times which can lead to safety concerns.
+symptom/neurological and physiological symptom/ataxia,2,ataxia,uncoordination,A neurological and physiological symptom that is characterized by an inability to coordinate voluntary muscular movements that is symptomatic of some nervous disorders.
+symptom/neurological and physiological symptom/ataxia/sudden ataxis,3,sudden ataxis,,
+symptom/neurological and physiological symptom/balance symptom,2,balance symptom,,"A neurological and physiological symptom that is characterized by any of the following: dizziness or vertigo (a spinning sensation); falling or feeling as if you are going to fall; staggering when walking; lightheadedness, faintness, or a floating sensation; and confusion or disorientation."
+symptom/neurological and physiological symptom/balance symptom/dizziness,3,dizziness,dizzy,A  balance symptom that is characterized by a sensation of unsteadiness accompanied by a feeling of movement within the head.
+symptom/neurological and physiological symptom/balance symptom/dizziness/vertigo,4,vertigo,,"A dizziness that is characterized by a specific type of dizziness, a major symptom of a balance disorder. It is the sensation of spinning or swaying while the body is stationary with respect to the surroundings."
+symptom/neurological and physiological symptom/balance symptom/dizziness/vertigo/subjective vertigo,5,subjective vertigo,,A vertigo that is characterized by a sensation that one's body is revolving in space.
+symptom/neurological and physiological symptom/balance symptom/dizziness/vertigo/objective vertigo,5,objective vertigo,,A vertigo that is characterized by a sensation that the external world is revolving.
+symptom/neurological and physiological symptom/balance symptom/loss of balance,3,loss of balance,,"A  balance symptom that is characterized by an inability to stay upright and move confidently.  Loss of balance may be due to problems in the inner ear, the brain, or the heart. Aging, infections, head injury, certain medicines, and problems with blood circulation may also cause balance problems."
+symptom/neurological and physiological symptom/balance symptom/lightheadedness,3,lightheadedness,light-headedness,"A  balance symptom that is characterized by a condition of being dizzy or on the verge of fainting, particularly when one arises to a standing position. Lightheadedness is a predictable consequence of any medication tending to lower blood pressure."
+symptom/neurological and physiological symptom/balance symptom/confusion,3,confusion,,"A balance symptom that is characterized by a disturbance of consciousness characterized by inability to engage in orderly thought or by lack of power to distinguish, choose, or act decisively."
+symptom/neurological and physiological symptom/balance symptom/confusion/disorientation,4,disorientation,,"A confusion that is characterized by an usually transient state of confusion especially as to time, place, or identity; often as a result of disease or drugs."
+symptom/neurological and physiological symptom/agitation,2,agitation,,A neurological and physiological symptom that is characterized by a feeling of irritability or severe restlessness.
+symptom/neurological and physiological symptom/catatonia,2,catatonia,,"A neurological and physiological symptom that is characterized by a marked psychomotor disturbance that may involve stupor or mutism, negativism, rigidity, purposeless excitement, echolalia, echopraxia, and inappropriate or bizarre posturing and is associated with various medical conditions (as schizophrenia and mood disorders)."
+symptom/neurological and physiological symptom/dysarthria,2,dysarthria,,A neurological and physiological symptom that is characterized by a difficulty in articulating words due to disease of the central nervous system.
+symptom/neurological and physiological symptom/anxiety,2,anxiety,,A neurological and physiological symptom that is characterized by a painful or apprehensive uneasiness of mind usually over an impending or anticipated ill.
+symptom/neurological and physiological symptom/anxiety/intense anxiety,3,intense anxiety,,
+symptom/neurological and physiological symptom/generalized hyperhidrosis,2,generalized hyperhidrosis,secondary hyperhidrosis,"A neurological and physiological symptom that is characterized by excessive sweating, i.e. the production of more sweat than is required to regulate body temperature.  Generalized hyperhidrosis is caused by non-thermoregulatory stimuli and affects the entire body."
+"symptom/nutrition, metabolism, and development symptom",1,"nutrition, metabolism, and development symptom",,
+"symptom/nutrition, metabolism, and development symptom/adult failure to thrive",2,adult failure to thrive,,"A nutrition, metabolism, and development symptom that is characterized by a physical decline in health seen in older adults – typically those with multiple chronic medical conditions – resulting in decreased appetite and poor nutrition, weight loss, inactivity, often accompanied by dehydration, depression, decreasing functional ability, and impaired immune function."
+"symptom/nutrition, metabolism, and development symptom/weight symptom",2,weight symptom,,
+"symptom/nutrition, metabolism, and development symptom/weight symptom/overweight",3,overweight,obesity,"A weight symptom that is characterized by being too heavy for one’s height. Excess body weight can come from fat, muscle, bone, and/or water retention. Being overweight does not always mean being obese."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/low birth weight",3,low birth weight,,"A weight symptom that is characterized by an infant weighing 5.5 pounds (2500 grams) or less at birth.  Low birth weight may occur with premature birth, or due to smoking cigarettes, secondhand tobacco smoke exposure, drinking alcohol, and taking certain drugs during pregnancy."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight loss",3,weight loss,loss of weight,"A weight symptom that is characterized by a reduction of the total body mass, by a mean loss of fluid, body fat (adipose tissue), or lean mass (namely bone mineral deposits, muscle, tendon, and other connective tissue). Weight loss can either occur unintentionally because of malnourishment or an underlying disease."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight loss/abnormal weight loss",4,abnormal weight loss,,"A weight loss that is characterized as deviating from what is normal or usual, typically in a way that is undesirable or worrying."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight loss/chronic weight loss",4,chronic weight loss,,"A weight loss that is characterized by conditions that last 1 year or more and require ongoing medical attention, or limit activities of daily living, or both."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight loss/acute weight loss",4,acute weight loss,,A weight loss that is characterized by a severe and sudden onset.
+"symptom/nutrition, metabolism, and development symptom/weight symptom/underweight",3,underweight,,"A weight symptom that is characterized by weighing less than the normal amount for one's age, height, and build."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight gain",3,weight gain,gain of weight,"A weight symptom that is characterized by an increase in body weight. This can involve an increase in muscle mass, fat deposits, excess fluids such as water or other factors."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight gain/acute weight gain",4,acute weight gain,,A weight gain that is characterized by a severe and sudden onset.
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight gain/chronic weight gain",4,chronic weight gain,,"A weight gain that is characterized by conditions that last 1 year or more and require ongoing medical attention, or limit activities of daily living, or both."
+"symptom/nutrition, metabolism, and development symptom/weight symptom/weight gain/abnormal weight gain",4,abnormal weight gain,,"A weight gain that is characterized as deviating from what is normal or usual, typically in a way that is undesirable or worrying."
+"symptom/nutrition, metabolism, and development symptom/polyphagia",2,polyphagia,,"A nutrition, metabolism, and development symptom that is characterized by an excessive appetite or eating."
+"symptom/nutrition, metabolism, and development symptom/anorexia",2,anorexia,,"A nutrition, metabolism, and development symptom that is characterized by a loss of appetite especially when prolonged."
+"symptom/nutrition, metabolism, and development symptom/feeding difficulties and mismanagement",2,feeding difficulties and mismanagement,,
+"symptom/nutrition, metabolism, and development symptom/feeding difficulties and mismanagement/inability to feed",3,inability to feed,,A feeding difficulties and mismanagement that is characterized by a lack of feeding capacity.
+"symptom/nutrition, metabolism, and development symptom/feeding difficulties and mismanagement/feeding problem",3,feeding problem,,"A feeding difficulties and mismanagement that is characterized by delays and/or disorders in the development of eating and drinking skills including disordered placement of food in the mouth, difficulty in appropriately manipulating food when it is in the mouth, difficulty chewing, and/or difficulty swallowing."
+"symptom/nutrition, metabolism, and development symptom/feeding difficulties and mismanagement/decreased sucking",3,decreased sucking,,A feeding difficulties and mismanagement that is characterized by a decrease in muscle coordination to form a suck response so that the child can ingest milk.
+"symptom/nutrition, metabolism, and development symptom/feeding difficulties and mismanagement/poor feeding",3,poor feeding,,A feeding difficulties and mismanagement that is characterized by an infant with little interest in feeding and it can also refer to an infant who is not feeding enough to receive the necessary nutrition required for adequate growth.
+"symptom/nutrition, metabolism, and development symptom/alteration of appetite",2,alteration of appetite,,
+"symptom/nutrition, metabolism, and development symptom/alteration of appetite/increased appetite",3,increased appetite,,"An alteration of appetite that is characterized by an desire to eat, an excess desire for food."
+"symptom/nutrition, metabolism, and development symptom/alteration of appetite/decreased appetite",3,decreased appetite,poor appetite,An alteration of appetite that is characterized by a reduced desire to eat.
+"symptom/nutrition, metabolism, and development symptom/alteration of appetite/loss of appetite",3,loss of appetite,inappetence|lack of appetite,"An alteration of appetite that is characterized by a loss of desire to eat, i.e. no desire to eat."
+"symptom/nutrition, metabolism, and development symptom/decreased metabolism",2,decreased metabolism,,"A nutrition, metabolism, and development symptom that is characterized by a reduction in the chemical reactions catalyzed by enzymes, which keep us alive. Metabolism allows organisms to grow, reproduce, maintain their structures, and respond to their environments and can be divided into catabolism (breaking down of organic matter) and anabolism (building of molecules)."
+"symptom/nutrition, metabolism, and development symptom/lack of expected normal physiological development in childhood",2,lack of expected normal physiological development in childhood,,
+"symptom/nutrition, metabolism, and development symptom/lack of expected normal physiological development in childhood/delayed milestones",3,delayed milestones,developmental delay,A lack of expected normal physiological development in childhood that is characterized by a failure for a child to reach a significant stage at the predicted age and may include walking or talking.
+"symptom/nutrition, metabolism, and development symptom/lack of expected normal physiological development in childhood/lack of normal physiological development",3,lack of normal physiological development,,
+"symptom/nutrition, metabolism, and development symptom/lack of expected normal physiological development in childhood/failure to thrive",3,failure to thrive,,"A lack of expected normal physiological development in childhood that is characterized by a decelerated or arrested physical growth (height and weight measurements fall below the third or fifth percentile, or a downward change in growth across two major growth percentiles) and is associated with abnormal growth and development."
+"symptom/nutrition, metabolism, and development symptom/lack of expected normal physiological development in childhood/short stature",3,short stature,,"A lack of expected normal physiological development in childhood that is characterized by an individual's height being in the 3rd percentile for the mean height of a given age, sex, and population group."
+"symptom/nutrition, metabolism, and development symptom/dehydration",2,dehydration,,"A nutrition, metabolism, and development symptom that is characterized by an abnormal depletion of body fluids."
+"symptom/nutrition, metabolism, and development symptom/polydipsia",2,polydipsia,,"A nutrition, metabolism, and development symptom that is characterized by an excessive or abnormal thirst."
+"symptom/nutrition, metabolism, and development symptom/delayed psychomotor development",2,delayed psychomotor development,,"A nutrition, metabolism, and development symptom that is characterized by the delay in development child's cognitive, emotional, motor, and social capacities from the beginning of life throughout fetal and neonatal periods, infancy, childhood, and adolescence."
+"symptom/nutrition, metabolism, and development symptom/wasting",2,wasting,,"A nutrition, metabolism, and development symptom that is characterized by the unintended loss of weight and lean body tissue characteristic of many diseases (as cancer, tuberculosis, and AIDS)."
+"symptom/nutrition, metabolism, and development symptom/wasting/emaciation",3,emaciation,,A wasting that is characterized by the state of being extremely thin as a result of an absence of body fat and very week as a result of muscle wasting; usually because of illness or extreme hunger.
+"symptom/nutrition, metabolism, and development symptom/wasting/emaciation/progressive emaciation",4,progressive emaciation,,An emaciation that is characterized by an increase in scope or severity with time.
+"symptom/nutrition, metabolism, and development symptom/decreased milk production",2,decreased milk production,,"A nutrition, metabolism, and development symptom that is characterized by a decrease in the production of milk in breastfeeding mothers."
+"symptom/nutrition, metabolism, and development symptom/early satiety",2,early satiety,,"A nutrition, metabolism, and development symptom that is characterized by a feeling of being full after a few bites of food, or before you finish a normal-sized meal."
+"symptom/nutrition, metabolism, and development symptom/cachexia",2,cachexia,general physical wasting and malnutrition,"A nutrition, metabolism, and development symptom that is characterized by a general physical wasting and malnutrition usually associated with chronic disease."
