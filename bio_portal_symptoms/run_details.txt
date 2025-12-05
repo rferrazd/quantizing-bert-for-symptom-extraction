@@ -1,0 +1,794 @@
+sec | Elapsed: 23281s | Save took: 19.1s
+[11280] ↳ Fetching children for: benign familial infantile seizures 4 (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11280] ⚠️ No children or fetch failed
+[11281] ↳ Fetching children for: Landau-Kleffner syndrome (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11281] ⚠️ No children or fetch failed
+[11282] ↳ Fetching children for: early onset absence epilepsy (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11282] ⚠️ No children or fetch failed
+[11283] ↳ Fetching children for: childhood absence epilepsy (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11283] ⚠️ No children or fetch failed
+[11284] ↳ Fetching children for: Lennox-Gastaut syndrome (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11284] ⚠️ No children or fetch failed
+[11285] L6 | Q: 108 | benign epilepsy with centrotemporal spikes    | 0.48 nodes/sec
+[11285] ↳ Fetching children for: benign epilepsy with centrotemporal spikes (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11285] ⚠️ No children or fetch failed
+[11286] ↳ Fetching children for: juvenile myoclonic epilepsy (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 4 items (Total: 4)
+   ✅ [PAGINATION] Complete: 4 total children from 1 pages
+[11286] ✅ Found 4 children
+[11287] ↳ Fetching children for: juvenile absence epilepsy (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 1 items (Total: 1)
+   ✅ [PAGINATION] Complete: 1 total children from 1 pages
+[11287] ✅ Found 1 children
+[11288] ↳ Fetching children for: familial adult myoclonic epilepsy (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 7 items (Total: 7)
+   ✅ [PAGINATION] Complete: 7 total children from 1 pages
+[11288] ✅ Found 7 children
+[11289] ↳ Fetching children for: epilepsy with generalized tonic-clonic seizures (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11289] ⚠️ No children or fetch failed
+[11290] L6 | Q: 108 | juvenile-onset Parkinson's disease            | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11290 nodes | Rate: 0.48 nodes/sec | Elapsed: 23301s | Save took: 19.5s
+[11290] ↳ Fetching children for: juvenile-onset Parkinson's disease (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11290] ⚠️ No children or fetch failed
+[11291] ↳ Fetching children for: astrocytoma, IDH-mutant, grade 3 (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11291] ⚠️ No children or fetch failed
+[11292] ↳ Fetching children for: astrocytoma, IDH-mutant, grade 2 (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11292] ⚠️ No children or fetch failed
+[11293] ↳ Fetching children for: astrocytoma, IDH-mutant, grade 4 (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11293] ⚠️ No children or fetch failed
+[11294] ↳ Fetching children for: childhood leptomeningeal melanoma (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11294] ⚠️ No children or fetch failed
+[11295] L6 | Q: 103 | adult leptomeningeal melanoma                 | 0.48 nodes/sec
+[11295] ↳ Fetching children for: adult leptomeningeal melanoma (L6)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11295] ⚠️ No children or fetch failed
+[11296] ↳ Fetching children for: myxomatous pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11296] ⚠️ No children or fetch failed
+[11297] ↳ Fetching children for: hepatoid pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11297] ⚠️ No children or fetch failed
+[11298] ↳ Fetching children for: enteric pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11298] ⚠️ No children or fetch failed
+[11299] ↳ Fetching children for: reticular pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11299] ⚠️ No children or fetch failed
+[11300] L7 | Q:  98 | papillary pattern testicular yolk sac tumor   | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11300 nodes | Rate: 0.48 nodes/sec | Elapsed: 23321s | Save took: 19.9s
+[11300] ↳ Fetching children for: papillary pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11300] ⚠️ No children or fetch failed
+[11301] ↳ Fetching children for: macrocystic pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11301] ⚠️ No children or fetch failed
+[11302] ↳ Fetching children for: endodermal sinus pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11302] ⚠️ No children or fetch failed
+[11303] ↳ Fetching children for: polyvesicular vitelline pattern testicular yolk sa (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11303] ⚠️ No children or fetch failed
+[11304] ↳ Fetching children for: glandular-alveolar pattern testicular yolk sac tum (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11304] ⚠️ No children or fetch failed
+[11305] L7 | Q:  93 | solid pattern testicular yolk sac tumor       | 0.48 nodes/sec
+[11305] ↳ Fetching children for: solid pattern testicular yolk sac tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11305] ⚠️ No children or fetch failed
+[11306] ↳ Fetching children for: childhood teratocarcinoma of the testis (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11306] ⚠️ No children or fetch failed
+[11307] ↳ Fetching children for: signet ring cell intrahepatic cholangiocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11307] ⚠️ No children or fetch failed
+[11308] ↳ Fetching children for: mucinous intrahepatic cholangiocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11308] ⚠️ No children or fetch failed
+[11309] ↳ Fetching children for: sarcomatous intrahepatic cholangiocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11309] ⚠️ No children or fetch failed
+[11310] L7 | Q:  88 | cholangiolocellular carcinoma                 | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11310 nodes | Rate: 0.48 nodes/sec | Elapsed: 23340s | Save took: 19.3s
+[11310] ↳ Fetching children for: cholangiolocellular carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11310] ⚠️ No children or fetch failed
+[11311] ↳ Fetching children for: Klatskin's tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11311] ⚠️ No children or fetch failed
+[11312] ↳ Fetching children for: angioimmunoblastic T-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11312] ⚠️ No children or fetch failed
+[11313] ↳ Fetching children for: breast implant-associated anaplastic large cell ly (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11313] ⚠️ No children or fetch failed
+[11314] ↳ Fetching children for: primary cutaneous T-cell non-Hodgkin lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 4 items (Total: 4)
+   ✅ [PAGINATION] Complete: 4 total children from 1 pages
+[11314] ✅ Found 4 children
+[11315] L7 | Q:  87 | relapsed/refractory diffuse large B-cell lymp | 0.48 nodes/sec
+[11315] ↳ Fetching children for: relapsed/refractory diffuse large B-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11315] ⚠️ No children or fetch failed
+[11316] ↳ Fetching children for: ST2 diffuse large B-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11316] ⚠️ No children or fetch failed
+[11317] ↳ Fetching children for: MCD diffuse large B-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11317] ⚠️ No children or fetch failed
+[11318] ↳ Fetching children for: A53 diffuse large B-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11318] ⚠️ No children or fetch failed
+[11319] ↳ Fetching children for: N1 diffuse large B-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11319] ⚠️ No children or fetch failed
+[11320] L7 | Q:  82 | EZB diffuse large B-cell lymphoma             | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11320 nodes | Rate: 0.48 nodes/sec | Elapsed: 23360s | Save took: 19.5s
+[11320] ↳ Fetching children for: EZB diffuse large B-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 2 items (Total: 2)
+   ✅ [PAGINATION] Complete: 2 total children from 1 pages
+[11320] ✅ Found 2 children
+[11321] ↳ Fetching children for: BN2 diffuse large B-cell lymphoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11321] ⚠️ No children or fetch failed
+[11322] ↳ Fetching children for: primary diffuse large B-cell lymphoma of the centr (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11322] ⚠️ No children or fetch failed
+[11323] ↳ Fetching children for: diffuse large B-cell lymphoma activated B-cell typ (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11323] ⚠️ No children or fetch failed
+[11324] ↳ Fetching children for: diffuse large B-cell lymphoma germinal center B-ce (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11324] ⚠️ No children or fetch failed
+[11325] L7 | Q:  79 | plasmacytoma                                  | 0.48 nodes/sec
+[11325] ↳ Fetching children for: plasmacytoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 3 items (Total: 3)
+   ✅ [PAGINATION] Complete: 3 total children from 1 pages
+[11325] ✅ Found 3 children
+[11326] ↳ Fetching children for: plasma cell leukemia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11326] ⚠️ No children or fetch failed
+[11327] ↳ Fetching children for: erythroleukemia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11327] ⚠️ No children or fetch failed
+[11328] ↳ Fetching children for: myeloid leukemia associated with Down Syndrome (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11328] ⚠️ No children or fetch failed
+[11329] ↳ Fetching children for: acute promyelocytic leukemia with PML-RARA (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11329] ⚠️ No children or fetch failed
+[11330] L7 | Q:  77 | adult acute monocytic leukemia                | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11330 nodes | Rate: 0.48 nodes/sec | Elapsed: 23380s | Save took: 20.1s
+[11330] ↳ Fetching children for: adult acute monocytic leukemia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11330] ⚠️ No children or fetch failed
+[11331] ↳ Fetching children for: adult acute lymphocytic leukemia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 2 items (Total: 2)
+   ✅ [PAGINATION] Complete: 2 total children from 1 pages
+[11331] ✅ Found 2 children
+[11332] ↳ Fetching children for: null-cell leukemia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11332] ⚠️ No children or fetch failed
+[11333] ↳ Fetching children for: childhood botryoid rhabdomyosarcoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11333] ⚠️ No children or fetch failed
+[11334] ↳ Fetching children for: adult botryoid rhabdomyosarcoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11334] ⚠️ No children or fetch failed
+[11335] L7 | Q:  72 | Miyoshi muscular dystrophy 2                  | 0.48 nodes/sec
+[11335] ↳ Fetching children for: Miyoshi muscular dystrophy 2 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11335] ⚠️ No children or fetch failed
+[11336] ↳ Fetching children for: clivus chondroid chordoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11336] ⚠️ No children or fetch failed
+[11337] ↳ Fetching children for: basal laminar drusen (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11337] ⚠️ No children or fetch failed
+[11338] ↳ Fetching children for: hypopyon ulcer (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11338] ⚠️ No children or fetch failed
+[11339] ↳ Fetching children for: papillary cystadenocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11339] ⚠️ No children or fetch failed
+[11340] L7 | Q:  67 | acinar cell cystadenocarcinoma                | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11340 nodes | Rate: 0.48 nodes/sec | Elapsed: 23400s | Save took: 20.3s
+[11340] ↳ Fetching children for: acinar cell cystadenocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11340] ⚠️ No children or fetch failed
+[11341] ↳ Fetching children for: mucinous cystadenocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11341] ⚠️ No children or fetch failed
+[11342] ↳ Fetching children for: serous cystadenocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11342] ⚠️ No children or fetch failed
+[11343] ↳ Fetching children for: childhood parosteal osteogenic sarcoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11343] ⚠️ No children or fetch failed
+[11344] ↳ Fetching children for: ovarian large-cell neuroendocrine carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11344] ⚠️ No children or fetch failed
+[11345] L7 | Q:  62 | ovary papillary carcinoma                     | 0.48 nodes/sec
+[11345] ↳ Fetching children for: ovary papillary carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11345] ⚠️ No children or fetch failed
+[11346] ↳ Fetching children for: ovarian seromucinous carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11346] ⚠️ No children or fetch failed
+[11347] ↳ Fetching children for: ovarian small cell carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 2 items (Total: 2)
+   ✅ [PAGINATION] Complete: 2 total children from 1 pages
+[11347] ✅ Found 2 children
+[11348] ↳ Fetching children for: ovarian clear cell carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11348] ⚠️ No children or fetch failed
+[11349] ↳ Fetching children for: ovarian serous carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11349] ⚠️ No children or fetch failed
+[11350] L7 | Q:  59 | ovarian endometrioid malignant adenofibroma   | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11350 nodes | Rate: 0.48 nodes/sec | Elapsed: 23420s | Save took: 19.9s
+[11350] ↳ Fetching children for: ovarian endometrioid malignant adenofibroma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11350] ⚠️ No children or fetch failed
+[11351] ↳ Fetching children for: ovarian mesodermal adenosarcoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11351] ⚠️ No children or fetch failed
+[11352] ↳ Fetching children for: adult embryonal tumor with multilayered rosettes,  (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11352] ⚠️ No children or fetch failed
+[11353] ↳ Fetching children for: childhood embryonal tumor with multilayered rosett (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 2 items (Total: 2)
+   ✅ [PAGINATION] Complete: 2 total children from 1 pages
+[11353] ✅ Found 2 children
+[11354] ↳ Fetching children for: pancreatic invasive mucinous cystadenocarcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11354] ⚠️ No children or fetch failed
+[11355] L7 | Q:  55 | pancreatic non-invasive mucinous cystadenocar | 0.48 nodes/sec
+[11355] ↳ Fetching children for: pancreatic non-invasive mucinous cystadenocarcinom (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11355] ⚠️ No children or fetch failed
+[11356] ↳ Fetching children for: childhood immature teratoma of ovary (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11356] ⚠️ No children or fetch failed
+[11357] ↳ Fetching children for: ovarian endodermal sinus tumor (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 4 items (Total: 4)
+   ✅ [PAGINATION] Complete: 4 total children from 1 pages
+[11357] ✅ Found 4 children
+[11358] ↳ Fetching children for: ovarian mixed germ cell neoplasm (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11358] ⚠️ No children or fetch failed
+[11359] ↳ Fetching children for: polyembryoma of the ovary (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11359] ⚠️ No children or fetch failed
+[11360] L7 | Q:  54 | ovarian germ cell monodermal and highly speci | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11360 nodes | Rate: 0.48 nodes/sec | Elapsed: 23441s | Save took: 21.6s
+[11360] ↳ Fetching children for: ovarian germ cell monodermal and highly specialize (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 1 items (Total: 1)
+   ✅ [PAGINATION] Complete: 1 total children from 1 pages
+[11360] ✅ Found 1 children
+[11361] ↳ Fetching children for: mature teratoma of the ovary (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 4 items (Total: 4)
+   ✅ [PAGINATION] Complete: 4 total children from 1 pages
+[11361] ✅ Found 4 children
+[11362] ↳ Fetching children for: growth hormone secreting pituitary adenoma 2 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11362] ⚠️ No children or fetch failed
+[11363] ↳ Fetching children for: dry beriberi (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11363] ⚠️ No children or fetch failed
+[11364] ↳ Fetching children for: wet beriberi (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11364] ⚠️ No children or fetch failed
+[11365] L7 | Q:  54 | Gaucher's disease perinatal lethal            | 0.48 nodes/sec
+[11365] ↳ Fetching children for: Gaucher's disease perinatal lethal (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11365] ⚠️ No children or fetch failed
+[11366] ↳ Fetching children for: atypical Gaucher's disease due to saposin c defici (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11366] ⚠️ No children or fetch failed
+[11367] ↳ Fetching children for: Gaucher's disease type II (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11367] ⚠️ No children or fetch failed
+[11368] ↳ Fetching children for: Gaucher's disease type I (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11368] ⚠️ No children or fetch failed
+[11369] ↳ Fetching children for: Niemann-Pick disease type C2 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11369] ⚠️ No children or fetch failed
+[11370] L7 | Q:  49 | Niemann-Pick disease type A                   | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11370 nodes | Rate: 0.48 nodes/sec | Elapsed: 23461s | Save took: 19.6s
+[11370] ↳ Fetching children for: Niemann-Pick disease type A (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11370] ⚠️ No children or fetch failed
+[11371] ↳ Fetching children for: Niemann-Pick disease type B (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11371] ⚠️ No children or fetch failed
+[11372] ↳ Fetching children for: Niemann-Pick disease type C1 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11372] ⚠️ No children or fetch failed
+[11373] ↳ Fetching children for: lipoatrophic diabetes mellitus (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11373] ⚠️ No children or fetch failed
+[11374] ↳ Fetching children for: transient neonatal diabetes mellitus (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 3 items (Total: 3)
+   ✅ [PAGINATION] Complete: 3 total children from 1 pages
+[11374] ✅ Found 3 children
+[11375] L7 | Q:  45 | glycogen storage disease IXb                  | 0.48 nodes/sec
+[11375] ↳ Fetching children for: glycogen storage disease IXb (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11375] ⚠️ No children or fetch failed
+[11376] ↳ Fetching children for: Schwannian stroma-rich and stroma-poor composite g (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11376] ⚠️ No children or fetch failed
+[11377] ↳ Fetching children for: stroma-dominant and stroma-poor composite ganglion (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11377] ⚠️ No children or fetch failed
+[11378] ↳ Fetching children for: cancerophobia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11378] ⚠️ No children or fetch failed
+[11379] ↳ Fetching children for: AIDS phobia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11379] ⚠️ No children or fetch failed
+[11380] L7 | Q:  40 | postpartum depression                         | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11380 nodes | Rate: 0.48 nodes/sec | Elapsed: 23480s | Save took: 19.1s
+[11380] ↳ Fetching children for: postpartum depression (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11380] ⚠️ No children or fetch failed
+[11381] ↳ Fetching children for: visual verbal agnosia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11381] ⚠️ No children or fetch failed
+[11382] ↳ Fetching children for: topographical agnosia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11382] ⚠️ No children or fetch failed
+[11383] ↳ Fetching children for: gait apraxia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11383] ⚠️ No children or fetch failed
+[11384] ↳ Fetching children for: ideomotor apraxia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11384] ⚠️ No children or fetch failed
+[11385] L7 | Q:  35 | stuttering                                    | 0.48 nodes/sec
+[11385] ↳ Fetching children for: stuttering (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11385] ⚠️ No children or fetch failed
+[11386] ↳ Fetching children for: nominal aphasia (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11386] ⚠️ No children or fetch failed
+[11387] ↳ Fetching children for: lung combined large cell neuroendocrine carcinoma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11387] ⚠️ No children or fetch failed
+[11388] ↳ Fetching children for: tuberculous peritonitis (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11388] ⚠️ No children or fetch failed
+[11389] ↳ Fetching children for: methyl isocyanate allergic asthma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11389] ⚠️ No children or fetch failed
+[11390] L7 | Q:  30 | toluene meta-diisocyanate allergic asthma     | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11390 nodes | Rate: 0.48 nodes/sec | Elapsed: 23499s | Save took: 19.1s
+[11390] ↳ Fetching children for: toluene meta-diisocyanate allergic asthma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 1 items (Total: 1)
+   ✅ [PAGINATION] Complete: 1 total children from 1 pages
+[11390] ✅ Found 1 children
+[11391] ↳ Fetching children for: hexamethylene diisocyanate allergic asthma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11391] ⚠️ No children or fetch failed
+[11392] ↳ Fetching children for: diphenylmethane-4,4'-diisocyanate allergic asthma (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11392] ⚠️ No children or fetch failed
+[11393] ↳ Fetching children for: hot water epilepsy 2 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11393] ⚠️ No children or fetch failed
+[11394] ↳ Fetching children for: juvenile myoclonic epilepsy 3 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11394] ⚠️ No children or fetch failed
+[11395] L7 | Q:  26 | juvenile myoclonic epilepsy 9                 | 0.48 nodes/sec
+[11395] ↳ Fetching children for: juvenile myoclonic epilepsy 9 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11395] ⚠️ No children or fetch failed
+[11396] ↳ Fetching children for: juvenile myoclonic epilepsy 4 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11396] ⚠️ No children or fetch failed
+[11397] ↳ Fetching children for: juvenile myoclonic epilepsy 10 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11397] ⚠️ No children or fetch failed
+[11398] ↳ Fetching children for: juvenile absence epilepsy 1 (L7)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11398] ⚠️ No children or fetch failed
+[11399] ↳ Fetching children for: primary cutaneous gamma-delta T-cell lymphoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11399] ⚠️ No children or fetch failed
+[11400] L8 | Q:  21 | subcutaneous panniculitis-like T-cell lymphom | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11400 nodes | Rate: 0.48 nodes/sec | Elapsed: 23520s | Save took: 20.6s
+[11400] ↳ Fetching children for: subcutaneous panniculitis-like T-cell lymphoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11400] ⚠️ No children or fetch failed
+[11401] ↳ Fetching children for: mycosis fungoides (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11401] ⚠️ No children or fetch failed
+[11402] ↳ Fetching children for: Sezary's disease (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11402] ⚠️ No children or fetch failed
+[11403] ↳ Fetching children for: EZB-MYC+ diffuse large B-cell lymphoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11403] ⚠️ No children or fetch failed
+[11404] ↳ Fetching children for: EZB-MYC- diffuse large B-cell lymphoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11404] ⚠️ No children or fetch failed
+[11405] L8 | Q:  16 | solitary plasmacytoma of chest wall           | 0.48 nodes/sec
+[11405] ↳ Fetching children for: solitary plasmacytoma of chest wall (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11405] ⚠️ No children or fetch failed
+[11406] ↳ Fetching children for: solitary osseous plasmacytoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11406] ⚠️ No children or fetch failed
+[11407] ↳ Fetching children for: extramedullary plasmacytoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11407] ⚠️ No children or fetch failed
+[11408] ↳ Fetching children for: pulmonary type ovarian small cell carcinoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11408] ⚠️ No children or fetch failed
+[11409] ↳ Fetching children for: small-cell carcinoma of the ovary of hypercalcemic (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11409] ⚠️ No children or fetch failed
+[11410] L8 | Q:  11 | childhood supratentorial embryonal tumor with | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11410 nodes | Rate: 0.48 nodes/sec | Elapsed: 23539s | Save took: 19.6s
+[11410] ↳ Fetching children for: childhood supratentorial embryonal tumor with mult (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11410] ⚠️ No children or fetch failed
+[11411] ↳ Fetching children for: childhood ovarian endodermal sinus tumor (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11411] ⚠️ No children or fetch failed
+[11412] ↳ Fetching children for: glandular pattern ovarian yolk sac tumor (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11412] ⚠️ No children or fetch failed
+[11413] ↳ Fetching children for: hepatoid pattern ovarian yolk sac tumor (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11413] ⚠️ No children or fetch failed
+[11414] ↳ Fetching children for: polyvesicular vitelline pattern ovarian yolk sac t (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11414] ⚠️ No children or fetch failed
+[11415] L8 | Q:   6 | malignant struma ovarii                       | 0.48 nodes/sec
+[11415] ↳ Fetching children for: malignant struma ovarii (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11415] ⚠️ No children or fetch failed
+[11416] ↳ Fetching children for: ovarian solid teratoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11416] ⚠️ No children or fetch failed
+[11417] ↳ Fetching children for: ovarian cystic teratoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11417] ⚠️ No children or fetch failed
+[11418] ↳ Fetching children for: childhood mature teratoma of the ovary (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11418] ⚠️ No children or fetch failed
+[11419] ↳ Fetching children for: ovarian fetiform teratoma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11419] ⚠️ No children or fetch failed
+[11420] L8 | Q:   1 | transient neonatal diabetes mellitus 1        | 0.48 nodes/sec
+💾 CHECKPOINT: Saved 11420 nodes | Rate: 0.48 nodes/sec | Elapsed: 23558s | Save took: 18.7s
+[11420] ↳ Fetching children for: transient neonatal diabetes mellitus 1 (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11420] ⚠️ No children or fetch failed
+[11421] ↳ Fetching children for: toluene 2,4-diisocyanate allergic asthma (L8)
+   ↳ [PAGINATION] Starting: page 1...
+   ↳ [PAGINATION] Page 1: 0 items (Total: 0)
+   ✅ [PAGINATION] First page empty, no children
+[11421] ⚠️ No children or fetch failed
+
+📝 Saving final data...
+✅ COMPLETE: Saved 11421 nodes to doid_disease_tree.csv
+⏱️  Total time: 23562s (392.7 min)
+📊 Average rate: 0.48 nodes/sec
+
+==================================================
+PREVIEW OF RESULTS
+==================================================
+                                             id  ...                     prefLabel
+0         http://purl.obolibrary.org/obo/DOID_4  ...                       disease
+1   http://purl.obolibrary.org/obo/DOID_0060501  ...                 metal allergy
+2      http://purl.obolibrary.org/obo/DOID_1417  ...               choroid disease
+3      http://purl.obolibrary.org/obo/DOID_2256  ...         osteochondrodysplasia
+4      http://purl.obolibrary.org/obo/DOID_3082  ...     interstitial lung disease
+5   http://purl.obolibrary.org/obo/DOID_0050155  ...        sensory system disease
+6      http://purl.obolibrary.org/obo/DOID_3128  ...                  anus disease
+7     http://purl.obolibrary.org/obo/DOID_12897  ...   submandibular gland disease
+8        http://purl.obolibrary.org/obo/DOID_37  ...                  skin disease
+9       http://purl.obolibrary.org/obo/DOID_379  ...          external ear disease
+10      http://purl.obolibrary.org/obo/DOID_732  ...              urethral disease
+11     http://purl.obolibrary.org/obo/DOID_9993  ...                  hypoglycemia
+12      http://purl.obolibrary.org/obo/DOID_319  ...           spinal cord disease
+13     http://purl.obolibrary.org/obo/DOID_2825  ...                  nose disease
+14      http://purl.obolibrary.org/obo/DOID_562  ...   third cranial nerve disease
+15      http://purl.obolibrary.org/obo/DOID_561  ...      trigeminal nerve disease
+16    http://purl.obolibrary.org/obo/DOID_11201  ...     parathyroid gland disease
+17        http://purl.obolibrary.org/obo/DOID_7  ...  disease of anatomical entity
+18      http://purl.obolibrary.org/obo/DOID_863  ...        nervous system disease
+19      http://purl.obolibrary.org/obo/DOID_866  ...                  vein disease
+
+[20 rows x 4 columns]
+
+Total rows: 11421
+Levels: 0 to 8
+Unique paths: 11421
+==================================================
+(.venv) robertagarcia@Robertas-MacBook-Pro bio_portal_symptoms
+(.venv) robertagarcia@Robertas-MacBook-Pro bio_portal_symptoms
+(.venv) robertagarcia@Robertas-MacBook-Pro bio_portal_symptoms
+(.venv) robertagarcia@Robertas-MacBook-Pro bio_portal_symptoms % 
