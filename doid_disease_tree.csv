@@ -1,0 +1,101 @@
+id,level,path,prefLabel
+http://purl.obolibrary.org/obo/DOID_4,0,disease,disease
+http://purl.obolibrary.org/obo/DOID_0060501,1,disease/metal allergy,metal allergy
+http://purl.obolibrary.org/obo/DOID_1417,1,disease/choroid disease,choroid disease
+http://purl.obolibrary.org/obo/DOID_2256,1,disease/osteochondrodysplasia,osteochondrodysplasia
+http://purl.obolibrary.org/obo/DOID_3082,1,disease/interstitial lung disease,interstitial lung disease
+http://purl.obolibrary.org/obo/DOID_0050155,1,disease/sensory system disease,sensory system disease
+http://purl.obolibrary.org/obo/DOID_3128,1,disease/anus disease,anus disease
+http://purl.obolibrary.org/obo/DOID_12897,1,disease/submandibular gland disease,submandibular gland disease
+http://purl.obolibrary.org/obo/DOID_37,1,disease/skin disease,skin disease
+http://purl.obolibrary.org/obo/DOID_379,1,disease/external ear disease,external ear disease
+http://purl.obolibrary.org/obo/DOID_732,1,disease/urethral disease,urethral disease
+http://purl.obolibrary.org/obo/DOID_9993,1,disease/hypoglycemia,hypoglycemia
+http://purl.obolibrary.org/obo/DOID_319,1,disease/spinal cord disease,spinal cord disease
+http://purl.obolibrary.org/obo/DOID_2825,1,disease/nose disease,nose disease
+http://purl.obolibrary.org/obo/DOID_562,1,disease/third cranial nerve disease,third cranial nerve disease
+http://purl.obolibrary.org/obo/DOID_561,1,disease/trigeminal nerve disease,trigeminal nerve disease
+http://purl.obolibrary.org/obo/DOID_11201,1,disease/parathyroid gland disease,parathyroid gland disease
+http://purl.obolibrary.org/obo/DOID_7,1,disease/disease of anatomical entity,disease of anatomical entity
+http://purl.obolibrary.org/obo/DOID_863,1,disease/nervous system disease,nervous system disease
+http://purl.obolibrary.org/obo/DOID_866,1,disease/vein disease,vein disease
+http://purl.obolibrary.org/obo/DOID_1564,1,disease/fungal infectious disease,fungal infectious disease
+http://purl.obolibrary.org/obo/DOID_1100,1,disease/ovarian disease,ovarian disease
+http://purl.obolibrary.org/obo/DOID_5679,1,disease/retinal disease,retinal disease
+http://purl.obolibrary.org/obo/DOID_9098,1,disease/sebaceous gland disease,sebaceous gland disease
+http://purl.obolibrary.org/obo/DOID_0060262,1,disease/gallbladder disease,gallbladder disease
+http://purl.obolibrary.org/obo/DOID_18,1,disease/urinary system disease,urinary system disease
+http://purl.obolibrary.org/obo/DOID_0050177,1,disease/monogenic disease,monogenic disease
+http://purl.obolibrary.org/obo/DOID_630,1,disease/genetic disease,genetic disease
+http://purl.obolibrary.org/obo/DOID_1962,1,disease/fallopian tube disease,fallopian tube disease
+http://purl.obolibrary.org/obo/DOID_1205,1,disease/allergic disease,allergic disease
+http://purl.obolibrary.org/obo/DOID_2277,1,disease/gonadal disease,gonadal disease
+http://purl.obolibrary.org/obo/DOID_0060118,1,disease/thoracic disease,thoracic disease
+http://purl.obolibrary.org/obo/DOID_53,1,disease/pituitary gland disease,pituitary gland disease
+http://purl.obolibrary.org/obo/DOID_530,1,disease/eyelid disease,eyelid disease
+http://purl.obolibrary.org/obo/DOID_533,1,disease/thymus gland disease,thymus gland disease
+http://purl.obolibrary.org/obo/DOID_0080827,1,disease/human cytomegalovirus infection,human cytomegalovirus infection
+http://purl.obolibrary.org/obo/DOID_1222,1,disease/cartilage disease,cartilage disease
+http://purl.obolibrary.org/obo/DOID_10481,1,disease/diaphragm disease,diaphragm disease
+http://purl.obolibrary.org/obo/DOID_61,1,disease/mitral valve disease,mitral valve disease
+http://purl.obolibrary.org/obo/DOID_612,1,disease/primary immunodeficiency disease,primary immunodeficiency disease
+http://purl.obolibrary.org/obo/DOID_2519,1,disease/testicular disease,testicular disease
+http://purl.obolibrary.org/obo/DOID_421,1,disease/hair disease,hair disease
+http://purl.obolibrary.org/obo/DOID_9561,1,disease/nasopharyngeal disease,nasopharyngeal disease
+http://purl.obolibrary.org/obo/DOID_5782,1,disease/tympanic membrane disease,tympanic membrane disease
+http://purl.obolibrary.org/obo/DOID_1529,1,disease/penile disease,penile disease
+http://purl.obolibrary.org/obo/DOID_2529,1,disease/splenic disease,splenic disease
+http://purl.obolibrary.org/obo/DOID_4138,1,disease/bile duct disease,bile duct disease
+http://purl.obolibrary.org/obo/DOID_75,1,disease/lymphatic system disease,lymphatic system disease
+http://purl.obolibrary.org/obo/DOID_5353,1,disease/colonic disease,colonic disease
+http://purl.obolibrary.org/obo/DOID_74,1,disease/hematopoietic system disease,hematopoietic system disease
+http://purl.obolibrary.org/obo/DOID_10124,1,disease/corneal disease,corneal disease
+http://purl.obolibrary.org/obo/DOID_3463,1,disease/breast disease,breast disease
+http://purl.obolibrary.org/obo/DOID_0070620,1,disease/ring chromosome syndrome,ring chromosome syndrome
+http://purl.obolibrary.org/obo/DOID_26,1,disease/pancreas disease,pancreas disease
+http://purl.obolibrary.org/obo/DOID_0080000,1,disease/muscular disease,muscular disease
+http://purl.obolibrary.org/obo/DOID_0080009,1,disease/X-linked dominant disease,X-linked dominant disease
+http://purl.obolibrary.org/obo/DOID_0080001,1,disease/bone disease,bone disease
+http://purl.obolibrary.org/obo/DOID_240,1,disease/iris disease,iris disease
+http://purl.obolibrary.org/obo/DOID_4961,1,disease/bone marrow disease,bone marrow disease
+http://purl.obolibrary.org/obo/DOID_9720,1,disease/vitreous disease,vitreous disease
+http://purl.obolibrary.org/obo/DOID_2163,1,disease/nasal cavity disease,nasal cavity disease
+http://purl.obolibrary.org/obo/DOID_9741,1,disease/biliary tract disease,biliary tract disease
+http://purl.obolibrary.org/obo/DOID_1091,1,disease/tooth disease,tooth disease
+http://purl.obolibrary.org/obo/DOID_10865,1,disease/abducens nerve palsy,abducens nerve palsy
+http://purl.obolibrary.org/obo/DOID_5614,1,disease/eye disease,eye disease
+http://purl.obolibrary.org/obo/DOID_2059,1,disease/vulvar disease,vulvar disease
+http://purl.obolibrary.org/obo/DOID_0080599,1,disease/Coronavirus infectious disease,Coronavirus infectious disease
+http://purl.obolibrary.org/obo/DOID_6227,1,disease/articular cartilage disease,articular cartilage disease
+http://purl.obolibrary.org/obo/DOID_1931,1,disease/hypothalamic disease,hypothalamic disease
+http://purl.obolibrary.org/obo/DOID_2786,1,disease/cerebellar disease,cerebellar disease
+http://purl.obolibrary.org/obo/DOID_0080578,1,disease/digenic disease,digenic disease
+http://purl.obolibrary.org/obo/DOID_0080577,1,disease/polygenic disease,polygenic disease
+http://purl.obolibrary.org/obo/DOID_65,1,disease/connective tissue disease,connective tissue disease
+http://purl.obolibrary.org/obo/DOID_3480,1,disease/uveal disease,uveal disease
+http://purl.obolibrary.org/obo/DOID_4072,1,disease/duodenum disease,duodenum disease
+http://purl.obolibrary.org/obo/DOID_820,1,disease/myocarditis,myocarditis
+http://purl.obolibrary.org/obo/DOID_2914,1,disease/immune system disease,immune system disease
+http://purl.obolibrary.org/obo/DOID_12491,1,disease/Vagus nerve disease,Vagus nerve disease
+http://purl.obolibrary.org/obo/DOID_1393,1,disease/visual pathway disease,visual pathway disease
+http://purl.obolibrary.org/obo/DOID_17,1,disease/musculoskeletal system disease,musculoskeletal system disease
+http://purl.obolibrary.org/obo/DOID_178,1,disease/vascular disease,vascular disease
+http://purl.obolibrary.org/obo/DOID_4079,1,disease/heart valve disease,heart valve disease
+http://purl.obolibrary.org/obo/DOID_2952,1,disease/inner ear disease,inner ear disease
+http://purl.obolibrary.org/obo/DOID_5100,1,disease/middle ear disease,middle ear disease
+http://purl.obolibrary.org/obo/DOID_5330,1,disease/dental pulp disease,dental pulp disease
+http://purl.obolibrary.org/obo/DOID_0080616,1,disease/kidney cortex disease,kidney cortex disease
+http://purl.obolibrary.org/obo/DOID_48,1,disease/male reproductive system disease,male reproductive system disease
+http://purl.obolibrary.org/obo/DOID_365,1,disease/bladder disease,bladder disease
+http://purl.obolibrary.org/obo/DOID_367,1,disease/olfactory nerve disease,olfactory nerve disease
+http://purl.obolibrary.org/obo/DOID_10944,1,disease/tongue disease,tongue disease
+http://purl.obolibrary.org/obo/DOID_3952,1,disease/adrenal cortex disease,adrenal cortex disease
+http://purl.obolibrary.org/obo/DOID_14566,1,disease/disease of cellular proliferation,disease of cellular proliferation
+http://purl.obolibrary.org/obo/DOID_9553,1,disease/adrenal gland disease,adrenal gland disease
+http://purl.obolibrary.org/obo/DOID_28,1,disease/endocrine system disease,endocrine system disease
+http://purl.obolibrary.org/obo/DOID_289,1,disease/endometriosis,endometriosis
+http://purl.obolibrary.org/obo/DOID_1352,1,disease/paranasal sinus disease,paranasal sinus disease
+http://purl.obolibrary.org/obo/DOID_0014667,1,disease/disease of metabolism,disease of metabolism
+http://purl.obolibrary.org/obo/DOID_238,1,disease/pupil disease,pupil disease
+http://purl.obolibrary.org/obo/DOID_231,1,disease/motor neuron disease,motor neuron disease
+http://purl.obolibrary.org/obo/DOID_574,1,disease/peripheral nervous system disease,peripheral nervous system disease
