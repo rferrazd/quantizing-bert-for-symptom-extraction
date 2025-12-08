@@ -99,3 +99,73 @@ http://purl.obolibrary.org/obo/DOID_0014667,1,disease/disease of metabolism,dise
 http://purl.obolibrary.org/obo/DOID_238,1,disease/pupil disease,pupil disease
 http://purl.obolibrary.org/obo/DOID_231,1,disease/motor neuron disease,motor neuron disease
 http://purl.obolibrary.org/obo/DOID_574,1,disease/peripheral nervous system disease,peripheral nervous system disease
+http://purl.obolibrary.org/obo/DOID_11465,1,disease/autonomic nervous system disease,autonomic nervous system disease
+http://purl.obolibrary.org/obo/DOID_2742,1,disease/auditory system disease,auditory system disease
+http://purl.obolibrary.org/obo/DOID_2649,1,disease/chondroblastoma,chondroblastoma
+http://purl.obolibrary.org/obo/DOID_0060429,1,disease/chromosomal duplication syndrome,chromosomal duplication syndrome
+http://purl.obolibrary.org/obo/DOID_3418,1,disease/glossopharyngeal nerve disease,glossopharyngeal nerve disease
+http://purl.obolibrary.org/obo/DOID_50,1,disease/thyroid gland disease,thyroid gland disease
+http://purl.obolibrary.org/obo/DOID_1426,1,disease/ureteral disease,ureteral disease
+http://purl.obolibrary.org/obo/DOID_403,1,disease/mouth disease,mouth disease
+http://purl.obolibrary.org/obo/DOID_409,1,disease/liver disease,liver disease
+http://purl.obolibrary.org/obo/DOID_0081332,1,disease/progeroid syndrome,progeroid syndrome
+http://purl.obolibrary.org/obo/DOID_16,1,disease/integumentary system disease,integumentary system disease
+http://purl.obolibrary.org/obo/DOID_9942,1,disease/lymph node disease,lymph node disease
+http://purl.obolibrary.org/obo/DOID_10854,1,disease/salivary gland disease,salivary gland disease
+http://purl.obolibrary.org/obo/DOID_1756,1,disease/facial nerve disease,facial nerve disease
+http://purl.obolibrary.org/obo/DOID_9500,1,disease/leukocyte disease,leukocyte disease
+http://purl.obolibrary.org/obo/DOID_60002,1,disease/Bartholin's gland disease,Bartholin's gland disease
+http://purl.obolibrary.org/obo/DOID_60000,1,disease/appendix disease,appendix disease
+http://purl.obolibrary.org/obo/DOID_0080015,1,disease/physical disorder,physical disorder
+http://purl.obolibrary.org/obo/DOID_0080014,1,disease/chromosomal disease,chromosomal disease
+http://purl.obolibrary.org/obo/DOID_0080012,1,disease/X-linked recessive disease,X-linked recessive disease
+http://purl.obolibrary.org/obo/DOID_0070658,1,disease/alcohol-associated liver disease,alcohol-associated liver disease
+http://purl.obolibrary.org/obo/DOID_0080712,1,disease/gene duplication disease,gene duplication disease
+http://purl.obolibrary.org/obo/DOID_1532,1,disease/pleural disease,pleural disease
+http://purl.obolibrary.org/obo/DOID_15,1,disease/reproductive system disease,reproductive system disease
+http://purl.obolibrary.org/obo/DOID_150,1,disease/disease of mental health,disease of mental health
+http://purl.obolibrary.org/obo/DOID_1400,1,disease/lacrimal apparatus disease,lacrimal apparatus disease
+http://purl.obolibrary.org/obo/DOID_12657,1,disease/vestibulocochlear nerve disease,vestibulocochlear nerve disease
+http://purl.obolibrary.org/obo/DOID_2218,1,disease/blood platelet disease,blood platelet disease
+http://purl.obolibrary.org/obo/DOID_557,1,disease/kidney disease,kidney disease
+http://purl.obolibrary.org/obo/DOID_974,1,disease/upper respiratory tract disease,upper respiratory tract disease
+http://purl.obolibrary.org/obo/DOID_850,1,disease/lung disease,lung disease
+http://purl.obolibrary.org/obo/DOID_1383,1,disease/sweat gland disease,sweat gland disease
+http://purl.obolibrary.org/obo/DOID_4251,1,disease/conjunctival disease,conjunctival disease
+http://purl.obolibrary.org/obo/DOID_10302,1,disease/parotid disease,parotid disease
+http://purl.obolibrary.org/obo/DOID_0050826,1,disease/tricuspid valve disease,tricuspid valve disease
+http://purl.obolibrary.org/obo/DOID_0050824,1,disease/sinoatrial node disease,sinoatrial node disease
+http://purl.obolibrary.org/obo/DOID_0050829,1,disease/pericardium disease,pericardium disease
+http://purl.obolibrary.org/obo/DOID_0050825,1,disease/endocardium disease,endocardium disease
+http://purl.obolibrary.org/obo/DOID_0050117,1,disease/disease by infectious agent,disease by infectious agent
+http://purl.obolibrary.org/obo/DOID_5295,1,disease/intestinal disease,intestinal disease
+http://purl.obolibrary.org/obo/DOID_114,1,disease/heart disease,heart disease
+http://purl.obolibrary.org/obo/DOID_3426,1,disease/vestibular disease,vestibular disease
+http://purl.obolibrary.org/obo/DOID_3944,1,disease/Arenaviridae infectious disease,Arenaviridae infectious disease
+http://purl.obolibrary.org/obo/DOID_3225,1,disease/tracheal disease,tracheal disease
+http://purl.obolibrary.org/obo/DOID_104,1,disease/bacterial infectious disease,bacterial infectious disease
+http://purl.obolibrary.org/obo/DOID_1579,1,disease/respiratory system disease,respiratory system disease
+http://purl.obolibrary.org/obo/DOID_345,1,disease/uterine disease,uterine disease
+http://purl.obolibrary.org/obo/DOID_2253,1,disease/cervix disease,cervix disease
+http://purl.obolibrary.org/obo/DOID_77,1,disease/gastrointestinal system disease,gastrointestinal system disease
+http://purl.obolibrary.org/obo/DOID_520,1,disease/aortic disease,aortic disease
+http://purl.obolibrary.org/obo/DOID_1287,1,disease/cardiovascular system disease,cardiovascular system disease
+http://purl.obolibrary.org/obo/DOID_1428,1,disease/endocrine pancreas disease,endocrine pancreas disease
+http://purl.obolibrary.org/obo/DOID_2938,1,disease/Epstein-Barr virus infectious disease,Epstein-Barr virus infectious disease
+http://purl.obolibrary.org/obo/DOID_6050,1,disease/esophageal disease,esophageal disease
+http://purl.obolibrary.org/obo/DOID_5691,1,disease/visual cortex disease,visual cortex disease
+http://purl.obolibrary.org/obo/DOID_4123,1,disease/nail disease,nail disease
+http://purl.obolibrary.org/obo/DOID_13814,1,disease/hypoglossal nerve disease,hypoglossal nerve disease
+http://purl.obolibrary.org/obo/DOID_62,1,disease/aortic valve disease,aortic valve disease
+http://purl.obolibrary.org/obo/DOID_0050738,1,disease/Y-linked monogenic disease,Y-linked monogenic disease
+http://purl.obolibrary.org/obo/DOID_0050737,1,disease/autosomal recessive disease,autosomal recessive disease
+http://purl.obolibrary.org/obo/DOID_0050736,1,disease/autosomal dominant disease,autosomal dominant disease
+http://purl.obolibrary.org/obo/DOID_0050735,1,disease/X-linked monogenic disease,X-linked monogenic disease
+http://purl.obolibrary.org/obo/DOID_0050739,1,disease/autosomal genetic disease,autosomal genetic disease
+http://purl.obolibrary.org/obo/DOID_0080373,1,disease/epididymis disease,epididymis disease
+http://purl.obolibrary.org/obo/DOID_0050161,1,disease/lower respiratory tract disease,lower respiratory tract disease
+http://purl.obolibrary.org/obo/DOID_2355,1,disease/anemia,anemia
+http://purl.obolibrary.org/obo/DOID_649,1,disease/prion disease,prion disease
+http://purl.obolibrary.org/obo/DOID_1518,1,disease/cecal disease,cecal disease
+http://purl.obolibrary.org/obo/DOID_5656,1,disease/cranial nerve disease,cranial nerve disease
+http://purl.obolibrary.org/obo/DOID_1176,1,disease/bronchial disease,bronchial disease
