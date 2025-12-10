@@ -169,3 +169,33 @@ http://purl.obolibrary.org/obo/DOID_649,1,disease/prion disease,prion disease
 http://purl.obolibrary.org/obo/DOID_1518,1,disease/cecal disease,cecal disease
 http://purl.obolibrary.org/obo/DOID_5656,1,disease/cranial nerve disease,cranial nerve disease
 http://purl.obolibrary.org/obo/DOID_1176,1,disease/bronchial disease,bronchial disease
+http://purl.obolibrary.org/obo/DOID_936,1,disease/brain disease,brain disease
+http://purl.obolibrary.org/obo/DOID_930,1,disease/orbital disease,orbital disease
+http://purl.obolibrary.org/obo/DOID_934,1,disease/viral infectious disease,viral infectious disease
+http://purl.obolibrary.org/obo/DOID_331,1,disease/central nervous system disease,central nervous system disease
+http://purl.obolibrary.org/obo/DOID_339,1,disease/accessory nerve disease,accessory nerve disease
+http://purl.obolibrary.org/obo/DOID_0060388,1,disease/chromosomal deletion syndrome,chromosomal deletion syndrome
+http://purl.obolibrary.org/obo/DOID_229,1,disease/female reproductive system disease,female reproductive system disease
+http://purl.obolibrary.org/obo/DOID_225,1,disease/syndrome,syndrome
+http://purl.obolibrary.org/obo/DOID_47,1,disease/prostate disease,prostate disease
+http://purl.obolibrary.org/obo/DOID_0060564,1,disease/spinal disease,spinal disease
+http://purl.obolibrary.org/obo/DOID_4137,1,disease/common bile duct disease,common bile duct disease
+http://purl.obolibrary.org/obo/DOID_11387,1,disease/epidural abscess,epidural abscess
+http://purl.obolibrary.org/obo/DOID_76,1,disease/stomach disease,stomach disease
+http://purl.obolibrary.org/obo/DOID_9297,1,disease/lip disease,lip disease
+http://purl.obolibrary.org/obo/DOID_12529,1,disease/tibial nerve palsy,tibial nerve palsy
+http://purl.obolibrary.org/obo/DOID_12528,1,disease/lesion of sciatic nerve,lesion of sciatic nerve
+http://purl.obolibrary.org/obo/DOID_4353,1,disease/ciliary body disease,ciliary body disease
+http://purl.obolibrary.org/obo/DOID_786,1,disease/laryngeal disease,laryngeal disease
+http://purl.obolibrary.org/obo/DOID_780,1,disease/placenta disease,placenta disease
+http://purl.obolibrary.org/obo/DOID_13864,1,disease/trochlear nerve disease,trochlear nerve disease
+http://purl.obolibrary.org/obo/DOID_121,1,disease/vaginal disease,vaginal disease
+http://purl.obolibrary.org/obo/DOID_5749,1,disease/pulmonary valve disease,pulmonary valve disease
+http://purl.obolibrary.org/obo/DOID_1891,1,disease/optic nerve disease,optic nerve disease
+http://purl.obolibrary.org/obo/DOID_0040046,2,disease/metal allergy/nickel allergic contact dermatitis,nickel allergic contact dermatitis
+http://purl.obolibrary.org/obo/DOID_0040045,2,disease/metal allergy/nickel allergic asthma,nickel allergic asthma
+http://purl.obolibrary.org/obo/DOID_0040054,2,disease/metal allergy/cobalt allergic asthma,cobalt allergic asthma
+http://purl.obolibrary.org/obo/DOID_0040055,2,disease/metal allergy/palladium allergic contact dermatitis,palladium allergic contact dermatitis
+http://purl.obolibrary.org/obo/DOID_0040053,2,disease/metal allergy/cobalt allergic contact dermatitis,cobalt allergic contact dermatitis
+http://purl.obolibrary.org/obo/DOID_0040056,2,disease/metal allergy/chromium allergic contact dermatitis,chromium allergic contact dermatitis
+http://purl.obolibrary.org/obo/DOID_12759,2,disease/choroid disease/choroid cancer,choroid cancer
