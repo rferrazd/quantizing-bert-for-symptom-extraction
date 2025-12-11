@@ -57,10 +57,11 @@ def compute_metrics(eval_pred: EvalPrediction, id2label: Dict):
     recall = recall_score(true_labels, true_preds, average=None)
     f1 = f1_score(true_labels, true_preds, average=None)
 
+    # Cast numpy types to Python primitives/lists so Trainer state is JSON-serializable
     metrics = {
-        "precision": np.array(precision),
-        "recall": np.array(recall),
-        "f1": np.array(f1),
+        "precision": precision.tolist(),
+        "recall": recall.tolist(),
+        "f1": f1.tolist(),
         "macro_f1": float(np.mean(f1)),
         # weighted_f1 = true_occurences_of_label (TP) * f1
         # micro_f1 = considers sum of all TP, FP, FN across all labels to compute f1
