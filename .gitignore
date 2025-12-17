@@ -16,3 +16,7 @@ checkpoint*/
 distilBERT-*/
 *.h5
 *.pth
+
+
+# clear commit history
+# git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch -r distilBERT-symptom-ner-v00/ checkpoint*/' 
