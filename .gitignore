@@ -6,3 +6,13 @@ __pycache__/
 *.pyd
 runs/
 wandb/
+
+# Model checkpoints and large files
+checkpoint*/
+*.pt
+*.safetensors
+*.bin
+*.ckpt
+distilBERT-*/
+*.h5
+*.pth
