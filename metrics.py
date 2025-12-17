@@ -193,11 +193,12 @@ def compute_per_label_metrics(eval_pred: Union[EvalPrediction,PredictionOutput],
 
 
 
-def plot_metrics(metrics: Dict, save_path: str = "per_label_f1.png", top_k: int | None = None):
+def plot_metrics(metrics: Dict, save_path: str | None = None, top_k: int | None = None):
     """
     Plot per-label F1 using outputs from compute_per_label_metrics (which returns per-label arrays).
-    - save_path: where to save the PNG
-    - top_k: if set, plot only the top_k labels 
+    - metrics: dict from compute_per_label_metrics containing at least "f1" and "label_names"
+    - save_path: where to save the PNG (optional, if None the plot is only displayed)
+    - top_k: if set, plot only the top_k labels by F1 score (sorted descending)
     """
     try:
         import matplotlib.pyplot as plt
@@ -219,7 +220,7 @@ def plot_metrics(metrics: Dict, save_path: str = "per_label_f1.png", top_k: int 
     else:
         labels = np.array(labels)
 
-    # Sort by support descending order highest --> lowest support
+    # Sort by F1 score descending (highest --> lowest F1)
     order = np.argsort(-f1s)
     labels = labels[order]
     f1s = f1s[order]
@@ -227,7 +228,6 @@ def plot_metrics(metrics: Dict, save_path: str = "per_label_f1.png", top_k: int 
     if top_k is not None:
         labels = labels[:top_k]
         f1s = f1s[:top_k]
-
 
     plt.figure(figsize=(8, max(3, 0.4 * len(labels))))
     plt.barh(labels, f1s, color="steelblue")
@@ -237,10 +237,16 @@ def plot_metrics(metrics: Dict, save_path: str = "per_label_f1.png", top_k: int 
     plt.xlabel("F1-score")
     plt.title("Per-label F1 (seqeval)")
     plt.tight_layout()
-    plt.savefig(save_path, dpi=150)
-    plt.close()
-
-    return save_path
+    
+    # Only save if save_path is provided
+    if save_path is not None:
+        plt.savefig(save_path, dpi=150)
+        plt.close()
+        return save_path
+    else:
+        # Display the plot in notebook
+        plt.show()
+        return None
 
 if __name__ == "__main__" :
     import torch
