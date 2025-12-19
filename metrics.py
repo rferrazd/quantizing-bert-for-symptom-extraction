@@ -6,52 +6,191 @@ import time
 import json
 import numpy as np
 from typing import Dict, Union
-from seqeval.metrics import f1_score, precision_score, recall_score
+import evaluate
 #from transformers import EvalPrediction, PredictionOutput
 from transformers.trainer_utils import (
     EvalPrediction,
     PredictionOutput,
 )
-
+seqeval = evaluate.load("seqeval")
 with open('id2label.json', 'r') as f:
     id2label = json.load(f)
 
 # FUNCTION TO RETURN OVERALL METRICS
-def compute_metrics(eval_pred: EvalPrediction, id2label: Dict, save_path:str|None = None):
+def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label: Dict = id2label, save_path:str|None = None):
     """
-    Trainer expects compute_metrics to be a callable that takes one argument—eval_pred—and returns a dict of metric_name -> value (floats/ints). Concretely:
-    The argument is an EvalPrediction with:
-    eval_pred.predictions: model outputs for the eval set. For token classification these are usually logits shaped (batch, seq_len, num_labels).
-    eval_pred.label_ids: the gold labels shaped (batch, seq_len).
-    
-    Returns only overall metrics (single values) to avoid printing long per-label arrays.
-    Use compute_per_label_metrics() separately for detailed per-label analysis.
+    Returns overall metrics and per-entity and per-token labels
+    Watch video for reference: https://www.youtube.com/watch?v=ujubwa_oa-0 (1:05:00)
     """
     # 1) Unpack eval_pred
-    logits, labels = eval_pred
 
-    # 2) Get highest prediction for each token
-    preds = logits.argmax(-1)
+    # Check datatype: 
+    if isinstance(eval_pred, EvalPrediction):
+        # unpack
+        predictions, labels = eval_pred
+    elif isinstance(eval_pred, PredictionOutput):
+        # unpack
+        predictions = eval_pred.predictions
+        labels = eval_pred.label_ids
+    else:
+        raise TypeError("Expected eval_pred to be of type EvalPrediction or PredictionOutput, got {}.".format(type(eval_pred)))
 
-    # 3) Mask out positions where labels = -100, and create the lists:
-    true_labels = []
-    true_preds = []
+    predictions = np.argmax(predictions, axis =-1) # axis=2
+    # Remove ignored index (e.g., padding tokens) and convert to actual labels
+    true_predictions = [
+        [id2label[str(p)] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
+    true_labels = [
+        [id2label[str(l)] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
 
-    # Iterate through each row (sentence)
-    for pred_row, label_row in zip(preds, labels):       
-        # Store preds and labels for a sentence
-        sent_labels = []
-        sent_preds = []
-        # Loop through each token in the sentence
-        for p_id, l_id in zip(pred_row, label_row):  
-            if l_id == -100:
-                continue  # Skip special/padding tokens
-            sent_preds.append(id2label[str(p_id)])
-            sent_labels.append(id2label[str(l_id)])
+    # Compute the scores using seqeval
+    results = seqeval.compute(predictions=true_predictions, references=true_labels)
+
+    # Extract overall metrics
+    metrics = {
+        "precision": results["overall_precision"],
+        "recall": results["overall_recall"],
+        "f1": results["overall_f1"],
+        "accuracy": results["overall_accuracy"],
+    }
+    
+    # Include all per-entity metrics (keys starting with "SYMPTOM_")
+    for key, value in results.items():
+        if key.startswith("SYMPTOM_"):
+            metrics[key] = value
+
+    if save_path:
+        # Save metrics in a json
+        with open(save_path, 'w') as f:
+            json.dump(metrics, f, indent=1, default=str)  # default=str handles numpy types
         
-        # Append list of labels/preds for each sentence
-        true_labels.append(sent_labels)
-        true_preds.append(sent_preds)
+    return metrics
+
+def plot_metrics(metrics: Dict, save_path: str | None = None, top_k: int | None = None, bins: int = 20):
+    """
+    Plot histogram of per-entity F1 scores for entities starting with "SYMPTOM_".
+    - metrics: dict from compute_metrics containing per-entity metrics (keys starting with "SYMPTOM_")
+    - save_path: where to save the PNG (optional, if None the plot is only displayed)
+    - bins: number of bins for the histogram (default: 20)
+    
+    Returns:
+        tuple: (save_path or None, data_dict) where data_dict groups entity labels by F1 score bins.
+               Each bin key maps to a dict with:
+               - "count": number of entities in the bin
+               - "entities": list of entity labels in the bin
+               - "bin_range": tuple of (bin_start, bin_end)
+    """
+    try:
+        import matplotlib.pyplot as plt
+    except Exception as exc:
+        print(f"[plot_metrics] matplotlib not available: {exc}")
+        return None, {}
+
+    # Extract entity keys that start with "SYMPTOM_"
+    entity_keys = [k for k in metrics.keys() if k.startswith("SYMPTOM_")]
+    
+    if not entity_keys:
+        print("[plot_metrics] No entity keys found starting with 'SYMPTOM_' in metrics.")
+        return None, {}
+    
+    # Extract F1 scores for each entity (keep track of which entity has which F1)
+    entity_f1s = []
+    entity_label_to_f1 = {}  # Map entity label to its F1 score
+    
+    for entity_key in entity_keys:
+        entity_metrics = metrics[entity_key]
+        # Handle both dict format (from seqeval.compute) and direct value
+        if isinstance(entity_metrics, dict):
+            f1_score = entity_metrics.get("f1", 0.0)
+        else:
+            f1_score = entity_metrics
+        f1_score = float(f1_score)
+        entity_f1s.append(f1_score)
+        entity_label_to_f1[entity_key] = f1_score
+    
+    # Convert to numpy array
+    entity_f1s = np.array(entity_f1s)
+    
+    # Get overall F1 for reference
+    overall_f1 = metrics.get("f1", None)
+    
+    # Create the histogram to get bin edges
+    plt.figure(figsize=(10, 6))
+    n, bins_edges, patches = plt.hist(entity_f1s, bins=bins, range=(0, 1), 
+                                       color="steelblue", edgecolor="black", alpha=0.7)
+    
+    # Group entity labels by bins
+    data = {}
+    for i in range(len(bins_edges) - 1):
+        bin_start = bins_edges[i]
+        bin_end = bins_edges[i + 1]
+        # Create bin label
+        bin_label = f"{bin_start:.3f}-{bin_end:.3f}"
+        
+        # Find all entities that fall into this bin
+        # For the last bin, include entities equal to bin_end (1.0)
+        if i == len(bins_edges) - 2:
+            entities_in_bin = [entity_key for entity_key in entity_keys 
+                             if bin_start <= entity_label_to_f1[entity_key] <= bin_end]
+        else:
+            entities_in_bin = [entity_key for entity_key in entity_keys 
+                             if bin_start <= entity_label_to_f1[entity_key] < bin_end]
+        
+        data[bin_label] = {
+            "count": len(entities_in_bin),
+            "entities": entities_in_bin,
+            "bin_range": (float(bin_start), float(bin_end))
+        }
+    
+    # Color bars based on F1 score ranges (optional visual enhancement)
+    for i, patch in enumerate(patches):
+        bin_center = (bins_edges[i] + bins_edges[i+1]) / 2
+        if bin_center >= 0.8:
+            patch.set_facecolor("green")
+        elif bin_center >= 0.5:
+            patch.set_facecolor("orange")
+        else:
+            patch.set_facecolor("red")
+    
+    # Add vertical line for overall F1 if available
+    if overall_f1 is not None:
+        plt.axvline(x=overall_f1, color="purple", linestyle="--", linewidth=2, 
+                   label=f"Overall F1: {overall_f1:.4f}")
+        plt.legend()
+    
+    # Add statistics text
+    stats_text = (
+        f"Total entities: {len(entity_f1s)}\n"
+        f"Mean F1: {np.mean(entity_f1s):.4f}\n"
+        f"Median F1: {np.median(entity_f1s):.4f}\n"
+        f"F1 = 1.0: {np.sum(entity_f1s == 1.0)} ({100*np.sum(entity_f1s == 1.0)/len(entity_f1s):.1f}%)\n"
+        f"F1 = 0.0: {np.sum(entity_f1s == 0.0)} ({100*np.sum(entity_f1s == 0.0)/len(entity_f1s):.1f}%)"
+    )
+    plt.text(0.02, 0.98, stats_text, transform=plt.gca().transAxes,
+             verticalalignment="top", bbox=dict(boxstyle="round", facecolor="wheat", alpha=0.5),
+             fontsize=9)
+    
+    plt.xlabel("F1-score", fontsize=12)
+    plt.ylabel("Number of Entities", fontsize=12)
+    plt.title("Distribution of Per-Entity F1 Scores (seqeval)", fontsize=14, fontweight="bold")
+    plt.xlim(0, 1)
+    plt.grid(axis="y", alpha=0.3)
+    plt.tight_layout()
+    
+    # Only save if save_path is provided
+    if save_path is not None:
+        plt.savefig(save_path, dpi=150)
+        plt.close()
+        return save_path, data
+    else:
+        # Display the plot
+        plt.show()
+        return None, data
+
+if __name__ == "__main__" :
 
     # 4) Compute overall metrics (micro-averaged) - single values
 
@@ -65,10 +204,6 @@ def compute_metrics(eval_pred: EvalPrediction, id2label: Dict, save_path:str|Non
     #
     # Micro F1 is usually dominated by the most frequent classes and gives more weight to performance on them.
 
-    precision_micro = precision_score(true_labels, true_preds, average='micro')
-    recall_micro = recall_score(true_labels, true_preds, average='micro')
-    f1_micro = f1_score(true_labels, true_preds, average='micro')
-    
     # 5) Compute macro F1 (average of per-label F1s)
     # Macro-averaged metrics first compute precision, recall, and F1 for each class/label independently,
     # and then take the unweighted mean across labels:
@@ -79,176 +214,6 @@ def compute_metrics(eval_pred: EvalPrediction, id2label: Dict, save_path:str|Non
     # Macro F1 treats all classes equally, regardless of their frequency, so it is sensitive to how well
     # the model does on rare labels. If performance on rare entities is critical, macro F1 is a key metric.
 
-    f1_per_label = f1_score(true_labels, true_preds, average=None)
-    macro_f1 = float(np.mean(f1_per_label))
-    
-    # 6) Compute token-level accuracy
-    total_tokens = 0
-    correct_tokens = 0
-    for pred_row, label_row in zip(preds, labels):
-        for p_id, l_id in zip(pred_row, label_row):
-            if l_id == -100:
-                continue
-            total_tokens += 1
-            if p_id == l_id:
-                correct_tokens += 1
-    accuracy = correct_tokens / total_tokens if total_tokens > 0 else 0.0
-
-    # Return only overall metrics (single values) - these will be printed
-    metrics = {
-        "accuracy": float(accuracy),
-        "precision": float(precision_micro),
-        "recall": float(recall_micro),
-        "f1": float(f1_micro),
-        "macro_f1": float(macro_f1),
-        "timestamp" : time.strftime("%Y%m%d_%H%M%S")
-    }
-
-    if save_path:
-        # Save metrics in a json
-        with open(save_path, 'w') as f:
-            json.dump(metrics,f,indent=1)
-
-    return metrics
-
-# FUNCTION TO RETURN PER-LABEL METRICS
-def compute_per_label_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label: Dict, save_path:str|None = None):
-    """
-    Compute detailed per-label metrics. Use this function separately when you need
-    per-label precision, recall, and F1 scores for analysis.
-    
-    Args:
-        eval_pred: EvalPrediction object with predictions and label_ids
-        id2label: Dictionary mapping label IDs to label names
-    
-    Returns:
-        Dictionary with per-label metrics:
-        - "precision": list of per-label precision scores
-        - "recall": list of per-label recall scores
-        - "f1": list of per-label F1 scores
-        - "macro_f1": average F1 across all labels
-        - "label_names": list of label names in order
-    """
-    # 1) Unpack eval_pred
-
-    # Check datatype: 
-    if isinstance(eval_pred, EvalPrediction):
-        # unpack
-        logits, labels = eval_pred
-    elif isinstance(eval_pred, PredictionOutput):
-        # unpack
-        logits = eval_pred.predictions
-        labels = eval_pred.label_ids
-    else:
-        raise TypeError("Expected eval_pred to be of type EvalPrediction or PredictionOutput, got {}.".format(type(eval_pred)))
-
-
-    # 2) Get highest prediction for each token
-    preds = logits.argmax(-1)
-
-    # 3) Mask out position where labels = -100, and create the lists:
-    true_labels = []
-    true_preds = []
-
-    # Iterate through each row (sentence)
-    for pred_row, label_row in zip(preds, labels):       
-        # store preds and labels for a sentence
-        sent_labels = []
-        sent_preds = []
-        # Loop through each token in the sentence
-        for p_id, l_id in zip(pred_row, label_row):  
-            if l_id == -100:
-                continue # skip special/padding tokens
-            sent_preds.append(id2label[str(p_id)])
-            sent_labels.append(id2label[str(l_id)])
-        
-        # Append list of labels/preds for each sentence
-        true_labels.append(sent_labels)
-        true_preds.append(sent_preds)
-
-    # 4) Precision/recall/F1 with seqeval for each class (average=None -> per label)
-    precision = precision_score(true_labels, true_preds, average=None)
-    recall = recall_score(true_labels, true_preds, average=None)
-    f1 = f1_score(true_labels, true_preds, average=None)
-
-    # 5) Get label names in order
-    label_names = [id2label[str(i)] for i in range(len(f1))]
-
-    # Cast numpy types to Python primitives/lists so it's JSON-serializable
-    metrics = {
-        "precision": precision.tolist(),
-        "recall": recall.tolist(),
-        "f1": f1.tolist(),
-        "macro_f1": float(np.mean(f1)),
-        "label_names": label_names,
-        "timestamp" : time.strftime("%Y%m%d_%H%M%S")
-    }
-
-    if save_path:
-        # Save metrics in a json
-        with open(save_path, 'w') as f:
-            json.dump(metrics,f,indent=1)
-        
-    return metrics
-
-
-
-def plot_metrics(metrics: Dict, save_path: str | None = None, top_k: int | None = None):
-    """
-    Plot per-label F1 using outputs from compute_per_label_metrics (which returns per-label arrays).
-    - metrics: dict from compute_per_label_metrics containing at least "f1" and "label_names"
-    - save_path: where to save the PNG (optional, if None the plot is only displayed)
-    - top_k: if set, plot only the top_k labels by F1 score (sorted descending)
-    """
-    try:
-        import matplotlib.pyplot as plt
-    except Exception as exc:
-        print(f"[plot_per_label_f1_from_metrics] matplotlib not available: {exc}")
-        return None
-
-    labels = metrics.get("label_names")
-    f1s = metrics.get("f1")
-
-    if f1s is None:
-        print("[plot_per_label_f1_from_metrics] Missing f1 in metrics.")
-        return None
-
-    # Ensure numpy arrays
-    f1s = np.array(f1s)
-    if labels is None:
-        labels = np.array([f"label_{i}" for i in range(len(f1s))])
-    else:
-        labels = np.array(labels)
-
-    # Sort by F1 score descending (highest --> lowest F1)
-    order = np.argsort(-f1s)
-    labels = labels[order]
-    f1s = f1s[order]
-
-    if top_k is not None:
-        labels = labels[:top_k]
-        f1s = f1s[:top_k]
-
-    plt.figure(figsize=(8, max(3, 0.4 * len(labels))))
-    plt.barh(labels, f1s, color="steelblue")
-    for i, f1 in enumerate(f1s):
-        plt.text(f1 + 0.01, i, f"f1={f1:.3f}", va="center")
-    plt.xlim(0, 1)
-    plt.xlabel("F1-score")
-    plt.title("Per-label F1 (seqeval)")
-    plt.tight_layout()
-    
-    # Only save if save_path is provided
-    if save_path is not None:
-        plt.savefig(save_path, dpi=150)
-        plt.close()
-        return save_path
-    else:
-        # Display the plot in notebook
-        plt.show()
-        return None
-
-if __name__ == "__main__" :
     import torch
 
     slice = 3
@@ -276,15 +241,30 @@ if __name__ == "__main__" :
 
     print("\n=== OVERALL METRICS (from compute_metrics) ===\n")
     metrics = compute_metrics(eval_pred, id2label=dummy_id2label)
-    for m in metrics:
-        print(f"{m}: {metrics[m]}")
-
-    print("\n=== PER-LABEL METRICS (from compute_per_label_metrics) ===\n")
-    per_label_metrics = compute_per_label_metrics(eval_pred, id2label=dummy_id2label)
-    print(f"Number of labels: {len(per_label_metrics['f1'])}")
-    print(f"Macro F1: {per_label_metrics['macro_f1']:.4f}")
-    print(f"Sample per-label F1s: {per_label_metrics['f1'][:5]}")
+    print("Overall metrics:")
+    for m in ["precision", "recall", "f1", "accuracy"]:
+        if m in metrics:
+            print(f"  {m}: {metrics[m]}")
+    
+    # Extract per-entity metrics
+    entity_keys = [k for k in metrics.keys() if k.startswith("SYMPTOM_")]
+    print(f"\n=== PER-ENTITY METRICS (from compute_metrics) ===\n")
+    print(f"Number of entities: {len(entity_keys)}")
+    if entity_keys:
+        # Calculate macro F1 from per-entity metrics
+        entity_f1s = []
+        for entity_key in entity_keys:
+            entity_metrics = metrics[entity_key]
+            if isinstance(entity_metrics, dict):
+                f1_score = entity_metrics.get("f1", 0.0)
+            else:
+                f1_score = entity_metrics
+            entity_f1s.append(float(f1_score))
+        macro_f1 = np.mean(entity_f1s) if entity_f1s else 0.0
+        print(f"Macro F1: {macro_f1:.4f}")
+        print(f"Sample per-entity F1s (first 5): {entity_f1s[:5]}")
 
     print("\n=== PLOT RESULTS  ===\n")
-    path = plot_metrics(metrics=per_label_metrics,save_path = "dummy_per_label_f1.png", top_k = None)
-    print(f"plot saved at {path}")
+    path = plot_metrics(metrics=metrics, save_path="dummy_per_entity_f1.png", top_k=10)
+    if path:
+        print(f"Plot saved at {path}")
