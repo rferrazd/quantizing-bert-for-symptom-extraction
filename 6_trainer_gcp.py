@@ -1,4 +1,25 @@
-"""Trains a given model with different"""
+"""
+Trains a given model with different
+Optimized code for training on GCP (Google Cloud Platform)
+
+Important points:
+- Avoid manually adding model.to(device) since it could lead to issues with multi-GPU / distributed setups
+- Remove device selection part, Trainer object will internally handle this
+- Setup a cache in GCP using /tmp
+"""
+
+# -----------------------------
+# Hugging Face cache directories (GCP / Docker safe)
+# -----------------------------
+import os
+from config import settings 
+os.environ.setdefault("HF_HOME", "/tmp/huggingface")
+os.environ.setdefault("HF_DATASETS_CACHE", "/tmp/huggingface/datasets")
+os.environ.setdefault("HF_TRANSFORMERS_CACHE", "/tmp/huggingface/transformers")
+os.environ.setdefault("HF_HUB_CACHE", "/tmp/huggingface/hub")
+print("HF_HOME:", os.environ.get("HF_HOME"))
+print("HF_DATASETS_CACHE:", os.environ.get("HF_DATASETS_CACHE"))
+
 
 import random
 from datasets import load_dataset
@@ -32,22 +53,21 @@ def print_title(text,n=50):
 # -----------------------------------------------------------
 # Load data and id2label/label2id mappings from Hugging Face 
 # -----------------------------------------------------------
-HUGGINGFACE_REPO_ID = "Rogarcia18/symptoms_ner_v00"
 
 
-dataset = load_dataset(HUGGINGFACE_REPO_ID)
+dataset = load_dataset(settings.HUGGINGFACE_REPO_ID)
 # NOTE that the actual labels that will be used for training are under the column: "token_label_ids"
 dataset = dataset.rename_column("token_label_ids", "labels")
 
 # Download and load id2label.json from the hub
 id2label_path = hf_hub_download(
-    repo_id=HUGGINGFACE_REPO_ID,
+    repo_id=settings.HUGGINGFACE_REPO_ID,
     filename="id2label.json",
     repo_type="dataset"
 )
 # Download and load label2id.json from the hub
 label2id_path = hf_hub_download(
-    repo_id=HUGGINGFACE_REPO_ID,
+    repo_id=settings.HUGGINGFACE_REPO_ID,
     filename="label2id.json",
     repo_type="dataset"
 )
@@ -60,7 +80,7 @@ with open(label2id_path, "r") as f:
 num_labels = len(id2label)
 
 # -----------------------------------------------------
-# Select Available Device
+# Check Available Device
 # -----------------------------------------------------
 if torch.cuda.is_available():
     device = "cuda"
@@ -108,11 +128,13 @@ def train(hyperparameters, idx=0):
         num_labels=num_labels,
         id2label=id2label,
         label2id=label2id
-        ).to(device)
+        )
 
     # ============================================================
     # Freeze backbone: train ONLY the last classification layer (head)
     # ============================================================
+    # For *ForTokenClassification models, the head is typically `classifier`.
+    # Freezing the backbone prevents updates to the transformer weights.
     base_model = getattr(model, "base_model", None)
     if base_model is None:
         raise AttributeError(
@@ -152,6 +174,8 @@ def train(hyperparameters, idx=0):
         save_strategy="epoch",  # align checkpointing with eval
         logging_strategy="epoch",  # keep logging light
         load_best_model_at_end=True,  # restores best checkpoint
+        # means that metric_for_best_model the greater it is the better it is
+        greater_is_better=True,
         metric_for_best_model="f1",  # f1 is returned by compute_metrics
         save_total_limit=1,  # keep only the best checkpoint
         report_to=["wandb"] if USE_WANDB else [],  # enable Weights & Biases logging (cloud safe setup if api key is NOT provided)

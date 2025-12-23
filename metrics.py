@@ -12,9 +12,21 @@ from transformers.trainer_utils import (
     EvalPrediction,
     PredictionOutput,
 )
+from huggingface_hub import hf_hub_download
+
 seqeval = evaluate.load("seqeval")
-with open('id2label.json', 'r') as f:
+# Local imports
+from config import settings
+# Download and load id2label.json from the hub
+
+id2label_path = hf_hub_download(
+    repo_id=settings.HUGGINGFACE_REPO_ID,
+    filename="id2label.json",
+    repo_type="dataset"
+)
+with open(id2label_path, "r") as f:
     id2label = json.load(f)
+
 
 # FUNCTION TO RETURN OVERALL METRICS
 def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label: Dict = id2label, save_path:str|None = None):
@@ -47,7 +59,7 @@ def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label:
     ]
 
     # Compute the scores using seqeval
-    results = seqeval.compute(predictions=true_predictions, references=true_labels)
+    results = seqeval.compute(predictions=true_predictions, references=true_labels, zero_division=0)
 
     # Extract overall metrics
     metrics = {
@@ -58,14 +70,15 @@ def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label:
     }
     
     # Include all per-entity metrics (keys starting with "SYMPTOM_")
+    complete_metrics = metrics.copy()
     for key, value in results.items():
         if key.startswith("SYMPTOM_"):
-            metrics[key] = value
+            complete_metrics[key] = value
 
     if save_path:
         # Save metrics in a json
         with open(save_path, 'w') as f:
-            json.dump(metrics, f, indent=1, default=str)  # default=str handles numpy types
+            json.dump(complete_metrics, f, indent=1, default=str)  # default=str handles numpy types
         
     return metrics
 
