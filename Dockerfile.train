@@ -1,0 +1,100 @@
+# GPU which will be used: NVIDIA T4
+# Training on Google Cloud Platform
+#
+# IMPORTANT: This image MUST be built for linux/amd64 architecture
+# Build command: docker buildx build --platform linux/amd64 -f Dockerfile.train -t <image-name> .
+# Or: docker build --platform linux/amd64 -f Dockerfile.train -t <image-name> .
+
+# ===============================
+# Base image
+# ===============================
+# CUDA runtime on Ubuntu 22.04
+# - runtime (not devel) is enough because:
+#   - We are NOT compiling custom CUDA ops
+#   - PyTorch wheels already include CUDA support
+#
+# NOTE: Using CUDA 12.1 for better compatibility with GCP GPU drivers
+# CUDA 12.1 is widely supported on GCP and matches PyTorch cu121 wheels
+# This avoids "CUDA driver version insufficient" errors
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+
+# ===============================
+# Environment variables
+# ===============================
+# Prevents Python from writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Ensures stdout/stderr are flushed immediately (important for logs on GCP)
+ENV PYTHONUNBUFFERED=1
+
+# Avoid interactive prompts during apt installs
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Quieter/faster pip
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV PIP_NO_CACHE_DIR=1
+
+# ===============================
+# System dependencies
+# ===============================
+# We install only what is strictly necessary:
+# - python3 + pip
+# - git (to pull repos or HF models if needed)
+# - curl / ca-certificates (networking, HF downloads)
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-dev \
+    git \
+    curl \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Make `python` point to `python3`
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+
+# ===============================
+# Upgrade pip
+# ===============================
+RUN python -m pip install --upgrade pip
+
+# ===============================
+# PyTorch installation
+# ===============================
+# IMPORTANT:
+# - We explicitly install the CUDA-enabled PyTorch wheel
+# - Do NOT rely on default pip install torch (may install CPU-only)
+#
+# Tesla T4 is compute capability 7.5 → fully supported
+#
+# Using cu121 (CUDA 12.1) for compatibility with GCP GPU drivers
+# This matches the CUDA 12.1.0 base image above
+RUN python3 -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+
+# NOTE:
+# CUDA 12.1 is well-supported on GCP and provides stable GPU acceleration
+# The base image CUDA version (12.1.0) matches the PyTorch CUDA version (cu121)
+
+# ===============================
+# Working directory
+# ===============================
+# All code will live here
+WORKDIR /workspace
+
+# ===============================
+# Install project dependencies (layer caching)
+# ===============================
+COPY requirements.txt /workspace/requirements.txt
+RUN python -m pip install -r /workspace/requirements.txt
+
+# ===============================
+# Copy training code
+# ===============================
+COPY . /workspace
+
+# ===============================
+# Default command
+# ===============================
+# This is the TRAINING entrypoint
+# You can override this in `docker run`
+CMD ["python", "7_trainer_gcp.py"]

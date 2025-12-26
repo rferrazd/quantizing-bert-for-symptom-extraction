@@ -96,7 +96,7 @@ print(f"Using device: {device}")
 # ============================================================
 # TRAIN FUNCTION
 # ============================================================
-def train(hyperparameters, idx=0):
+def train(hyperparameters, idx):
     """Train a model with given hyperparameters"""
     MODEL_NAME = hyperparameters["model_name"]
     print_title(f"FINETUNING: {MODEL_NAME}")
@@ -212,16 +212,18 @@ def train(hyperparameters, idx=0):
     # -----------------------------
     print_title("VALIDATION SET EVALUATION")
     val_predictions = trainer.predict(test_dataset=dataset["validation"])
-    val_metrics = compute_metrics(val_predictions, id2label=id2label, save_path=f"{OUTPUT_DIR}/val_metrics.json")
-    val_plot, val_data = plot_metrics(metrics=val_metrics, save_path=f"{OUTPUT_DIR}/val_f1_bins_plot.png")
+    val_metrics_path = f"{OUTPUT_DIR}/val_metrics.json"
+    val_metrics = compute_metrics(val_predictions, id2label=id2label, save_path=val_metrics_path)
+    val_plot, val_data = plot_metrics(metrics=val_metrics, save_path=f"{OUTPUT_DIR}/val_f1_bins_plot.png", metrics_file_path=val_metrics_path)
 
     # ----------------------------
     # Test Set
     # -----------------------------
     print_title("TEST SET EVALUATION")
     test_predictions = trainer.predict(test_dataset=dataset["test"])
-    test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=f"{OUTPUT_DIR}/test_metrics.json")
-    test_plot, test_data = plot_metrics(metrics=test_metrics, save_path=f"{OUTPUT_DIR}/test_f1_bins_plot.png")
+    test_metrics_path = f"{OUTPUT_DIR}/test_metrics.json"
+    test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=test_metrics_path)
+    test_plot, test_data = plot_metrics(metrics=test_metrics, save_path=f"{OUTPUT_DIR}/test_f1_bins_plot.png", metrics_file_path=test_metrics_path)
 
     # ----------------------------
     # Save summary

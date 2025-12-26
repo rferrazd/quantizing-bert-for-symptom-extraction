@@ -4,6 +4,7 @@ File containing the functions for evaluation a NER model, trained via HuggingFac
 """
 import time
 import json
+import os
 import numpy as np
 from typing import Dict, Union
 import evaluate
@@ -82,11 +83,12 @@ def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label:
         
     return metrics
 
-def plot_metrics(metrics: Dict, save_path: str | None = None, top_k: int | None = None, bins: int = 20):
+def plot_metrics(metrics: Dict, save_path: str | None = None, metrics_file_path: str | None = None, top_k: int | None = None, bins: int = 20):
     """
     Plot histogram of per-entity F1 scores for entities starting with "SYMPTOM_".
-    - metrics: dict from compute_metrics containing per-entity metrics (keys starting with "SYMPTOM_")
+    - metrics: dict from compute_metrics (may not contain per-entity metrics)
     - save_path: where to save the PNG (optional, if None the plot is only displayed)
+    - metrics_file_path: path to JSON file with complete metrics (if None, uses metrics dict)
     - bins: number of bins for the histogram (default: 20)
     
     Returns:
@@ -102,8 +104,15 @@ def plot_metrics(metrics: Dict, save_path: str | None = None, top_k: int | None 
         print(f"[plot_metrics] matplotlib not available: {exc}")
         return None, {}
 
+    # Load complete metrics from file if provided, otherwise use metrics dict
+    if metrics_file_path and os.path.exists(metrics_file_path):
+        with open(metrics_file_path, "r") as f:
+            complete_metrics = json.load(f)
+            print(f"\n📊 Complete metrics from {metrics_file_path} will be used for plotting 📈")
+        complete_metrics = metrics
+
     # Extract entity keys that start with "SYMPTOM_"
-    entity_keys = [k for k in metrics.keys() if k.startswith("SYMPTOM_")]
+    entity_keys = [k for k in complete_metrics.keys() if k.startswith("SYMPTOM_")]
     
     if not entity_keys:
         print("[plot_metrics] No entity keys found starting with 'SYMPTOM_' in metrics.")
@@ -114,7 +123,7 @@ def plot_metrics(metrics: Dict, save_path: str | None = None, top_k: int | None 
     entity_label_to_f1 = {}  # Map entity label to its F1 score
     
     for entity_key in entity_keys:
-        entity_metrics = metrics[entity_key]
+        entity_metrics = complete_metrics[entity_key]
         # Handle both dict format (from seqeval.compute) and direct value
         if isinstance(entity_metrics, dict):
             f1_score = entity_metrics.get("f1", 0.0)
@@ -128,7 +137,7 @@ def plot_metrics(metrics: Dict, save_path: str | None = None, top_k: int | None 
     entity_f1s = np.array(entity_f1s)
     
     # Get overall F1 for reference
-    overall_f1 = metrics.get("f1", None)
+    overall_f1 = complete_metrics.get("f1", None)
     
     # Create the histogram to get bin edges
     plt.figure(figsize=(10, 6))

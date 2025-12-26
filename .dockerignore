@@ -1,0 +1,17 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.ckpt
+env/
+venv/
+*.ipynb
+.runs/
+runs/
+.git
+.gitignore
+*.log
+data/
+.notebook_checkpoints
+.DS_Stores

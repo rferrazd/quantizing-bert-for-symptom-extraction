@@ -1,4 +1,5 @@
 pandas
+numpy
 ipykernel
 transformers
 datasets
@@ -7,3 +8,7 @@ wandb
 seqeval
 scikit-learn
 fastapi
+matplotlib
+python-dotenv
+huggingface-hub
+evaluate
