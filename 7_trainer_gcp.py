@@ -13,13 +13,16 @@ Important points:
 # -----------------------------
 import os
 from config import settings 
-os.environ.setdefault("HF_HOME", "/tmp/huggingface")
-os.environ.setdefault("HF_DATASETS_CACHE", "/tmp/huggingface/datasets")
-os.environ.setdefault("HF_TRANSFORMERS_CACHE", "/tmp/huggingface/transformers")
-os.environ.setdefault("HF_HUB_CACHE", "/tmp/huggingface/hub")
-print("HF_HOME:", os.environ.get("HF_HOME"))
-print("HF_DATASETS_CACHE:", os.environ.get("HF_DATASETS_CACHE"))
+# os.environ.setdefault("HF_HOME", "/tmp/huggingface")
+# os.environ.setdefault("HF_DATASETS_CACHE", "/tmp/huggingface/datasets")
+# os.environ.setdefault("HF_TRANSFORMERS_CACHE", "/tmp/huggingface/transformers")
+# os.environ.setdefault("HF_HUB_CACHE", "/tmp/huggingface/hub")
+# print("HF_HOME:", os.environ.get("HF_HOME"))
+# print("HF_DATASETS_CACHE:", os.environ.get("HF_DATASETS_CACHE"))
 
+# HF cache directories are now loaded from config.settings
+print("HF_HOME:", settings.HF_HOME)
+print("HF_DATASETS_CACHE:", settings.HF_DATASETS_CACHE)
 
 import random
 from datasets import load_dataset
@@ -27,7 +30,6 @@ import torch
 import os
 import json
 import time
-from dotenv import load_dotenv
 from transformers import (
     TrainingArguments,
     Trainer,
@@ -35,12 +37,8 @@ from transformers import (
 )
 from huggingface_hub import hf_hub_download
 # Local imports 
-from metrics import compute_metrics, plot_metrics
-
-# Load env variables
-load_dotenv()
-os.environ.setdefault("WANDB_PROJECT", "symptom-ner")
-
+from metrics import compute_metrics, compute_metrics_complete, plot_metrics
+from gcp_utils import upload_to_gcs, verify_upload
 seed = 18
 random.seed(seed)
 torch.manual_seed(seed)
@@ -91,6 +89,10 @@ else:
     device = "cpu"
 print(f"Using device: {device}")
 
+# -----------------------------------------------------
+# Check if saving content to GCS 
+# -----------------------------------------------------
+SAVE_TO_GCS = os.getenv("SAVE_TO_GCS", "false").lower() == "true"
 
 
 # ============================================================
@@ -158,8 +160,6 @@ def train(hyperparameters, idx):
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     USE_WANDB = os.getenv("USE_WANDB", "false").lower() == "true"
-
-
     # Define training arguments
     training_args = TrainingArguments(
         output_dir=OUTPUT_DIR,
@@ -213,8 +213,9 @@ def train(hyperparameters, idx):
     print_title("VALIDATION SET EVALUATION")
     val_predictions = trainer.predict(test_dataset=dataset["validation"])
     val_metrics_path = f"{OUTPUT_DIR}/val_metrics.json"
-    val_metrics = compute_metrics(val_predictions, id2label=id2label, save_path=val_metrics_path)
-    val_plot, val_data = plot_metrics(metrics=val_metrics, save_path=f"{OUTPUT_DIR}/val_f1_bins_plot.png", metrics_file_path=val_metrics_path)
+    #val_metrics = compute_metrics(val_predictions, id2label=id2label, save_path=val_metrics_path)
+    val_metrics, val_metrics_complete = compute_metrics_complete(val_predictions, id2label=id2label, save_path=val_metrics_path)
+    val_plot, val_data = plot_metrics(metrics=val_metrics_complete, save_path=f"{OUTPUT_DIR}/val_f1_bins_plot.png", metrics_file_path=val_metrics_path)
 
     # ----------------------------
     # Test Set
@@ -222,8 +223,9 @@ def train(hyperparameters, idx):
     print_title("TEST SET EVALUATION")
     test_predictions = trainer.predict(test_dataset=dataset["test"])
     test_metrics_path = f"{OUTPUT_DIR}/test_metrics.json"
-    test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=test_metrics_path)
-    test_plot, test_data = plot_metrics(metrics=test_metrics, save_path=f"{OUTPUT_DIR}/test_f1_bins_plot.png", metrics_file_path=test_metrics_path)
+    # test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=test_metrics_path)
+    test_metrics, test_metrics_complete = compute_metrics_complete(test_predictions, id2label=id2label, save_path=test_metrics_path)
+    test_plot, test_data = plot_metrics(metrics=test_metrics_complete, save_path=f"{OUTPUT_DIR}/test_f1_bins_plot.png", metrics_file_path=test_metrics_path)
 
     # ----------------------------
     # Save summary
@@ -254,6 +256,26 @@ def train(hyperparameters, idx):
     print_title(f"Training completed! Summary saved to: {summary_path}")
     print(f"✓ Overall Test F1: {test_metrics.get('f1', 0.0):.4f}")
     print(f"✓ Validation F1: {val_metrics.get('f1', 0.0):.4f}")
+
+    if SAVE_TO_GCS:
+        print_title("UPLOADING RESULTS TO GCS")
+        
+        # Upload entire OUTPUT_DIR (includes checkpoint, metrics, plots, etc.)
+        # This preserves the complete directory structure: runs/{MODEL_NAME}/run_{idx}/
+        upload_to_gcs(
+            local_path=OUTPUT_DIR,
+            gcs_path=OUTPUT_DIR,
+            bucket_name=settings.BUCKET_NAME
+        )
+        
+        # Upload summary.json (it's at runs/{MODEL_NAME}/ level, not in run_{idx}/)
+        upload_to_gcs(
+            local_path=summary_path,
+            gcs_path=summary_path,
+            bucket_name=settings.BUCKET_NAME
+        )
+        
+        print_title(f"✓ All results uploaded to gs://{settings.BUCKET_NAME}/{OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

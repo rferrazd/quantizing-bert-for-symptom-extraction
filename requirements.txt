@@ -12,3 +12,6 @@ matplotlib
 python-dotenv
 huggingface-hub
 evaluate
+# google cloud specifics
+# package to handle GCS
+google-cloud-storage 

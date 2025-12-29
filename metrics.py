@@ -83,6 +83,63 @@ def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label:
         
     return metrics
 
+# FUNCTION TO RETURN OVERALL METRICS
+def compute_metrics_complete(eval_pred: Union[EvalPrediction,PredictionOutput], id2label: Dict = id2label, save_path:str|None = None):
+    """
+    Returns overall metrics and per-entity and per-token labels
+    Watch video for reference: https://www.youtube.com/watch?v=ujubwa_oa-0 (1:05:00)
+    """
+    # 1) Unpack eval_pred
+
+    # Check datatype: 
+    if isinstance(eval_pred, EvalPrediction):
+        # unpack
+        predictions, labels = eval_pred
+    elif isinstance(eval_pred, PredictionOutput):
+        # unpack
+        predictions = eval_pred.predictions
+        labels = eval_pred.label_ids
+    else:
+        raise TypeError("Expected eval_pred to be of type EvalPrediction or PredictionOutput, got {}.".format(type(eval_pred)))
+
+    predictions = np.argmax(predictions, axis =-1) # axis=2
+    # Remove ignored index (e.g., padding tokens) and convert to actual labels
+    true_predictions = [
+        [id2label[str(p)] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
+    true_labels = [
+        [id2label[str(l)] for (p, l) in zip(prediction, label) if l != -100]
+        for prediction, label in zip(predictions, labels)
+    ]
+
+    # Compute the scores using seqeval
+    results = seqeval.compute(predictions=true_predictions, references=true_labels, zero_division=0)
+
+    # Extract overall metrics
+    metrics = {
+        "precision": results["overall_precision"],
+        "recall": results["overall_recall"],
+        "f1": results["overall_f1"],
+        "accuracy": results["overall_accuracy"],
+    }
+    
+    # Include all per-entity metrics (keys starting with "SYMPTOM_")
+    complete_metrics = metrics.copy()
+    for key, value in results.items():
+        if key.startswith("SYMPTOM_"):
+            complete_metrics[key] = value
+
+    if save_path:
+        # Save metrics in a json
+        with open(save_path, 'w') as f:
+            json.dump(complete_metrics, f, indent=1, default=str)  # default=str handles numpy types
+        
+    return metrics, complete_metrics
+
+
+
+
 def plot_metrics(metrics: Dict, save_path: str | None = None, metrics_file_path: str | None = None, top_k: int | None = None, bins: int = 20):
     """
     Plot histogram of per-entity F1 scores for entities starting with "SYMPTOM_".
