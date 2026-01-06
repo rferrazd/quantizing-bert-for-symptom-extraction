@@ -1,8 +1,6 @@
 """
 File containing the functions for evaluation a NER model, trained via HuggingFace's transformers library
-
 """
-import time
 import json
 import os
 import numpy as np
@@ -60,6 +58,8 @@ def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label:
     ]
 
     # Compute the scores using seqeval
+    # computes:
+    #   -> per-entity-type (SYMPTOM_s0001_POS) metrics (precision, recall, etc)
     results = seqeval.compute(predictions=true_predictions, references=true_labels, zero_division=0)
 
     # Extract overall metrics
@@ -120,7 +120,7 @@ def compute_metrics_complete(eval_pred: Union[EvalPrediction,PredictionOutput], 
     metrics = {
         "precision": results["overall_precision"],
         "recall": results["overall_recall"],
-        "f1": results["overall_f1"],
+        "f1": results["overall_f1"], # micro  f1 based on the seqeval implementation of the _compute function
         "accuracy": results["overall_accuracy"],
     }
     
@@ -140,7 +140,7 @@ def compute_metrics_complete(eval_pred: Union[EvalPrediction,PredictionOutput], 
 
 
 
-def plot_metrics(metrics: Dict, save_path: str | None = None, metrics_file_path: str | None = None, top_k: int | None = None, bins: int = 20):
+def plot_metrics(metrics: Dict | None = None, save_path: str | None = None, metrics_file_path: str | None = None, top_k: int | None = None, bins: int = 20):
     """
     Plot histogram of per-entity F1 scores for entities starting with "SYMPTOM_".
     - metrics: dict from compute_metrics (may not contain per-entity metrics)
@@ -162,11 +162,16 @@ def plot_metrics(metrics: Dict, save_path: str | None = None, metrics_file_path:
         return None, {}
 
     # Load complete metrics from file if provided, otherwise use metrics dict
+    complete_metrics = metrics
     if metrics_file_path and os.path.exists(metrics_file_path):
         with open(metrics_file_path, "r") as f:
             complete_metrics = json.load(f)
-            print(f"\n📊 Complete metrics from {metrics_file_path} will be used for plotting 📈")
-        complete_metrics = metrics
+        print(f"\n📊 Complete metrics from {metrics_file_path} will be used for plotting 📈")
+    
+    # Validate that we have metrics to work with
+    if complete_metrics is None:
+        print("[plot_metrics] Error: No metrics provided. Either 'metrics' or 'metrics_file_path' must be provided.")
+        return None, {}
 
     # Extract entity keys that start with "SYMPTOM_"
     entity_keys = [k for k in complete_metrics.keys() if k.startswith("SYMPTOM_")]

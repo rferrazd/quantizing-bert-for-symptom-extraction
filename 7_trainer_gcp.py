@@ -34,6 +34,8 @@ from transformers import (
     TrainingArguments,
     Trainer,
     DataCollatorForTokenClassification,
+    AutoModelForTokenClassification,
+    AutoTokenizer
 )
 from huggingface_hub import hf_hub_download
 # Local imports 
@@ -102,34 +104,38 @@ SAVE_TO_GCS = os.getenv("SAVE_TO_GCS", "false").lower() == "true"
 def train(hyperparameters, idx):
     """Train a model with given hyperparameters"""
     MODEL_NAME = hyperparameters["model_name"]
-    print_title(f"FINETUNING: {MODEL_NAME}")
+    
+    print_title(f"💕 FINETUNING: {MODEL_NAME} 💕")
 
 
-    # ============================================================
-    # Import model classes based on model_name
-    # ============================================================
-    if MODEL_NAME == "distilbert-base-uncased":
-        from transformers import (
-            DistilBertTokenizerFast,
-            DistilBertForTokenClassification,
-        )
-        TokenizerClass = DistilBertTokenizerFast
-        ModelClass = DistilBertForTokenClassification
-    elif "biobert" in MODEL_NAME.lower():
-        from transformers import (
-            BertTokenizerFast,
-            BertForTokenClassification,
-        )
-        TokenizerClass = BertTokenizerFast
-        ModelClass = BertForTokenClassification
-    else:
-        raise ValueError(f"Unsupported model: {MODEL_NAME}. Supported models: 'distilbert-base-uncased', BioBERT variants (e.g., 'dmis-lab/biobert-base-cased-v1.1')")
+    # # ============================================================
+    # # Import model classes based on model_name
+    # # ============================================================
+    # if MODEL_NAME == "distilbert-base-uncased":
+
+
+    #     from transformers import (
+    #         DistilBertTokenizerFast,
+    #         DistilBertForTokenClassification,
+    #     )
+    #     TokenizerClass = DistilBertTokenizerFast
+    #     ModelClass = DistilBertForTokenClassification
+    # elif "biobert" in MODEL_NAME.lower():
+    #     from transformers import (
+    #         BertTokenizerFast,
+    #         BertForTokenClassification,
+    #     )
+    #     TokenizerClass = BertTokenizerFast
+    #     ModelClass = BertForTokenClassification
+    # else:
+    #     raise ValueError(f"Unsupported model: {MODEL_NAME}. Supported models: 'distilbert-base-uncased', BioBERT variants (e.g., 'dmis-lab/biobert-base-cased-v1.1')")
+
 
     # Initialize model, tokenizer, and data collator
-    model = ModelClass.from_pretrained(
+    model = AutoModelForTokenClassification.from_pretrained(
         pretrained_model_name_or_path=MODEL_NAME,
         num_labels=num_labels,
-        id2label=id2label,
+        id2label={int(k): v for k, v in id2label.items()},
         label2id=label2id
         )
 
@@ -151,7 +157,7 @@ def train(hyperparameters, idx):
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"\n 🏋️‍♀️🏋️‍♀️🏋️‍♀️ Trainable params: {trainable_params:,} / {total_params:,} ({100*trainable_params/total_params:.2f}%) 🏋️‍♀️🏋️‍♀️🏋️‍♀️")
 
-    tokenizer = TokenizerClass.from_pretrained(MODEL_NAME)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     data_collator = DataCollatorForTokenClassification(tokenizer)
     
     # ============================================================
