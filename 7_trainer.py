@@ -14,11 +14,9 @@ from transformers import (
 )
 from huggingface_hub import hf_hub_download
 # Local imports 
+from config import settings
 from metrics import compute_metrics, plot_metrics
-
-# Load env variables
-load_dotenv()
-os.environ.setdefault("WANDB_PROJECT", "symptom-ner")
+from gcp_utils import upload_to_gcs, verify_upload
 
 seed = 18
 random.seed(seed)
@@ -28,6 +26,7 @@ def print_title(text,n=50):
     print("="*n)
     print(text)
     print("="*n)
+
 
 # -----------------------------------------------------------
 # Load data and id2label/label2id mappings from Hugging Face 
@@ -190,14 +189,17 @@ def train(hyperparameters, idx=0):
     val_predictions = trainer.predict(test_dataset=dataset["validation"])
     val_metrics = compute_metrics(val_predictions, id2label=id2label, save_path=f"{OUTPUT_DIR}/val_metrics.json")
     val_plot, val_data = plot_metrics(metrics=val_metrics, save_path=f"{OUTPUT_DIR}/val_f1_bins_plot.png")
-
+    
+    
     # ----------------------------
     # Test Set
     # -----------------------------
     print_title("TEST SET EVALUATION")
     test_predictions = trainer.predict(test_dataset=dataset["test"])
-    test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=f"{OUTPUT_DIR}/test_metrics.json")
-    test_plot, test_data = plot_metrics(metrics=test_metrics, save_path=f"{OUTPUT_DIR}/test_f1_bins_plot.png")
+    TEST_METRICS_PATH = f"{OUTPUT_DIR}/test_metrics.json"
+    test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=TEST_METRICS_PATH)
+    TEST_PLOTS_PATH = f"{OUTPUT_DIR}/test_f1_bins_plot.png"
+    test_plot, test_data = plot_metrics(metrics=test_metrics, save_path=TEST_PLOTS_PATH)
 
     # ----------------------------
     # Save summary
@@ -220,7 +222,7 @@ def train(hyperparameters, idx=0):
         }
     }
 
-    summary_path = f"runs/{MODEL_NAME}/summary.json"
+    summary_path = f"{OUTPUT_DIR}/summary.json"
     os.makedirs(os.path.dirname(summary_path), exist_ok=True)
     with open(summary_path, "w") as f:
         json.dump(summary, f, indent=2, default=str)
@@ -228,6 +230,14 @@ def train(hyperparameters, idx=0):
     print_title(f"Training completed! Summary saved to: {summary_path}")
     print(f"✓ Overall Test F1: {test_metrics.get('f1', 0.0):.4f}")
     print(f"✓ Validation F1: {val_metrics.get('f1', 0.0):.4f}")
+
+    if settings.SAVE_TO_GCS in ("true"):
+        upload_to_gcs(local_path = OUTPUT_DIR, gcs_path = OUTPUT_DIR, bucket_name = settings.BUCKET_NAME)
+        verify_upload(bucket_name = settings.BUCKET_NAME, gcs_path = OUTPUT_DIR)
+
+
+        
+        
 
 
 if __name__ == "__main__":

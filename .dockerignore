@@ -6,12 +6,26 @@ __pycache__
 *.ckpt
 env/
 venv/
+.venv/
 *.ipynb
 .runs/
 runs/
+wandb/
 .git
 .gitignore
 *.log
 data/
 .notebook_checkpoints
-.DS_Stores
+.DS_Store
+# Model checkpoints and large files (from .gitignore)
+checkpoint*/
+*.pt
+*.safetensors
+*.bin
+*.h5
+*.pth
+distilBERT-*/
+.cursor/
+bio_portal_symptoms/
+base_symptom_dict.csv
+doid_disease_tree.csv

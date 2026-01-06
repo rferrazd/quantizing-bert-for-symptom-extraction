@@ -22,8 +22,13 @@ class Settings:
     """
 
     BIO_PORTAL_API_KEY = os.getenv("BIO_PORTAL_API_KEY")
+    
+    # HuggingFace
     HF_TOKEN = os.getenv("HF_TOKEN")
     HUGGINGFACE_REPO_ID = os.getenv("HUGGINGFACE_REPO_ID")
+    HUGGINGFACE_MODEL_REPO_ID = os.getenv("HUGGINGFACE_MODEL_REPO_ID")
+    
+    # WANDB
     WANDB_API_KEY = os.getenv("WANDB_API_KEY")
     USE_WANDB = os.getenv("USE_WANDB")
     WANDB_PROJECT = os.environ.setdefault("WANDB_PROJECT", "symptom-ner")
@@ -35,6 +40,7 @@ class Settings:
     HF_TRANSFORMERS_CACHE = os.environ.setdefault("HF_TRANSFORMERS_CACHE", "/tmp/huggingface/transformers")
     HF_HUB_CACHE = os.environ.setdefault("HF_HUB_CACHE", "/tmp/huggingface/hub")
     # GCS Bucket
-    BUCKET_NAME = os.getenv("BUCKET_NAME", "ner-training-data-results")
+    SAVE_TO_GCS = os.getenv("SAVE_TO_GCS", "true")
+    BUCKET_NAME = os.getenv("BUCKET_NAME", "ner_training_data_results")
 
 settings = Settings()

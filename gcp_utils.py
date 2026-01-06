@@ -32,7 +32,7 @@ def upload_to_gcs(local_path: str, gcs_path: str, bucket_name: str):
             # Upload single file
             blob = bucket.blob(gcs_path)
             blob.upload_from_filename(local_path)
-            print(f"✓ Uploaded: {local_path} → gs://{bucket_name}/{gcs_path}")
+            print(f"✅ Uploaded: {local_path} → gs://{bucket_name}/{gcs_path}")
             return True
         elif local_path_obj.is_dir():
             # Upload directory recursively
@@ -50,34 +50,58 @@ def upload_to_gcs(local_path: str, gcs_path: str, bucket_name: str):
                     blob = bucket.blob(gcs_file_path)
                     blob.upload_from_filename(str(file_path))
                     uploaded_count += 1
-                    print(f"✓ Uploaded: {file_path} → gs://{bucket_name}/{gcs_file_path}")
+                    print(f"✅ Uploaded: {file_path} → gs://{bucket_name}/{gcs_file_path}")
             
             print(f"✓ Uploaded directory: {local_path} ({uploaded_count} files) → gs://{bucket_name}/{gcs_path}")
             return True
         else:
-            print(f"✗ Path does not exist: {local_path}")
+            print(f"❌ Path does not exist: {local_path}")
             return False
     except Exception as e:
-        print(f"✗ Failed to upload {local_path}: {e}")
+        print(f"❌ Failed to upload {local_path}: {e}")
         return False
     
 def verify_upload(bucket_name: str, gcs_path: str):
-    """Verify that the file exists in GCS"""
+    """
+    Verify that a file or directory exists in GCS.
+    For directories, checks if any files exist with the given prefix.
+    For files, checks if the specific blob exists.
+    """
     try:
         client = storage.Client()
         bucket = client.bucket(bucket_name)
+        
+        # Normalize the path: ensure it ends with / for directories, or check if it's a file
+        # If gcs_path doesn't end with /, treat it as potentially a directory prefix
+        # First, try checking as a single file blob
         blob = bucket.blob(gcs_path)
         
         if blob.exists():
-            print(f"✓ Verified: gs://{bucket_name}/{gcs_path} exists")
+            # It's a file
+            print(f"✓ Verified file: gs://{bucket_name}/{gcs_path} exists")
             print(f"  Size: {blob.size} bytes")
             print(f"  Created: {blob.time_created}")
             return True
         else:
-            print(f"✗ File not found: gs://{bucket_name}/{gcs_path}")
-            return False
+            # Check if it's a directory (prefix) - look for any files with this prefix
+            # Ensure prefix ends with / for proper directory matching
+            prefix = gcs_path if gcs_path.endswith("/") else f"{gcs_path}/"
+            blobs = list(bucket.list_blobs(prefix=prefix, max_results=1))
+            
+            if blobs:
+                # Directory exists (has at least one file)
+                # Count all files in the directory
+                all_blobs = list(bucket.list_blobs(prefix=prefix))
+                total_size = sum(blob.size for blob in all_blobs)
+                print(f"✓ Verified directory: gs://{bucket_name}/{gcs_path}/ exists")
+                print(f"  Files found: {len(all_blobs)}")
+                print(f"  Total size: {total_size:,} bytes")
+                return True
+            else:
+                print(f"❌ Path not found: gs://{bucket_name}/{gcs_path}")
+                return False
     except Exception as e:
-        print(f"✗ Failed to verify upload: {e}")
+        print(f"❌ Failed to verify upload: {e}")
         return False
 
 def list_bucket_files(bucket_name: str, prefix: str = None):
@@ -116,5 +140,5 @@ def list_bucket_files(bucket_name: str, prefix: str = None):
         
         return True
     except Exception as e:
-        print(f"✗ Failed to list files: {e}")
+        print(f"❌ Failed to list files: {e}")
         return False

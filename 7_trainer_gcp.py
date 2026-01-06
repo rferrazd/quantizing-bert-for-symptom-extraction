@@ -39,6 +39,7 @@ from huggingface_hub import hf_hub_download
 # Local imports 
 from metrics import compute_metrics, compute_metrics_complete, plot_metrics
 from gcp_utils import upload_to_gcs, verify_upload
+from hf_utils import ensure_branch_exists
 seed = 18
 random.seed(seed)
 torch.manual_seed(seed)
@@ -76,6 +77,14 @@ with open(label2id_path, "r") as f:
 
 # Number of labels 
 num_labels = len(id2label)
+
+# -----------------------------------------------------
+# Check PyTorch Version
+# -----------------------------------------------------
+print(f"PyTorch version: {torch.__version__}")
+if torch.cuda.is_available():
+    print(f"CUDA version: {torch.version.cuda}")
+    print(f"CUDA device: {torch.cuda.get_device_name(0)}")
 
 # -----------------------------------------------------
 # Check Available Device
@@ -154,17 +163,104 @@ def train(hyperparameters, idx):
     data_collator = DataCollatorForTokenClassification(tokenizer)
     
     # ============================================================
+    # Preprocessing function: Re-tokenize dataset for this model
+    # ============================================================
+    # The dataset may have pre-tokenized input_ids from a different tokenizer
+    # We need to re-tokenize with the current model's tokenizer to avoid
+    # index out of bounds errors (CUDA kernel assertion failures)
+    def tokenize_and_align_labels(examples):
+        """
+        Tokenize word_tokens and align word_labels to subword tokens.
+        This ensures compatibility when switching between different tokenizers
+        (e.g., DistilBERT vs BioBERT).
+        """
+        # Tokenize word tokens (is_split_into_words=True is critical!)
+        tokenized_inputs = tokenizer(
+            examples["word_tokens"],
+            is_split_into_words=True,
+            truncation=True,
+            padding=False,  # DataCollator will handle padding
+            max_length=512  # Standard BERT max length
+        )
+        
+        # Align labels to subword tokens
+        labels = []
+        for i, word_labels in enumerate(examples["word_labels"]):
+            word_ids = tokenized_inputs.word_ids(batch_index=i)
+            previous_word_idx = None
+            label_ids = []
+            
+            for word_idx in word_ids:
+                # Special tokens (CLS, SEP, padding) get -100 (ignored in loss)
+                if word_idx is None:
+                    label_ids.append(-100)
+                # First subword token of a word gets the word's label
+                elif word_idx != previous_word_idx:
+                    label_str = word_labels[word_idx]
+                    # Convert string label to integer ID
+                    label_ids.append(label2id.get(label_str, 0))  # Default to 0 (usually "O") if label not found
+                # Continuation subwords: if B- tag, convert to I- tag
+                else:
+                    label_str = word_labels[word_idx]
+                    # Convert B- to I- for continuation subwords
+                    if isinstance(label_str, str) and label_str.startswith("B-"):
+                        label_str = label_str.replace("B-", "I-")
+                    label_ids.append(label2id.get(label_str, 0))
+                
+                previous_word_idx = word_idx
+            
+            labels.append(label_ids)
+        
+        tokenized_inputs["labels"] = labels
+        return tokenized_inputs
+    
+    # Apply preprocessing to re-tokenize the dataset
+    print("🔄 Re-tokenizing dataset with current model's tokenizer...")
+    # First, map the function (this creates new input_ids, attention_mask, labels)
+    tokenized_dataset = dataset.map(
+        tokenize_and_align_labels,
+        batched=True,
+        remove_columns=None  # Keep all columns during mapping (we need word_tokens and word_labels)
+    )
+    # Then remove the old columns we don't need anymore
+    columns_to_remove = [col for col in tokenized_dataset["train"].column_names 
+                        if col not in ["input_ids", "attention_mask", "labels"]]
+    if columns_to_remove:
+        tokenized_dataset = tokenized_dataset.remove_columns(columns_to_remove)
+    print("✅ Dataset re-tokenized successfully")
+    
+    # ============================================================
     # Output Dir + Training Arguments
     # ============================================================
     OUTPUT_DIR = f"runs/{MODEL_NAME}/run_{idx}"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     USE_WANDB = os.getenv("USE_WANDB", "false").lower() == "true"
+    
+    # Prepare Hugging Face Hub configuration (if push_to_hub is enabled)
+    hub_model_repo_id = None
+    hub_branch = None
+    if hyperparameters["push_to_hub"] and settings.HUGGINGFACE_MODEL_REPO_ID:
+        hub_model_repo_id = settings.HUGGINGFACE_MODEL_REPO_ID
+        # Create a unique branch name for this run
+        # Format: run-{idx}-{model_short}-lr{lr}-bs{bs}-ep{ep}
+        # Replace slashes and special chars for valid branch name
+        model_short = MODEL_NAME.split("/")[-1].replace("-", "_")
+        hub_branch = f"run-{idx}-{model_short}-lr{hyperparameters['lr']}-bs{hyperparameters['batch_size']}-ep{hyperparameters['epoch']}"
+        # Replace dots and other invalid chars
+        hub_branch = hub_branch.replace(".", "_").replace("e-", "e").replace("e+", "e")
+        # Ensure that the branch exists before trying to push to HF otherwise it will raise an error
+        ensure_branch_exists(repo_id=hub_model_repo_id, branch_name=hub_branch, repo_type="model")
+        print(f"📤 Will push to Hugging Face Hub: {hub_model_repo_id} (branch: {hub_branch})")
+    
     # Define training arguments
     training_args = TrainingArguments(
         output_dir=OUTPUT_DIR,
         eval_strategy="epoch",
         push_to_hub=hyperparameters["push_to_hub"],
+        hub_model_id=hub_model_repo_id,  # Repository ID for pushing
+        hub_strategy="end",  # Push only the final best model (after load_best_model_at_end)
+        hub_revision=hub_branch,  # Branch name (creates new branch for each run)
         learning_rate=hyperparameters["lr"],
         per_device_train_batch_size=hyperparameters["batch_size"],
         per_device_eval_batch_size=hyperparameters["batch_size"],
@@ -186,8 +282,8 @@ def train(hyperparameters, idx):
     trainer = Trainer(
         model=model,
         args=training_args,
-        train_dataset=dataset["train"],
-        eval_dataset=dataset["validation"],
+        train_dataset=tokenized_dataset["train"],
+        eval_dataset=tokenized_dataset["validation"],
         tokenizer=tokenizer,
         data_collator=data_collator,
         # call compute_metrics with the argument id2label=id2label
@@ -201,7 +297,17 @@ def train(hyperparameters, idx):
     start_time = time.time()
     trainer.train()
     training_time = time.time() - start_time
-    print(f"✓ Training completed in {training_time:.2f} seconds ({training_time/60:.2f} minutes)")
+    print(f"✅ Training completed in {training_time:.2f} seconds ({training_time/60:.2f} minutes)")
+    
+    # Explicitly push to Hub if enabled (hub_strategy="end" should do this, but explicit is safer)
+    if hyperparameters["push_to_hub"] and hub_model_repo_id:
+        print_title("PUSHING MODEL TO HUGGING FACE HUB")
+        try:
+            trainer.push_to_hub()
+            print(f"✅ Model successfully pushed to {hub_model_repo_id} (branch: {hub_branch})")
+        except Exception as e:
+            print(f"❌ Failed to push model to Hub: {e}")
+            print("⚠️ Model was trained successfully but push to Hub failed. Check logs above.")
 
     # =============================
     # Evaluation 
@@ -211,7 +317,7 @@ def train(hyperparameters, idx):
     # Validation Set
     # -----------------------------
     print_title("VALIDATION SET EVALUATION")
-    val_predictions = trainer.predict(test_dataset=dataset["validation"])
+    val_predictions = trainer.predict(test_dataset=tokenized_dataset["validation"])
     val_metrics_path = f"{OUTPUT_DIR}/val_metrics.json"
     #val_metrics = compute_metrics(val_predictions, id2label=id2label, save_path=val_metrics_path)
     val_metrics, val_metrics_complete = compute_metrics_complete(val_predictions, id2label=id2label, save_path=val_metrics_path)
@@ -221,7 +327,7 @@ def train(hyperparameters, idx):
     # Test Set
     # -----------------------------
     print_title("TEST SET EVALUATION")
-    test_predictions = trainer.predict(test_dataset=dataset["test"])
+    test_predictions = trainer.predict(test_dataset=tokenized_dataset["test"])
     test_metrics_path = f"{OUTPUT_DIR}/test_metrics.json"
     # test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=test_metrics_path)
     test_metrics, test_metrics_complete = compute_metrics_complete(test_predictions, id2label=id2label, save_path=test_metrics_path)
@@ -248,7 +354,7 @@ def train(hyperparameters, idx):
         }
     }
 
-    summary_path = f"runs/{MODEL_NAME}/summary.json"
+    summary_path = f"{OUTPUT_DIR}/summary.json"
     os.makedirs(os.path.dirname(summary_path), exist_ok=True)
     with open(summary_path, "w") as f:
         json.dump(summary, f, indent=2, default=str)
@@ -262,29 +368,33 @@ def train(hyperparameters, idx):
         
         # Upload entire OUTPUT_DIR (includes checkpoint, metrics, plots, etc.)
         # This preserves the complete directory structure: runs/{MODEL_NAME}/run_{idx}/
-        upload_to_gcs(
+        upload_success = upload_to_gcs(
             local_path=OUTPUT_DIR,
             gcs_path=OUTPUT_DIR,
             bucket_name=settings.BUCKET_NAME
         )
-        
-        # Upload summary.json (it's at runs/{MODEL_NAME}/ level, not in run_{idx}/)
-        upload_to_gcs(
-            local_path=summary_path,
-            gcs_path=summary_path,
-            bucket_name=settings.BUCKET_NAME
+        verify_success = verify_upload(
+            bucket_name=settings.BUCKET_NAME,
+            gcs_path=OUTPUT_DIR
         )
         
-        print_title(f"✓ All results uploaded to gs://{settings.BUCKET_NAME}/{OUTPUT_DIR}")
+        if upload_success and verify_success:
+            print_title(f"✅ All results uploaded to gs://{settings.BUCKET_NAME}/{OUTPUT_DIR}")
+        else:
+            print_title(f"⚠️ Upload completed with errors. Check logs above for details.")
 
 
 if __name__ == "__main__":
     # ============================================================
     # HYPERPARAMETERS CONFIGURATION
     # ============================================================
-    from hyperparam_sets import distilbert_hyperparams
+    from hyperparam_sets import distilbert_hyperparams, biobert_hyperparams
+    
+    # completed distilbert model training 
+    # idx = 2
+    # hyperparameters = distilbert_hyperparams[idx]
     idx = 0
-    hyperparameters = distilbert_hyperparams[idx]
+    hyperparameters = biobert_hyperparams[idx]    
 
     train(hyperparameters, idx=idx)
 

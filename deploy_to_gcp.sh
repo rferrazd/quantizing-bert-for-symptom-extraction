@@ -83,12 +83,12 @@ echo ""
 # Step 1: Verify prerequisites
 echo "[Step 1] Verifying prerequisites..."
 if ! command -v gcloud &> /dev/null; then
-    echo "✗ Error: gcloud CLI not found. Please install it first."
+    echo "❌ Error: gcloud CLI not found. Please install it first."
     exit 1
 fi
 
 if ! command -v docker &> /dev/null; then
-    echo "✗ Error: Docker not found. Please install Docker Desktop."
+    echo "❌ Error: Docker not found. Please install Docker Desktop."
     exit 1
 fi
 
@@ -125,7 +125,7 @@ docker buildx build --platform linux/amd64 \
 if [ $? -eq 0 ]; then
     echo "✓ Docker image built and pushed successfully"
 else
-    echo "✗ Error: Failed to build/push Docker image"
+    echo "❌ Error: Failed to build/push Docker image"
     exit 1
 fi
 echo ""
@@ -155,8 +155,8 @@ if [ $? -eq 0 ]; then
     echo "${JOB_OUTPUT}"
     echo ""
     
-    # Extract job ID from output
-    JOB_ID=$(echo "${JOB_OUTPUT}" | grep -oP 'customJobs/\K[0-9]+' | head -1)
+    # Extract job ID from output (macOS compatible - doesn't use -P flag)
+    JOB_ID=$(echo "${JOB_OUTPUT}" | grep -o 'customJobs/[0-9]*' | head -1 | sed 's/customJobs\///')
     PROJECT_NUMBER=$(gcloud projects describe ${PROJECT_ID} --format="value(projectNumber)")
     
     if [ ! -z "${JOB_ID}" ]; then
@@ -195,7 +195,7 @@ if [ $? -eq 0 ]; then
         echo "You can find the job ID in the GCP Console and stream logs manually."
     fi
 else
-    echo "✗ Error: Failed to create custom job"
+    echo "❌ Error: Failed to create custom job"
     echo "${JOB_OUTPUT}"
     exit 1
 fi

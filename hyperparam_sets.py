@@ -35,12 +35,12 @@ biobert_hyperparams = [
 distilbert_hyperparams = [
     {
         "model_name": "distilbert-base-uncased",
-        "epoch": 2,                # DistilBERT may converge faster, but NER often needs many epochs
+        "epoch": 20,                # DistilBERT may converge faster, but NER often needs many epochs
         "lr": 5e-5,                 # Standard for DistilBERT; start with a moderate LR
         "batch_size": 32,           # Common stable setting for DistilBERT
         "weight_decay": 0.01,       # BERT/DistilBERT default
         "warmup_ratio": 0.1,        # Default warmup
-        "push_to_hub": False
+        "push_to_hub": True
     },
     {
         "model_name": "distilbert-base-uncased",
