@@ -15,6 +15,7 @@ This guide documents the complete setup process for training BERT-based NER mode
 ## Overview
 
 This setup enables you to:
+
 - Build Docker images for GPU training on GCP
 - Push images to Google Artifact Registry
 - Run training jobs on Vertex AI with NVIDIA T4 GPUs
@@ -97,7 +98,8 @@ export REGION=us-central1
 export IMAGE_URI=us-central1-docker.pkg.dev/YOUR_PROJECT_ID/bert-symptom-ner/train:latest
 ```
 
-**Explanation:** 
+**Explanation:**
+
 - `PROJECT_ID`: Your GCP project ID
 - `REGION`: Must match the region where you created the Artifact Registry repository
 - `IMAGE_URI`: Full path to your Docker image in Artifact Registry
@@ -161,6 +163,7 @@ docker buildx build --platform linux/amd64 \
 ```
 
 **Explanation:**
+
 - `--platform linux/amd64`: Builds for x86_64 architecture (required by GCP)
 - `-f Dockerfile.train`: Specifies the Dockerfile to use
 - `-t $IMAGE_URI`: Tags the image with your Artifact Registry URI
@@ -168,11 +171,13 @@ docker buildx build --platform linux/amd64 \
 - `.`: Build context (current directory)
 
 **Important Notes:**
+
 - This build may take 10-20 minutes on Apple Silicon due to emulation
 - The image will be ~4-5GB in size
 - All layers will be pushed to Artifact Registry
 
 **What Happens:**
+
 1. Docker pulls the base CUDA image
 2. Installs system dependencies
 3. Installs PyTorch with CUDA support
@@ -190,6 +195,7 @@ gcloud artifacts docker images list us-central1-docker.pkg.dev/YOUR_PROJECT_ID/b
 ```
 
 **Explanation:** You should see multiple entries:
+
 - **Manifest** (~1-2KB): Image metadata
 - **Config layer** (small): Image configuration
 - **Image layer** (~4-5GB): Actual image data with all dependencies
@@ -216,6 +222,7 @@ gcloud ai custom-jobs create \
 ```
 
 **Explanation:**
+
 - `--region`: Must match your repository region
 - `--display-name`: Human-readable name for the job
 - `--worker-pool-spec`: Defines the compute resources:
@@ -226,6 +233,7 @@ gcloud ai custom-jobs create \
   - `container-image-uri`: Your Docker image URI
 
 **Expected Output:** You'll receive a job ID like:
+
 ```
 CustomJob [projects/XXXXX/locations/us-central1/customJobs/YYYYY] is submitted successfully.
 ```
@@ -240,16 +248,19 @@ gcloud ai custom-jobs stream-logs projects/YOUR_PROJECT_NUMBER/locations/us-cent
 ```
 
 **Explanation:** This streams logs from your container in real-time. You'll see:
+
 - Provisioning messages
 - Container startup
 - Your training script output (`7_trainer_gcp.py`)
 
 **Alternative:** Check status without streaming:
+
 ```bash
 gcloud ai custom-jobs describe projects/YOUR_PROJECT_NUMBER/locations/us-central1/customJobs/JOB_ID
 ```
 
 **Job Statuses:**
+
 - **Pending**: Waiting for resources (normal, takes 2-5 minutes)
 - **Running**: Job is executing
 - **Succeeded**: Training completed successfully
@@ -262,6 +273,7 @@ gcloud ai custom-jobs describe projects/YOUR_PROJECT_NUMBER/locations/us-central
 **Problem:** Docker image was built for wrong architecture (ARM64 instead of amd64).
 
 **Solution:** Rebuild with `--platform linux/amd64` flag:
+
 ```bash
 docker buildx build --platform linux/amd64 -f Dockerfile.train -t $IMAGE_URI --push .
 ```
@@ -271,6 +283,7 @@ docker buildx build --platform linux/amd64 -f Dockerfile.train -t $IMAGE_URI --p
 **Problem:** Repository location doesn't match IMAGE_URI region.
 
 **Solution:** Ensure repository and IMAGE_URI use the same region:
+
 - Repository created in `us-central1` → IMAGE_URI must use `us-central1-docker.pkg.dev`
 - Check: `gcloud artifacts repositories list --location=us-central1`
 
@@ -279,6 +292,7 @@ docker buildx build --platform linux/amd64 -f Dockerfile.train -t $IMAGE_URI --p
 **Problem:** Docker not authenticated with Artifact Registry.
 
 **Solution:** Run authentication:
+
 ```bash
 gcloud auth configure-docker us-central1-docker.pkg.dev
 ```
@@ -286,11 +300,13 @@ gcloud auth configure-docker us-central1-docker.pkg.dev
 ### Issue: Job stays in "Pending" for >10 minutes
 
 **Possible Causes:**
+
 - GPU quota exceeded (check quotas in GCP Console)
 - Region doesn't have available GPUs
 - Billing not enabled
 
-**Solution:** 
+**Solution:**
+
 - Check quotas: GCP Console → IAM & Admin → Quotas
 - Try a different region
 - Verify billing is enabled
@@ -300,6 +316,7 @@ gcloud auth configure-docker us-central1-docker.pkg.dev
 **Problem:** Docker build context or cache is too large.
 
 **Solution:** Clean up Docker:
+
 ```bash
 docker system prune -a
 docker buildx prune
@@ -363,3 +380,114 @@ gcloud ai custom-jobs stream-logs projects/YOUR_PROJECT_NUMBER/locations/us-cent
 - **Region Selection:** Choose regions with GPU availability and lower latency for your use case.
 - **Security:** Artifact Registry repositories are private by default. Ensure proper IAM permissions.
 
+## GCP CLI Commands
+
+```bash
+
+# login to google
+
+gcloud auth login
+
+# set region
+
+gcloud config set ai/region {REGION}
+
+# set quota project
+
+gcloud config set billing/quota_project ai-project-482122
+
+# Check the gcloud configuration
+
+gcloud config list
+
+# Verify enabled services
+
+gcloud services list --enabled
+
+gcloud services list --enabled | grep -E "aiplatform|artifactregistry|cloudbuild"
+
+
+# Enable Artifact Registry (Docker images)
+
+gcloud services enable artifactregistry.googleapis.com
+
+# Enable Cloud Build (image builds)
+
+gcloud services enable cloudbuild.googleapis.com
+
+# List available accelerator types (GPUs)
+
+gcloud compute accelerator-types list \
+  --filter="zone:(southamerica-east1)" \
+  --format="table(name, zone)"
+
+# COMMANDS FOR STEP 3
+
+# Create a docker repository in the Artifacts Registry
+
+gcloud artifacts repositories create bert-symptom-ner \
+  --repository-format=docker \
+  --location=southamerica-east1 \
+  --description="Docker images for BERT symptom NER training and inference"
+
+
+# Authenticate Docker with Artifact Registry. This allows Docker on your Mac to push images.
+
+gcloud auth configure-docker southamerica-east1-docker.pkg.dev
+
+# List current artifact repositories
+
+gcloud artifacts repositories list
+
+# Delete a repository
+
+gcloud artifacts repositories delete bert-symptom-ner \
+  --location=us-central1 \
+  --quiet
+```
+# End of Selection
+```
+
+```
+
+Summary biobert all parameters hyperparam config 0.
+{
+  "model_name": "dmis-lab/biobert-base-cased-v1.1",
+  "training_time_minutes": 10.12,
+  "hyperparameters": {
+    "model_name": "dmis-lab/biobert-base-cased-v1.1",
+    "dataset_repo": "Rogarcia18/symptoms_ner_v00_biobert",
+    "epoch": 30,
+    "lr": 0.00003,
+    "batch_size": 32,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "push_to_hub": false
+  },
+  "validation_metrics": {
+    "f1": 0.0059026069847516,
+    "precision": 0.00526315789473684,
+    "recall": 0.00671892497200448,
+    "accuracy": 0.537882932166302
+  },
+  "test_metrics": {
+    "f1": 0.00233918128654971,
+    "precision": 0.00200883889112093,
+    "recall": 0.00279955207166853,
+    "accuracy": 0.529072883172562
+  }
+}
+
+  "validation_metrics": {
+    "f1": 0.005902606984751598,
+    "precision": 0.005263157894736842,
+    "recall": 0.006718924972004479,
+    "accuracy": 0.537882932166302
+  },
+  "test_metrics": {
+    "f1": 0.002339181286549707,
+    "precision": 0.002008838891120932,
+    "recall": 0.002799552071668533,
+    "accuracy": 0.5290728831725616
+  }
+}

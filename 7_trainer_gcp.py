@@ -51,34 +51,6 @@ def print_title(text,n=50):
     print(text)
     print("="*n)
 
-# -----------------------------------------------------------
-# Load data and id2label/label2id mappings from Hugging Face 
-# -----------------------------------------------------------
-
-
-dataset = load_dataset(settings.HUGGINGFACE_REPO_ID)
-# NOTE that the actual labels that will be used for training are under the column: "token_label_ids"
-dataset = dataset.rename_column("token_label_ids", "labels")
-
-# Download and load id2label.json from the hub
-id2label_path = hf_hub_download(
-    repo_id=settings.HUGGINGFACE_REPO_ID,
-    filename="id2label.json",
-    repo_type="dataset"
-)
-# Download and load label2id.json from the hub
-label2id_path = hf_hub_download(
-    repo_id=settings.HUGGINGFACE_REPO_ID,
-    filename="label2id.json",
-    repo_type="dataset"
-)
-with open(id2label_path, "r") as f:
-    id2label = json.load(f)
-with open(label2id_path, "r") as f:
-    label2id = json.load(f)
-
-# Number of labels 
-num_labels = len(id2label)
 
 # -----------------------------------------------------
 # Check Available Device
@@ -104,53 +76,56 @@ SAVE_TO_GCS = os.getenv("SAVE_TO_GCS", "false").lower() == "true"
 def train(hyperparameters, idx):
     """Train a model with given hyperparameters"""
     MODEL_NAME = hyperparameters["model_name"]
-    
+    DATASET_REPO_ID = hyperparameters["dataset_repo"]
     print_title(f"💕 FINETUNING: {MODEL_NAME} 💕")
+    print_title(f" Dataset Repo ID: {DATASET_REPO_ID} ")
 
+    # -----------------------------------------------------------
+    # Load data and id2label/label2id mappings from Hugging Face 
+    # -----------------------------------------------------------
+    # Disable progress bars for dataset loading to reduce log verbosity
+    os.environ["HF_DATASETS_DISABLE_PROGRESS_BAR"] = "1"
+    
+    dataset = load_dataset(DATASET_REPO_ID)
+    # NOTE that the actual labels that will be used for training are under the column: "token_label_ids"
+    dataset = dataset.rename_column("token_label_ids", "labels")
 
-    # # ============================================================
-    # # Import model classes based on model_name
-    # # ============================================================
-    # if MODEL_NAME == "distilbert-base-uncased":
+    # Download and load id2label.json from the hub
+    id2label_path = hf_hub_download(
+        repo_id=DATASET_REPO_ID,
+        filename="id2label.json",
+        repo_type="dataset"
+    )
+    # Download and load label2id.json from the hub
+    label2id_path = hf_hub_download(
+        repo_id=DATASET_REPO_ID,
+        filename="label2id.json",
+        repo_type="dataset"
+    )
+    with open(id2label_path, "r") as f:
+        id2label = json.load(f)
+    with open(label2id_path, "r") as f:
+        label2id = json.load(f)
 
-
-    #     from transformers import (
-    #         DistilBertTokenizerFast,
-    #         DistilBertForTokenClassification,
-    #     )
-    #     TokenizerClass = DistilBertTokenizerFast
-    #     ModelClass = DistilBertForTokenClassification
-    # elif "biobert" in MODEL_NAME.lower():
-    #     from transformers import (
-    #         BertTokenizerFast,
-    #         BertForTokenClassification,
-    #     )
-    #     TokenizerClass = BertTokenizerFast
-    #     ModelClass = BertForTokenClassification
-    # else:
-    #     raise ValueError(f"Unsupported model: {MODEL_NAME}. Supported models: 'distilbert-base-uncased', BioBERT variants (e.g., 'dmis-lab/biobert-base-cased-v1.1')")
-
+    # Number of labels 
+    num_labels = len(id2label)
 
     # Initialize model, tokenizer, and data collator
     model = AutoModelForTokenClassification.from_pretrained(
         pretrained_model_name_or_path=MODEL_NAME,
         num_labels=num_labels,
-        id2label={int(k): v for k, v in id2label.items()},
+        id2label=id2label, # this would cause the compute_metrics to fail, HF will convert keys t int automatically {int(k): v for k, v in id2label.items()}
         label2id=label2id
         )
 
-    # ============================================================
+    # =====================================================================
     # Freeze backbone: train ONLY the last classification layer (head)
-    # ============================================================
+    # =====================================================================
     # For *ForTokenClassification models, the head is typically `classifier`.
     # Freezing the backbone prevents updates to the transformer weights.
-    base_model = getattr(model, "base_model", None)
-    if base_model is None:
-        raise AttributeError(
-            f"Model {type(model).__name__} does not expose `base_model`; cannot reliably freeze backbone."
-        )
-    for p in base_model.parameters():
-        p.requires_grad = False
+    for name, param in model.named_parameters():
+        if not name.startswith("classifier"):
+            param.requires_grad = False
 
     # Sanity check: print trainable vs total parameter counts
     total_params = sum(p.numel() for p in model.parameters())
@@ -207,6 +182,8 @@ def train(hyperparameters, idx):
         save_total_limit=1,  # keep only the best checkpoint
         report_to=["wandb"] if USE_WANDB else [],  # enable Weights & Biases logging (cloud safe setup if api key is NOT provided)
         run_name=f"{MODEL_NAME}-lr{hyperparameters['lr']}-bs{hyperparameters['batch_size']}-ep{hyperparameters['epoch']}",  # shows in W&B runs
+        disable_tqdm=True,  # disable progress bars to reduce log verbosity
+        #dataloader_num_workers=0,  # disable multiprocessing to reduce worker log spam
     )
 
     # Define trainer
