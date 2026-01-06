@@ -79,14 +79,6 @@ with open(label2id_path, "r") as f:
 num_labels = len(id2label)
 
 # -----------------------------------------------------
-# Check PyTorch Version
-# -----------------------------------------------------
-print(f"PyTorch version: {torch.__version__}")
-if torch.cuda.is_available():
-    print(f"CUDA version: {torch.version.cuda}")
-    print(f"CUDA device: {torch.cuda.get_device_name(0)}")
-
-# -----------------------------------------------------
 # Check Available Device
 # -----------------------------------------------------
 if torch.cuda.is_available():
@@ -163,73 +155,6 @@ def train(hyperparameters, idx):
     data_collator = DataCollatorForTokenClassification(tokenizer)
     
     # ============================================================
-    # Preprocessing function: Re-tokenize dataset for this model
-    # ============================================================
-    # The dataset may have pre-tokenized input_ids from a different tokenizer
-    # We need to re-tokenize with the current model's tokenizer to avoid
-    # index out of bounds errors (CUDA kernel assertion failures)
-    def tokenize_and_align_labels(examples):
-        """
-        Tokenize word_tokens and align word_labels to subword tokens.
-        This ensures compatibility when switching between different tokenizers
-        (e.g., DistilBERT vs BioBERT).
-        """
-        # Tokenize word tokens (is_split_into_words=True is critical!)
-        tokenized_inputs = tokenizer(
-            examples["word_tokens"],
-            is_split_into_words=True,
-            truncation=True,
-            padding=False,  # DataCollator will handle padding
-            max_length=512  # Standard BERT max length
-        )
-        
-        # Align labels to subword tokens
-        labels = []
-        for i, word_labels in enumerate(examples["word_labels"]):
-            word_ids = tokenized_inputs.word_ids(batch_index=i)
-            previous_word_idx = None
-            label_ids = []
-            
-            for word_idx in word_ids:
-                # Special tokens (CLS, SEP, padding) get -100 (ignored in loss)
-                if word_idx is None:
-                    label_ids.append(-100)
-                # First subword token of a word gets the word's label
-                elif word_idx != previous_word_idx:
-                    label_str = word_labels[word_idx]
-                    # Convert string label to integer ID
-                    label_ids.append(label2id.get(label_str, 0))  # Default to 0 (usually "O") if label not found
-                # Continuation subwords: if B- tag, convert to I- tag
-                else:
-                    label_str = word_labels[word_idx]
-                    # Convert B- to I- for continuation subwords
-                    if isinstance(label_str, str) and label_str.startswith("B-"):
-                        label_str = label_str.replace("B-", "I-")
-                    label_ids.append(label2id.get(label_str, 0))
-                
-                previous_word_idx = word_idx
-            
-            labels.append(label_ids)
-        
-        tokenized_inputs["labels"] = labels
-        return tokenized_inputs
-    
-    # Apply preprocessing to re-tokenize the dataset
-    print("🔄 Re-tokenizing dataset with current model's tokenizer...")
-    # First, map the function (this creates new input_ids, attention_mask, labels)
-    tokenized_dataset = dataset.map(
-        tokenize_and_align_labels,
-        batched=True,
-        remove_columns=None  # Keep all columns during mapping (we need word_tokens and word_labels)
-    )
-    # Then remove the old columns we don't need anymore
-    columns_to_remove = [col for col in tokenized_dataset["train"].column_names 
-                        if col not in ["input_ids", "attention_mask", "labels"]]
-    if columns_to_remove:
-        tokenized_dataset = tokenized_dataset.remove_columns(columns_to_remove)
-    print("✅ Dataset re-tokenized successfully")
-    
-    # ============================================================
     # Output Dir + Training Arguments
     # ============================================================
     OUTPUT_DIR = f"runs/{MODEL_NAME}/run_{idx}"
@@ -282,8 +207,8 @@ def train(hyperparameters, idx):
     trainer = Trainer(
         model=model,
         args=training_args,
-        train_dataset=tokenized_dataset["train"],
-        eval_dataset=tokenized_dataset["validation"],
+        train_dataset=dataset["train"],
+        eval_dataset=dataset["validation"],
         tokenizer=tokenizer,
         data_collator=data_collator,
         # call compute_metrics with the argument id2label=id2label
@@ -317,7 +242,7 @@ def train(hyperparameters, idx):
     # Validation Set
     # -----------------------------
     print_title("VALIDATION SET EVALUATION")
-    val_predictions = trainer.predict(test_dataset=tokenized_dataset["validation"])
+    val_predictions = trainer.predict(test_dataset=dataset["validation"])
     val_metrics_path = f"{OUTPUT_DIR}/val_metrics.json"
     #val_metrics = compute_metrics(val_predictions, id2label=id2label, save_path=val_metrics_path)
     val_metrics, val_metrics_complete = compute_metrics_complete(val_predictions, id2label=id2label, save_path=val_metrics_path)
@@ -327,7 +252,7 @@ def train(hyperparameters, idx):
     # Test Set
     # -----------------------------
     print_title("TEST SET EVALUATION")
-    test_predictions = trainer.predict(test_dataset=tokenized_dataset["test"])
+    test_predictions = trainer.predict(test_dataset=dataset["test"])
     test_metrics_path = f"{OUTPUT_DIR}/test_metrics.json"
     # test_metrics = compute_metrics(test_predictions, id2label=id2label, save_path=test_metrics_path)
     test_metrics, test_metrics_complete = compute_metrics_complete(test_predictions, id2label=id2label, save_path=test_metrics_path)
