@@ -104,6 +104,69 @@ def verify_upload(bucket_name: str, gcs_path: str):
         print(f"❌ Failed to verify upload: {e}")
         return False
 
+def download_from_gcs(gcs_path: str, local_path: str, bucket_name: str):
+    """
+    Download a file or directory from GCS bucket.
+    If gcs_path is a directory prefix, downloads all files recursively preserving directory structure.
+    
+    Args:
+        gcs_path: Source path in GCS (e.g., "test-uploads/file.txt" or "runs/model/run_0")
+        local_path: Local destination file or directory path
+        bucket_name: GCS bucket name
+    """
+    try:
+        client = storage.Client()
+        bucket = client.bucket(bucket_name)
+        
+        # Normalize the GCS path prefix
+        prefix = gcs_path if gcs_path.endswith("/") else f"{gcs_path}/"
+        
+        # List all blobs with this prefix
+        blobs = list(bucket.list_blobs(prefix=prefix))
+        
+        if not blobs:
+            # Try as a single file if no directory found
+            blob = bucket.blob(gcs_path)
+            if blob.exists():
+                # Download single file
+                local_path_obj = Path(local_path)
+                local_path_obj.parent.mkdir(parents=True, exist_ok=True)
+                blob.download_to_filename(local_path)
+                print(f"✅ Downloaded: gs://{bucket_name}/{gcs_path} → {local_path}")
+                return local_path
+            else:
+                print(f"❌ Path not found: gs://{bucket_name}/{gcs_path}")
+                return None
+        
+        # Download directory recursively
+        local_path_obj = Path(local_path)
+        local_path_obj.mkdir(parents=True, exist_ok=True)
+        
+        downloaded_count = 0
+        total_blobs = len(blobs)
+        for blob in blobs:
+            # Get relative path from the GCS prefix
+            relative_path = blob.name[len(prefix):] if blob.name.startswith(prefix) else blob.name
+            if not relative_path:  # Skip if it's the prefix itself
+                continue
+            
+            # Construct local file path
+            local_file_path = local_path_obj / relative_path
+            local_file_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Download the file
+            blob.download_to_filename(str(local_file_path))
+            downloaded_count += 1
+            #print(f"✅ Downloaded: gs://{bucket_name}/{blob.name} → {local_file_path}")
+        
+        if downloaded_count == total_blobs:
+            print("✅  Downloaded all files from the folder")
+        print(f"✓ Downloaded directory: gs://{bucket_name}/{gcs_path} ({downloaded_count} files) → {local_path}")
+        return local_path
+    except Exception as e:
+        print(f"❌ Failed to download {gcs_path}: {e}")
+        return None
+
 def list_bucket_files(bucket_name: str, prefix: str = None):
     """
     List files in the bucket (optionally filtered by prefix)
