@@ -13,12 +13,7 @@ Important points:
 # -----------------------------
 import os
 from config import settings 
-# os.environ.setdefault("HF_HOME", "/tmp/huggingface")
-# os.environ.setdefault("HF_DATASETS_CACHE", "/tmp/huggingface/datasets")
-# os.environ.setdefault("HF_TRANSFORMERS_CACHE", "/tmp/huggingface/transformers")
-# os.environ.setdefault("HF_HUB_CACHE", "/tmp/huggingface/hub")
-# print("HF_HOME:", os.environ.get("HF_HOME"))
-# print("HF_DATASETS_CACHE:", os.environ.get("HF_DATASETS_CACHE"))
+
 
 # HF cache directories are now loaded from config.settings
 print("HF_HOME:", settings.HF_HOME)
@@ -77,8 +72,8 @@ def train(hyperparameters, idx):
     """Train a model with given hyperparameters"""
     MODEL_NAME = hyperparameters["model_name"]
     DATASET_REPO_ID = hyperparameters["dataset_repo"]
-    print_title(f"💕 FINETUNING: {MODEL_NAME} 💕")
-    print_title(f" Dataset Repo ID: {DATASET_REPO_ID} ")
+    print_title(f"💕 FINETUNING: {MODEL_NAME}             💕")
+    print_title(f"💕 Dataset Repo ID: {DATASET_REPO_ID}   💕")
 
     # -----------------------------------------------------------
     # Load data and id2label/label2id mappings from Hugging Face 
@@ -114,9 +109,7 @@ def train(hyperparameters, idx):
     model = AutoModelForTokenClassification.from_pretrained(
         pretrained_model_name_or_path=MODEL_NAME,
         num_labels=num_labels,
-        # Note: `transformers` will store `model.config.id2label` with **int** keys (it casts internally),
-        # but the local `id2label` we loaded from JSON keeps **string** keys, which matches `metrics.py`.
-        id2label=id2label,
+        id2label=id2label,  # String keys from JSON - kept as strings due to kwargs overwrite in from_dict()
         label2id=label2id
         )
 
@@ -140,7 +133,7 @@ def train(hyperparameters, idx):
     # ============================================================
     # Output Dir + Training Arguments
     # ============================================================
-    OUTPUT_DIR = f"runs/{MODEL_NAME}/run_{idx}"
+    OUTPUT_DIR = f"{settings.VERSION}/runs/{MODEL_NAME}/run_{idx}"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     USE_WANDB = os.getenv("USE_WANDB", "false").lower() == "true"
@@ -300,11 +293,8 @@ if __name__ == "__main__":
     # ============================================================
     from hyperparam_sets import distilbert_hyperparams, biobert_hyperparams
     
-    # completed distilbert model training 
-    # idx = 2
-    # hyperparameters = distilbert_hyperparams[idx]
     idx = 0
-    hyperparameters = biobert_hyperparams[idx]    
+    hyperparameters = distilbert_hyperparams[idx]    
 
     train(hyperparameters, idx=idx)
 

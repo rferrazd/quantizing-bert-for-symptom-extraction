@@ -10,7 +10,7 @@ biobert_hyperparams = [
         "batch_size": 32,           # common stable setting
         "weight_decay": 0.01,       # BERT default (paper: same as BERT)
         "warmup_ratio": 0.1,        # BERT default (paper: same schedule)
-        "push_to_hub": False
+        "push_to_hub": True
     },
     {
         "model_name": "dmis-lab/biobert-base-cased-v1.1",
@@ -20,7 +20,7 @@ biobert_hyperparams = [
         "batch_size": 32,
         "weight_decay": 0.01,
         "warmup_ratio": 0.1,
-        "push_to_hub": False
+        "push_to_hub": True
     },
     {
         "model_name": "dmis-lab/biobert-base-cased-v1.1",
@@ -30,7 +30,7 @@ biobert_hyperparams = [
         "batch_size": 16,           # smaller batch, higher LR pairing
         "weight_decay": 0.01,
         "warmup_ratio": 0.1,
-        "push_to_hub": False
+        "push_to_hub": True
     }
 ]
 
@@ -54,7 +54,7 @@ distilbert_hyperparams = [
         "batch_size": 32,
         "weight_decay": 0.01,
         "warmup_ratio": 0.1,
-        "push_to_hub": False
+        "push_to_hub": True
     },
     {
         "model_name": "distilbert-base-uncased",
@@ -64,6 +64,6 @@ distilbert_hyperparams = [
         "batch_size": 16,           # Smaller batch in case of memory constraints or higher LR
         "weight_decay": 0.01,
         "warmup_ratio": 0.1,
-        "push_to_hub": False
+        "push_to_hub": True
     }
 ]
