@@ -114,7 +114,9 @@ def train(hyperparameters, idx):
     model = AutoModelForTokenClassification.from_pretrained(
         pretrained_model_name_or_path=MODEL_NAME,
         num_labels=num_labels,
-        id2label=id2label, # this would cause the compute_metrics to fail, HF will convert keys t int automatically {int(k): v for k, v in id2label.items()}
+        # Note: `transformers` will store `model.config.id2label` with **int** keys (it casts internally),
+        # but the local `id2label` we loaded from JSON keeps **string** keys, which matches `metrics.py`.
+        id2label=id2label,
         label2id=label2id
         )
 
