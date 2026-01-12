@@ -153,40 +153,64 @@ def predict_word_level(
         word_labels,
     )
 
-def _aggregate_token_labels_to_word(token_labels: List[str]) -> str:
+def _aggregate_token_labels_to_word(
+    token_labels: List[str],
+    return_bio: bool = True,
+) -> str:
     """
-    Aggregates multiple token-level labels belonging to the same word
-    into a single word-level label.
+    Aggregate token-level labels belonging to the same word into one word-level label.
 
-    Example:
-        ['B-SYMPTOM_POS', 'I-SYMPTOM_POS'] → 'SYMPTOM_POS'
+    This function supports TWO modes:
+    1) return_bio=True  → preserves BIO (used for entity span extraction)
+    2) return_bio=False → collapses to SYMPTOM_POS / SYMPTOM_NEG (used earlier)
 
-    Rules:
-    - All 'O' → 'O'
-    - Same polarity (POS / NEG) → 'SYMPTOM_<POLARITY>'
-    - Mixed polarities → CONFLICT (preserved for debugging)
+    Examples:
+        ['B-SYMPTOM_POS', 'I-SYMPTOM_POS'] → 'B-SYMPTOM_POS'
+        ['I-SYMPTOM_POS', 'I-SYMPTOM_POS'] → 'I-SYMPTOM_POS'
+        ['O', 'O'] → 'O'
     """
 
+    # Collect useful information
     polarities = []
+    bio_labels = []
 
     for label in token_labels:
         if label == "O":
             polarities.append("O")
         else:
-            # Safer than label[-3:]
-            polarity = label.split("_")[-1]
+            polarity = label.split("_")[-1]   # POS / NEG
             polarities.append(polarity)
+            bio_labels.append(label)
 
+    # --------------------------------------------------
     # Case 1: all tokens are 'O'
+    # --------------------------------------------------
     if all(p == "O" for p in polarities):
         return "O"
 
-    # Remove 'O' tokens for polarity comparison
+    # Remove 'O' for polarity checks
     non_o_polarities = [p for p in polarities if p != "O"]
 
-    # Case 2: consistent polarity
+    # --------------------------------------------------
+    # Case 2: same polarity (POS or NEG)
+    # --------------------------------------------------
     if len(set(non_o_polarities)) == 1:
-        return f"SYMPTOM_{non_o_polarities[0]}"
+        polarity = non_o_polarities[0]
 
-    # Case 3: conflicting polarities
+        if return_bio:
+            # BIO PRIORITY RULE:
+            # If ANY token is B-*, the word should be B-*
+            for lbl in bio_labels:
+                if lbl.startswith("B-"):
+                    return lbl
+
+            # Otherwise, fall back to I-*
+            return bio_labels[0]
+
+        # Old behavior (collapsed label)
+        return f"SYMPTOM_{polarity}"
+
+    # --------------------------------------------------
+    # Case 3: conflicting polarities inside the same word
+    # --------------------------------------------------
     return f"CONFLICT-{'-'.join(token_labels)}"
