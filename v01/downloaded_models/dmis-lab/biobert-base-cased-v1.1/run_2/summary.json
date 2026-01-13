@@ -1,0 +1,26 @@
+{
+  "model_name": "dmis-lab/biobert-base-cased-v1.1",
+  "training_time_minutes": 7.01,
+  "hyperparameters": {
+    "model_name": "dmis-lab/biobert-base-cased-v1.1",
+    "dataset_repo": "Rogarcia18/symptoms_ner_v01_biobert",
+    "epoch": 20,
+    "lr": 5e-05,
+    "batch_size": 16,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "push_to_hub": true
+  },
+  "validation_metrics": {
+    "f1": 0.809000255689082,
+    "precision": 0.7444705882352941,
+    "recall": 0.8857782754759238,
+    "accuracy": 0.968895800933126
+  },
+  "test_metrics": {
+    "f1": 0.7906741003547896,
+    "precision": 0.7222222222222222,
+    "recall": 0.8734602463605823,
+    "accuracy": 0.9649692297288158
+  }
+}

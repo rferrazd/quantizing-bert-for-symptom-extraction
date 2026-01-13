@@ -293,8 +293,8 @@ if __name__ == "__main__":
     # ============================================================
     from hyperparam_sets import distilbert_hyperparams, biobert_hyperparams
     
-    idx = 2
-    hyperparameters = distilbert_hyperparams[idx]    
+    idx = 0
+    hyperparameters = biobert_hyperparams[idx]    
 
     train(hyperparameters, idx=idx)
 

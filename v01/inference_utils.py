@@ -1,6 +1,6 @@
 """File with functions for performing inference"""
 
-import torch
+import torch, re
 from typing import List
 
 def predict_token_level(text, model, tokenizer, device="cpu"):
@@ -77,8 +77,13 @@ def predict_word_level(
     word_ids = encoding.word_ids(batch_index=0)
 
     # ⚠️ This is ONLY for debugging / visualization
-    # It is NOT guaranteed to align perfectly with tokenizer words
-    words = text.split()
+    # This splits text on whitespace and also separates specific punctuation: . , ; ? ! @
+    # Regex explained:
+    #   - [.,;?!@]: matches any one of the listed punctuation characters
+    #   - \s+: matches one or more whitespace (word boundaries)
+    #   - The pattern will split so each word and punctuation is a separate item in the returned list
+    words = re.findall(r'\w+|[.,;?!@]', text)
+    # Example: "hello world. yes, no!" -> ['hello', 'world', '.', 'yes', ',', 'no', '!']
 
     # -------------------------------
     # 2. Model inference (token-level)
