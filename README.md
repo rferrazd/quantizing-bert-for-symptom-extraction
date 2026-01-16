@@ -18,6 +18,8 @@ Create a `.env` file in the project root:
 ```bash
 # Required
 HF_TOKEN=your_huggingface_token
+HF_USERNAME=your_huggingface_username
+VERSION=v01  # or v00, depending on your dataset version
 
 # Optional
 WANDB_API_KEY=your_wandb_key
@@ -27,10 +29,11 @@ BIO_PORTAL_API_KEY=your_bioportal_key
 # For GCP training
 SAVE_TO_GCS=true
 BUCKET_NAME=ner_training_data_results
-HUGGINGFACE_REPO_ID=Rogarcia18/symptoms_ner_v00
-HUGGINGFACE_REPO_ID_BIOBERT=Rogarcia18/symptoms_ner_v00_biobert
-HUGGINGFACE_MODEL_REPO_ID=your_username/your_model_repo
 ```
+
+The `config.py` automatically constructs dataset repo IDs from `HF_USERNAME` and `VERSION`:
+- `{HF_USERNAME}/symptoms_ner_{VERSION}` (DistilBERT)
+- `{HF_USERNAME}/symptoms_ner_{VERSION}_biobert` (BioBERT)
 
 ### Run Training
 
@@ -47,17 +50,31 @@ python 7_trainer.py
 python 7_trainer_gcp.py
 ```
 
+**Note:** `7_trainer.py` uses a hardcoded dataset repo ID. For version-specific datasets, use `7_trainer_gcp.py` which reads the dataset repo from `hyperparam_sets.py`.
+
 ### Load and Use a Trained Model
 
+**Basic Inference:**
 ```python
 from transformers import AutoTokenizer, AutoModelForTokenClassification
 import torch
+import json
+from huggingface_hub import hf_hub_download
 
 # Load model and tokenizer from checkpoint
 checkpoint_path = "runs/distilbert-base-uncased/run_0/checkpoint-XXXX"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint_path)
 model = AutoModelForTokenClassification.from_pretrained(checkpoint_path)
 model.eval()
+
+# Load label mappings
+id2label_path = hf_hub_download(
+    repo_id="your_username/symptoms_ner_v01",
+    filename="id2label.json",
+    repo_type="dataset"
+)
+with open(id2label_path, "r") as f:
+    id2label = json.load(f)
 
 # Inference
 text = "Patient reports chest pain and shortness of breath."
@@ -72,6 +89,37 @@ tokens = tokenizer.convert_ids_to_tokens(inputs["input_ids"][0])
 predicted_labels = [id2label[str(pred.item())] for pred in predictions[0]]
 ```
 
+**Using Inference Utilities (Recommended):**
+
+The `v01/inference_utils.py` module provides a complete inference pipeline:
+
+1. **Token-level prediction**: Model outputs predictions for each WordPiece token
+2. **Word-level aggregation**: Uses `tokenizer.word_ids()` to map subword tokens back to original words
+3. **BIO aggregation**: When multiple tokens belong to one word, `B-` labels take priority over `I-` labels
+4. **Span extraction**: Converts word-level BIO labels to character-level spans
+
+```python
+from v01.inference_utils import predict_word_level, word_labels_to_spans
+import torch
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+text = "Patient reports chest pain and shortness of breath."
+
+# Get word-level predictions (handles token→word aggregation automatically)
+tokens, token_labels, word_ids, words, word_labels = predict_word_level(
+    text=text,
+    model=model,
+    tokenizer=tokenizer,
+    id2label=id2label,
+    device=device
+)
+
+# Extract character-level entity spans
+spans = word_labels_to_spans(words, word_labels)
+# Returns: [{"start": int, "end": int, "text": str, "label": str}, ...]
+# Example: [{"start": 15, "end": 25, "text": "chest pain", "label": "SYMPTOM_POS"}, ...]
+```
+
 ## Project Structure
 
 ### Data Pipeline (Notebooks 1-6)
@@ -79,33 +127,34 @@ predicted_labels = [id2label[str(pred.item())] for pred in predictions[0]]
 The workflow follows this sequence:
 
 1. **`1_build_symptom_dict.ipynb`** - Extracts symptom ontology from BioPortal (DOID), creates hierarchical symptom dictionary (~895 symptoms)
-2. **`2_generate_tokenized_synthetic_data.ipynb`** - Generates synthetic training examples using templates (affirmed/negated), creates word-level tokens and BIO labels
-3. **`3_wordpiece_tokenization_distillbert.ipynb`** - Converts word-level tokens to WordPiece subwords for DistilBERT, aligns labels
-4. **`3_wordpiece_tokenization_biobert.ipynb`** - Converts word-level tokens to WordPiece subwords for BioBERT, aligns labels
-5. **`4_generate_splits.ipynb`** - Creates train/validation/test splits (80/10/10)
+2. **`v01/2_generate_tokenized_synthetic_data.ipynb`** - Generates synthetic training examples using templates (affirmed/negated), creates word-level tokens and BIO labels
+3. **`v01/3_wordpiece_tokenization_distillbert.ipynb`** - Converts word-level tokens to WordPiece subwords for DistilBERT, aligns labels
+4. **`v01/3_wordpiece_tokenization_biobert.ipynb`** - Converts word-level tokens to WordPiece subwords for BioBERT, aligns labels
+5. **`v01/4_generate_splits.ipynb`** - Creates train/validation/test splits (80/10/10)
 6. **`5_save_dataset_to_hf_hub.ipynb`** - Uploads dataset to HuggingFace Hub
 7. **`6_save_ids2tokens_to_hf_hub.ipynb`** - Saves label ID mappings to HuggingFace Hub
 
 ### Training Scripts
 
-- **`7_trainer.py`** - Local training script (CUDA/MPS/CPU)
-- **`7_trainer_gcp.py`** - GCP-optimized training script (Vertex AI)
-- **`7_trainer.ipynb`** - Training notebook (alternative)
+- **`7_trainer.py`** - Local training script (CUDA/MPS/CPU). Uses hardcoded dataset repo ID.
+- **`7_trainer_gcp.py`** - GCP-optimized training script (Vertex AI). Reads dataset repo from hyperparameter config.
 
 ### Key Files
 
-- **`metrics.py`** - Evaluation functions (seqeval integration, F1 plots)
-- **`hyperparam_sets.py`** - Hyperparameter configurations for each model
-- **`config.py`** - Environment variable management
+- **`metrics.py`** - Evaluation functions:
+  - `compute_metrics()`: Returns micro-averaged overall metrics + per-entity metrics (SYMPTOM_POS, SYMPTOM_NEG)
+  - `plot_metrics()`: Generates F1 distribution histograms with color-coded bins
+- **`hyperparam_sets.py`** - Hyperparameter configurations for each model (includes dataset repo IDs)
+- **`config.py`** - Environment variable management and settings
 - **`gcp_utils.py`** - Google Cloud Storage utilities
 - **`hf_utils.py`** - HuggingFace Hub utilities
-- **`inference/app.py`** - FastAPI inference endpoint (skeleton)
+- **`v01/inference_utils.py`** - Inference utilities (word-level predictions, span extraction)
 
 ## How to Run
 
 ### Configure Hyperparameters
 
-Edit `hyperparam_sets.py` or modify the script directly:
+Edit `hyperparam_sets.py` to modify hyperparameters or select a configuration:
 
 ```python
 # In 7_trainer.py or 7_trainer_gcp.py
@@ -118,17 +167,28 @@ hyperparameters = distilbert_hyperparams[idx]  # or biobert_hyperparams[idx]
 train(hyperparameters, idx=idx)
 ```
 
+Each hyperparameter set includes:
+- `model_name`: Model identifier
+- `dataset_repo`: HuggingFace dataset repository ID
+- `epoch`: Number of training epochs
+- `lr`: Learning rate
+- `batch_size`: Batch size
+- `weight_decay`: Weight decay
+- `warmup_ratio`: Warmup ratio
+- `push_to_hub`: Whether to push model to HuggingFace Hub
+
 ### Training Process
 
 The training script automatically:
 
-1. Loads dataset from HuggingFace Hub
-2. Selects hyperparameters from `hyperparam_sets.py`
-3. Initializes model and tokenizer (DistilBERT or BioBERT)
-4. **Freezes backbone**, trains only classification head
-5. Trains with specified hyperparameters
-6. Evaluates on validation and test sets
-7. Saves metrics, plots, and summary to `runs/{MODEL_NAME}/run_{idx}/`
+1. Loads dataset from HuggingFace Hub (using repo ID from hyperparameters)
+2. Downloads label mappings (`id2label.json`, `label2id.json`) from the dataset repo
+3. Selects hyperparameters from `hyperparam_sets.py`
+4. Initializes model and tokenizer (DistilBERT or BioBERT)
+5. **Freezes backbone**, trains only classification head
+6. Trains with specified hyperparameters
+7. Evaluates on validation and test sets after each epoch
+8. Saves metrics, plots, and summary to `runs/{MODEL_NAME}/run_{idx}/`
 
 ### Device Selection
 
@@ -151,15 +211,16 @@ runs/{MODEL_NAME}/run_{idx}/
 
 ### BIO Tagging Scheme
 
-Each symptom entity uses BIO (Beginning-Inside-Outside) tagging with symptom ID and polarity:
-
-- **B-SYMPTOM_{id}_POS**: Beginning of positive symptom entity
-- **I-SYMPTOM_{id}_POS**: Inside positive symptom entity
-- **B-SYMPTOM_{id}_NEG**: Beginning of negative symptom entity
-- **I-SYMPTOM_{id}_NEG**: Inside negative symptom entity
+**v0.1 (Current)**: Uses collapsed labels (5 total) to reduce label sparsity:
+- **B-SYMPTOM_POS**: Beginning of positive symptom entity
+- **I-SYMPTOM_POS**: Inside positive symptom entity
+- **B-SYMPTOM_NEG**: Beginning of negative symptom entity
+- **I-SYMPTOM_NEG**: Inside negative symptom entity
 - **O**: Outside any entity
 
-Example: `"Patient has chest pain"` → `["O", "O", "B-SYMPTOM_s0123_POS", "I-SYMPTOM_s0123_POS"]`
+Example: `"Patient has chest pain"` → `["O", "O", "B-SYMPTOM_POS", "I-SYMPTOM_POS"]`
+
+**Note**: v0.0 used symptom-specific IDs (e.g., `B-SYMPTOM_s0123_POS`) but failed due to extreme label sparsity (~3,500 labels, ~10 examples each). v0.1 collapses to polarity-only labels for better learning.
 
 ### WordPiece Tokenization
 
@@ -169,10 +230,13 @@ Example: `"Patient has chest pain"` → `["O", "O", "B-SYMPTOM_s0123_POS", "I-SY
 
 ### Evaluation Metrics
 
-- **Overall F1**: Micro-averaged F1 score (sequence-level, from seqeval)
-- **Overall Precision/Recall**: Sequence-level metrics
-- **Overall Accuracy**: Token-level accuracy
-- **Per-Entity Metrics**: F1, precision, recall for each symptom entity type
+Uses `seqeval` for sequence-level evaluation:
+
+- **Overall Metrics** (micro-averaged): F1, precision, recall, accuracy computed across all tokens
+- **Per-Entity Metrics**: Separate F1, precision, recall for `SYMPTOM_POS` and `SYMPTOM_NEG` entities
+- **F1 Distribution Plots**: Histograms showing per-entity F1 scores with color coding (green ≥0.8, orange ≥0.5, red <0.5)
+
+Micro-averaging aggregates all classes together, giving more weight to frequent classes. This is appropriate for NER where the `O` class dominates.
 
 ### Model Selection
 
@@ -184,8 +248,12 @@ Example: `"Patient has chest pain"` → `["O", "O", "B-SYMPTOM_s0123_POS", "I-SY
 
 ### Supported Models
 
-- **DistilBERT**: `distilbert-base-uncased` - Lightweight, fast training
-- **BioBERT**: `dmis-lab/biobert-base-cased-v1.1` - Domain-specific for biomedical text
+- **BioBERT**: `dmis-lab/biobert-base-cased-v1.1` - Domain-specific for biomedical text (recommended)
+  - Best performance: F1 ~0.79 on test set (v0.1)
+  - Better at learning symptom boundaries and negation patterns
+- **DistilBERT**: `distilbert-base-uncased` - Lightweight baseline
+  - F1 ~0.46 on test set (v0.1)
+  - Useful for fast prototyping but significantly underperforms BioBERT
 
 ### Hyperparameter Configurations
 
@@ -219,15 +287,19 @@ Each example contains:
 {
   "text": "Patient notes icteric eyes.",
   "word_tokens": ["Patient", "notes", "icteric", "eyes", "."],
-  "word_labels": ["O", "O", "B-SYMPTOM_s0697_POS", "I-SYMPTOM_s0697_POS", "O"],
+  "word_labels": ["O", "O", "B-SYMPTOM_POS", "I-SYMPTOM_POS", "O"],
   "tokens": ["[CLS]", "patient", "notes", "ict", "##eric", "eyes", ".", "[SEP]"],
   "input_ids": [101, 5776, 3964, 25891, 22420, 2159, 1012, 102],
-  "token_labels": ["None", "O", "O", "B-SYMPTOM_s0697_POS", "I-SYMPTOM_s0697_POS", "I-SYMPTOM_s0697_POS", "O", "None"],
+  "token_labels": ["None", "O", "O", "B-SYMPTOM_POS", "I-SYMPTOM_POS", "I-SYMPTOM_POS", "O", "None"],
   "token_label_ids": [-100, 3498, 3498, 1393, 3139, 3139, 3498, -100]
 }
 ```
 
-Note: `token_label_ids` is renamed to `labels` during training for HuggingFace compatibility.
+**Key points:**
+- `word_labels`: Original word-level BIO labels (5 labels: B/I-SYMPTOM_POS/NEG, O)
+- `token_labels`: WordPiece-aligned labels (continuation subwords get `I-` variant)
+- `token_label_ids`: Integer label IDs for training (-100 for special tokens, ignored in loss)
+- Column renamed to `labels` during training for HuggingFace compatibility
 
 ## GCP Training
 
@@ -245,15 +317,10 @@ This builds a Docker image, pushes to Artifact Registry, and creates a Vertex AI
 ```
 bert_symptom_ner/
 ├── 1_build_symptom_dict.ipynb              # BioPortal ontology extraction
-├── 2_generate_tokenized_synthetic_data.ipynb # Synthetic data generation
-├── 3_wordpiece_tokenization_distillbert.ipynb # DistilBERT tokenization
-├── 3_wordpiece_tokenization_biobert.ipynb   # BioBERT tokenization
-├── 4_generate_splits.ipynb                  # Train/val/test splits
 ├── 5_save_dataset_to_hf_hub.ipynb           # Dataset upload
 ├── 6_save_ids2tokens_to_hf_hub.ipynb        # Label mappings upload
 ├── 7_trainer.py                              # Local training script
 ├── 7_trainer_gcp.py                          # GCP training script
-├── 7_trainer.ipynb                           # Training notebook
 ├── metrics.py                                # Evaluation functions
 ├── hyperparam_sets.py                        # Hyperparameter configurations
 ├── config.py                                 # Environment configuration
@@ -263,8 +330,19 @@ bert_symptom_ner/
 ├── requirements.txt                          # Python dependencies
 ├── Dockerfile.train                          # Docker image for GCP
 ├── deploy_to_gcp.sh                          # GCP deployment script
-├── inference/
-│   └── app.py                                # FastAPI inference (skeleton)
+├── v00/                                      # Version 0.0 notebooks and data
+│   ├── 2_generate_tokenized_synthetic_data.ipynb
+│   ├── 3_wordpiece_tokenization_*.ipynb
+│   ├── 4_generate_splits.ipynb
+│   └── data/
+├── v01/                                      # Version 0.1 notebooks and data
+│   ├── 2_generate_tokenized_synthetic_data.ipynb
+│   ├── 3_wordpiece_tokenization_*.ipynb
+│   ├── 4_generate_splits.ipynb
+│   ├── 8_compare_performance.ipynb
+│   ├── inference_test.ipynb
+│   ├── inference_utils.py                    # Inference utilities
+│   └── data/
 └── runs/                                     # Training outputs (gitignored)
     └── {MODEL_NAME}/
         └── run_{idx}/
@@ -278,12 +356,13 @@ bert_symptom_ner/
 
 ## Notes
 
-- Training uses fixed random seed (18) for reproducibility
-- Model backbone is frozen; only classification head is trained
-- Best model selection based on overall F1 score (micro-averaged)
-- Device selection is automatic (CUDA > MPS > CPU)
-- Dataset column `token_label_ids` is renamed to `labels` for training
-- GCP training automatically uploads results to Google Cloud Storage
+- **Label Scheme**: v0.1 uses collapsed labels (5 total) to avoid label sparsity issues from v0.0
+- **Training**: Fixed random seed (18) for reproducibility; backbone frozen, only classification head trained
+- **Model Selection**: Best checkpoint selected based on overall F1 score (micro-averaged) during validation
+- **Device**: Automatic selection (CUDA > MPS > CPU)
+- **Inference**: Use `v01/inference_utils.py` for proper token→word→span pipeline with BIO aggregation
+- **Performance**: BioBERT significantly outperforms DistilBERT (see `PROGRESS_NOTES/v01.md` for details)
+- **GCP**: Training automatically uploads results to Google Cloud Storage when enabled
 
 ## License
 

@@ -1,7 +1,7 @@
 """File with functions for performing inference"""
 
 import torch, re
-from typing import List
+from typing import List, Dict
 
 def predict_token_level(text, model, tokenizer, device="cpu"):
     """
@@ -219,3 +219,125 @@ def _aggregate_token_labels_to_word(
     # Case 3: conflicting polarities inside the same word
     # --------------------------------------------------
     return f"CONFLICT-{'-'.join(token_labels)}"
+
+
+
+
+def word_labels_to_spans(words: List[str], word_labels: List[str]) -> List[Dict]:
+    """
+    Convert word-level BIO labels into character-level spans over the joined text.
+
+    - Input labels are like: "O", "B-SYMPTOM_POS", "I-SYMPTOM_POS", "B-SYMPTOM_NEG", ...
+    - Output spans use **character offsets** into: text = " ".join(words)
+
+    Behavior:
+    - "O" becomes its own single-word span (per your earlier behavior).
+      (If you want to drop O spans, we can remove that.)
+    - "B-XXX" starts a new entity span of type XXX.
+    - "I-XXX" continues the current entity if it matches XXX; otherwise it starts a new entity
+      (robust to "I" appearing without a matching previous "B").
+    """
+
+    # Sanity check: labels must align 1:1 with words
+    assert len(words) == len(word_labels), "words and word_labels must be same length"
+
+    # This is the text we will slice spans from using char indices
+    text = " ".join(words).strip()
+
+    spans: List[Dict] = []
+
+    # -------------------------------------------------------------------------
+    # Step 1) Precompute the character [start, end) offsets for every word
+    #
+    # Example: words = ["The", "patient", "."]
+    # text = "The patient ."
+    # positions = [(0,3), (4,11), (12,13)]
+    #
+    # We do this once so we DON'T have to manually update indices inside the BIO logic.
+    # -------------------------------------------------------------------------
+    positions = []
+    pos = 0
+    for w in words:
+        start = pos
+        end = start + len(w)
+        positions.append((start, end))
+        pos = end + 1  # +1 to skip the space between words in " ".join(words)
+
+    # -------------------------------------------------------------------------
+    # Step 2) Track the "current" entity we are building as we scan tokens.
+    # If current_label is None, we are not currently inside an entity.
+    # -------------------------------------------------------------------------
+    current_label = None    # normalized label like "SYMPTOM_POS" (no "B-" / "I-")
+    current_start = None    # char start of the entity in `text`
+    current_end = None      # char end (exclusive) of the entity in `text`
+
+    # Helper: when an entity ends, emit it into spans and clear state
+    def flush_current():
+        # `nonlocal` allows this nested function to modify variables from the outer function's scope.
+        # Without it, assigning to these variables would create new local variables instead of
+        # modifying the outer function's current_label, current_start, and current_end.
+        nonlocal current_label, current_start, current_end
+        if current_label is not None:
+            spans.append({
+                "start": current_start,
+                "end": current_end,
+                "text": text[current_start:current_end],
+                "label": current_label,
+            })
+            current_label = None
+            current_start = None
+            current_end = None
+
+    # -------------------------------------------------------------------------
+    # Step 3) Scan tokens and apply BIO rules (state machine)
+    # -------------------------------------------------------------------------
+    for (word, raw_label), (w_start, w_end) in zip(zip(words, word_labels), positions):
+
+        # Case A) Outside: close any open entity, and optionally emit an "O" span
+        if raw_label == "O":
+            flush_current()
+            spans.append({
+                "start": w_start,
+                "end": w_end,
+                "text": text[w_start:w_end],
+                "label": "O",
+            })
+            continue
+
+        # For BIO labels like "B-SYMPTOM_POS" / "I-SYMPTOM_POS":
+        # prefix = "B" or "I"
+        # norm   = "SYMPTOM_POS" (everything after the first "-")
+        prefix, norm = raw_label.split("-", 1)
+
+        # Case B) Begin: always start a new entity (but flush any previous first)
+        if prefix == "B":
+            flush_current()
+            current_label = norm
+            current_start = w_start
+            current_end = w_end
+
+        # Case C) Inside: extend if it matches; otherwise start a new one (robust behavior)
+        elif prefix == "I":
+            if current_label == norm:
+                # Same entity continues: just extend the end pointer
+                current_end = w_end
+            else:
+                # Mismatch or "I" without prior "B": treat as a new entity start
+                flush_current()
+                current_label = norm
+                current_start = w_start
+                current_end = w_end
+
+        # Case D) Unexpected label format: treat as a standalone span
+        else:
+            flush_current()
+            spans.append({
+                "start": w_start,
+                "end": w_end,
+                "text": text[w_start:w_end],
+                "label": raw_label,
+            })
+
+    # If we ended while still inside an entity, append the last entity span
+    flush_current()
+    return spans
