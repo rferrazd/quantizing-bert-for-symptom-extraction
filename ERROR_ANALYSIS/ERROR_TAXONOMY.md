@@ -52,6 +52,7 @@ No fixes should be implemented without first classifying the error.
 
 ## Error Categories
 
+
 ### 1. Model Overgeneralization
 
 The model predicts a symptom where none exists.
@@ -93,7 +94,6 @@ The model captures a symptom  **plus unrelated surrounding words** .
 
 * `chest` `pain` instead of `chest pain`
 
-
 ---
 
 ### 3. BIO Sequencing Errors
@@ -119,7 +119,6 @@ Incorrect polarity assignment in the presence of negation.
 **Examples**
 
 * `muscle cramps` labeled as `SYMPTOM_NEG` when context implies presence
-
 * Negation scope bleeding across conjunctions. Example: Patient does not have any `edemas` only `rashes`
 
 **Implication**
@@ -159,6 +158,19 @@ A clinically relevant symptom is not detected at all.
 * Vocabulary or representation gap
 * Strong signal for dataset enrichment
 
+### 7. Irrelevant Span Mislabeling
+
+A non-relevant span is incorrectly detected as an entity.
+
+**Examples**
+
+* `65` is labeled as SYMPTOM_POS
+
+**Implication**
+
+* Indicates semantic confusion—model cannot distinguish between entity and non-entity tokens
+* Over-labeling undermines precision
+
 ---
 
 ## Initial Versioning Philosophy (what inspired this document)
@@ -174,8 +186,6 @@ Some categories may remain acceptable depending on product goals.
 ## Guiding Principle
 
 > *Do not fix what you do not yet understand.*
-
-
 
 Add a template for logging errors (ERROR_LOG.md)
 

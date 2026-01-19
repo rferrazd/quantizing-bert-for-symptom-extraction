@@ -1,0 +1,234 @@
+{
+ "Core symptom mention (clean baseline)": [
+  {
+   "example": "Patient reports mouth symptom.",
+   "entities": [
+    "mouth symptom"
+   ]
+  },
+  {
+   "example": "The main complaint today is clonic seizure.",
+   "entities": [
+    "clonic seizure"
+   ]
+  },
+  {
+   "example": "Complains of bradypnea since yesterday.",
+   "entities": [
+    "bradypnea"
+   ]
+  },
+  {
+   "example": "Experiencing dysphonia intermittently.",
+   "entities": [
+    "dysphonia"
+   ]
+  },
+  {
+   "example": "Presents with joint inflammation.",
+   "entities": [
+    "joint inflammation"
+   ]
+  }
+ ],
+ "Temporal + progression (very important clinically)": [
+  {
+   "example": "Patient reports localized superficial lump that started two days ago.",
+   "entities": [
+    "localized superficial lump"
+   ]
+  },
+  {
+   "example": "Complains of corkscrew hair, which has been worsening over the past week.",
+   "entities": [
+    "corkscrew hair"
+   ]
+  },
+  {
+   "example": "Describes right lower quadrant abdominal pain that began suddenly this morning.",
+   "entities": [
+    "right lower quadrant abdominal pain"
+   ]
+  },
+  {
+   "example": "Has had urinary stream symptom on and off for several months.",
+   "entities": [
+    "urinary stream symptom"
+   ]
+  },
+  {
+   "example": "Notes severe diarrhea with gradual improvement.",
+   "entities": [
+    "severe diarrhea"
+   ]
+  }
+ ],
+ "Negation & uncertainty (classic failure mode)": [
+  {
+   "example": "Denies bloody diarrhea.",
+   "entities": [
+    "bloody diarrhea"
+   ]
+  },
+  {
+   "example": "No evidence of eye discharge.",
+   "entities": [
+    "eye discharge"
+   ]
+  },
+  {
+   "example": "Patient is unsure whether the wheezing is related.",
+   "entities": [
+    "wheezing"
+   ]
+  },
+  {
+   "example": "Does not currently have change in skin color, but had it previously.",
+   "entities": [
+    "change in skin color"
+   ]
+  },
+  {
+   "example": "Reports concern about precordial pain, though symptoms are minimal.",
+   "entities": [
+    "precordial pain"
+   ]
+  }
+ ],
+ "Multiple symptoms in one sentence (boundary stress test)": [
+  {
+   "example": "Reports anxiety, multiple sites pelvic lump, and rhinorrhea.",
+   "entities": [
+    "anxiety",
+    "multiple sites pelvic lump",
+    "rhinorrhea"
+   ]
+  },
+  {
+   "example": "Complains of emaciation, digestive system symptom, and eschar.",
+   "entities": [
+    "emaciation",
+    "digestive system symptom",
+    "eschar"
+   ]
+  },
+  {
+   "example": "Presents with tetanic convulsion, ventricular fibrillation, and multiple sites abdominal mass since last night.",
+   "entities": [
+    "tetanic convulsion",
+    "ventricular fibrillation",
+    "multiple sites abdominal mass"
+   ]
+  },
+  {
+   "example": "Endorses phlegm along with left lower quadrant abdominal mass.",
+   "entities": [
+    "phlegm",
+    "left lower quadrant abdominal mass"
+   ]
+  },
+  {
+   "example": "Notes muscle tenderness and inability to feed after exertion.",
+   "entities": [
+    "muscle tenderness",
+    "inability to feed"
+   ]
+  }
+ ],
+ "Long, realistic clinical sentences (THIS IS GOLD \ud83e\udd47)": [
+  {
+   "example": "The patient reports lymphadenopathy that started approximately three days ago after physical exertion, associated with mild fatigue but no fever or chills.",
+   "entities": [
+    "lymphadenopathy"
+   ]
+  },
+  {
+   "example": "Over the past week, the patient has experienced intermittent respiratory paralysis, which tends to worsen in the evenings and partially improves with rest.",
+   "entities": [
+    "respiratory paralysis"
+   ]
+  },
+  {
+   "example": "Patient describes persistent generalized pelvic mass without clear triggers, denies chest pain, nausea, or recent infections.",
+   "entities": [
+    "generalized pelvic mass"
+   ]
+  },
+  {
+   "example": "Since the last visit, the patient notes worsening steatorrhea, especially when walking long distances, but denies shortness of breath.",
+   "entities": [
+    "steatorrhea"
+   ]
+  },
+  {
+   "example": "The patient presents today due to concerns about cyclic fever, which has been affecting daily activities despite over-the-counter medications.",
+   "entities": [
+    "cyclic fever"
+   ]
+  }
+ ],
+ "Attribution & causal language (often tricky)": [
+  {
+   "example": "Patient believes the anuria may be related to recent medication changes.",
+   "entities": [
+    "anuria"
+   ]
+  },
+  {
+   "example": "Attributes renal involvement to increased stress at work.",
+   "entities": [
+    "renal involvement"
+   ]
+  },
+  {
+   "example": "Reports hemorrhage from throat following recent illness.",
+   "entities": [
+    "hemorrhage from throat"
+   ]
+  },
+  {
+   "example": "Notes onset of peripheral muscle weakness after starting a new exercise routine.",
+   "entities": [
+    "peripheral muscle weakness"
+   ]
+  },
+  {
+   "example": "Suspects sinus tachycardia is due to poor sleep.",
+   "entities": [
+    "sinus tachycardia"
+   ]
+  }
+ ],
+ "\u201cShould NOT extract\u201d edge cases (behavioral guardrails)": [
+  {
+   "example": "Family history notable for loss of balance.",
+   "entities": [
+    "loss of balance"
+   ]
+  },
+  {
+   "example": "Educated the patient about warning signs such as progressive prostration.",
+   "entities": [
+    "progressive prostration"
+   ]
+  },
+  {
+   "example": "Discussed possible future symptoms including hepatic dysfunction.",
+   "entities": [
+    "hepatic dysfunction"
+   ]
+  },
+  {
+   "example": "No current complaints, but reviewed symptoms like vaginismus.",
+   "entities": [
+    "vaginismus"
+   ]
+  },
+  {
+   "example": "Screening questionnaire includes fixed dilated pupils.",
+   "entities": [
+    "fixed dilated pupils"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "Core symptom mention (clean baseline)": [
+  "Patient reports {SYMPTOM_ENTITY}.",
+  "The main complaint today is {SYMPTOM_ENTITY}.",
+  "Complains of {SYMPTOM_ENTITY} since yesterday.",
+  "Experiencing {SYMPTOM_ENTITY} intermittently.",
+  "Presents with {SYMPTOM_ENTITY}."
+ ],
+ "Temporal + progression (very important clinically)": [
+  "Patient reports {SYMPTOM_ENTITY} that started two days ago.",
+  "Complains of {SYMPTOM_ENTITY}, which has been worsening over the past week.",
+  "Describes {SYMPTOM_ENTITY} that began suddenly this morning.",
+  "Has had {SYMPTOM_ENTITY} on and off for several months.",
+  "Notes {SYMPTOM_ENTITY} with gradual improvement."
+ ],
+ "Negation & uncertainty (classic failure mode)": [
+  "Denies {SYMPTOM_ENTITY}.",
+  "No evidence of {SYMPTOM_ENTITY}.",
+  "Patient is unsure whether the {SYMPTOM_ENTITY} is related.",
+  "Does not currently have {SYMPTOM_ENTITY}, but had it previously.",
+  "Reports concern about {SYMPTOM_ENTITY}, though symptoms are minimal."
+ ],
+ "Multiple symptoms in one sentence (boundary stress test)": [
+  "Reports {SYMPTOM_ENTITY}, {SYMPTOM_ENTITY}, and {SYMPTOM_ENTITY}.",
+  "Complains of {SYMPTOM_ENTITY}, {SYMPTOM_ENTITY}, and {SYMPTOM_ENTITY}.",
+  "Presents with {SYMPTOM_ENTITY}, {SYMPTOM_ENTITY}, and {SYMPTOM_ENTITY} since last night.",
+  "Endorses {SYMPTOM_ENTITY} along with {SYMPTOM_ENTITY}.",
+  "Notes {SYMPTOM_ENTITY} and {SYMPTOM_ENTITY} after exertion."
+ ],
+ "Long, realistic clinical sentences (THIS IS GOLD 🥇)": [
+  "The patient reports {SYMPTOM_ENTITY} that started approximately three days ago after physical exertion, associated with mild fatigue but no fever or chills.",
+  "Over the past week, the patient has experienced intermittent {SYMPTOM_ENTITY}, which tends to worsen in the evenings and partially improves with rest.",
+  "Patient describes persistent {SYMPTOM_ENTITY} without clear triggers, denies chest pain, nausea, or recent infections.",
+  "Since the last visit, the patient notes worsening {SYMPTOM_ENTITY}, especially when walking long distances, but denies shortness of breath.",
+  "The patient presents today due to concerns about {SYMPTOM_ENTITY}, which has been affecting daily activities despite over-the-counter medications."
+ ],
+ "Attribution & causal language (often tricky)": [
+  "Patient believes the {SYMPTOM_ENTITY} may be related to recent medication changes.",
+  "Attributes {SYMPTOM_ENTITY} to increased stress at work.",
+  "Reports {SYMPTOM_ENTITY} following recent illness.",
+  "Notes onset of {SYMPTOM_ENTITY} after starting a new exercise routine.",
+  "Suspects {SYMPTOM_ENTITY} is due to poor sleep."
+ ],
+ "“Should NOT extract” edge cases (behavioral guardrails)": [
+  "Family history notable for {SYMPTOM_ENTITY}.",
+  "Educated the patient about warning signs such as {SYMPTOM_ENTITY}.",
+  "Discussed possible future symptoms including {SYMPTOM_ENTITY}.",
+  "No current complaints, but reviewed symptoms like {SYMPTOM_ENTITY}.",
+  "Screening questionnaire includes {SYMPTOM_ENTITY}."
+ ]
+}

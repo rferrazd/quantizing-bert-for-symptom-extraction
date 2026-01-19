@@ -29,11 +29,8 @@ class Settings:
   
     # HuggingFace
     HF_TOKEN = os.getenv("HF_TOKEN")
-   
     HUGGINGFACE_REPO_ID = f"{HF_USERNAME}/symptoms_ner_{VERSION}"
     HUGGINGFACE_REPO_ID_BIOBERT = f"{HF_USERNAME}/symptoms_ner_{VERSION}_biobert"
-    
-    
     HUGGINGFACE_MODEL_REPO_ID = f"{HF_USERNAME}/symptom-ner-bert-models" #f"{HF_USERNAME}/symptoms_ner_{VERSION}_models"
     
     # WANDB
