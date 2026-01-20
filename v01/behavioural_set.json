@@ -3,31 +3,56 @@
   {
    "example": "Patient reports mouth symptom.",
    "entities_with_labels": [
-    {"ent" : "mouth symptom" , "label": "SYMPTOM_POS"}
+    {
+     "ent": "mouth symptom",
+     "label": "SYMPTOM_POS",
+     "start": 16,
+     "end": 29
+    }
    ]
   },
   {
    "example": "The main complaint today is clonic seizure.",
    "entities_with_labels": [
-    {"ent" : "clonic seizure" , "label": "SYMPTOM_POS"}
+    {
+     "ent": "clonic seizure",
+     "label": "SYMPTOM_POS",
+     "start": 28,
+     "end": 42
+    }
    ]
   },
   {
    "example": "Complains of bradypnea since yesterday.",
    "entities_with_labels": [
-    {"ent" : "bradypnea" , "label": "SYMPTOM_POS"}
+    {
+     "ent": "bradypnea",
+     "label": "SYMPTOM_POS",
+     "start": 13,
+     "end": 22
+    }
    ]
   },
   {
    "example": "Experiencing dysphonia intermittently.",
    "entities_with_labels": [
-    {"ent" : "dysphonia" , "label": "SYMPTOM_POS"}
+    {
+     "ent": "dysphonia",
+     "label": "SYMPTOM_POS",
+     "start": 13,
+     "end": 22
+    }
    ]
   },
   {
    "example": "Presents with joint inflammation.",
    "entities_with_labels": [
-    {"ent" : "joint inflammation" , "label": "SYMPTOM_POS"}
+    {
+     "ent": "joint inflammation",
+     "label": "SYMPTOM_POS",
+     "start": 14,
+     "end": 32
+    }
    ]
   }
  ],
@@ -35,31 +60,56 @@
   {
    "example": "Patient reports localized superficial lump that started two days ago.",
    "entities_with_labels": [
-    {"ent": "localized superficial lump", "label": "SYMPTOM_POS"}
+    {
+     "ent": "localized superficial lump",
+     "label": "SYMPTOM_POS",
+     "start": 16,
+     "end": 42
+    }
    ]
   },
   {
    "example": "Complains of corkscrew hair, which has been worsening over the past week.",
    "entities_with_labels": [
-    {"ent": "corkscrew hair", "label": "SYMPTOM_POS"}
+    {
+     "ent": "corkscrew hair",
+     "label": "SYMPTOM_POS",
+     "start": 13,
+     "end": 27
+    }
    ]
   },
   {
    "example": "Describes right lower quadrant abdominal pain that began suddenly this morning.",
    "entities_with_labels": [
-    {"ent": "right lower quadrant abdominal pain", "label": "SYMPTOM_POS"}
+    {
+     "ent": "right lower quadrant abdominal pain",
+     "label": "SYMPTOM_POS",
+     "start": 10,
+     "end": 45
+    }
    ]
   },
   {
    "example": "Has had urinary stream symptom on and off for several months.",
    "entities_with_labels": [
-    {"ent": "urinary stream symptom", "label": "SYMPTOM_POS"}
+    {
+     "ent": "urinary stream symptom",
+     "label": "SYMPTOM_POS",
+     "start": 8,
+     "end": 30
+    }
    ]
   },
   {
    "example": "Notes severe diarrhea with gradual improvement.",
    "entities_with_labels": [
-    {"ent": "severe diarrhea", "label": "SYMPTOM_POS"}
+    {
+     "ent": "severe diarrhea",
+     "label": "SYMPTOM_POS",
+     "start": 6,
+     "end": 21
+    }
    ]
   }
  ],
@@ -67,31 +117,59 @@
   {
    "example": "Denies bloody diarrhea.",
    "entities_with_labels": [
-    {"ent": "bloody diarrhea", "label": "SYMPTOM_NEG"}
+    {
+     "ent": "bloody diarrhea",
+     "label": "SYMPTOM_NEG",
+     "start": 7,
+     "end": 22
+    }
    ]
   },
   {
    "example": "No evidence of eye discharge.",
    "entities_with_labels": [
-    {"ent": "eye discharge", "label": "SYMPTOM_NEG"}
+    {
+     "ent": "eye discharge",
+     "label": "SYMPTOM_NEG",
+     "start": 15,
+     "end": 28
+    }
    ]
   },
   {
    "example": "Patient is unsure whether the wheezing is related.",
    "entities_with_labels": [
-    {"ent": "wheezing", "label": ["SYMPTOM_NEG", "SYMPTOM_POS"]}
+    {
+     "ent": "wheezing",
+     "label": [
+      "SYMPTOM_NEG",
+      "SYMPTOM_POS"
+     ],
+     "start": 30,
+     "end": 38
+    }
    ]
   },
   {
    "example": "Does not currently have change in skin color, but had it previously.",
    "entities_with_labels": [
-    {"ent": "change in skin color", "label": "SYMPTOM_NEG"}
+    {
+     "ent": "change in skin color",
+     "label": "SYMPTOM_NEG",
+     "start": 24,
+     "end": 44
+    }
    ]
   },
   {
    "example": "Reports concern about precordial pain, though symptoms are minimal.",
    "entities_with_labels": [
-    {"ent": "precordial pain", "label": "SYMPTOM_POS"}
+    {
+     "ent": "precordial pain",
+     "label": "SYMPTOM_POS",
+     "start": 22,
+     "end": 37
+    }
    ]
   }
  ],
@@ -99,39 +177,104 @@
   {
    "example": "Reports anxiety, multiple sites pelvic lump, and rhinorrhea.",
    "entities_with_labels": [
-    {"ent": "anxiety", "label": "SYMPTOM_POS"},
-    {"ent": "multiple sites pelvic lump", "label": "SYMPTOM_POS"},
-    {"ent": "rhinorrhea", "label": "SYMPTOM_POS"}
+    {
+     "ent": "anxiety",
+     "label": "SYMPTOM_POS",
+     "start": 8,
+     "end": 15
+    },
+    {
+     "ent": "multiple sites pelvic lump",
+     "label": "SYMPTOM_POS",
+     "start": 17,
+     "end": 43
+    },
+    {
+     "ent": "rhinorrhea",
+     "label": "SYMPTOM_POS",
+     "start": 49,
+     "end": 59
+    }
    ]
   },
   {
    "example": "Complains of emaciation, digestive system symptom, and eschar.",
    "entities_with_labels": [
-    {"ent": "emaciation", "label": "SYMPTOM_POS"},
-    {"ent": "digestive system symptom", "label": "SYMPTOM_POS"},
-    {"ent": "eschar", "label": "SYMPTOM_POS"}
+    {
+     "ent": "emaciation",
+     "label": "SYMPTOM_POS",
+     "start": 13,
+     "end": 23
+    },
+    {
+     "ent": "digestive system symptom",
+     "label": "SYMPTOM_POS",
+     "start": 25,
+     "end": 49
+    },
+    {
+     "ent": "eschar",
+     "label": "SYMPTOM_POS",
+     "start": 55,
+     "end": 61
+    }
    ]
   },
   {
    "example": "Presents with tetanic convulsion, ventricular fibrillation, and multiple sites abdominal mass since last night.",
    "entities_with_labels": [
-    {"ent": "tetanic convulsion", "label": "SYMPTOM_POS"},
-    {"ent": "ventricular fibrillation", "label": "SYMPTOM_POS"},
-    {"ent": "multiple sites abdominal mass", "label": "SYMPTOM_POS"}
+    {
+     "ent": "tetanic convulsion",
+     "label": "SYMPTOM_POS",
+     "start": 14,
+     "end": 32
+    },
+    {
+     "ent": "ventricular fibrillation",
+     "label": "SYMPTOM_POS",
+     "start": 34,
+     "end": 58
+    },
+    {
+     "ent": "multiple sites abdominal mass",
+     "label": "SYMPTOM_POS",
+     "start": 64,
+     "end": 93
+    }
    ]
   },
   {
    "example": "Endorses phlegm along with left lower quadrant abdominal mass.",
    "entities_with_labels": [
-    {"ent": "phlegm", "label": "SYMPTOM_POS"},
-    {"ent": "left lower quadrant abdominal mass", "label": "SYMPTOM_POS"}
+    {
+     "ent": "phlegm",
+     "label": "SYMPTOM_POS",
+     "start": 9,
+     "end": 15
+    },
+    {
+     "ent": "left lower quadrant abdominal mass",
+     "label": "SYMPTOM_POS",
+     "start": 27,
+     "end": 61
+    }
    ]
   },
   {
    "example": "Notes muscle tenderness and inability to feed after exertion.",
    "entities_with_labels": [
-    {"ent": "muscle tenderness", "label": "SYMPTOM_POS"},
-    {"ent": "inability to feed", "label": "SYMPTOM_POS"}
+    {
+     "ent": "muscle tenderness",
+     "label": "SYMPTOM_POS",
+     "start": 6,
+     "end": 23
+    },
+    {
+     "ent": "inability to feed",
+     "label": "SYMPTOM_POS",
+     "start": 28,
+     "end": 45
+    }
    ]
   }
  ],
@@ -139,37 +282,92 @@
   {
    "example": "The patient reports lymphadenopathy that started approximately three days ago after physical exertion, associated with mild fatigue but no fever or chills.",
    "entities_with_labels": [
-    {"ent": "lymphadenopathy", "label": "SYMPTOM_POS"},
-    {"ent": "fatigue", "label": "SYMPTOM_POS"},
-    {"ent": "fever", "label": "SYMPTOM_NEG"},
-    {"ent": "chills", "label": "SYMPTOM_NEG"}
+    {
+     "ent": "lymphadenopathy",
+     "label": "SYMPTOM_POS",
+     "start": 20,
+     "end": 35
+    },
+    {
+     "ent": "fatigue",
+     "label": "SYMPTOM_POS",
+     "start": 124,
+     "end": 131
+    },
+    {
+     "ent": "fever",
+     "label": "SYMPTOM_NEG",
+     "start": 139,
+     "end": 144
+    },
+    {
+     "ent": "chills",
+     "label": "SYMPTOM_NEG",
+     "start": 148,
+     "end": 154
+    }
    ]
   },
   {
    "example": "Over the past week, the patient has experienced intermittent respiratory paralysis, which tends to worsen in the evenings and partially improves with rest.",
    "entities_with_labels": [
-    {"ent": "respiratory paralysis", "label": "SYMPTOM_POS"}
+    {
+     "ent": "respiratory paralysis",
+     "label": "SYMPTOM_POS",
+     "start": 61,
+     "end": 82
+    }
    ]
   },
   {
    "example": "Patient describes persistent generalized pelvic mass without clear triggers, denies chest pain, nausea, or recent infections.",
    "entities_with_labels": [
-    {"ent": "generalized pelvic mass", "label": "SYMPTOM_POS"},
-    {"ent": "chest pain", "label": "SYMPTOM_NEG"},
-    {"ent": "nausea", "label": "SYMPTOM_NEG"}
+    {
+     "ent": "generalized pelvic mass",
+     "label": "SYMPTOM_POS",
+     "start": 29,
+     "end": 52
+    },
+    {
+     "ent": "chest pain",
+     "label": "SYMPTOM_NEG",
+     "start": 84,
+     "end": 94
+    },
+    {
+     "ent": "nausea",
+     "label": "SYMPTOM_NEG",
+     "start": 96,
+     "end": 102
+    }
    ]
   },
   {
    "example": "Since the last visit, the patient notes worsening steatorrhea, especially when walking long distances, but does not show any signs of chronic weight loss.",
    "entities_with_labels": [
-    {"ent": "steatorrhea", "label": "SYMPTOM_POS"},
-    {"ent":"chronic weight loss" , "label": "SYMPTOM_NEG" }
+    {
+     "ent": "steatorrhea",
+     "label": "SYMPTOM_POS",
+     "start": 50,
+     "end": 61
+    },
+    {
+     "ent": "chronic weight loss",
+     "label": "SYMPTOM_NEG",
+     "start": 134,
+     "end": 153
+    }
    ]
   },
   {
    "example": "The patient presents today due to concerns about cyclic fever, which has been affecting daily activities despite over-the-counter medications.",
    "entities_with_labels": [
-    {"ent": "cyclic fever", "label": "SYMPTOM_POS"}
+    {
+     "ent": "cyclic fever",
+     "label": "SYMPTOM_POS",
+     "start": 49,
+     "end": 61
+    }
    ]
   }
  ],
@@ -177,31 +375,56 @@
   {
    "example": "Patient believes the anuria may be related to recent medication changes.",
    "entities_with_labels": [
-    {"ent": "anuria", "label": "SYMPTOM_POS"}
+    {
+     "ent": "anuria",
+     "label": "SYMPTOM_POS",
+     "start": 21,
+     "end": 27
+    }
    ]
   },
   {
    "example": "Attributes renal involvement to increased stress at work.",
    "entities_with_labels": [
-    {"ent": "renal involvement", "label": "SYMPTOM_POS"}
+    {
+     "ent": "renal involvement",
+     "label": "SYMPTOM_POS",
+     "start": 11,
+     "end": 28
+    }
    ]
   },
   {
    "example": "Reports hemorrhage from throat following recent illness.",
    "entities_with_labels": [
-    {"ent": "hemorrhage from throat", "label": "SYMPTOM_POS"}
+    {
+     "ent": "hemorrhage from throat",
+     "label": "SYMPTOM_POS",
+     "start": 8,
+     "end": 30
+    }
    ]
   },
   {
    "example": "Notes onset of peripheral muscle weakness after starting a new exercise routine.",
    "entities_with_labels": [
-    {"ent": "peripheral muscle weakness", "label": "SYMPTOM_POS"}
+    {
+     "ent": "peripheral muscle weakness",
+     "label": "SYMPTOM_POS",
+     "start": 15,
+     "end": 41
+    }
    ]
   },
   {
    "example": "Suspects sinus tachycardia is due to poor sleep.",
    "entities_with_labels": [
-    {"ent": "sinus tachycardia", "label": "SYMPTOM_POS"}
+    {
+     "ent": "sinus tachycardia",
+     "label": "SYMPTOM_POS",
+     "start": 9,
+     "end": 26
+    }
    ]
   }
  ],
@@ -209,31 +432,69 @@
   {
    "example": "Family history notable for loss of balance.",
    "entities_with_labels": [
-    {"ent": "loss of balance", "label": ["SYMPTOM_NEG", "O"]}
+    {
+     "ent": "loss of balance",
+     "label": [
+      "SYMPTOM_NEG",
+      "O"
+     ],
+     "start": 27,
+     "end": 42
+    }
    ]
   },
   {
    "example": "Educated the patient about warning signs such as progressive prostration.",
    "entities_with_labels": [
-    {"ent": "progressive prostration", "label": ["SYMPTOM_NEG", "O"]}
+    {
+     "ent": "progressive prostration",
+     "label": [
+      "SYMPTOM_NEG",
+      "O"
+     ],
+     "start": 49,
+     "end": 72
+    }
    ]
   },
   {
    "example": "Discussed possible future symptoms including hepatic dysfunction.",
    "entities_with_labels": [
-    {"ent": "hepatic dysfunction", "label": ["SYMPTOM_NEG", "O", "SYMPTOM_POS"]}
+    {
+     "ent": "hepatic dysfunction",
+     "label": [
+      "SYMPTOM_NEG",
+      "O",
+      "SYMPTOM_POS"
+     ],
+     "start": 45,
+     "end": 64
+    }
    ]
   },
   {
    "example": "No current complaints, but reviewed symptoms like vaginismus.",
    "entities_with_labels": [
-    {"ent": "vaginismus", "label": "SYMPTOM_NEG"}
+    {
+     "ent": "vaginismus",
+     "label": "SYMPTOM_NEG",
+     "start": 50,
+     "end": 60
+    }
    ]
   },
   {
    "example": "Screening questionnaire includes fixed dilated pupils.",
    "entities_with_labels": [
-    {"ent": "fixed dilated pupils", "label":  ["SYMPTOM_NEG", "O"]}
+    {
+     "ent": "fixed dilated pupils",
+     "label": [
+      "SYMPTOM_NEG",
+      "O"
+     ],
+     "start": 33,
+     "end": 53
+    }
    ]
   }
  ]
