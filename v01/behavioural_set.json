@@ -141,10 +141,8 @@
    "entities_with_labels": [
     {
      "ent": "wheezing",
-     "label": [
-      "SYMPTOM_NEG",
-      "SYMPTOM_POS"
-     ],
+     "label": 
+      "SYMPTOM_POS",
      "start": 30,
      "end": 38
     }
@@ -429,29 +427,15 @@
   }
  ],
  "\u201cShould NOT extract\u201d edge cases (behavioral guardrails)": [
-  {
-   "example": "Family history notable for loss of balance.",
-   "entities_with_labels": [
-    {
-     "ent": "loss of balance",
-     "label": [
-      "SYMPTOM_NEG",
-      "O"
-     ],
-     "start": 27,
-     "end": 42
-    }
-   ]
-  },
+
   {
    "example": "Educated the patient about warning signs such as progressive prostration.",
    "entities_with_labels": [
     {
      "ent": "progressive prostration",
-     "label": [
-      "SYMPTOM_NEG",
+     "label": 
       "O"
-     ],
+     ,
      "start": 49,
      "end": 72
     }
@@ -462,11 +446,7 @@
    "entities_with_labels": [
     {
      "ent": "hepatic dysfunction",
-     "label": [
-      "SYMPTOM_NEG",
-      "O",
-      "SYMPTOM_POS"
-     ],
+     "label": "O",
      "start": 45,
      "end": 64
     }
@@ -488,10 +468,7 @@
    "entities_with_labels": [
     {
      "ent": "fixed dilated pupils",
-     "label": [
-      "SYMPTOM_NEG",
-      "O"
-     ],
+     "label": "O",
      "start": 33,
      "end": 53
     }

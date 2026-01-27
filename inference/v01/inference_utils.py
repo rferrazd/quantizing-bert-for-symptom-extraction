@@ -56,8 +56,9 @@ def predict_word_level(
         - tokens (filtered, aligned with word_ids)
         - token-level labels
         - word_ids (one per token)
-        - words (naive text.split(), for inspection only)
+        - words (word strings aligned to tokenizer word_ids)
         - word-level labels (one per word)
+        - word_offsets (one (start,end) pair per word, into original `text`)
     """
 
     # -------------------------------
@@ -67,6 +68,7 @@ def predict_word_level(
         text,
         return_tensors="pt",
         truncation=True,
+        return_offsets_mapping=True,
     )
 
     input_ids = encoding["input_ids"][0]
@@ -76,19 +78,15 @@ def predict_word_level(
     # Special tokens ([CLS], [SEP]) get word_id = None
     word_ids = encoding.word_ids(batch_index=0)
 
-    # ⚠️ This is ONLY for debugging / visualization
-    # This splits text on whitespace and also separates specific punctuation: . , ; ? ! @
-    # Regex explained:
-    #   - [.,;?!@]: matches any one of the listed punctuation characters
-    #   - \s+: matches one or more whitespace (word boundaries)
-    #   - The pattern will split so each word and punctuation is a separate item in the returned list
-    words = re.findall(r'\w+|[.,;?!@]', text)
-    # Example: "hello world. yes, no!" -> ['hello', 'world', '.', 'yes', ',', 'no', '!']
+    # Offsets (start, end) per token into the ORIGINAL `text`.
+    # Note: requires a "fast" tokenizer (HF tokenizers-backed); BioBERT tokenizers are typically fast.
+    offsets = encoding["offset_mapping"][0].tolist()
 
     # -------------------------------
     # 2. Model inference (token-level)
     # -------------------------------
-    inputs = {k: v.to(device) for k, v in encoding.items()}
+    # Exclude 'offset_mapping' from inputs - it's only for span extraction, not model inference
+    inputs = {k: v.to(device) for k, v in encoding.items() if k != "offset_mapping"}
 
     with torch.no_grad():
         outputs = model(**inputs)
@@ -106,27 +104,34 @@ def predict_word_level(
     filtered_tokens = []
     filtered_word_ids = []
     filtered_token_labels = []
+    filtered_offsets = []
 
-    for token, word_id, label in zip(tokens, word_ids, pred_token_labels):
+    for token, word_id, label, offset in zip(tokens, word_ids, pred_token_labels, offsets):
         if word_id is None:
             continue
         filtered_tokens.append(token)
         filtered_word_ids.append(word_id)
         filtered_token_labels.append(label)
+        filtered_offsets.append(tuple(offset))
 
     # Sanity check
-    assert len(filtered_tokens) == len(filtered_word_ids) == len(filtered_token_labels)
+    assert len(filtered_tokens) == len(filtered_word_ids) == len(filtered_token_labels) == len(filtered_offsets)
 
     # -------------------------------
     # 4. Aggregate TOKENS → WORDS
     # -------------------------------
     word_labels = []
+    words = []
+    word_offsets = []
 
     current_word_id = None
     current_word_token_labels = []
+    current_word_start = None
+    current_word_end = None
 
     for idx, word_id in enumerate(filtered_word_ids):
         token_label = filtered_token_labels[idx]
+        tok_start, tok_end = filtered_offsets[idx]
 
         # New word encountered
         if word_id != current_word_id:
@@ -136,19 +141,27 @@ def predict_word_level(
                     current_word_token_labels
                 )
                 word_labels.append(word_label)
+                word_offsets.append((current_word_start, current_word_end))
+                words.append(text[current_word_start:current_word_end])
 
             # Start collecting labels for new word
             current_word_id = word_id
             current_word_token_labels = [token_label]
+            current_word_start = tok_start
+            current_word_end = tok_end
 
         else:
             # Same word → multiple subword tokens
             current_word_token_labels.append(token_label)
+            # extend to end of latest subtoken
+            current_word_end = tok_end
 
     # Handle last word
     if current_word_token_labels:
         word_label = _aggregate_token_labels_to_word(current_word_token_labels)
         word_labels.append(word_label)
+        word_offsets.append((current_word_start, current_word_end))
+        words.append(text[current_word_start:current_word_end])
 
     return (
         filtered_tokens,
@@ -156,6 +169,7 @@ def predict_word_level(
         filtered_word_ids,
         words,
         word_labels,
+        word_offsets,
     )
 
 def _aggregate_token_labels_to_word(
@@ -223,12 +237,12 @@ def _aggregate_token_labels_to_word(
 
 
 
-def word_labels_to_spans(words: List[str], word_labels: List[str]) -> List[Dict]:
+def word_labels_to_spans(text: str, word_offsets: List[tuple], word_labels: List[str]) -> List[Dict]:
     """
-    Convert word-level BIO labels into character-level spans over the joined text.
+    Convert word-level BIO labels into character-level spans over the ORIGINAL `text`.
 
     - Input labels are like: "O", "B-SYMPTOM_POS", "I-SYMPTOM_POS", "B-SYMPTOM_NEG", ...
-    - Output spans use **character offsets** into: text = " ".join(words)
+    - Output spans use **character offsets** into the provided `text`
 
     Behavior:
     - "O" becomes its own single-word span (per your earlier behavior).
@@ -238,30 +252,18 @@ def word_labels_to_spans(words: List[str], word_labels: List[str]) -> List[Dict]
       (robust to "I" appearing without a matching previous "B").
     """
 
-    # Sanity check: labels must align 1:1 with words
-    assert len(words) == len(word_labels), "words and word_labels must be same length"
-
-    # This is the text we will slice spans from using char indices
-    text = " ".join(words).strip()
+    # Sanity check: labels must align 1:1 with word offsets
+    if len(word_offsets) != len(word_labels):
+        print(f"ERROR: Length mismatch!")
+        print(f"  word_offsets ({len(word_offsets)}): {word_offsets}")
+        print(f"  word_labels ({len(word_labels)}): {word_labels}")
+        raise AssertionError("word_offsets and word_labels must be same length")
 
     spans: List[Dict] = []
 
     # -------------------------------------------------------------------------
-    # Step 1) Precompute the character [start, end) offsets for every word
-    #
-    # Example: words = ["The", "patient", "."]
-    # text = "The patient ."
-    # positions = [(0,3), (4,11), (12,13)]
-    #
-    # We do this once so we DON'T have to manually update indices inside the BIO logic.
-    # -------------------------------------------------------------------------
-    positions = []
-    pos = 0
-    for w in words:
-        start = pos
-        end = start + len(w)
-        positions.append((start, end))
-        pos = end + 1  # +1 to skip the space between words in " ".join(words)
+    # Step 1) Use the provided word-level (start,end) offsets into the original text
+    positions = list(word_offsets)
 
     # -------------------------------------------------------------------------
     # Step 2) Track the "current" entity we are building as we scan tokens.
@@ -291,7 +293,8 @@ def word_labels_to_spans(words: List[str], word_labels: List[str]) -> List[Dict]
     # -------------------------------------------------------------------------
     # Step 3) Scan tokens and apply BIO rules (state machine)
     # -------------------------------------------------------------------------
-    for (word, raw_label), (w_start, w_end) in zip(zip(words, word_labels), positions):
+    for raw_label, (w_start, w_end) in zip(word_labels, positions):
+        word = text[w_start:w_end]
 
         # Case A) Outside: close any open entity, and optionally emit an "O" span
         if raw_label == "O":
@@ -299,7 +302,7 @@ def word_labels_to_spans(words: List[str], word_labels: List[str]) -> List[Dict]
             spans.append({
                 "start": w_start,
                 "end": w_end,
-                "text": text[w_start:w_end],
+                "text": word,
                 "label": "O",
             })
             continue
@@ -334,7 +337,7 @@ def word_labels_to_spans(words: List[str], word_labels: List[str]) -> List[Dict]
             spans.append({
                 "start": w_start,
                 "end": w_end,
-                "text": text[w_start:w_end],
+                "text": word,
                 "label": raw_label,
             })
 
