@@ -2,6 +2,16 @@
 
 import torch, re
 from typing import List, Dict
+from dataclasses import dataclass
+
+# TODO (P3): select a better place to define the Spans
+@dataclass
+class Spans:
+    start: int
+    end: int
+    text: str
+    label: str  #Enum['O', 'SYMPTOM_POS', 'SYMPTOM_NEG', f'CONFLICT-{some variable}']
+
 
 def predict_token_level(text, model, tokenizer, device="cpu"):
     """
@@ -36,7 +46,6 @@ def predict_token_level(text, model, tokenizer, device="cpu"):
     
     # 4) Return token strings and integer label ids (aligned)
     return filtered_tokens, filtered_preds
-
 
 def predict_word_level(
     text: str,
