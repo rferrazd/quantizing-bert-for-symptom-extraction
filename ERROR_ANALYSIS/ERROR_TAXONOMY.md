@@ -173,6 +173,16 @@ A non-relevant span is incorrectly detected as an entity.
 
 ---
 
+### Distinguishing Type 1 (Model Overgeneralization) from Type 7 (Irrelevant Span Mislabeling)
+
+These two categories both describe false positives — cases where the model predicts an entity where none should exist — but they describe the same problem from different angles.
+
+**Type 1 (Model Overgeneralization)** refers to cases where the model has learned overly broad cues for symptoms, leading it to extract entities that are not actually symptoms reported by the patient. For example, the model might incorrectly label 'back pain' or 'abdominal symptoms' as symptoms in sentences like `The patient mentioned that his father had back pain` or `In the first year of medical school, students learn about the most common causes of abdominal symptoms.` In these cases, the mention is not a symptom confirmed or denied by the patient, but the model erroneously identifies it as such.
+
+**Type 7 (Irrelevant Span Mislabeling)** is a description of *behavior*. It captures *what* the error looks like in the output: a span that carries no clinical relevance is tagged as an Pronoun. The label says nothing about why this happens — only that it did.
+
+---
+
 ## Initial Versioning Philosophy (what inspired this document)
 
 * **v0.1** : Error discovery and categorization
