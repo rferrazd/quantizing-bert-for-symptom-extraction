@@ -1,7 +1,11 @@
 import os
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv  # type: ignore
+except ModuleNotFoundError:
+    load_dotenv = None
 
-load_dotenv()
+if load_dotenv is not None:
+    load_dotenv()
 
 class Settings:
     """
@@ -29,8 +33,10 @@ class Settings:
   
     # HuggingFace
     HF_TOKEN = os.getenv("HF_TOKEN")
-    HUGGINGFACE_REPO_ID = f"{HF_USERNAME}/symptoms_ner_{VERSION}"
-    HUGGINGFACE_REPO_ID_BIOBERT = f"{HF_USERNAME}/symptoms_ner_{VERSION}_biobert"
+    # Allow explicit override (recommended) to avoid hard-coded naming assumptions.
+    # Example: HUGGINGFACE_REPO_ID="Rogarcia18/symptoms_v02_biobert"
+    HUGGINGFACE_REPO_ID = os.getenv("HUGGINGFACE_REPO_ID") or f"{HF_USERNAME}/symptoms_ner_{VERSION}"
+    HUGGINGFACE_REPO_ID_BIOBERT = os.getenv("HUGGINGFACE_REPO_ID_BIOBERT") or f"{HF_USERNAME}/symptoms_ner_{VERSION}_biobert"
     HUGGINGFACE_MODEL_REPO_ID = f"{HF_USERNAME}/symptom-ner-bert-models" #f"{HF_USERNAME}/symptoms_ner_{VERSION}_models"
     
     # WANDB

@@ -9,8 +9,7 @@ from typing import List,  Dict
 from collections import Counter
 import datetime
 # Local imports
-from error_analysis.error_taxonomy import ErrorTaxonomy, BehaviouralExample
-from inference.v01.inference_utils import Spans
+from error_analysis.error_taxonomy import ErrorTaxonomy, BehaviouralExample, Spans
 
 
 class ErrorCategorizer():

@@ -5,8 +5,14 @@ Dataclasses for the error analysis pipeline
 from dataclasses import dataclass
 from enum import Enum
 from typing import List, Optional, Union
-# local imports
-from inference.v01.inference_utils import Spans
+
+
+@dataclass
+class Spans:
+    start: int
+    end: int
+    text: str
+    label: str
 
 @dataclass 
 class ErrorTaxonomy: 

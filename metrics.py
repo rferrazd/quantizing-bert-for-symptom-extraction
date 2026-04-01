@@ -4,7 +4,7 @@ File containing the functions for evaluation a NER model, trained via HuggingFac
 import json
 import os
 import numpy as np
-from typing import Dict, Union
+from typing import Dict, Union, Optional
 import evaluate
 #from transformers import EvalPrediction, PredictionOutput
 from transformers.trainer_utils import (
@@ -12,27 +12,71 @@ from transformers.trainer_utils import (
     PredictionOutput,
 )
 from huggingface_hub import hf_hub_download
+from huggingface_hub.utils import EntryNotFoundError, RepositoryNotFoundError, RevisionNotFoundError
 
 seqeval = evaluate.load("seqeval")
 # Local imports
 from config import settings
-# Download and load id2label.json from the hub
 
-id2label_path = hf_hub_download(
-    repo_id=settings.HUGGINGFACE_REPO_ID,
-    filename="id2label.json",
-    repo_type="dataset"
-)
-with open(id2label_path, "r") as f:
-    id2label = json.load(f)
+
+def _try_load_id2label_from_path(path: str) -> Optional[dict]:
+    if not path:
+        return None
+    if not os.path.exists(path):
+        return None
+    with open(path, "r") as f:
+        return json.load(f)
+
+
+def load_id2label() -> dict:
+    """
+    Load id2label mapping.
+
+    Order:
+    - local `id2label.json` (project root / current working directory)
+    - HF Hub `settings.HUGGINGFACE_REPO_ID` as dataset
+    - HF Hub `settings.HUGGINGFACE_REPO_ID` as model
+
+    This is intentionally lazy to avoid failing imports when the Hub artifact isn't published yet.
+    """
+    local = _try_load_id2label_from_path(os.path.join(os.getcwd(), "id2label.json"))
+    if local is not None:
+        return local
+
+    last_exc: Exception | None = None
+    for repo_type in ("dataset", "model"):
+        try:
+            path = hf_hub_download(
+                repo_id=settings.HUGGINGFACE_REPO_ID,
+                filename="id2label.json",
+                repo_type=repo_type,
+                token=settings.HF_TOKEN,
+            )
+            with open(path, "r") as f:
+                return json.load(f)
+        except (EntryNotFoundError, RepositoryNotFoundError, RevisionNotFoundError, OSError) as exc:
+            last_exc = exc
+            continue
+
+    raise FileNotFoundError(
+        "Could not load `id2label.json` either locally or from the Hugging Face Hub. "
+        f"Tried repo_id={settings.HUGGINGFACE_REPO_ID!r} as repo_type 'dataset' and 'model'."
+    ) from last_exc
 
 
 # FUNCTION TO RETURN OVERALL METRICS
-def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label: Dict = id2label, save_path:str|None = None):
+def compute_metrics(
+    eval_pred: Union[EvalPrediction, PredictionOutput],
+    id2label: Optional[Dict] = None,
+    save_path: str | None = None,
+):
     """
     Returns overall metrics and per-entity and per-token labels
     Watch video for reference: https://www.youtube.com/watch?v=ujubwa_oa-0 (1:05:00)
     """
+    if id2label is None:
+        id2label = load_id2label()
+
     # 1) Unpack eval_pred
 
     # Check datatype: 
@@ -84,11 +128,18 @@ def compute_metrics(eval_pred: Union[EvalPrediction,PredictionOutput], id2label:
     return metrics
 
 # FUNCTION TO RETURN OVERALL METRICS
-def compute_metrics_complete(eval_pred: Union[EvalPrediction,PredictionOutput], id2label: Dict = id2label, save_path:str|None = None):
+def compute_metrics_complete(
+    eval_pred: Union[EvalPrediction, PredictionOutput],
+    id2label: Optional[Dict] = None,
+    save_path: str | None = None,
+):
     """
     Returns overall metrics and per-entity and per-token labels
     Watch video for reference: https://www.youtube.com/watch?v=ujubwa_oa-0 (1:05:00)
     """
+    if id2label is None:
+        id2label = load_id2label()
+
     # 1) Unpack eval_pred
 
     # Check datatype: 
