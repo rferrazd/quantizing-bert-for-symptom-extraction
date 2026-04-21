@@ -31,7 +31,10 @@ from transformers import (
     Trainer,
     DataCollatorForTokenClassification,
     AutoModelForTokenClassification,
-    AutoTokenizer
+    AutoTokenizer,
+    BertConfig,
+    BertForTokenClassification,
+    BertTokenizer,
 )
 from huggingface_hub import hf_hub_download
 # Local imports 
@@ -107,11 +110,27 @@ def train(hyperparameters, idx):
     num_labels = len(id2label)
 
     # Initialize model, tokenizer, and data collator
-    model = AutoModelForTokenClassification.from_pretrained(
-        pretrained_model_name_or_path=MODEL_NAME,
-        num_labels=num_labels,
-        id2label=id2label,  # String keys from JSON - kept as strings due to kwargs overwrite in from_dict()
-        label2id=label2id
+    # NOTE: `dmis-lab/biobert-base-cased-v1.1` ships a legacy `config.json` without `model_type`,
+    # which breaks `AutoConfig`/`AutoModel` detection. Fall back to explicit BERT classes.
+    try:
+        model = AutoModelForTokenClassification.from_pretrained(
+            pretrained_model_name_or_path=MODEL_NAME,
+            num_labels=num_labels,
+            id2label=id2label,  # String keys from JSON - kept as strings due to kwargs overwrite in from_dict()
+            label2id=label2id,
+        )
+    except ValueError as e:
+        if "model_type" not in str(e):
+            raise
+        config = BertConfig.from_pretrained(
+            pretrained_model_name_or_path=MODEL_NAME,
+            num_labels=num_labels,
+            id2label=id2label,
+            label2id=label2id,
+        )
+        model = BertForTokenClassification.from_pretrained(
+            pretrained_model_name_or_path=MODEL_NAME,
+            config=config,
         )
 
     # =====================================================================
@@ -130,7 +149,10 @@ def train(hyperparameters, idx):
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"\n 🏋️‍♀️🏋️‍♀️🏋️‍♀️ Trainable params: {trainable_params:,} / {total_params:,} ({100*trainable_params/total_params:.2f}%) 🏋️‍♀️🏋️‍♀️🏋️‍♀️")
 
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    except (ValueError, OSError):
+        tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
     data_collator = DataCollatorForTokenClassification(tokenizer)
     
     # ============================================================
@@ -190,7 +212,6 @@ def train(hyperparameters, idx):
         args=training_args,
         train_dataset=dataset["train"],
         eval_dataset=dataset["validation"],
-        tokenizer=tokenizer,
         data_collator=data_collator,
         # call compute_metrics with the argument id2label=id2label
         compute_metrics=lambda eval_pred: compute_metrics(eval_pred, id2label=id2label),
@@ -296,7 +317,7 @@ if __name__ == "__main__":
     # ============================================================
     from hyperparam_sets import distilbert_hyperparams, biobert_hyperparams
     
-    idx = 0
+    idx = 2 # BEST PERFORMING RUN FROM V01
     hyperparameters = biobert_hyperparams[idx]    
 
     train(hyperparameters, idx=idx)
