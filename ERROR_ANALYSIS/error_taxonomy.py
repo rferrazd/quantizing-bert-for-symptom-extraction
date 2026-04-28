@@ -64,3 +64,5 @@ class LogEntry:
     model_version: str 
     inference_pipeline_version: str
 
+
+

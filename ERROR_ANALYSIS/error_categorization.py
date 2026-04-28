@@ -258,3 +258,4 @@ if __name__ == "__main__":
     pprint.pprint(errors_result)
     print("=== Error counts ===")
     pprint.pprint(dict(categorizer.error_counts))
+
