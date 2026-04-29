@@ -1,0 +1,1 @@
+{"text": "Clinical history reveals mammary gland inflammation.", "word_tokens": ["Clinical", "history", "reveals", "mammary", "gland", "inflammation", "."], "word_labels": ["O", "O", "O", "B-SYMPTOM_s0286_POS", "I-SYMPTOM_s0286_POS", "I-SYMPTOM_s0286_POS", "O"], "symptom_id": "s0286", "is_negated": false}
