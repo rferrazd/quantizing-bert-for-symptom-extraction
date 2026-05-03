@@ -9,6 +9,8 @@ Important points:
 - Setup a cache in GCP using /tmp
 """
 
+# NOTE: using this file to train v03. 05/03/2026
+
 # -----------------------------
 # Hugging Face cache directories (GCP / Docker safe)
 # -----------------------------

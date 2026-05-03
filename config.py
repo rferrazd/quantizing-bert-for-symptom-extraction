@@ -36,7 +36,7 @@ class Settings:
     # Allow explicit override (recommended) to avoid hard-coded naming assumptions.
     # Example: HUGGINGFACE_REPO_ID="Rogarcia18/symptoms_v02_biobert"
     HUGGINGFACE_REPO_ID = os.getenv("HUGGINGFACE_REPO_ID") 
-    HUGGINGFACE_MODEL_REPO_ID = f"{HF_USERNAME}/symptom-ner-bert-models" #f"{HF_USERNAME}/symptoms_ner_{VERSION}_models"
+    HUGGINGFACE_MODEL_REPO_ID = f"{HF_USERNAME}/symptom-ner-bert-model-{VERSION}" #f"{HF_USERNAME}/symptoms_ner_{VERSION}_models"
     
     # WANDB
     WANDB_API_KEY = os.getenv("WANDB_API_KEY")
