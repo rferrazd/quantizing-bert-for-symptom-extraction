@@ -4,7 +4,7 @@ from config import settings
 biobert_hyperparams = [
     {
         "model_name":  "dmis-lab/biobert-base-cased-v1.1",
-        "dataset_repo" : settings.HUGGINGFACE_REPO_ID_BIOBERT,
+        "dataset_repo" : settings.HUGGINGFACE_REPO_ID,
         "epoch": 30,                # paper: NER often needs 20+ epochs
         "lr": 3e-5,                 # one of the explicitly tested LRs
         "batch_size": 32,           # common stable setting
@@ -14,7 +14,7 @@ biobert_hyperparams = [
     },
     {
         "model_name": "dmis-lab/biobert-base-cased-v1.1",
-        "dataset_repo" : settings.HUGGINGFACE_REPO_ID_BIOBERT,
+        "dataset_repo" : settings.HUGGINGFACE_REPO_ID,
         "epoch": 25,
         "lr": 1e-5,                 # lower LR, often best for token-level NER
         "batch_size": 32,
@@ -24,7 +24,7 @@ biobert_hyperparams = [
     },
     {
         "model_name": "dmis-lab/biobert-base-cased-v1.1",
-        "dataset_repo" : settings.HUGGINGFACE_REPO_ID_BIOBERT,
+        "dataset_repo" : settings.HUGGINGFACE_REPO_ID,
         "epoch": 20,
         "lr": 5e-5,                 # upper bound tested in the paper
         "batch_size": 16,           # smaller batch, higher LR pairing

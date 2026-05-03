@@ -113,4 +113,4 @@ COPY . /workspace
 # ===============================
 # This is the TRAINING entrypoint
 # You can override this in `docker run`
-CMD ["python", "v02/7_trainer_gcp.py"]
+CMD ["python", "./7_trainer_gcp.py"]
