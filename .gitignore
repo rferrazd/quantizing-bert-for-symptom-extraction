@@ -23,3 +23,5 @@ v01/downloaded_models/dmis-lab/biobert-base-cased-v1.1/run_2/
 TODO.md 
 # clear commit history
 # git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch -r distilBERT-symptom-ner-v00/ checkpoint*/' 
+v01/data/
+v03/data/
