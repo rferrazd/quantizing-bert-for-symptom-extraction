@@ -142,9 +142,9 @@ def train(hyperparameters, idx):
     # Freezing the backbone prevents updates to the transformer weights.
     
     # TRAINING THE ENTIRE MODEL
-    # for name, param in model.named_parameters():
-    #     if not name.startswith("classifier"):
-    #         param.requires_grad = False
+    for name, param in model.named_parameters():
+        if not name.startswith("classifier"):
+            param.requires_grad = False
 
     # Sanity check: print trainable vs total parameter counts
     total_params = sum(p.numel() for p in model.parameters())
