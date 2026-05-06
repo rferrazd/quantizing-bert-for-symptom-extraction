@@ -14,9 +14,12 @@ If you receive a 403 error, fall back to gsutil:
       <repo_root>/v02/downloaded_models/dmis-lab/biobert-base-cased-v1.1/run_2
 """
 
-import argparse
+import argparse, os
 import sys
 from pathlib import Path
+
+
+VERSION = os.environ["VERSION"]
 
 # ---------------------------------------------------------------------------
 # Resolve repo root from this file's location (works regardless of cwd)
@@ -32,9 +35,9 @@ from gcp_utils import download_from_gcs  # noqa: E402
 # Defaults (mirror the notebook exactly)
 # ---------------------------------------------------------------------------
 DEFAULT_BUCKET = settings.BUCKET_NAME                              # "ner_training_data_results"
-DEFAULT_GCS_PREFIX = "v02/runs/dmis-lab/biobert-base-cased-v1.1/run_2"
+DEFAULT_GCS_PREFIX = f"{VERSION}/runs/dmis-lab/biobert-base-cased-v1.1/run_2"
 DEFAULT_LOCAL_DIR = str(
-    REPO_ROOT / "v02" / "downloaded_models" / "dmis-lab" / "biobert-base-cased-v1.1" / "run_2"
+    REPO_ROOT / VERSION / "downloaded_models" / "dmis-lab" / "biobert-base-cased-v1.1" / "run_2"
 )
 
 

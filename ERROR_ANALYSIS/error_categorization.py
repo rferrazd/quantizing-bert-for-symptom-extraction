@@ -212,6 +212,61 @@ class ErrorCategorizer():
         }
 
 
+def _run_through_behavioural_set(
+    error_categorizer: ErrorCategorizer,
+    behavioural_set: Dict[str, List[BehaviouralExample]],
+    model,
+    tokenizer,
+    id2label: dict,
+    device: str,
+) -> dict:
+    """Run inference + `_check_entity_detection` on every example.
+
+    Clears `error_categorizer.error_counts` so one full sweep has a single aggregate counter.
+    Returns dict with `error_counts` (Counter), plus flat lists of error records for inspection.
+    """
+
+    # lazy import
+    from inference.v01.inference_utils import word_labels_to_spans, predict_word_level
+    error_categorizer.error_counts.clear()
+
+    total_present_errors: List[dict] = []
+    total_missing_entities: List[dict] = []
+    total_false_positives: List[dict] = []
+
+    for ex_type, examples in behavioural_set.items():
+        print(f"Category: {ex_type}")
+        for ex in examples:
+            text = ex.example
+            tokens, token_labels, word_ids, words, word_labels, word_offsets = predict_word_level(
+                text=text,
+                model=model,
+                tokenizer=tokenizer,
+                id2label=id2label,
+                device=device,
+            )
+            spans = word_labels_to_spans(
+                text=text,
+                word_offsets=word_offsets,
+                word_labels=word_labels,
+            )
+            errors = error_categorizer._check_entity_detection(example=ex, spans=spans)
+            pe = errors.get("present_errors", [])
+            me = errors.get("missing_entities", [])
+            fp = errors.get("false_positives", [])
+            total_present_errors.extend(pe)
+            total_missing_entities.extend(me)
+            total_false_positives.extend(fp)
+        print(f"  Processed {len(examples)} examples\n")
+
+    return {
+        "error_counts": error_categorizer.error_counts,
+        "present_errors": total_present_errors,
+        "missing_entities": total_missing_entities,
+        "false_positives": total_false_positives,
+    }
+
+
 # --------------------
 # DUMMY EXAMPLE USAGE
 # --------------------
