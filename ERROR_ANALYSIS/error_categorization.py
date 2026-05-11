@@ -1,8 +1,10 @@
-"""Logic for error categorization
-First created for version V01, subject to updates
-this is a VERY inicial version, the goal of categorizing the errors is to trace a direction of improvement
+"""Error categorization for behavioural NER evaluation (V01+).
 
+Each false-positive span (predicted entity with no gold match) increments *both*
+Irrelevant Span Mislabeling (type_0) and Model Overgeneralization (type_7); do
+not sum those two buckets as independent counts without deduplicating.
 """
+
 
 from typing import List,  Dict
 
@@ -192,7 +194,8 @@ class ErrorCategorizer():
             if span_idx in matched_span_indices:
                 continue
 
-            error_types = [ErrorTaxonomy.type_0, ErrorTaxonomy.type_7]  # later we will worry about differentiating these cases
+            # Both types attached to the record for downstream inspection; counters below double-count.
+            error_types = [ErrorTaxonomy.type_0, ErrorTaxonomy.type_7]
             false_positives.append({
                 "entity": None,  # no matching expected entity — this is a false positive
                 "span": span,
@@ -201,7 +204,11 @@ class ErrorCategorizer():
                 "reasoning": f"Predicted entity span '{span['text']}' not in expected entities",
             })
 
-            # NOTE: this double-counts each false positive as BOTH type_0 and type_7 - CURRENT CHOICE!
+            # Fix double-count (pick one):
+            # - Single bucket: increment only type_0 *or* type_7, and set `error_types` above to a one-element list.
+            # - Split FPs: add heuristics (span length, label POS vs NEG, proximity to gold O text) and assign
+            #   type_0 vs type_7 exclusively, incrementing once per span.
+            # - Keep double-count for legacy dashboards: document that (type_0 + type_7) / 2 ≈ FP span count.
             self.error_counts[error_types[0]] += 1
             self.error_counts[error_types[1]] += 1
 
