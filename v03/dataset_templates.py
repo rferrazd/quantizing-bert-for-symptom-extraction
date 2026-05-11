@@ -102,7 +102,7 @@ NEGATED_TEMPLATES = [
     "{SYMPTOM} excluded based on evaluation.",
 ]
 
-# ALL TOKENS SHOULD BE LABELED AT "O"
+# ALL TOKENS SHOULD BE LABELED WITH A "O":
 DISTRACTOR_TEMPLATES = [
 
 #CATEGORY 1: Generic / educational statements
