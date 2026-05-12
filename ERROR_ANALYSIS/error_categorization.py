@@ -69,10 +69,11 @@ class ErrorCategorizer():
         
         # If no meaningful overlap, this isn't a boundary error
         # (it's a different entity or wrong detection)
-        if overlap_length < expected_length * 0.5:  # Less than 50% overlap
-            # TODO: figure out what kind of error to return
-            return None  # Not a boundary issue, likely type_0 or type_7 
-        
+        if overlap_length < expected_length * 0.5:
+            if predicted_length > expected_length:
+                return ErrorTaxonomy.type_5   # too long, misaligned
+            else:
+                return ErrorTaxonomy.type_6   # too short / misaligned
         # Perfect match
         if expected_start == predicted_start and expected_end == predicted_end:
             return None
