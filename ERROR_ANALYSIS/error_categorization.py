@@ -1,8 +1,7 @@
 """Error categorization for behavioural NER evaluation (V01+).
 
-Each false-positive span (predicted entity with no gold match) increments *both*
-Irrelevant Span Mislabeling (type_0) and Model Overgeneralization (type_7); do
-not sum those two buckets as independent counts without deduplicating.
+False-positive spans (predicted entity with no gold match) are counted once as
+Irrelevant Span Mislabeling (type_0).
 """
 
 
@@ -141,7 +140,7 @@ class ErrorCategorizer():
         missing_entities = []
 
         # 1) Match expected entities -> predicted span index (lenient substring match)
-        present_with_indices = [(e, self._is_entity_in_spans(e["ent"], spans)) for e in example.entities_with_labels]
+        present_with_indices = [(e, self._is_entity_in_spans(e, spans)) for e in example.entities_with_labels]
         present = [(e, idx) for e, idx in present_with_indices if idx is not None]
         missing = [e for e, idx in present_with_indices if idx is None]
 
@@ -209,23 +208,14 @@ class ErrorCategorizer():
             if span_idx in matched_span_indices:
                 continue
 
-            # Both types attached to the record for downstream inspection; counters below double-count.
-            error_types = [ErrorTaxonomy.type_0, ErrorTaxonomy.type_7]
             false_positives.append({
-                "entity": None,  # no matching expected entity — this is a false positive
+                "entity": None,
                 "span": span,
                 "span_idx": span_idx,
-                "errors": error_types,
+                "errors": [ErrorTaxonomy.type_0],
                 "reasoning": f"Predicted entity span '{span['text']}' not in expected entities",
             })
-
-            # Fix double-count (pick one):
-            # - Single bucket: increment only type_0 *or* type_7, and set `error_types` above to a one-element list.
-            # - Split FPs: add heuristics (span length, label POS vs NEG, proximity to gold O text) and assign
-            #   type_0 vs type_7 exclusively, incrementing once per span.
-            # - Keep double-count for legacy dashboards: document that (type_0 + type_7) / 2 ≈ FP span count.
-            self.error_counts[error_types[0]] += 1
-            self.error_counts[error_types[1]] += 1
+            self.error_counts[ErrorTaxonomy.type_0] += 1
 
         return {
             "present_errors": all_errors,  # boundary+label errors per expected entity span
