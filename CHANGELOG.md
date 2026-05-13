@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-05-13
+
+- `error_analysis/error_categorization.py`: positional `_is_entity_in_spans`; `_check_boundaries` routes <50% overlap to type_5/type_6 by length; FP counts only type_0.
+- `error_analysis/tests/test_error_categorizer.py`: 19 tests, all passing.
+- `PROGRESS_NOTES/v03.md`: post-fix V03/V032 counts; V032's overreach drop was scorer artifact.
+
 ## 2026-05-07
 
 ### `PROGRESS_NOTES/v03.md`

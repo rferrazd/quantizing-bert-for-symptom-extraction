@@ -131,6 +131,7 @@ class ErrorCategorizer():
         if predicted_label.split("_")[1] != label.split("_")[1]:
             return ErrorTaxonomy.type_3 # incorrect polarity assignment
 
+    # Main executor
     def _check_entity_detection(
         self,
         example: BehaviouralExample,
