@@ -244,8 +244,6 @@ def _aggregate_token_labels_to_word(
     return f"CONFLICT-{'-'.join(token_labels)}"
 
 
-
-
 def word_labels_to_spans(text: str, word_offsets: List[tuple], word_labels: List[str]) -> List[Dict]:
     """
     Convert word-level BIO labels into character-level spans over the ORIGINAL `text`.
