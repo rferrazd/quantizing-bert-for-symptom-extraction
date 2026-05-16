@@ -1,10 +1,18 @@
 {
+  "env": {
+    "CLAUDE_CODE_USE_VERTEX": "0",
+    "ANTHROPIC_MODEL": "claude-sonnet-4-6",
+    "ANTHROPIC_SMALL_FAST_MODEL": "claude-haiku-4-5"
+  },
   "permissions": {
     "allow": [
       "Bash(python3 -c \"import pytest; print\\(pytest.__version__\\)\")",
       "Bash(python3 -c \"import sys; print\\(sys.executable\\)\")",
       "Bash(/Users/robertagarcia/Desktop/learning/bert_symptom_ner/.venv/bin/pip install *)",
-      "Bash(.venv/bin/python -m pytest error_analysis/tests/test_error_categorizer.py -v)"
+      "Bash(.venv/bin/python -m pytest error_analysis/tests/test_error_categorizer.py -v)",
+      "WebFetch(domain:arxiv.org)",
+      "Bash(python3 -c ' *)",
+      "Bash(jupyter nbconvert *)"
     ]
   }
 }
