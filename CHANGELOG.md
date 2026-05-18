@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-05-18 — session `ceec7de1-2a8b-4ead-b0da-11d3fcd0a6c9`
+
+- `data_preparation/dataset_generator.py`: fixed cross-polarity dedup in `build_fill_map` (single `used_ids` set + retry cap); moved save block out of per-group loop; `import json` at module level; `__main__` now uses methods' `save_in_jsonl_path` and calls `gen.tokenize_all_samples(samples, …)` correctly; `Literal[None|str]` → `Optional[str]`.
+- `test_pipeline_walkthrough.py`: new step-by-step walkthrough of every helper and method in the generator (learning aid).
+
 ## 2026-05-13
 
 - `error_analysis/error_categorization.py`: positional `_is_entity_in_spans`; `_check_boundaries` routes <50% overlap to type_5/type_6 by length; FP counts only type_0.
