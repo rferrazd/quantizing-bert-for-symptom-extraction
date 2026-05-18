@@ -140,25 +140,64 @@ class DatasetGenerator:
                 yield group_name, template
 
 
-    def generate_raw_synthetic_samples(self, K: int = 20, save_in_jsonl_path: Optional[str] = None) -> List[dict]:
+    def generate_raw_synthetic_samples(self, K: int | None = 40, save_in_jsonl_path: Optional[str] = None) -> List[dict]:
         """
-        Single-symptom groups: one sample per symptom × per template (exhaustive, like v03).
-        Multi-symptom groups:  K random draws per template.
+        Generate the raw (un-tokenized) synthetic dataset by filling every template
+        with concrete symptoms drawn from `self.symptoms_df`.
+
+        How many samples per template?
+
+            - Single-symptom groups (affirmed, negated, distractor): EXHAUSTIVE.
+              Each template has exactly ONE placeholder. We produce one sample
+              per symptom in the pool. So with N symptoms, every such template
+              contributes N samples.
+
+            - Multi-symptom groups (hda): K random draws per template.
+              Each template has SEVERAL indexed placeholders (e.g. SYMPTOM_POS_1,
+              SYMPTOM_POS_2, SYMPTOM_NEG_1...). True exhaustive coverage would be
+              combinatorial in the pool size (N × (N-1) × (N-2) × ...) — infeasible.
+              Instead we sample K independent draws, each one fills every slot
+              randomly.
+
+        What does K mean?
+
+            K is the number of random draws we generate PER multi-symptom template.
+
+            - K = 40 (default):  40 random samples per HDA template.
+                                  With 20 HDA templates → 800 HDA samples total.
+            - K = None:          K is set to len(symptoms_df) automatically.
+                                  Produces the same sample count as a single-symptom
+                                  template would (one per symptom). Roughly balances
+                                  HDA sample count with affirmed/negated/distractor.
+
+        Args:
+            K: Random draws per multi-symptom template (None → pool size).
+            save_in_jsonl_path: If provided, write all samples to this path as JSONL.
+
+        Returns:
+            List of sample dicts. Each dict has keys: text, template_group,
+            template, symptoms.
         """
         samples: List[dict] = []
 
+        # K = None → use pool size as K (effectively "one HDA sample per symptom per template").
+        K = K if K else len(self.symptoms_df)
+
+        # Outer loop: walk every (group_name, [template, ...]) pair from dataset_templates.
         for group_name, templates in self.dataset_templates:
             for template in templates:
 
                 if group_name in SINGLE_SYMPTOM_GROUPS:
+                    # ---- EXHAUSTIVE PATH ----
+                    # Single-symptom template: one placeholder, one sample per symptom.
 
-                    # Dict literal used as a lookup table: {"key": value}[key_to_lookup].
-                    # Equivalent to a chain of if/elif but shorter.
-                    # e.g. if group_name == "affirmed" → ph = "SYMPTOM_POS"
+                    # Pick the right placeholder name for this group.
+                    # affirmed → SYMPTOM_POS, negated → SYMPTOM_NEG, distractor → SYMPTOM_O.
                     ph = {"affirmed": "SYMPTOM_POS",
                         "negated":  "SYMPTOM_NEG",
                         "distractor": "SYMPTOM_O"}[group_name]
 
+                    # Iterate every row of the symptoms DataFrame — one sample each.
                     for _, row in self.symptoms_df.iterrows():
                         fill_map = {ph: (row["id"], row["prefLabel"])}
                         samples.append({
@@ -169,6 +208,8 @@ class DatasetGenerator:
                         })
 
                 else:
+                    # ---- SAMPLED PATH (multi-symptom, e.g. hda) ----
+                    # K random draws; each draw picks fresh symptoms for every indexed slot.
                     for _ in range(K):
                         fill_map = build_fill_map(template, group_name, self.symptoms_df)
                         samples.append({
