@@ -1,16 +1,8 @@
-# Template inventory (import module and sum *_TEMPLATES lists; 211 total):
-#   AFFIRMED_TEMPLATES: 40
-#   NEGATED_TEMPLATES: 40          (-1: removed "zero instances" unnatural phrasing)
-#   DISTRACTOR_TEMPLATES: 38
-#   MULTI_SYMPTOM_TEMPLATES: 19
-#   NARRATIVE_TEMPLATES: 30
-#   MIXED_POLARITY_CLAUSE_TEMPLATES: 10
-#   WORD_COLLISION_TEMPLATES: 12
-#   TRIAGE_HDA_TEMPLATES: 22       (new — Brazilian ED/HDA telegraphic style)
-#
-# Placeholder indexing convention (v04):
-#   Bare {SYMPTOM_POS} / {SYMPTOM_NEG} repeated in one template → SAME symptom fills all.
-#   {SYMPTOM_POS_1}, {SYMPTOM_POS_2} … → builder draws DIFFERENT symptoms per index.
+# Template inventory:
+#   AFFIRMED_TEMPLATES:  40   — single-symptom, patient-affirmed
+#   NEGATED_TEMPLATES:   35   — single-symptom, patient-denied (current denials only; past history is O)
+#   DISTRACTOR_TEMPLATES: 38  — single-symptom, non-patient context (all O labels)
+#   HDA_TEMPLATES:        20  — multi-sentence HDA paragraphs, mixed POS/NEG (growing)
 
 AFFIRMED_TEMPLATES = [
     # Passive / impersonal constructions
@@ -70,12 +62,6 @@ NEGATED_TEMPLATES = [
     "Currently without {SYMPTOM_NEG}.",
     "At present, there is no {SYMPTOM_NEG}.",
     "No active {SYMPTOM_NEG} reported.",
-    # History-framed negation
-    "No prior history of {SYMPTOM_NEG}.",
-    "Patient has never experienced {SYMPTOM_NEG}.",
-    "The family mentioned that the patient has never had {SYMPTOM_NEG}.",
-    "No previous episodes of {SYMPTOM_NEG}.",
-    "Denies any past occurrence of {SYMPTOM_NEG}.",
     # Exam-finding negation
     "Exam reveals no {SYMPTOM_NEG}.",
     "Physical exam negative for {SYMPTOM_NEG}.",
@@ -152,32 +138,32 @@ DISTRACTOR_TEMPLATES = [
 
 "The patient previously had {SYMPTOM_O}, which has since resolved.",
 "History of intermittent {SYMPTOM_O} noted during childhood.",
-"{SYMPTOM} was reported last year but is no longer present.",
+"{SYMPTOM_O} was reported last year but is no longer present.",
 "Patient had experienced {SYMPTOM_O} following surgery, now resolved.",
 "Prior episodes of {SYMPTOM_O} have completely subsided.",
 
-#CATEGORY 6: Research / literature / citation context
+# CATEGORY 6: Discharge / post-visit instructions
 
-"Recent studies indicate that {SYMPTOM_O} is a frequent adverse effect.",
-"The literature describes {SYMPTOM_O} as a key feature of this syndrome.",
-"Clinical trials have identified {SYMPTOM_O} in a subset of participants.",
-"According to published data, {SYMPTOM_O} correlates with disease severity.",
-"Evidence suggests that {SYMPTOM_O} may predict poorer outcomes.",
+"Patient was advised to monitor for {SYMPTOM_O} after discharge.",
+"Return precautions include onset of {SYMPTOM_O}.",
+"Patient educated on warning signs, including {SYMPTOM_O}.",
+"Instructions given to seek emergency care if {SYMPTOM_O} develops.",
+"Discharge summary notes to watch for {SYMPTOM_O} in the coming days.",
 
-# CATEGORY 7: Administrative / procedural / non-clinical context
+# CATEGORY 7: Clinical reasoning / differential
 
-"Checklist item: {SYMPTOM_O} — mark if applicable.",
-"Screening form includes assessment of {SYMPTOM_O}.",
-"Please indicate presence of {SYMPTOM_O} in the section below.",
-"Symptom review section lists {SYMPTOM_O} among standard entries.",
-"Documentation field for {SYMPTOM_O} remains incomplete.",
+"Differential includes conditions associated with {SYMPTOM_O}.",
+"Clinical reasoning accounts for {SYMPTOM_O} as a potential contributor.",
+"Working diagnosis considered in the context of possible {SYMPTOM_O}.",
+"Assessment weighs {SYMPTOM_O} as part of the differential.",
+"Further workup indicated to rule out {SYMPTOM_O}.",
 
 # CATEGORY 8: Negated or uncertain mentions (tricky non-affirmed contexts)
 
 "Possible {SYMPTOM_O} to be ruled out pending further evaluation.",
 "Query regarding {SYMPTOM_O} remains unanswered.",
 "Evaluation ongoing to determine presence of {SYMPTOM_O}.",
-"Unclear if {SYMPSYMPTOM_O} is contributing to the clinical picture."
+"Unclear if {SYMPTOM_O} is contributing to the clinical picture."
 ]
 
 
@@ -203,166 +189,277 @@ DISTRACTOR_TEMPLATES = [
 #   from the pool (set them equal before substitution).
 # =============================================================================
 
-# 2-4 symptom placeholders per sentence, mixed polarity.
-# Mirrors deployment style: multiple symptoms surfacing in one clinical sentence.
-# TODO: review if cases are balanced meaning if we have sentences with 3 POS and 1 NEG, we need also ones with 3 NEG and 1 POS
-MULTI_SYMPTOM_TEMPLATES = [
-    # Two-symptom, same polarity (_1/_2 = different draws required)
-    "Patient reports {SYMPTOM_POS_1} and {SYMPTOM_POS_2}.",
-    "Complains of {SYMPTOM_POS_1} along with {SYMPTOM_POS_2} since yesterday.",
-    "Denies {SYMPTOM_NEG_1} and {SYMPTOM_NEG_2}.",
-    "No {SYMPTOM_NEG_1}, no {SYMPTOM_NEG_2} on review.",
-    # Two-symptom, mixed polarity
-    "Patient endorses {SYMPTOM_POS} but denies {SYMPTOM_NEG}.",
-    "Reports {SYMPTOM_POS}; {SYMPTOM_NEG} is denied.",
-    "Acknowledges {SYMPTOM_POS} while denying any {SYMPTOM_NEG}.",
-    "Positive for {SYMPTOM_POS}, negative for {SYMPTOM_NEG}.",
-    "{SYMPTOM_POS} is present; {SYMPTOM_NEG} is absent.",
-    # Three-symptom, mixed
-    "Complains of {SYMPTOM_POS_1} and {SYMPTOM_POS_2}, but denies {SYMPTOM_NEG}.",
-    "Reports {SYMPTOM_POS}; denies {SYMPTOM_NEG_1} and {SYMPTOM_NEG_2}.",
-    "On ROS, positive for {SYMPTOM_POS_1} and {SYMPTOM_POS_2}, negative for {SYMPTOM_NEG}.",
-    "Endorses {SYMPTOM_POS_1} along with {SYMPTOM_POS_2}; denies {SYMPTOM_NEG}.",
-    # Four-symptom, mixed
-    "Patient describes {SYMPTOM_POS_1}, {SYMPTOM_POS_2}, and {SYMPTOM_POS_3}; denies {SYMPTOM_NEG}.",
-    "Reports {SYMPTOM_POS_1} and {SYMPTOM_POS_2}; denies {SYMPTOM_NEG_1} and {SYMPTOM_NEG_2}.",
-    # With a distractor mixed in
-    "Patient reports {SYMPTOM_POS}; family history is notable for {SYMPTOM_O}.",
-    "Endorses {SYMPTOM_POS}; educational handout discussed warning signs including {SYMPTOM_O}.",
-    "Denies {SYMPTOM_NEG}; screening questionnaire lists {SYMPTOM_O} among standard items.",
-    "Reports {SYMPTOM_POS_1} and {SYMPTOM_POS_2}; {SYMPTOM_O} is described in the educational pamphlet.",
+# HDA (História da Doença Atual) paragraphs — multi-sentence, multi-symptom.
+# Structure follows Amplimed guidelines: onset → progression → associated → denied.
+# Also mixed structure .... 
+# Three tiers of complexity; all templates use indexed placeholders so the builder
+# draws a DIFFERENT symptom for each slot.
+# TIER 2 — Medium: 3–4 sentences, 3–4 POS + 3–4 NEG, temporal/progression language.
+# TIER 3 — Complex: 4–5 sentences, 4–5 POS + 4–5 NEG, full HDA structure.
+HDA_TEMPLATES = [
+
+    # ── TIER 2 — Medium ─────────────────────────────────────────────────────
+
+    # Order: NEG → POS. Negation opens the note; symptoms revealed on questioning.
+    # Negation vocab: "currently without". Affirmation vocab: "acknowledges" / "admits to".
+    (
+        "Patient currently without {SYMPTOM_NEG_1} or {SYMPTOM_NEG_2}. "
+        "On direct questioning, acknowledges {SYMPTOM_POS_1} with gradual onset over the past four days. "
+        "Also admits to {SYMPTOM_POS_2} and {SYMPTOM_POS_3}, which have worsened since symptom onset."
+    ),
+
+    # Order: POS → NEG → POS interleaved. Onset leads, negation mid-note, secondary symptom closes.
+    # Negation vocab: "was not observed" / "assessment shows absence of".
+    # Affirmation vocab: "complains of" / "clinical history reveals".
+    (
+        "Patient complains of {SYMPTOM_POS_1} for approximately one week. "
+        "{SYMPTOM_NEG_1} was not observed. "
+        "Clinical history reveals {SYMPTOM_POS_2} associated with physical exertion. "
+        "Assessment shows absence of {SYMPTOM_NEG_2} and {SYMPTOM_NEG_3}."
+    ),
+
+    # Order: POS → NEG at end, different vocabulary throughout.
+    # Negation vocab: "currently without" / "ROS negative for".
+    # Affirmation vocab: "onset of X began" / "associated with".
+    (
+        "Onset of {SYMPTOM_POS_1} began approximately three days ago, "
+        "associated with {SYMPTOM_POS_2} and {SYMPTOM_POS_3}. "
+        "Symptoms remain unchanged since onset. "
+        "Currently without {SYMPTOM_NEG_1} or {SYMPTOM_NEG_2}. "
+        "ROS negative for {SYMPTOM_NEG_3}."
+    ),
+
+    # ── TIER 3 — Complex ────────────────────────────────────────────────────
+
+    # Order: NEG → POS → NEG. Demographics open; negation first, then chief complaint elicited,
+    # then secondary NEG sweep closes.
+    # Negation vocab: "absent on current assessment" / "no X at this time".
+    # Affirmation vocab: "complaint of X was elicited" / "patient indicates experiencing" / "noted alongside".
+    (
+        "Male patient, 67 years old, with type 2 diabetes, brought by family to the emergency department. "
+        "{SYMPTOM_NEG_1} and {SYMPTOM_NEG_2} are absent on current assessment. "
+        "The complaint of {SYMPTOM_POS_1} was elicited upon questioning, with onset approximately 5 days ago. "
+        "Patient indicates experiencing {SYMPTOM_POS_2} and {SYMPTOM_POS_3}, worsening over the last 48 hours. "
+        "{SYMPTOM_POS_4} also noted alongside these symptoms. "
+        "No {SYMPTOM_NEG_3} or {SYMPTOM_NEG_4} at this time."
+    ),
+
+    # Order: POS → NEG → POS → NEG interleaved throughout.
+    # Negation vocab: "physical exam negative for" / "no X was identified" / "confirmed absence of".
+    # Affirmation vocab: "presents with" / "has been experiencing" / "endorses".
+    (
+        "Patient presents with {SYMPTOM_POS_1} of sudden onset this morning. "
+        "Physical exam negative for {SYMPTOM_NEG_1}. "
+        "Has been experiencing {SYMPTOM_POS_2} and {SYMPTOM_POS_3} since yesterday evening. "
+        "No {SYMPTOM_NEG_2} was identified. "
+        "Patient also endorses {SYMPTOM_POS_4} that worsens with movement. "
+        "Confirmed absence of {SYMPTOM_NEG_3} and {SYMPTOM_NEG_4}."
+    ),
+
+    # Order: POS → NEG → POS → NEG interleaved, demographics open.
+    # Negation vocab: "no X reported" / "is not present at evaluation" / "there is no indication of".
+    # Affirmation vocab: "acknowledges" / "onset of X began" / "also mentions".
+    (
+        "Female patient, 45 years old, previously healthy, walk-in. "
+        "Acknowledges {SYMPTOM_POS_1} for approximately 6 days, with gradual onset. "
+        "No {SYMPTOM_NEG_1} reported. "
+        "Onset of {SYMPTOM_POS_2} began two days after the initial complaint. "
+        "{SYMPTOM_NEG_2} is not present at evaluation. "
+        "Also mentions {SYMPTOM_POS_3} and {SYMPTOM_POS_4}, predominantly in the evenings. "
+        "There is no indication of {SYMPTOM_NEG_3}."
+    ),
+
+    # ── Demographic variants ─────────────────────────────────────────────────
+
+    # Pediatric — Tier 2, POS → NEG.
+    # Affirmation vocab: "parents report" / "associated with".
+    # Negation vocab: "no X observed" / "ROS negative for".
+    (
+        "Child patient, 7 years old, brought by parents to the emergency department. "
+        "Parents report onset of {SYMPTOM_POS_1} approximately two days ago, associated with {SYMPTOM_POS_2}. "
+        "No {SYMPTOM_NEG_1} observed by caregivers at home. "
+        "ROS negative for {SYMPTOM_NEG_2} and {SYMPTOM_NEG_3}."
+    ),
+
+    # Elderly with comorbidities — Tier 3, NEG → POS → NEG.
+    # Family member as informant (patient endorses one symptom herself).
+    # Affirmation vocab: "daughter reports" / "endorses" / "describes as".
+    # Negation vocab: "no X at this time" / "assessment shows absence of".
+    (
+        "Elderly female patient, 79 years old, with hypertension, brought by daughter. "
+        "No {SYMPTOM_NEG_1} or {SYMPTOM_NEG_2} at this time. "
+        "Daughter reports {SYMPTOM_POS_1} and {SYMPTOM_POS_2} over the past five days. "
+        "Patient herself endorses {SYMPTOM_POS_3}, which she describes as intermittent. "
+        "Assessment shows absence of {SYMPTOM_NEG_3} and {SYMPTOM_NEG_4}."
+    ),
+
+    # ── Additional templates (T9–T20): balance ratios, demographics, ordering ──
+
+    # T9 — Tier 2, NEG-heavy (1 POS / 4 NEG), no demographics, NEG→POS→NEG.
+    # Negation vocab: "physical exam negative for" / "no X identified" / "confirmed absence of".
+    # Affirmation vocab: "reports".
+    (
+        "Physical exam negative for {SYMPTOM_NEG_1}. "
+        "Patient reports {SYMPTOM_POS_1} since yesterday morning. "
+        "No {SYMPTOM_NEG_2} identified on assessment. "
+        "Confirmed absence of {SYMPTOM_NEG_3} and {SYMPTOM_NEG_4}."
+    ),
+
+    # T10 — Tier 2, NEG-heavy (1 POS / 3 NEG), adult male walk-in, NEG→POS.
+    # Negation vocab: "denies" / "ROS negative for".
+    # Affirmation vocab: "endorses".
+    (
+        "Male patient, 34 years old, walk-in. "
+        "Denies {SYMPTOM_NEG_1} and {SYMPTOM_NEG_2}. "
+        "ROS negative for {SYMPTOM_NEG_3}. "
+        "Endorses {SYMPTOM_POS_1} intermittently over the past week."
+    ),
+
+    # T11 — Tier 2, balanced (2 POS / 2 NEG), adult female with comorbidities, POS→NEG interleaved.
+    # Negation vocab: "was not observed" / "explicitly denies".
+    # Affirmation vocab: "presents with" / "also mentions".
+    (
+        "Female patient, 52 years old, with hypertension and hypothyroidism. "
+        "Presents with {SYMPTOM_POS_1} of 4 days duration. "
+        "{SYMPTOM_NEG_1} was not observed on exam. "
+        "Also mentions {SYMPTOM_POS_2} worsening at night. "
+        "Patient explicitly denies {SYMPTOM_NEG_2}."
+    ),
+
+    # T12 — Tier 2, POS-heavy (3 POS / 1 NEG), brought by spouse, POS→NEG.
+    # Negation vocab: "no X reported".
+    # Affirmation vocab: "complains of" / "confirms" / "observed at home".
+    (
+        "Patient brought to clinic by husband. "
+        "Complains of {SYMPTOM_POS_1} and {SYMPTOM_POS_2} starting four days ago. "
+        "Husband confirms {SYMPTOM_POS_3} observed at home over the same period. "
+        "No {SYMPTOM_NEG_1} reported."
+    ),
+
+    # T13 — Tier 2, balanced (2 POS / 2 NEG), GP referral, POS→NEG.
+    # Negation vocab: "is not present at evaluation" / "there is no indication of".
+    # Affirmation vocab: "referred by GP for evaluation of" / "has been experiencing".
+    (
+        "Female patient referred by GP for evaluation of {SYMPTOM_POS_1}. "
+        "Has been experiencing {SYMPTOM_POS_2} concurrently for the past several days. "
+        "{SYMPTOM_NEG_1} is not present at evaluation. "
+        "There is no indication of {SYMPTOM_NEG_2}."
+    ),
+
+    # T14 — Tier 3, NEG-heavy (2 POS / 5 NEG), no demographics, NEG→POS→NEG interleaved.
+    # Negation vocab: "currently without" / "patient confirms no" / "findings do not support presence of".
+    # Affirmation vocab: "admits to" / "also mentioned briefly".
+    (
+        "Patient presents for evaluation. "
+        "Currently without {SYMPTOM_NEG_1}, {SYMPTOM_NEG_2}, or {SYMPTOM_NEG_3}. "
+        "On questioning, admits to {SYMPTOM_POS_1} of recent onset. "
+        "Patient confirms no {SYMPTOM_NEG_4}. "
+        "{SYMPTOM_POS_2} also mentioned briefly during the visit. "
+        "Findings do not support presence of {SYMPTOM_NEG_5}."
+    ),
+
+    # T15 — Tier 3, POS-heavy (5 POS / 1 NEG), adolescent with father informant, POS→NEG.
+    # Negation vocab: "no X reported".
+    # Affirmation vocab: "father reports" / "acknowledges" / "onset of X began".
+    (
+        "Adolescent patient, 14 years old, brought by father. "
+        "Father reports {SYMPTOM_POS_1} for one week, with associated {SYMPTOM_POS_2}. "
+        "Patient also acknowledges {SYMPTOM_POS_3} and {SYMPTOM_POS_4}, predominantly at night. "
+        "Onset of {SYMPTOM_POS_5} began two days ago. "
+        "No {SYMPTOM_NEG_1} reported."
+    ),
+
+    # T16 — Tier 3, balanced (3 POS / 3 NEG), elderly male with comorbidities, POS→NEG interleaved.
+    # Negation vocab: "physical exam negative for" / "assessment shows absence of" / "there is no indication of".
+    # Affirmation vocab: "son reports" / "endorses" / "progressing over".
+    (
+        "Male patient, 73 years old, with type 2 diabetes and chronic kidney disease, brought by son to the emergency department. "
+        "Son reports {SYMPTOM_POS_1} progressing over five days. "
+        "Patient endorses {SYMPTOM_POS_2} and {SYMPTOM_POS_3}. "
+        "Physical exam negative for {SYMPTOM_NEG_1}. "
+        "Assessment shows absence of {SYMPTOM_NEG_2}. "
+        "There is no indication of {SYMPTOM_NEG_3}."
+    ),
+
+    # T17 — Tier 3, NEG-heavy (2 POS / 4 NEG), adult female with asthma history, NEG→POS→NEG.
+    # Negation vocab: "is absent on current assessment" / "was not documented" / "confirmed absence of".
+    # Affirmation vocab: "patient indicates experiencing" / "also reports".
+    (
+        "Female patient, 41 years old, with history of asthma, walk-in. "
+        "{SYMPTOM_NEG_1} is absent on current assessment. "
+        "{SYMPTOM_NEG_2} was not documented during evaluation. "
+        "Patient indicates experiencing {SYMPTOM_POS_1} since the morning. "
+        "Confirmed absence of {SYMPTOM_NEG_3} and {SYMPTOM_NEG_4}. "
+        "Also reports mild {SYMPTOM_POS_2}."
+    ),
+
+    # T18 — Tier 3, slight POS-heavy (4 POS / 3 NEG), no demographics, interleaved.
+    # Negation vocab: "no X at this time" / "review of systems: X denied" / "ROS negative for".
+    # Affirmation vocab: "acknowledges" / "additionally reports" / "also identified on review".
+    (
+        "Patient presents to the emergency department this evening. "
+        "Acknowledges {SYMPTOM_POS_1} of acute onset. "
+        "No {SYMPTOM_NEG_1} at this time. "
+        "Additionally reports {SYMPTOM_POS_2} and {SYMPTOM_POS_3}. "
+        "Review of systems: {SYMPTOM_NEG_2} denied. "
+        "{SYMPTOM_POS_4} also identified on review. "
+        "ROS negative for {SYMPTOM_NEG_3}."
+    ),
+
+    # T19 — Tier 3, POS-heavy (5 POS / 1 NEG), pediatric with mother informant, POS→NEG→POS.
+    # Negation vocab: "no X observed".
+    # Affirmation vocab: "mother describes onset of" / "presents with" / "additionally, X noted".
+    (
+        "Pediatric patient, 5 years old, brought by mother. "
+        "Mother describes onset of {SYMPTOM_POS_1} three days ago, with subsequent development of {SYMPTOM_POS_2}. "
+        "Child also presents with {SYMPTOM_POS_3} and {SYMPTOM_POS_4}, worse in the afternoon. "
+        "No {SYMPTOM_NEG_1} observed at home. "
+        "Additionally, {SYMPTOM_POS_5} noted during evaluation."
+    ),
+
+    # T20 — Tier 3, balanced (3 POS / 3 NEG), elderly walk-in, no comorbidities, POS→NEG interleaved.
+    # Negation vocab: "currently without" / "no X reported".
+    # Affirmation vocab: "complaint of X elicited" / "patient indicates experiencing" / "mentioned in passing".
+    (
+        "Elderly male patient, 70 years old, previously healthy, walk-in. "
+        "Complaint of {SYMPTOM_POS_1} elicited at intake. "
+        "Patient indicates experiencing {SYMPTOM_POS_2} over the past three days. "
+        "Currently without {SYMPTOM_NEG_1}. "
+        "{SYMPTOM_POS_3} mentioned in passing during questioning. "
+        "No {SYMPTOM_NEG_2} or {SYMPTOM_NEG_3} reported."
+    ),
 ]
 
-# Long, narrative-style clinical sentences with subordinate clauses.
-# Modeled on the "Long, realistic clinical sentences" bucket of
-# behavioural_template_bank.json and the easy/medium medical_transcriptions.
-NARRATIVE_TEMPLATES = [
-
-    # examples starting with a POS symptom followed by a NEG symptom
-    "The patient reports {SYMPTOM_POS} that started approximately three days ago after physical exertion, associated with mild fatigue.",
-    "Over the past week, the patient has experienced intermittent {SYMPTOM_POS}, which tends to worsen in the evenings and partially improves with rest.",
-    "Patient describes persistent {SYMPTOM_POS} without clear triggers, and denies {SYMPTOM_NEG} or recent infections.",
-    "Since the last visit, the patient notes worsening {SYMPTOM_POS}, especially when walking long distances, but denies {SYMPTOM_NEG}.",
-    "Patient presents today due to ongoing {SYMPTOM_POS}, which has been affecting daily activities despite over-the-counter medications.",
-    "She reports gradual onset of {SYMPTOM_POS} with no identifiable triggering event, and denies {SYMPTOM_NEG} or recent travel.",
-    "He has been experiencing {SYMPTOM_POS} for the last five days, with no relief from rest; denies {SYMPTOM_NEG_1} or {SYMPTOM_NEG_2}.",
-    "On direct questioning he endorses {SYMPTOM_POS}, which he describes as intermittent and worse in the evenings.",
-    "The patient, referred by her GP with a 5-day history of {SYMPTOM_POS}, denies {SYMPTOM_NEG} and reports no history of similar episodes.",
-    "Over the last 48 hours the patient developed {SYMPTOM_POS}, progressive in nature, while explicitly denying {SYMPTOM_NEG}.",
-    "Wife reports that the patient has had {SYMPTOM_POS} for the past week; the patient himself denies {SYMPTOM_NEG} when asked directly.",
-    "The patient presents with a chief complaint of {SYMPTOM_POS_1}; on systems review he also endorses {SYMPTOM_POS_2} but denies {SYMPTOM_NEG}.",
-    "On admission, the patient was noted to have {SYMPTOM_POS}; subsequent evaluation ruled out {SYMPTOM_NEG}.",
-    "Despite recent treatment, the patient continues to report {SYMPTOM_POS} and denies improvement in {SYMPTOM_POS}.",
-    "Family brought the patient in due to {SYMPTOM_POS} observed at home over three days, although the patient denies {SYMPTOM_NEG}.",
-    # examples starting with SYMPTOM_NEG first, then additional symptom(s)
-    "At triage he disputes any link between today's minor injury and {SYMPTOM_NEG}; once in the exam room he shifts attention to steadily worsening {SYMPTOM_POS} that began after midnight and now limits weight-bearing on the affected side.",
-    "She opens by correcting chart text that implied active {SYMPTOM_NEG}, insisting the wording never matched her report, then spends most of the visit dissecting throbbing {SYMPTOM_POS} that peaks after prolonged standing and eases modestly once she is off her feet.",
-    "Overnight telephone nursing documented absence of {SYMPTOM_NEG}; this afternoon she confirms {SYMPTOM_NEG} remains absent yet adds {SYMPTOM_POS} that follows exertion, worsens with hill climbing, and is accompanied by symptoms she describes as 'air hunger' after heavy meals.",
-    "On 0400 vitals reassessment he denied {SYMPTOM_NEG} while febrile; by daylight he reaffirms no {SYMPTOM_NEG} but volunteers band-like {SYMPTOM_POS} across the upper back that emerged after sleeping upright in a recliner.",
-    "Preoperative holding paperwork records a negative screen for {SYMPTOM_NEG}; minutes before induction he repeats that {SYMPTOM_NEG} has not been an issue and attributes his discomfort to new-onset {SYMPTOM_POS} that anesthesia attributed to prolonged shoulder abduction on the gurney.",
-    "Through an interpreter she rejects the referral summary's emphasis on {SYMPTOM_NEG}, stating the letter overstated a single offhand comment, then requests guidance about relentless {SYMPTOM_POS} that fluctuates with dose changes to her home antihypertensive regimen.",
-    "Case management yesterday annotated {SYMPTOM_NEG} as absent on the facility checklist; at bedside today he corroborates lack of {SYMPTOM_NEG}, then discloses mounting {SYMPTOM_POS} that his daughter noticed before overriding his preference to stay home.",
-    "Behavioral health intake probes {SYMPTOM_NEG} because prior forms flagged it; the patient minimizes {SYMPTOM_NEG} as checkbox noise and redirects toward intrusive {SYMPTOM_POS} that derails focus during back-to-back video conferences.",
-    "In the return-to-play lane he downplays any recurrence of {SYMPTOM_NEG} since resuming drills, then reproduces focal {SYMPTOM_POS} with resisted loading—a pattern that was absent before last weekend's out-of-state tournament travel.",
-    "Pharmacy reconciliation records an explicit denial of {SYMPTOM_NEG}; back in the exam room he nuances the story, acknowledging exertional {SYMPTOM_POS} only beyond two flights of stairs while still denying {SYMPTOM_NEG} at rest or during sleep.",
-    "EMS paperwork listed concern for {SYMPTOM_NEG} en route; in the ED bay he clarifies he has not experienced {SYMPTOM_NEG} and identifies {SYMPTOM_POS} as the driver of today's visit—cramping discomfort that surfaced after aggressive field fluids and failed to resolve with oral analgesia.",
-    "Resident sign-out emphasized overnight resolution of {SYMPTOM_NEG_1} after a single conservative intervention; at follow-up he concurs that {SYMPTOM_NEG_2} has not recurred, then introduces breakthrough {SYMPTOM_POS} whenever he reclines within an hour of a heavy meal, now prompting sleep-position experiments at home.",
-    "The consultant's terse prior note alluded to neglected {SYMPTOM_NEG_1}; in person today she dismantles that characterization regarding {SYMPTOM_NEG_2} and instead produces a dated symptom log centered on paroxysmal {SYMPTOM_POS} triggered by cold exposure, brisk walking, and arguments with her adult children.",
-    "He begins the video visit by striking {SYMPTOM_NEG} from the problem list he prepared with his spouse, citing wearable trendlines, then narrates exertional {SYMPTOM_POS} that reliably eases when he sits yet returns with painting ceilings or unloading groceries from overhead shelves.",
-    "Occupational health transmitted a screening remark about {SYMPTOM_NEG_1}; during the clinical interview he challenges whether {SYMPTOM_NEG_2} belongs on a worker's compensation template at all, pivoting to disruptive {SYMPTOM_POS} that jerks him awake and only settles after pacing his apartment for ten to fifteen minutes.",
-]
 
 
-# Mixed polarity in a single clause — the model must not let one cue dominate.
-MIXED_POLARITY_CLAUSE_TEMPLATES = [
-    "Patient denies {SYMPTOM_NEG} but reports {SYMPTOM_POS}.",
-    "Reports {SYMPTOM_POS} though denies {SYMPTOM_NEG}.",
-    "{SYMPTOM_POS} is present; {SYMPTOM_NEG} is denied.",
-    "Acknowledges {SYMPTOM_POS} while denying {SYMPTOM_NEG}.",
-    "Positive for {SYMPTOM_POS}, negative for {SYMPTOM_NEG}.",
-    "Endorses {SYMPTOM_POS} on questioning, no {SYMPTOM_NEG}.",
-    "{SYMPTOM_POS} confirmed; {SYMPTOM_NEG} ruled out.",
-    "Currently has {SYMPTOM_POS}; has never had {SYMPTOM_NEG}.",
-    "On exam: {SYMPTOM_POS} observed; no {SYMPTOM_NEG}.",
-    "Patient confirms {SYMPTOM_POS} but denies any {SYMPTOM_NEG}.",
-]
 
 # Hard negatives: same symptom word appears as distractor AND as patient mention
 # in the same example. Trains the model off lexical-keyword shortcuts.
 # Builder should fill {SYMPTOM_POS}/{SYMPTOM_NEG} and {SYMPTOM_O} with the SAME
 # symptom string when generating this template.
-WORD_COLLISION_TEMPLATES = [
-    "{SYMPTOM_O} is common in viral infections; the patient denies {SYMPTOM_NEG}.",
-    "{SYMPTOM_O} is a known side effect of this medication; the patient currently reports {SYMPTOM_POS}.",
-    "The literature describes {SYMPTOM_O} as a hallmark of this syndrome; on exam the patient has {SYMPTOM_POS}.",
-    "Family history is notable for {SYMPTOM_O}; the patient herself denies {SYMPTOM_NEG}.",
-    "Mother had chronic {SYMPTOM_O} during adolescence; the patient currently endorses {SYMPTOM_POS}.",
-    "Screening form asks about {SYMPTOM_O}; the patient reports {SYMPTOM_POS}.",
-    "Educational material covered warning signs such as {SYMPTOM_O}; the patient now denies {SYMPTOM_NEG}.",
-    "{SYMPTOM_O} was reported last year but has resolved; the patient currently has {SYMPTOM_POS}.",
-    "Discussed possible future symptoms including {SYMPTOM_O}; today the patient denies {SYMPTOM_NEG}.",
-    "Postoperative patients frequently develop {SYMPTOM_O}; this patient denies {SYMPTOM_NEG}.",
-    "Checklist item: {SYMPTOM_O} — marked not applicable. The patient endorses {SYMPTOM_POS}.",
-    "{SYMPTOM_O} can occur as an adverse effect; the patient currently reports {SYMPTOM_POS}.",
-]
+# WORD_COLLISION_TEMPLATES = [
+#     # --- DISTRACTOR FIRST → POS (original 12) ---
+#     "{SYMPTOM_O} is common in viral infections; the patient denies {SYMPTOM_NEG}.",
+#     "{SYMPTOM_O} is a known side effect of this medication; the patient currently reports {SYMPTOM_POS}.",
+#     "The literature describes {SYMPTOM_O} as a hallmark of this syndrome; on exam the patient has {SYMPTOM_POS}.",
+#     "Family history is notable for {SYMPTOM_O}; the patient herself denies {SYMPTOM_NEG}.",
+#     "Mother had chronic {SYMPTOM_O} during adolescence; the patient currently endorses {SYMPTOM_POS}.",
+#     "Screening form asks about {SYMPTOM_O}; the patient reports {SYMPTOM_POS}.",
+#     "Educational material covered warning signs such as {SYMPTOM_O}; the patient now denies {SYMPTOM_NEG}.",
+#     "{SYMPTOM_O} was reported last year but has resolved; the patient currently has {SYMPTOM_POS}.",
+#     "Discussed possible future symptoms including {SYMPTOM_O}; today the patient denies {SYMPTOM_NEG}.",
+#     "Postoperative patients frequently develop {SYMPTOM_O}; this patient denies {SYMPTOM_NEG}.",
+#     "Checklist item: {SYMPTOM_O} — marked not applicable. The patient endorses {SYMPTOM_POS}.",
+#     "{SYMPTOM_O} can occur as an adverse effect; the patient currently reports {SYMPTOM_POS}.",
 
-# Short, telegraphic HDA templates modeled on Brazilian emergency department
-# documentation style (HDA — história da doença atual).
-#
-# Structural signature of Brazilian ED/UPA HDA:
-#   1. Age + sex + relevant comorbidities up front (almost always present)
-#   2. Referral origin: walk-in, UBS, UPA transfer, brought by family
-#   3. Chief complaint (queixa principal) with duration
-#   4. Brief negation sweep at the end — often just "Denies X." or "No X."
-#
-# These short forms are completely absent from earlier versions and represent
-# the most common ED note register. They are the hardest for models trained
-# only on longer templates because polarity cues are minimal and close together.
-TRIAGE_HDA_TEMPLATES = [
+# ]
 
-    # CATEGORY A: Single-line triage (queixa principal + nega)
-    "CC: {SYMPTOM_POS}. Denies {SYMPTOM_NEG}.",
-    "{SYMPTOM_POS} x 3 days. No {SYMPTOM_NEG}.",
-    "Reports {SYMPTOM_POS}. Denies {SYMPTOM_NEG}.",
-    "Presents with {SYMPTOM_POS}. No {SYMPTOM_NEG} reported.",
-    "{SYMPTOM_POS}, onset 2 days ago. {SYMPTOM_NEG} denied.",
-
-    # CATEGORY B: Demographics + symptom + negation
-    # Brazilian HDA opens with age, sex, and relevant comorbidities
-    "Female, 38yo, no comorbidities. Reports {SYMPTOM_POS} for 5 days. Denies {SYMPTOM_NEG}.",
-    "Male, 54yo, HTN. Presents with {SYMPTOM_POS}. No {SYMPTOM_NEG}.",
-    "Patient, 67yo, DM2. {SYMPTOM_POS} since yesterday. Denies {SYMPTOM_NEG}.",
-    "Female, 29yo, previously healthy. {SYMPTOM_POS} x 1 week. No {SYMPTOM_NEG}.",
-    "Male, 72yo, HTN, DM2, prior AMI. Referred with {SYMPTOM_POS}. Denies {SYMPTOM_NEG}.",
-
-    # CATEGORY C: Referral origin (encaminhamento — routine in Brazilian SUS)
-    "Referred by GP with {SYMPTOM_POS}. No {SYMPTOM_NEG} on intake.",
-    "Brought by family. Reports {SYMPTOM_POS}. Denies {SYMPTOM_NEG}.",
-    "Transferred from UPA with {SYMPTOM_POS}. {SYMPTOM_NEG} absent.",
-    "Walk-in. CC: {SYMPTOM_POS}. Denies {SYMPTOM_NEG}.",
-    "Self-referred. {SYMPTOM_POS} for 2 days. No {SYMPTOM_NEG}.",
-    "Referred from UBS. {SYMPTOM_POS}, worsening. Denies {SYMPTOM_NEG}.",
-
-    # CATEGORY D: Onset + evolution + negation sweep
-    "{SYMPTOM_POS}, gradual onset, 4 days. No {SYMPTOM_NEG}.",
-    "{SYMPTOM_POS}, sudden onset this morning. Denies {SYMPTOM_NEG}.",
-    "{SYMPTOM_POS}, worsening over 48h. No {SYMPTOM_NEG}.",
-    "{SYMPTOM_POS} since last night, no improvement. {SYMPTOM_NEG} denied.",
-
-    # CATEGORY E: Multi-symptom telegraphic (brief ROS sweep at triage)
-    "CC: {SYMPTOM_POS_1} and {SYMPTOM_POS_2}. Denies {SYMPTOM_NEG}.",
-    "Reports {SYMPTOM_POS_1} and {SYMPTOM_POS_2} x 3 days. No {SYMPTOM_NEG}.",
-]
 
 # (group_name, templates) pairs for generators that branch on list membership,
 # not on parsing placeholder strings inside each template.
 TEMPLATE_GROUPS = [
-    ("affirmed", AFFIRMED_TEMPLATES),
-    ("negated", NEGATED_TEMPLATES),
-    ("distractor", DISTRACTOR_TEMPLATES),
-    ("multi_symptom", MULTI_SYMPTOM_TEMPLATES),
-    ("narrative", NARRATIVE_TEMPLATES),
-    ("mixed_polarity_clause", MIXED_POLARITY_CLAUSE_TEMPLATES),
-    ("word_collision", WORD_COLLISION_TEMPLATES),
-    ("triage_hda", TRIAGE_HDA_TEMPLATES),
+    ("affirmed",    AFFIRMED_TEMPLATES),
+    ("negated",     NEGATED_TEMPLATES),
+    ("distractor",  DISTRACTOR_TEMPLATES),
+    ("hda",         HDA_TEMPLATES),
 ]

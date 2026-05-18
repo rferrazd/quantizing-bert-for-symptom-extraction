@@ -12,7 +12,10 @@
       "Bash(.venv/bin/python -m pytest error_analysis/tests/test_error_categorizer.py -v)",
       "WebFetch(domain:arxiv.org)",
       "Bash(python3 -c ' *)",
-      "Bash(jupyter nbconvert *)"
+      "Bash(jupyter nbconvert *)",
+      "Bash(ls -la /Users/robertagarcia/Desktop/learning/bert_symptom_ner/.claude/ 2>/dev/null; ls -la /Users/robertagarcia/.claude/skills/ 2>/dev/null | head -20)",
+      "Bash(mkdir -p /Users/robertagarcia/Desktop/learning/bert_symptom_ner/.claude/skills/generate_hda_template)",
+      "Bash(python3)"
     ]
   }
 }
