@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-19 — WordPiece alignment, validation split, HuggingFace upload
+
+- `data_preparation/wordpiece_alignment.py` — new module. `align_sample()` maps word-level BIO labels to BioBERT subwords via `word_ids()`. `align_file()` processes a full JSONL. LABEL2ID hardcoded (5 labels). `__main__` aligns all three splits.
+- `v04/data/verify_wordpiece.py` — sanity-check script. All checks passed: sequence length, BIO continuity, label id range, label distribution, K=40 HDA coverage (866/873 = 97%).
+- `v04/data/upload_to_hf.py` — carves 90/10 train/validation split (stratified by template_group, seed 42), uploads all four splits to `Rogarcia18/symptom-ner-dataset-v04` (private).
+- `hf_utils.py` — implemented `upsert_to_hf_repo()`: loads JSONL → HF Dataset → `push_to_hub()`.
+- `config.py` — added `HUGGINGFACE_DATASET_REPO_ID`.
+- **Artifacts**: `v04/data/splits/{train,validation,template_ood,symptom_ood}_wordpiece.jsonl`; train=82,360 / val=9,152 / template_ood=12,262 / symptom_ood=2,440. HF upload complete.
+
 ## 2026-05-18 — dataset split + full v04 generation
 
 ### New files
