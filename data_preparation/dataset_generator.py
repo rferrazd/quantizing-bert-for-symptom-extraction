@@ -181,7 +181,7 @@ class DatasetGenerator:
         samples: List[dict] = []
 
         # K = None → use pool size as K (effectively "one HDA sample per symptom per template").
-        K = K if K else len(self.symptoms_df)
+        K = K if K > 0 else len(self.symptoms_df)
 
         # Outer loop: walk every (group_name, [template, ...]) pair from dataset_templates.
         for group_name, templates in self.dataset_templates:
@@ -275,19 +275,7 @@ class DatasetGenerator:
             target = whitespace_tokenize(symptom["symptom_text"])  # BUG FIX: module-level function, not a method — drop `self.`
             polarity = symptom["polarity"]
 
-            # word_collision: the same symptom string appears TWICE — once as a distractor
-            # (labeled O) and once as the patient-reported mention (labeled POS or NEG).
-            # Looking at every template in WORD_COLLISION_TEMPLATES, the distractor clause
-            # always comes FIRST and the patient clause always comes SECOND — that's by design.
-            # So: find the first occurrence, then search again starting right after it.
-            # Your concern is valid for hand-written notes, but for our synthetic templates
-            # the order is fixed, so "first = O, second = labeled" is always correct here.
-            if group_name == "word_collision":
-                first     = self.find_subsequence(tokens, target, start_from=0)
-                start_idx = self.find_subsequence(tokens, target, start_from=first + 1) \
-                            if first is not None else None
-            else:
-                start_idx = self.find_subsequence(tokens, target)
+            start_idx = self.find_subsequence(tokens, target)
             
             if start_idx is not None:
                 for k in range(len(target)):
@@ -340,39 +328,100 @@ if __name__ == "__main__":
     if str(PROJECT_ROOT) not in sys.path:
         sys.path.insert(0, str(PROJECT_ROOT))
 
-    # local imports
     from config import settings
     from v04.dataset_templates import TEMPLATE_GROUPS
-
-    symptoms_df = pd.read_csv('base_symptom_dict.csv')
-    print("VERSION:", settings.VERSION)
-
-    gen = DatasetGenerator(
-        symptoms_df=symptoms_df,
-        dataset_templates=TEMPLATE_GROUPS,
+    from data_preparation.dataset_split import (
+        load_split_artifacts,
+        save_split_artifacts,
+        split_symptoms_df,
+        split_template_groups,
     )
 
-    # ----------------------------
-    # 1) Generate synthetic dataset
-    # ----------------------------
-    raw_path = f"{settings.VERSION}/synthethic_data.jsonl"
-    samples = gen.generate_raw_synthetic_samples(K=20, save_in_jsonl_path=raw_path)
-    print(f"Step 1 completed: {len(samples)} raw synthetic samples written to {raw_path}")
+    VERSION = settings.VERSION  # e.g. "v04"
+    SPLITS_DIR = f"{VERSION}/splits"
 
-    # ----------------------------
-    # 2) Tokenize the synthetic dataset
-    # ----------------------------
-    tokenized_path = f"{settings.VERSION}/tokenized_data.jsonl"
-    tokenized, not_found = gen.tokenize_all_samples(samples, save_in_jsonl_path=tokenized_path)
-    print(f"Step 2 completed: {len(tokenized)} tokenized samples written to {tokenized_path}")
-    print(f"  Symptoms not found during tokenization: {len(not_found)}")
+    symptoms_df = pd.read_csv("base_symptom_dict.csv")
+    print(f"VERSION: {VERSION}  |  symptoms pool: {len(symptoms_df)}")
 
-    if not_found:
-        not_found_path = f"{settings.VERSION}/not_found.jsonl"
-        with open(not_found_path, "w") as f:
-            for nf in not_found:
-                f.write(json.dumps(nf, ensure_ascii=False) + "\n")
-        print(f"  Not-found log written to {not_found_path}")
+    # ---------------------------------------------------------------
+    # 6b  Load-or-create deterministic splits
+    # ---------------------------------------------------------------
+    train_template_groups, heldout_template_groups, heldout_template_indices = (
+        split_template_groups(TEMPLATE_GROUPS)
+    )
+    train_symptoms_df, heldout_symptoms_df = split_symptoms_df(symptoms_df)
+
+    save_split_artifacts(
+            heldout_template_indices,
+            heldout_symptoms_df["id"].tolist(),
+            SPLITS_DIR,
+        )
+    print(f"Split artifacts saved to {SPLITS_DIR}/split_artifacts.json")
+  
+    print("\nHeld-out template indices:")
+    for group, idxs in heldout_template_indices.items():
+        print(f"  {group:12s}: {idxs}")
+    print(f"Held-out symptom count: {len(heldout_symptoms_df)}")
+    print(f"Train symptom count:    {len(train_symptoms_df)}")
+
+    # ---------------------------------------------------------------
+    # 6c  Instantiate three generators
+    # ---------------------------------------------------------------
+    gen_train = DatasetGenerator(train_symptoms_df, train_template_groups)
+    gen_template_ood = DatasetGenerator(train_symptoms_df, heldout_template_groups)
+    gen_symptom_ood = DatasetGenerator(heldout_symptoms_df, train_template_groups)
+
+    # ---------------------------------------------------------------
+    # 6d  Generate + tokenize + save each split
+    # ---------------------------------------------------------------
+    all_not_found: List[dict] = []
+
+    splits_config = [
+        # (label,          generator,        K_hda, raw_path,                  tok_path)
+        ("train",         gen_train,         40,    f"{VERSION}/train_raw.jsonl",        f"{VERSION}/train_tokenized.jsonl"),
+        ("template_ood",  gen_template_ood,  20,    f"{VERSION}/template_ood_raw.jsonl", f"{VERSION}/template_ood_tokenized.jsonl"),
+        ("symptom_ood",   gen_symptom_ood,   20,    f"{VERSION}/symptom_ood_raw.jsonl",  f"{VERSION}/symptom_ood_tokenized.jsonl"),
+    ]
+
+    summary_rows = []
+
+    for label, gen, K_hda, raw_path, tok_path in splits_config:
+        print(f"\n--- {label} (HDA K={K_hda}) ---")
+
+        raw = gen.generate_raw_synthetic_samples(K=K_hda, save_in_jsonl_path=raw_path)
+        print(f"  raw:       {len(raw):>7,} samples  →  {raw_path}")
+
+        tok, not_found = gen.tokenize_all_samples(raw, save_in_jsonl_path=tok_path)
+        print(f"  tokenized: {len(tok):>7,} samples  →  {tok_path}")
+        print(f"  not_found: {len(not_found)}")
+
+        for nf in not_found:
+            nf["split"] = label
+        all_not_found.extend(not_found)
+
+        summary_rows.append((label, len(raw), len(tok), len(not_found)))
+
+    # ---------------------------------------------------------------
+    # 6d (cont.)  Write combined not_found log
+    # ---------------------------------------------------------------
+    not_found_path = f"{VERSION}/not_found.jsonl"
+    with open(not_found_path, "w") as f:
+        for nf in all_not_found:
+            f.write(json.dumps(nf, ensure_ascii=False) + "\n")
+    print(f"\nNot-found log: {len(all_not_found)} entries  →  {not_found_path}")
+
+    # ---------------------------------------------------------------
+    # 6e  Summary table
+    # ---------------------------------------------------------------
+    print("\n" + "=" * 58)
+    print(f"  {'split':<16} {'raw':>9} {'tokenized':>10} {'not_found':>10}")
+    print("=" * 58)
+    for label, n_raw, n_tok, n_nf in summary_rows:
+        print(f"  {label:<16} {n_raw:>9,} {n_tok:>10,} {n_nf:>10,}")
+    print("=" * 58)
+    print(f"  {'TOTAL':<16} {sum(r for _,r,_,_ in summary_rows):>9,} "
+          f"{sum(t for _,_,t,_ in summary_rows):>10,} "
+          f"{sum(n for _,_,_,n in summary_rows):>10,}")
 
 
  
