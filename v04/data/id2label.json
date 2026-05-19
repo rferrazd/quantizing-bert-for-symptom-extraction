@@ -1,0 +1,7 @@
+{
+  "0": "O",
+  "1": "B-SYMPTOM_POS",
+  "2": "I-SYMPTOM_POS",
+  "3": "B-SYMPTOM_NEG",
+  "4": "I-SYMPTOM_NEG"
+}

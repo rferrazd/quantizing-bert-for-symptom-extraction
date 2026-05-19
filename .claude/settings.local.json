@@ -17,7 +17,16 @@
       "Bash(mkdir -p /Users/robertagarcia/Desktop/learning/bert_symptom_ner/.claude/skills/generate_hda_template)",
       "Bash(python3)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(python3 -c \"import pandas\")",
+      "Bash(conda activate *)",
+      "Bash(pip show *)",
+      "Bash(find /opt /usr/local ~/miniforge3 ~/anaconda3 ~/miniconda3 -name \"python3\" 2>/dev/null | head -10)",
+      "Read(//Users/robertagarcia/miniconda3/**)",
+      "Read(//Users/robertagarcia/anaconda3/**)",
+      "Bash(mkdir -p /Users/robertagarcia/Desktop/learning/bert_symptom_ner/.claude/skills/handoff-prompt)",
+      "Bash(git -C /Users/robertagarcia/Desktop/learning/bert_symptom_ner add .claude/skills/handoff-prompt/SKILL.md)",
+      "Bash(/opt/anaconda3/bin/python3 -c \"import sys, json; [print\\(json.dumps\\(json.loads\\(l\\), indent=2, ensure_ascii=False\\)[:1200]\\) for l in sys.stdin]\")"
     ]
   }
 }
