@@ -395,6 +395,55 @@ WHAT TO NOTICE
 """)
 
 
+# =====================================================================
+# 13) split_template_groups + split_symptoms_df — toy demo
+# =====================================================================
+section("13) split_template_groups + split_symptoms_df — what the split looks like")
+
+from data_preparation.dataset_split import split_template_groups, split_symptoms_df
+
+# Use a larger toy template set so we have something to hold out.
+# (The mini_templates from section 11 have only 1 template per group.)
+demo_templates = [
+    ("affirmed",   ["Patient has {SYMPTOM_POS}.", "Reports {SYMPTOM_POS}.", "Endorses {SYMPTOM_POS}."]),
+    ("negated",    ["Denies {SYMPTOM_NEG}.", "No {SYMPTOM_NEG} noted.", "ROS negative for {SYMPTOM_NEG}."]),
+    ("distractor", ["Literature describes {SYMPTOM_O}.", "Family history of {SYMPTOM_O}.", "Monitor for {SYMPTOM_O}."]),
+    ("hda",        ["Reports {SYMPTOM_POS_1}. Denies {SYMPTOM_NEG_1}.", "Has {SYMPTOM_POS_1} and {SYMPTOM_POS_2}. No {SYMPTOM_NEG_1}."]),
+]
+demo_counts = {"affirmed": 1, "negated": 1, "distractor": 1, "hda": 1}
+
+train_tmpls, heldout_tmpls, indices_map = split_template_groups(demo_templates, counts=demo_counts)
+
+print("Before split:")
+for name, tmpls in demo_templates:
+    print(f"  {name:12s}: {len(tmpls)} template(s)")
+
+print("\nAfter split (seed=42, hold out 1 per group):")
+for (n, tr), (n2, hd) in zip(train_tmpls, heldout_tmpls):
+    print(f"  {n:12s}: train={len(tr)}, heldout={len(hd)}, held-out index={indices_map.get(n, [])}")
+
+print("\nSymptom split on the toy pool (7 symptoms, hold out 2):")
+train_s, heldout_s = split_symptoms_df(SYMPTOMS_DF, n_heldout=2)
+print(f"  train symptoms:   {list(train_s['prefLabel'])}")
+print(f"  heldout symptoms: {list(heldout_s['prefLabel'])}")
+
+# Run twice — confirm determinism.
+train_s2, heldout_s2 = split_symptoms_df(SYMPTOMS_DF, n_heldout=2)
+assert list(heldout_s["id"]) == list(heldout_s2["id"]), "Non-deterministic!"
+print("\nSame result on second run — split is deterministic ✓")
+
+print("""
+WHAT TO NOTICE
+- split_template_groups preserves the (group_name, templates) shape — output drops straight into DatasetGenerator.
+- The held-out indices tell you WHICH templates from the original list were removed; useful for auditing.
+- split_symptoms_df uses the same seed contract: same seed → same 2 symptoms every time.
+- In the real pipeline, three DatasetGenerators are built from the combinations:
+    gen_train        = DatasetGenerator(train_symptoms,  train_templates)
+    gen_template_ood = DatasetGenerator(train_symptoms,  heldout_templates)
+    gen_symptom_ood  = DatasetGenerator(heldout_symptoms, train_templates)
+""")
+
+
 print("\n" + "=" * 70)
 print("  WALKTHROUGH COMPLETE")
 print("=" * 70)

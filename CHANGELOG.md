@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-05-18 — dataset split + full v04 generation
+
+### New files
+- `data_preparation/dataset_split.py`: deterministic train/eval split module. Constants: `EVAL_SPLIT_SEED=42`, `HELDOUT_COUNTS` (5 affirmed, 5 negated, 4 distractor, 2 hda), `HELDOUT_SYMPTOM_COUNT=20`. Functions: `split_template_groups` (returns train groups, heldout groups, heldout indices map), `split_symptoms_df`, `save_split_artifacts`, `load_split_artifacts`.
+- `v04/test_dataset_split.py`: 9-check smoke test covering counts, no-overlap, determinism, index consistency, and save/load round-trip.
+
+### Modified files
+- `data_preparation/dataset_generator.py` — `__main__` rewritten to produce three datasets: train (K=40 HDA), template_ood (K=20 HDA), symptom_ood (K=20 HDA). Prints held-out indices, saves `v04/splits/split_artifacts.json`, writes combined `not_found.jsonl` tagged by split.
+- `v04/dataset_templates.py` — `NEGATED_TEMPLATES` brought to 40 (added `"Patient denies {SYMPTOM_NEG}."`, a high-frequency cue absent from single-symptom templates).
+- `test_pipeline_walkthrough.py` — section 13 added: toy demo of `split_template_groups` and `split_symptoms_df`, showing before/after sizes and determinism.
+
+### Generated artifacts (v04/)
+- `v04/splits/split_artifacts.json` — held-out template indices + held-out symptom ids (seed 42)
+- `v04/train_raw.jsonl` + `v04/train_tokenized.jsonl` — **91,512 samples** (35×873 aff + 35×873 neg + 34×873 dist + 18 hda×K=40)
+- `v04/template_ood_raw.jsonl` + `v04/template_ood_tokenized.jsonl` — **12,262 samples** (5+5+4 groups ×873 + 2 hda×K=20)
+- `v04/symptom_ood_raw.jsonl` + `v04/symptom_ood_tokenized.jsonl` — **2,440 samples** (35+35+34+18 templates ×20 held-out symptoms)
+- `v04/not_found.jsonl` — **0 entries** (no tokenization failures across any split)
+
 ## 2026-05-18 — session `ceec7de1-2a8b-4ead-b0da-11d3fcd0a6c9`
 
 - `data_preparation/dataset_generator.py`: fixed cross-polarity dedup in `build_fill_map` (single `used_ids` set + retry cap); moved save block out of per-group loop; `import json` at module level; `__main__` now uses methods' `save_in_jsonl_path` and calls `gen.tokenize_all_samples(samples, …)` correctly; `Literal[None|str]` → `Optional[str]`.

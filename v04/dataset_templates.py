@@ -1,6 +1,6 @@
 # Template inventory:
 #   AFFIRMED_TEMPLATES:  40   — single-symptom, patient-affirmed
-#   NEGATED_TEMPLATES:   35   — single-symptom, patient-denied (current denials only; past history is O)
+#   NEGATED_TEMPLATES:   40  — single-symptom, patient-denied (current denials only; past history is O)
 #   DISTRACTOR_TEMPLATES: 38  — single-symptom, non-patient context (all O labels)
 #   HDA_TEMPLATES:        20  — multi-sentence HDA paragraphs, mixed POS/NEG (growing)
 
@@ -98,6 +98,12 @@ NEGATED_TEMPLATES = [
     "{SYMPTOM_NEG} has not been experienced.",
     "There are no reports suggesting {SYMPTOM_NEG}.",
     "{SYMPTOM_NEG} excluded based on evaluation.",
+    "During the evaluation the patient denied any evidence of {SYMPTOM_NEG}.",
+    "Patient is entirely free of {SYMPTOM_NEG} at this time.",
+    "Updates indicate a lack of {SYMPTOM_NEG}.",
+    "History is negative for recent {SYMPTOM_NEG}.",
+    "The patient does not experience {SYMPTOM_NEG}.",
+    "Patient denies {SYMPTOM_NEG}.",
 ]
 
 # ALL TOKENS SHOULD BE LABELED WITH A "O":
