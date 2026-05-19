@@ -327,18 +327,17 @@ if __name__ == "__main__":
     PROJECT_ROOT = Path("/Users/robertagarcia/Desktop/learning/bert_symptom_ner")
     if str(PROJECT_ROOT) not in sys.path:
         sys.path.insert(0, str(PROJECT_ROOT))
-
+    # local imports 
     from config import settings
     from v04.dataset_templates import TEMPLATE_GROUPS
     from data_preparation.dataset_split import (
-        load_split_artifacts,
         save_split_artifacts,
         split_symptoms_df,
         split_template_groups,
     )
 
     VERSION = settings.VERSION  # e.g. "v04"
-    SPLITS_DIR = f"{VERSION}/splits"
+    SPLITS_DIR = f"{VERSION}/data/splits"
 
     symptoms_df = pd.read_csv("base_symptom_dict.csv")
     print(f"VERSION: {VERSION}  |  symptoms pool: {len(symptoms_df)}")
@@ -378,9 +377,9 @@ if __name__ == "__main__":
 
     splits_config = [
         # (label,          generator,        K_hda, raw_path,                  tok_path)
-        ("train",         gen_train,         40,    f"{VERSION}/train_raw.jsonl",        f"{VERSION}/train_tokenized.jsonl"),
-        ("template_ood",  gen_template_ood,  20,    f"{VERSION}/template_ood_raw.jsonl", f"{VERSION}/template_ood_tokenized.jsonl"),
-        ("symptom_ood",   gen_symptom_ood,   20,    f"{VERSION}/symptom_ood_raw.jsonl",  f"{VERSION}/symptom_ood_tokenized.jsonl"),
+        ("train",         gen_train,         40,    f"{SPLITS_DIR}/train_raw.jsonl",        f"{SPLITS_DIR}/train_tokenized.jsonl"),
+        ("template_ood",  gen_template_ood,  20,    f"{SPLITS_DIR}/template_ood_raw.jsonl", f"{SPLITS_DIR}/template_ood_tokenized.jsonl"),
+        ("symptom_ood",   gen_symptom_ood,   20,    f"{SPLITS_DIR}/symptom_ood_raw.jsonl",  f"{SPLITS_DIR}/symptom_ood_tokenized.jsonl"),
     ]
 
     summary_rows = []
@@ -404,11 +403,14 @@ if __name__ == "__main__":
     # ---------------------------------------------------------------
     # 6d (cont.)  Write combined not_found log
     # ---------------------------------------------------------------
-    not_found_path = f"{VERSION}/not_found.jsonl"
-    with open(not_found_path, "w") as f:
-        for nf in all_not_found:
-            f.write(json.dumps(nf, ensure_ascii=False) + "\n")
-    print(f"\nNot-found log: {len(all_not_found)} entries  →  {not_found_path}")
+    not_found_path = f"{VERSION}/data/not_found.jsonl"
+    if all_not_found:
+        with open(not_found_path, "w") as f:
+            for nf in all_not_found:
+                f.write(json.dumps(nf, ensure_ascii=False) + "\n")
+        print(f"\nNot-found log: {len(all_not_found)} entries  →  {not_found_path}")
+    else:
+        print("Hurray! no issues with the dataset generation all samples were properly whitespce tokenized and BIO word labeled!")
 
     # ---------------------------------------------------------------
     # 6e  Summary table
@@ -424,8 +426,32 @@ if __name__ == "__main__":
           f"{sum(n for _,_,_,n in summary_rows):>10,}")
 
 
- 
+    # ---------------------------------------------------------------
+    #  7       WORDPIECE TOKENIZATION
+    # ---------------------------------------------------------------
+    from transformers import AutoTokenizer
+    from data_preparation.wordpiece_alignment import align_file, save_label_mappings, LABEL_LIST
+    wordpiece_tokenizer = AutoTokenizer.from_pretrained(settings.BASE_MODEL)
 
+    Path(SPLITS_DIR).mkdir(parents=True, exist_ok=True)
+
+    save_label_mappings(out_dir=Path(f"{VERSION}/data"))
+    print(f"Saved label2id.json and id2label.json to {f"{VERSION}/data"}/")
+    print(f"Labels ({len(LABEL_LIST)}): {LABEL_LIST}\n")
+
+    for label, gen, K_hda, raw_path, tok_path in splits_config:
+        wordpiece_path = f"{SPLITS_DIR}/{label}_wordpiece.jsonl"
+        sample_count, truncated_count = align_file(
+            input_path=Path(tok_path),
+            output_path=Path(wordpiece_path),
+            tokenizer=wordpiece_tokenizer,
+        )
+        msg = f"[{label}] {sample_count:,} samples -> {wordpiece_path}"
+        if truncated_count:
+            msg += f"  (WARNING: {truncated_count} samples hit max_length=512)"
+        print(msg)
+
+        
 
 
 

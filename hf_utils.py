@@ -2,6 +2,10 @@
 
 from huggingface_hub import create_branch, HfApi
 
+def upsert_to_hf_repo(
+    # TODO
+):
+    return
 
 def ensure_branch_exists(repo_id: str, branch_name: str, repo_type: str = "model") -> bool:
     """

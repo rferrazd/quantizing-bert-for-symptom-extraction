@@ -33,6 +33,7 @@ class Settings:
   
     # HuggingFace
     HF_TOKEN = os.getenv("HF_TOKEN")
+    BASE_MODEL = os.getenv("BASE_MODEL", "dmis-lab/biobert-base-cased-v1.1")
     # Allow explicit override (recommended) to avoid hard-coded naming assumptions.
     # Example: HUGGINGFACE_REPO_ID="Rogarcia18/symptoms_v02_biobert"
     HUGGINGFACE_REPO_ID = os.getenv("HUGGINGFACE_REPO_ID") 
