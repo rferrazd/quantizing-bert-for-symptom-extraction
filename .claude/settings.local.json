@@ -26,7 +26,9 @@
       "Read(//Users/robertagarcia/anaconda3/**)",
       "Bash(mkdir -p /Users/robertagarcia/Desktop/learning/bert_symptom_ner/.claude/skills/handoff-prompt)",
       "Bash(git -C /Users/robertagarcia/Desktop/learning/bert_symptom_ner add .claude/skills/handoff-prompt/SKILL.md)",
-      "Bash(/opt/anaconda3/bin/python3 -c \"import sys, json; [print\\(json.dumps\\(json.loads\\(l\\), indent=2, ensure_ascii=False\\)[:1200]\\) for l in sys.stdin]\")"
+      "Bash(/opt/anaconda3/bin/python3 -c \"import sys, json; [print\\(json.dumps\\(json.loads\\(l\\), indent=2, ensure_ascii=False\\)[:1200]\\) for l in sys.stdin]\")",
+      "Bash(/opt/anaconda3/bin/python3 -m pip install -U async_timeout aiohttp)",
+      "Bash(SMOKE_TEST=true SAVE_TO_GCS=false /opt/anaconda3/bin/python3 v04/7_trainer_gcp.py)"
     ]
   }
 }
