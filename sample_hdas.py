@@ -22,13 +22,14 @@ TODO (deferred, not P1):
         present in hda6/8/9/10 but never explicitly excluded; keep this convention)
 """
 
-transcriptions = [
+transcriptions_and_hdas = [
 
     # ------------------------------------------------------------------
     # EASY — at most one symptom per sentence, one clear polarity cue each
     # ------------------------------------------------------------------
     {
         "level": "easy",
+        "case": "easy_allergic",
         "template": (
             "Female patient, 38 years old, previously healthy, presents referred by her GP "
             "with a 5-day history of allergic reaction. "
@@ -59,6 +60,7 @@ transcriptions = [
     # ------------------------------------------------------------------
     {
         "level": "medium",
+        "case": "medium_rash",
         # Instantiation of the placeholder pattern using SYMPTOM_POOL strings
         # ({SYMPTOM_POS}×5, {SYMPTOM_NEG}×4) — left-to-right fill order matches list order below.
         "template": (
@@ -97,6 +99,7 @@ transcriptions = [
     # ------------------------------------------------------------------
     {
         "level": "medium",
+        "case": "hda6",
         "template": (
             "Patient reports sudden onset of high fever 4 days ago, associated with intense headache and chills. "
             "She describes diffuse joint pain and fatigue that worsened progressively over the last two days. "
@@ -134,6 +137,7 @@ transcriptions = [
     # ------------------------------------------------------------------
     {
         "level": "medium",
+        "case": "hda7",
         "template": (
             "Patient reports cough with onset approximately 5 days ago, associated with wheezing and dyspnea during moderate physical activity. \n"
             "Reports mild fever, fatigue, and chest pain that worsens during coughing episodes.\n"
@@ -168,6 +172,7 @@ transcriptions = [
     # ------------------------------------------------------------------
     {
         "level": "medium",
+        "case": "hda8",
         "template": (
             "Patient reports abdominal pain with onset 2 days ago, located diffusely throughout the abdomen and associated with nausea and vomiting. Patient describes associated weakness and dizziness, especially when standing up rapidly. \n"
             "Patient also reports transient fever and anorexia. Patient denies diarrhea or constipation. \n"
@@ -198,6 +203,7 @@ transcriptions = [
     # ------------------------------------------------------------------
     {
         "level": "medium",
+        "case": "hda9",
         "template": (
             "Patient reports headache of moderate intensity for approximately 3 days, associated with dizziness and malaise. \n"
             "Patient also reports nasal congestion and rhinorrhea, predominantly in the morning. Patient mentions mild fever and throat pain with progressive worsening since symptom onset. \n"
@@ -233,6 +239,7 @@ transcriptions = [
     # ------------------------------------------------------------------
     {
         "level": "medium",
+        "case": "hda10",
         "template": (
             "Patient reports prolonged fever for approximately 7 days, associated with fatigue and weakness. \n"
             "He describes chills occurring mainly during the evening and reports diffuse backache and joint pain. \n"

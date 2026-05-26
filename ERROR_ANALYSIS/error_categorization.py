@@ -18,36 +18,9 @@ class ErrorCategorizer():
     def __init__(self):
         self.error_counts = Counter()
 
-    # def _is_entity_in_spans(self, 
-    #    entity_text: str, 
-    #    spans: List[Spans]
-    #    ):
+  
     #     # TODO (P1): define types for entity_text and spans and return type
-    #     """
-    #     Check if entity text is contained within any span text and return the span index.
-        
-    #     Returns:
-    #         int | None: The index of the first span containing the entity text, or None if not found.
-        
-    #     How it works:
-    #     - Uses `enumerate()` to get both the index and span from the spans list
-    #     - For each span, checks if entity_text is a substring of span['text']
-    #     - Returns the index as soon as a match is found (short-circuit evaluation)
-    #     - Returns None if no match is found
-        
-    #     Example:
-    #         entity_text = "fever"
-    #         spans = [
-    #             {'text': 'The patient', ...},      # index 0: "fever" not in "The patient" -> continue
-    #             {'text': 'fever or chills', ...},  # index 1: "fever" in "fever or chills" -> return 1
-    #             {'text': 'reports', ...}           # (not reached due to short-circuit)
-    #         ]
-    #         # Returns: 1
-    #     """
-    #     for idx, span in enumerate(spans):
-    #         if entity_text in span['text']:
-    #             return idx
-    #     return None
+    #   
 
     def _is_entity_in_spans(self, entity, spans):
         """Match a gold entity to the predicted span with the largest character overlap.

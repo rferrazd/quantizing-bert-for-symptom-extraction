@@ -1,0 +1,572 @@
+{
+ "0": {
+  "present_errors": [],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 155,
+     "end": 167,
+     "text": "identifiable",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 30,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'identifiable' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 168,
+     "end": 184,
+     "text": "triggering event",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 31,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'triggering event' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 192,
+     "end": 220,
+     "text": "recent changes to medication",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 34,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'recent changes to medication' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 224,
+     "end": 228,
+     "text": "diet",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 36,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'diet' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 278,
+     "end": 294,
+     "text": "similar episodes",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 48,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'similar episodes' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 472,
+     "end": 485,
+     "text": "recent travel",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 79,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'recent travel' not in expected entities"
+   }
+  ]
+ },
+ "1": {
+  "present_errors": [],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 586,
+     "end": 598,
+     "text": "inflammation",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 98,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'inflammation' not in expected entities"
+   }
+  ]
+ },
+ "2": {
+  "present_errors": [
+   {
+    "entity": {
+     "ent": "high fever",
+     "start": 32,
+     "end": 42,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 16,
+     "end": 42,
+     "text": "sudden onset of high fever",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 2,
+    "errors": [
+     "Boundary Overreach"
+    ]
+   },
+   {
+    "entity": {
+     "ent": "headache",
+     "start": 79,
+     "end": 87,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 71,
+     "end": 87,
+     "text": "intense headache",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 9,
+    "errors": [
+     "Boundary Overreach"
+    ]
+   },
+   {
+    "entity": {
+     "ent": "joint pain",
+     "start": 122,
+     "end": 132,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 114,
+     "end": 132,
+     "text": "diffuse joint pain",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 15,
+    "errors": [
+     "Boundary Overreach"
+    ]
+   }
+  ],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 244,
+     "end": 263,
+     "text": "reduced food intake",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 35,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'reduced food intake' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 387,
+     "end": 416,
+     "text": "recent exposure to mosquitoes",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 56,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'recent exposure to mosquitoes' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 465,
+     "end": 487,
+     "text": "previous comorbidities",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 66,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'previous comorbidities' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 492,
+     "end": 517,
+     "text": "continuous medication use",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 68,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'continuous medication use' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 540,
+     "end": 554,
+     "text": "drug allergies",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 73,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'drug allergies' not in expected entities"
+   }
+  ]
+ },
+ "3": {
+  "present_errors": [
+   {
+    "entity": {
+     "ent": "mild fever",
+     "start": 140,
+     "end": 150,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 145,
+     "end": 150,
+     "text": "fever",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 21,
+    "errors": [
+     "Boundary Undereach"
+    ]
+   }
+  ],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 112,
+     "end": 129,
+     "text": "physical activity",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 17,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'physical activity' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 472,
+     "end": 491,
+     "text": "regular medications",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 73,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'regular medications' not in expected entities"
+   }
+  ]
+ },
+ "4": {
+  "present_errors": [
+   {
+    "entity": {
+     "ent": "dysuria",
+     "start": 368,
+     "end": 375,
+     "label": "SYMPTOM_NEG"
+    },
+    "span": {
+     "start": 354,
+     "end": 375,
+     "text": "an absense of dysuria",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 50,
+    "errors": [
+     "Incorrect Polarity Assignment",
+     "Boundary Overreach"
+    ]
+   },
+   {
+    "entity": {
+     "ent": "backache",
+     "start": 379,
+     "end": 387,
+     "label": "SYMPTOM_NEG"
+    },
+    "span": {
+     "start": 379,
+     "end": 387,
+     "text": "backache",
+     "label": "CONFLICT-B-SYMPTOM_NEG-I-SYMPTOM_POS"
+    },
+    "span_idx": 52,
+    "errors": [
+     "Tokenization Artifacts",
+     "BIO Sequencing Errors"
+    ]
+   }
+  ],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 62,
+     "end": 94,
+     "text": "diffusely throughout the abdomen",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 10,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'diffusely throughout the abdomen' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 392,
+     "end": 406,
+     "text": "past surgeries",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 55,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'past surgeries' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 410,
+     "end": 427,
+     "text": "chronic illnesses",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 57,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'chronic illnesses' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 450,
+     "end": 464,
+     "text": "drug allergies",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 62,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'drug allergies' not in expected entities"
+   }
+  ]
+ },
+ "5": {
+  "present_errors": [
+   {
+    "entity": {
+     "ent": "headache",
+     "start": 16,
+     "end": 24,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 16,
+     "end": 46,
+     "text": "headache of moderate intensity",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 2,
+    "errors": [
+     "Boundary Overreach"
+    ]
+   },
+   {
+    "entity": {
+     "ent": "fatigue",
+     "start": 444,
+     "end": 451,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 434,
+     "end": 451,
+     "text": "increased fatigue",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 64,
+    "errors": [
+     "Boundary Overreach"
+    ]
+   }
+  ],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 493,
+     "end": 515,
+     "text": "previous comorbidities",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 71,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'previous comorbidities' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 520,
+     "end": 545,
+     "text": "continuous medication use",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 73,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'continuous medication use' not in expected entities"
+   }
+  ]
+ },
+ "6": {
+  "present_errors": [
+   {
+    "entity": {
+     "ent": "vomiting",
+     "start": 249,
+     "end": 257,
+     "label": "SYMPTOM_NEG"
+    },
+    "span": {
+     "start": 234,
+     "end": 257,
+     "text": "nausea without vomiting",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 33,
+    "errors": [
+     "Incorrect Polarity Assignment",
+     "Boundary Overreach"
+    ]
+   },
+   {
+    "entity": {
+     "ent": "backache",
+     "start": 173,
+     "end": 181,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 165,
+     "end": 181,
+     "text": "diffuse backache",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 24,
+    "errors": [
+     "Boundary Overreach"
+    ]
+   },
+   {
+    "entity": {
+     "ent": "nausea",
+     "start": 234,
+     "end": 240,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 234,
+     "end": 257,
+     "text": "nausea without vomiting",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 33,
+    "errors": [
+     "Boundary Overreach"
+    ]
+   }
+  ],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 365,
+     "end": 386,
+     "text": "recent travel history",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 53,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'recent travel history' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 413,
+     "end": 429,
+     "text": "chronic diseases",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 58,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'chronic diseases' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 447,
+     "end": 461,
+     "text": "drug allergies",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 62,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'drug allergies' not in expected entities"
+   }
+  ]
+ }
+}
