@@ -1,6 +1,20 @@
 # NER hyperparameter configurations inspired by BioBERT (paper-faithful)
 from config import settings
 
+# V05 configs — identical to V04 for controlled comparison (data-only change).
+biobert_hyperparams_v05 = [
+    {
+        "model_name": "dmis-lab/biobert-base-cased-v1.1",
+        "dataset_repo": "Rogarcia18/symptom-ner-dataset-v05",
+        "epoch": 3,
+        "lr": 5e-5,
+        "batch_size": 16,
+        "weight_decay": 0.01,
+        "warmup_ratio": 0.1,
+        "push_to_hub": True,
+    },
+]
+
 # V04 configs — full backbone fine-tuning (no freeze).
 # Fewer epochs than V03 because all ~108M params update per step → converges faster.
 biobert_hyperparams_v04 = [
