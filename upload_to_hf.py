@@ -156,6 +156,7 @@ def upload_label_mappings(repo_id: str, token: str) -> None:
 
 def main() -> None:
     """Carve validation split, upload all splits, upload label mappings."""
+    # LATEST USE: v05
     repo_id = settings.HUGGINGFACE_DATASET_REPO_ID
     token = settings.HF_TOKEN
 

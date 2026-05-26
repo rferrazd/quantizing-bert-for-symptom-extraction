@@ -14,9 +14,14 @@ import pandas as pd
 # Each entry is (logical group name, list of template strings). Pass v04 TEMPLATE_GROUPS or a subset.
 TemplateGroups = List[Tuple[str, List[str]]]
 
-# template for parcing SYMPTOM_
-PLACEHOLDER_RE = re.compile(r'\{(SYMPTOM[^}]*)\}')
+# Placeholder regex: matches both SYMPTOM_* and NON_SYMPTOM_HISTORY_* forms.
+# Examples matched: {SYMPTOM_POS}, {SYMPTOM_NEG_1}, {SYMPTOM_O}, {NON_SYMPTOM_HISTORY}, {NON_SYMPTOM_HISTORY_2}.
+# NON_SYMPTOM_HISTORY_* placeholders are V05 (P1) — denial-cue distractors filled with non-symptom phrases.
+PLACEHOLDER_RE = re.compile(r'\{(NON_SYMPTOM_HISTORY[^}]*|SYMPTOM[^}]*)\}')
 SINGLE_SYMPTOM_GROUPS = {"affirmed", "negated", "distractor"}
+
+# Placeholder-name prefix used for V05 non-symptom history (label O).
+NON_SYMPTOM_HISTORY_PREFIX = "NON_SYMPTOM_HISTORY"
 # =============
 # HELPERS 
 # =============
@@ -28,15 +33,37 @@ def extract_placeholders(template:str):
     """Return unique placeholder names in template, preserving order.Don't use set() it won't preserve the order"""
     return list(dict.fromkeys(PLACEHOLDER_RE.findall(template)))
 
-def draw_symptom(symptoms_df, 
+def draw_symptom(symptoms_df,
                 id_column_name:str="id",
                 prefLabel_column_name:str="prefLabel") -> Tuple[str, str]:
     """Return (symptom_id, symptom_text) sampled at random."""
     row = symptoms_df.sample(1).iloc[0]
     return row[id_column_name], row[prefLabel_column_name]
 
+
+def draw_non_symptom_history(non_symptom_pool: List[str]) -> Tuple[str, str]:
+    """
+    Return (synthetic_id, phrase) sampled at random from the non-symptom-history pool.
+
+    V05 P1: these phrases (e.g. "drug allergies", "previous comorbidities") fill the
+    {NON_SYMPTOM_HISTORY} placeholder in DISTRACTOR_TEMPLATES category 9 and HDA
+    templates T21–T28. All tokens MUST be labeled O — they are intentionally NOT
+    added to the per-sample symptoms metadata, so tokenize_sample never labels them.
+
+    The synthetic_id is "NSH_<idx>" purely for traceability in raw JSONL; it is
+    never written to the labeled output.
+    """
+    if not non_symptom_pool:
+        raise ValueError(
+            "NON_SYMPTOM_HISTORY placeholder encountered but no non_symptom_pool was "
+            "provided to DatasetGenerator. Pass non_symptom_pool=NON_SYMPTOM_HISTORY_POOL."
+        )
+    idx = random.randrange(len(non_symptom_pool))
+    return f"NSH_{idx}", non_symptom_pool[idx]
+
+
 def build_fill_map(template:str,
-group_name:str, symptoms_df:Dict):
+group_name:str, symptoms_df:Dict, non_symptom_pool: Optional[List[str]] = None):
     """
     Return {placeholder_name: (symptom_id, symptom_text)} for every slot.
 
@@ -50,17 +77,42 @@ group_name:str, symptoms_df:Dict):
     placeholders = extract_placeholders(template)
     fill_map: Dict[str, Tuple[str,str]] = {}
 
-    # Single dedup scope across ALL indexed slots, regardless of polarity.
+    # Single dedup scope across ALL indexed SYMPTOM slots, regardless of polarity.
     # Prevents the same symptom_id from filling SYMPTOM_POS_1 and SYMPTOM_NEG_1
     # in the same HDA (which would be clinically incoherent and also break
     # tokenize_sample, which finds the first token match per symptom).
-    used_ids: Set[str] = set()
+    used_symptom_ids: Set[str] = set()
+    # Separate dedup scope for NON_SYMPTOM_HISTORY indexed slots so the same
+    # phrase (e.g. "drug allergies") doesn't appear twice in the same template.
+    used_nsh_ids: Set[str] = set()
     MAX_DRAW_ATTEMPTS = 100
 
     for plh in placeholders:
         if plh in fill_map:
             continue
 
+        # --- V05 P1: NON_SYMPTOM_HISTORY placeholders (label O) ---------------
+        if plh.startswith(NON_SYMPTOM_HISTORY_PREFIX):
+            # Indexed (e.g. NON_SYMPTOM_HISTORY_1) → unique draw; bare (NON_SYMPTOM_HISTORY) → any draw.
+            is_indexed = re.match(rf'^{NON_SYMPTOM_HISTORY_PREFIX}_(\d+)$', plh) is not None
+            if is_indexed:
+                for _ in range(MAX_DRAW_ATTEMPTS):
+                    nsh_id, phrase = draw_non_symptom_history(non_symptom_pool or [])
+                    if nsh_id not in used_nsh_ids:
+                        break
+                else:
+                    raise RuntimeError(
+                        f"Could not find an unused non-symptom-history phrase for {plh!r} "
+                        f"after {MAX_DRAW_ATTEMPTS} attempts. Pool may be smaller than the "
+                        f"number of indexed slots."
+                    )
+                used_nsh_ids.add(nsh_id)
+            else:
+                nsh_id, phrase = draw_non_symptom_history(non_symptom_pool or [])
+            fill_map[plh] = (nsh_id, phrase)
+            continue
+
+        # --- SYMPTOM_* placeholders -------------------------------------------
         # Indexed placeholder, e.g. "SYMPTOM_POS_1": draw a fresh symptom that
         # hasn't been used yet anywhere in this fill_map.
         index_match = re.match(r'^(SYMPTOM_(?:POS|NEG))_(\d+)$', plh)
@@ -68,7 +120,7 @@ group_name:str, symptoms_df:Dict):
         if index_match:
             for attempt in range(MAX_DRAW_ATTEMPTS):
                 sid, symptom_text = draw_symptom(symptoms_df)
-                if sid not in used_ids:
+                if sid not in used_symptom_ids:
                     break
             else:
                 raise RuntimeError(
@@ -76,7 +128,7 @@ group_name:str, symptoms_df:Dict):
                     f"after {MAX_DRAW_ATTEMPTS} attempts. "
                     f"Pool may be smaller than the number of indexed slots."
                 )
-            used_ids.add(sid)
+            used_symptom_ids.add(sid)
             fill_map[plh] = (sid, symptom_text)
         else:
             # "Bare" means the placeholder has no numeric index: {SYMPTOM_POS}, not {SYMPTOM_POS_1}.
@@ -117,9 +169,20 @@ class DatasetGenerator:
         self,
         symptoms_df: pd.DataFrame,
         dataset_templates: TemplateGroups,
+        non_symptom_pool: Optional[List[str]] = None,
     ):
+        """
+        Args:
+            symptoms_df: Pool of symptoms with columns 'id' and 'prefLabel'.
+            dataset_templates: TEMPLATE_GROUPS from v04/v05 dataset_templates.
+            non_symptom_pool: V05 P1 — list of non-symptom-history phrases used to
+                fill {NON_SYMPTOM_HISTORY} placeholders. Pass NON_SYMPTOM_HISTORY_POOL
+                from v05/dataset_templates.py. Optional for backwards compatibility
+                with v04 (templates without {NON_SYMPTOM_HISTORY}).
+        """
         self.symptoms_df = symptoms_df
         self.dataset_templates = dataset_templates
+        self.non_symptom_pool = non_symptom_pool or []
         # Two alternating branches separated by |:
         #   [A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*  — a word, optionally joined by hyphens or
         #                                          apostrophes (e.g. "well-being", "it's")
@@ -181,13 +244,21 @@ class DatasetGenerator:
         samples: List[dict] = []
 
         # K = None → use pool size as K (effectively "one HDA sample per symptom per template").
-        K = K if K > 0 else len(self.symptoms_df)
+        K = K if (K is not None and K > 0) else len(self.symptoms_df)
 
         # Outer loop: walk every (group_name, [template, ...]) pair from dataset_templates.
         for group_name, templates in self.dataset_templates:
             for template in templates:
 
-                if group_name in SINGLE_SYMPTOM_GROUPS:
+                # V05: detect templates with NON_SYMPTOM_HISTORY placeholders.
+                # Distractor category 9 templates have ONLY {NON_SYMPTOM_HISTORY} (no
+                # {SYMPTOM_O}), so the exhaustive single-symptom path doesn't apply —
+                # we sample K random fills from the non-symptom pool instead.
+                template_placeholders = extract_placeholders(template)
+                has_nsh = any(p.startswith(NON_SYMPTOM_HISTORY_PREFIX) for p in template_placeholders)
+                has_symptom_slot = any(p.startswith("SYMPTOM") for p in template_placeholders)
+
+                if group_name in SINGLE_SYMPTOM_GROUPS and has_symptom_slot:
                     # ---- EXHAUSTIVE PATH ----
                     # Single-symptom template: one placeholder, one sample per symptom.
 
@@ -207,11 +278,40 @@ class DatasetGenerator:
                             "symptoms":       build_symptoms_metadata(fill_map),
                         })
 
+                elif group_name in SINGLE_SYMPTOM_GROUPS and has_nsh and not has_symptom_slot:
+                    # ---- V05 P1: NSH-ONLY DISTRACTOR PATH ----
+                    # Distractor category 9 templates use {NON_SYMPTOM_HISTORY} only
+                    # (no symptom slots). Sample many random fills from the small
+                    # NON_SYMPTOM_HISTORY_POOL (22 phrases) so this category has
+                    # meaningful coverage relative to the rest of the dataset.
+                    #
+                    # NSH coverage is DECOUPLED from HDA K (the function-level `K`
+                    # argument), because:
+                    #   - HDA K controls samples per multi-symptom HDA template.
+                    #   - NSH coverage must be large enough to break the V04
+                    #     "denial cue → SYMPTOM_NEG" shortcut, regardless of HDA K.
+                    # At 300 fills × 25 templates = 7,500 NSH-only samples per split.
+                    nsh_K = 300
+                    for _ in range(nsh_K):
+                        fill_map = build_fill_map(
+                            template, group_name, self.symptoms_df,
+                            non_symptom_pool=self.non_symptom_pool,
+                        )
+                        samples.append({
+                            "text":           fill_template(template, fill_map),
+                            "template_group": group_name,
+                            "template":       template,
+                            "symptoms":       build_symptoms_metadata(fill_map),
+                        })
+
                 else:
                     # ---- SAMPLED PATH (multi-symptom, e.g. hda) ----
                     # K random draws; each draw picks fresh symptoms for every indexed slot.
                     for _ in range(K):
-                        fill_map = build_fill_map(template, group_name, self.symptoms_df)
+                        fill_map = build_fill_map(
+                            template, group_name, self.symptoms_df,
+                            non_symptom_pool=self.non_symptom_pool,
+                        )
                         samples.append({
                             "text":           fill_template(template, fill_map),
                             "template_group": group_name,
@@ -327,19 +427,32 @@ if __name__ == "__main__":
     PROJECT_ROOT = Path("/Users/robertagarcia/Desktop/learning/bert_symptom_ner")
     if str(PROJECT_ROOT) not in sys.path:
         sys.path.insert(0, str(PROJECT_ROOT))
-    # local imports 
+    # local imports
     from config import settings
-    from v04.dataset_templates import TEMPLATE_GROUPS
+    # V05: imports updated to v05 templates + new NON_SYMPTOM_HISTORY_POOL.
+    # If running v04, swap the import to `from v04.dataset_templates import TEMPLATE_GROUPS`.
+    from v05.dataset_templates import TEMPLATE_GROUPS, NON_SYMPTOM_HISTORY_POOL
     from data_preparation.dataset_split import (
         save_split_artifacts,
         split_symptoms_df,
         split_template_groups,
     )
 
-    VERSION = settings.VERSION  # e.g. "v04"
-    SPLITS_DIR = f"{VERSION}/data/splits"
+    VERSION = settings.VERSION  # e.g. "v05"
+    # Safety: VERSION must be set explicitly. If unset (None), settings.VERSION
+    # silently becomes "None" and the run writes to a junk "None/data/splits"
+    # directory — fail loudly instead.
+    assert VERSION == "v05", (
+        f"VERSION env var must be set to 'v05' for this run (got {VERSION!r}). "
+        f"Run: export VERSION=v05"
+    )
 
-    symptoms_df = pd.read_csv("base_symptom_dict.csv")
+    # Resolve all paths against PROJECT_ROOT so the script works from any CWD
+    # (otherwise relative paths like 'base_symptom_dict.csv' silently break when
+    # invoked from anywhere except the project root).
+    SPLITS_DIR = str(PROJECT_ROOT / VERSION / "data" / "splits")
+
+    symptoms_df = pd.read_csv(PROJECT_ROOT / "base_symptom_dict.csv")
     print(f"VERSION: {VERSION}  |  symptoms pool: {len(symptoms_df)}")
 
     # ---------------------------------------------------------------
@@ -366,9 +479,9 @@ if __name__ == "__main__":
     # ---------------------------------------------------------------
     # 6c  Instantiate three generators
     # ---------------------------------------------------------------
-    gen_train = DatasetGenerator(train_symptoms_df, train_template_groups)
-    gen_template_ood = DatasetGenerator(train_symptoms_df, heldout_template_groups)
-    gen_symptom_ood = DatasetGenerator(heldout_symptoms_df, train_template_groups)
+    gen_train = DatasetGenerator(train_symptoms_df, train_template_groups, non_symptom_pool=NON_SYMPTOM_HISTORY_POOL)
+    gen_template_ood = DatasetGenerator(train_symptoms_df, heldout_template_groups, non_symptom_pool=NON_SYMPTOM_HISTORY_POOL)
+    gen_symptom_ood = DatasetGenerator(heldout_symptoms_df, train_template_groups, non_symptom_pool=NON_SYMPTOM_HISTORY_POOL)
 
     # ---------------------------------------------------------------
     # 6d  Generate + tokenize + save each split
@@ -403,7 +516,8 @@ if __name__ == "__main__":
     # ---------------------------------------------------------------
     # 6d (cont.)  Write combined not_found log
     # ---------------------------------------------------------------
-    not_found_path = f"{VERSION}/data/not_found.jsonl"
+    # CWD-independent (uses PROJECT_ROOT)
+    not_found_path = str(PROJECT_ROOT / VERSION / "data" / "not_found.jsonl")
     if all_not_found:
         with open(not_found_path, "w") as f:
             for nf in all_not_found:
@@ -435,8 +549,10 @@ if __name__ == "__main__":
 
     Path(SPLITS_DIR).mkdir(parents=True, exist_ok=True)
 
-    save_label_mappings(out_dir=Path(f"{VERSION}/data"))
-    print(f"Saved label2id.json and id2label.json to {f"{VERSION}/data"}/")
+    # CWD-independent path for label2id.json / id2label.json
+    label_dir = PROJECT_ROOT / VERSION / "data"
+    save_label_mappings(out_dir=label_dir)
+    print(f"Saved label2id.json and id2label.json to {label_dir}/")
     print(f"Labels ({len(LABEL_LIST)}): {LABEL_LIST}\n")
 
     for label, gen, K_hda, raw_path, tok_path in splits_config:
