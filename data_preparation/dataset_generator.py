@@ -203,7 +203,7 @@ class DatasetGenerator:
                 yield group_name, template
 
 
-    def generate_raw_synthetic_samples(self, K: int | None = 40, save_in_jsonl_path: Optional[str] = None) -> List[dict]:
+    def generate_raw_synthetic_samples(self, K: int | None = 40, save_in_jsonl_path: Optional[str] = None, skip_nsh_only: bool = False) -> List[dict]:
         """
         Generate the raw (un-tokenized) synthetic dataset by filling every template
         with concrete symptoms drawn from `self.symptoms_df`.
@@ -236,6 +236,12 @@ class DatasetGenerator:
         Args:
             K: Random draws per multi-symptom template (None → pool size).
             save_in_jsonl_path: If provided, write all samples to this path as JSONL.
+            skip_nsh_only: If True, skip templates that contain ONLY {NON_SYMPTOM_HISTORY}
+                placeholders (i.e. distractor category 9). These templates do not depend
+                on `symptoms_df` at all — they draw from NON_SYMPTOM_HISTORY_POOL — so
+                including them in OOD splits creates IID-contaminated samples that
+                inflate F1 without actually testing OOD generalization. Use
+                skip_nsh_only=True for template_ood and symptom_ood splits.
 
         Returns:
             List of sample dicts. Each dict has keys: text, template_group,
@@ -280,6 +286,12 @@ class DatasetGenerator:
 
                 elif group_name in SINGLE_SYMPTOM_GROUPS and has_nsh and not has_symptom_slot:
                     # ---- V05 P1: NSH-ONLY DISTRACTOR PATH ----
+                    # OOD-split safety: skip NSH-only templates for template_ood and
+                    # symptom_ood — they don't depend on symptoms_df, so they'd be IID
+                    # with training NSH samples and inflate OOD F1 artificially.
+                    if skip_nsh_only:
+                        continue
+
                     # Distractor category 9 templates use {NON_SYMPTOM_HISTORY} only
                     # (no symptom slots). Sample many random fills from the small
                     # NON_SYMPTOM_HISTORY_POOL (22 phrases) so this category has
@@ -500,7 +512,14 @@ if __name__ == "__main__":
     for label, gen, K_hda, raw_path, tok_path in splits_config:
         print(f"\n--- {label} (HDA K={K_hda}) ---")
 
-        raw = gen.generate_raw_synthetic_samples(K=K_hda, save_in_jsonl_path=raw_path)
+        # Only the train split needs NSH (Non-Symptom History) counter-pressure.
+        # OOD splits skip NSH-only templates to avoid IID contamination
+        # (they would inflate F1 without testing real generalization).
+        raw = gen.generate_raw_synthetic_samples(
+            K=K_hda,
+            save_in_jsonl_path=raw_path,
+            skip_nsh_only=(label != "train"),
+        )
         print(f"  raw:       {len(raw):>7,} samples  →  {raw_path}")
 
         tok, not_found = gen.tokenize_all_samples(raw, save_in_jsonl_path=tok_path)

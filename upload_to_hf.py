@@ -22,7 +22,7 @@ carve is skipped. To start fresh, delete validation_wordpiece.jsonl and
 re-run wordpiece_alignment.py to restore the full train file before running
 this script again.
 
-Run: /opt/anaconda3/bin/python3 v04/data/upload_to_hf.py
+Run: python upload_to_hf.py
 """
 import json
 import random
@@ -32,7 +32,8 @@ from pathlib import Path
 
 from huggingface_hub import HfApi
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+#PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -163,12 +164,12 @@ def main() -> None:
     print(f"Target repo : {repo_id}")
     print(f"Splits dir  : {SPLITS_DIR}\n")
 
-    # carve_validation_split(
-    #     train_path=SPLITS_DIR / "train_wordpiece.jsonl",
-    #     val_path=SPLITS_DIR / "validation_wordpiece.jsonl",
-    # )
-    # print()
-    # upload_splits(repo_id, token)
+    carve_validation_split(
+        train_path=SPLITS_DIR / "train_wordpiece.jsonl",
+        val_path=SPLITS_DIR / "validation_wordpiece.jsonl",
+    )
+    print()
+    upload_splits(repo_id, token)
     print()
     upload_label_mappings(repo_id, token)
 
