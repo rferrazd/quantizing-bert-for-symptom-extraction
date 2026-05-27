@@ -1,0 +1,163 @@
+{
+ "0": {
+  "present_errors": [],
+  "missing_entities": [],
+  "false_positives": []
+ },
+ "1": {
+  "present_errors": [
+   {
+    "entity": {
+     "ent": "allergic reaction",
+     "start": 518,
+     "end": 535,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 518,
+     "end": 535,
+     "text": "allergic reaction",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 89,
+    "errors": [
+     "Incorrect Polarity Assignment"
+    ]
+   }
+  ],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 586,
+     "end": 598,
+     "text": "inflammation",
+     "label": "SYMPTOM_NEG"
+    },
+    "span_idx": 98,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'inflammation' not in expected entities"
+   }
+  ]
+ },
+ "2": {
+  "present_errors": [],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 244,
+     "end": 256,
+     "text": "reduced food",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 40,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'reduced food' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 406,
+     "end": 416,
+     "text": "mosquitoes",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 65,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'mosquitoes' not in expected entities"
+   }
+  ]
+ },
+ "3": {
+  "present_errors": [
+   {
+    "entity": {
+     "ent": "mild fever",
+     "start": 140,
+     "end": 150,
+     "label": "SYMPTOM_POS"
+    },
+    "span": {
+     "start": 145,
+     "end": 150,
+     "text": "fever",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 22,
+    "errors": [
+     "Boundary Undereach"
+    ]
+   }
+  ],
+  "missing_entities": [],
+  "false_positives": []
+ },
+ "4": {
+  "present_errors": [],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 83,
+     "end": 94,
+     "text": "the abdomen",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 12,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'the abdomen' not in expected entities"
+   },
+   {
+    "entity": null,
+    "span": {
+     "start": 357,
+     "end": 364,
+     "text": "absense",
+     "label": "SYMPTOM_POS"
+    },
+    "span_idx": 53,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'absense' not in expected entities"
+   }
+  ]
+ },
+ "5": {
+  "present_errors": [],
+  "missing_entities": [],
+  "false_positives": [
+   {
+    "entity": null,
+    "span": {
+     "start": 274,
+     "end": 281,
+     "text": "symptom",
+     "label": "CONFLICT-B-SYMPTOM_POS-I-SYMPTOM_NEG-I-SYMPTOM_NEG-I-SYMPTOM_NEG"
+    },
+    "span_idx": 38,
+    "errors": [
+     "Irrelevant Span Mislabeling"
+    ],
+    "reasoning": "Predicted entity span 'symptom' not in expected entities"
+   }
+  ]
+ },
+ "6": {
+  "present_errors": [],
+  "missing_entities": [],
+  "false_positives": []
+ }
+}
