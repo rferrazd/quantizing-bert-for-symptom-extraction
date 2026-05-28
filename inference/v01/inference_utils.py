@@ -105,6 +105,50 @@ def predict_word_level(
     pred_token_labels = [id2label[p.item()] for p in predictions]
 
     # -------------------------------
+    # 3 + 4. Filter special tokens and aggregate tokens → words.
+    # Delegated to a backend-agnostic helper so the PyTorch and ONNX
+    # inference paths share ONE copy of this critical alignment logic.
+    # -------------------------------
+    return aggregate_token_predictions_to_words(
+        text=text,
+        tokens=tokens,
+        word_ids=word_ids,
+        offsets=offsets,
+        pred_token_labels=pred_token_labels,
+    )
+
+
+def aggregate_token_predictions_to_words(
+    text: str,
+    tokens: List[str],
+    word_ids: List,
+    offsets: List[tuple],
+    pred_token_labels: List[str],
+) -> tuple:
+    """
+    Backend-agnostic steps 3 + 4 of word-level NER.
+
+    Filters out special tokens (word_id is None), then aggregates token-level
+    label predictions up to the word level. This logic is identical regardless
+    of whether `pred_token_labels` came from a PyTorch forward pass or an ONNX
+    Runtime session — by this point everything is plain Python lists, so neither
+    runtime is involved. Both `predict_word_level` (PyTorch) and
+    `predict_word_level_onnx` (ONNX) call this so the alignment logic lives in
+    exactly one place.
+
+    Args:
+        text: the original input string (used to slice word offsets back out).
+        tokens: tokenizer tokens, aligned with `word_ids` and `offsets`.
+        word_ids: per-token original-word index; None for special tokens.
+        offsets: per-token (start, end) char offsets into `text`.
+        pred_token_labels: per-token predicted label strings.
+
+    Returns:
+        (filtered_tokens, filtered_token_labels, filtered_word_ids,
+         words, word_labels, word_offsets)
+    """
+
+    # -------------------------------
     # 3. FILTER EVERYTHING TOGETHER
     # -------------------------------
     # This is CRITICAL.
