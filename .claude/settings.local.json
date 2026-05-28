@@ -30,7 +30,9 @@
       "Bash(/opt/anaconda3/bin/python3 -m pip install -U async_timeout aiohttp)",
       "Bash(SMOKE_TEST=true SAVE_TO_GCS=false /opt/anaconda3/bin/python3 v04/7_trainer_gcp.py)",
       "Bash(python3 -c \"from huggingface_hub import create_repo\")",
-      "Bash(python3 -m json.tool)"
+      "Bash(python3 -m json.tool)",
+      "Bash(.venv/bin/pip show *)",
+      "Bash(.venv/bin/pip install *)"
     ]
   }
 }

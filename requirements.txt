@@ -16,3 +16,7 @@ evaluate
 # google cloud specifics
 # package to handle GCS
 google-cloud-storage 
+optimum
+optimum-onnx
+onnx
+onnxruntime
