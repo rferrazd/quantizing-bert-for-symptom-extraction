@@ -32,7 +32,16 @@
       "Bash(python3 -c \"from huggingface_hub import create_repo\")",
       "Bash(python3 -m json.tool)",
       "Bash(.venv/bin/pip show *)",
-      "Bash(.venv/bin/pip install *)"
+      "Bash(.venv/bin/pip install *)",
+      "Bash(npm --version)",
+      "Bash(watchman --version)",
+      "Bash(xcodebuild -version)",
+      "Bash(pod --version)",
+      "Bash(ruby --version)",
+      "Read(//Applications/**)",
+      "Bash(/opt/homebrew/lib/ruby/gems/4.0.0/bin/pod --version)",
+      "Bash(sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer)",
+      "Bash(xcode-select -p)"
     ]
   }
 }
