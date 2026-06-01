@@ -1,0 +1,3574 @@
+[
+{
+"id": "s0001",
+"prefLabel": "symptom"
+},
+{
+"id": "s0002",
+"prefLabel": "musculoskeletal system symptom"
+},
+{
+"id": "s0003",
+"prefLabel": "torticollis"
+},
+{
+"id": "s0004",
+"prefLabel": "loss of height"
+},
+{
+"id": "s0005",
+"prefLabel": "abnormal posture"
+},
+{
+"id": "s0006",
+"prefLabel": "tetany"
+},
+{
+"id": "s0007",
+"prefLabel": "postural reaction"
+},
+{
+"id": "s0008",
+"prefLabel": "abnormal hemiwalking"
+},
+{
+"id": "s0009",
+"prefLabel": "wheelbarrowing"
+},
+{
+"id": "s0010",
+"prefLabel": "hopping"
+},
+{
+"id": "s0011",
+"prefLabel": "conscious proprioception"
+},
+{
+"id": "s0012",
+"prefLabel": "abnormal hemiwalking hemistanding"
+},
+{
+"id": "s0013",
+"prefLabel": "abnormal hemistanding"
+},
+{
+"id": "s0014",
+"prefLabel": "muscle symptom"
+},
+{
+"id": "s0015",
+"prefLabel": "muscle tightness"
+},
+{
+"id": "s0016",
+"prefLabel": "opisthotonus"
+},
+{
+"id": "s0017",
+"prefLabel": "muscle weakness"
+},
+{
+"id": "s0018",
+"prefLabel": "limb weakness"
+},
+{
+"id": "s0019",
+"prefLabel": "leg weakness"
+},
+{
+"id": "s0020",
+"prefLabel": "arm weakness"
+},
+{
+"id": "s0021",
+"prefLabel": "hand weakness"
+},
+{
+"id": "s0022",
+"prefLabel": "deltoid muscle weakness"
+},
+{
+"id": "s0023",
+"prefLabel": "sternocleidomastoid weakness"
+},
+{
+"id": "s0024",
+"prefLabel": "peripheral muscle weakness"
+},
+{
+"id": "s0025",
+"prefLabel": "muscle cramp"
+},
+{
+"id": "s0026",
+"prefLabel": "leg cramp"
+},
+{
+"id": "s0027",
+"prefLabel": "muscle twitching"
+},
+{
+"id": "s0028",
+"prefLabel": "facial muscle twitching"
+},
+{
+"id": "s0029",
+"prefLabel": "muscle necrosis"
+},
+{
+"id": "s0030",
+"prefLabel": "muscle soreness"
+},
+{
+"id": "s0031",
+"prefLabel": "muscle tenderness"
+},
+{
+"id": "s0032",
+"prefLabel": "flaccid muscle tone"
+},
+{
+"id": "s0033",
+"prefLabel": "cataplexy"
+},
+{
+"id": "s0034",
+"prefLabel": "contracture"
+},
+{
+"id": "s0035",
+"prefLabel": "arthritis"
+},
+{
+"id": "s0036",
+"prefLabel": "acute arthritis"
+},
+{
+"id": "s0037",
+"prefLabel": "motor weakness"
+},
+{
+"id": "s0038",
+"prefLabel": "inibility to stand"
+},
+{
+"id": "s0039",
+"prefLabel": "joint symptom"
+},
+{
+"id": "s0040",
+"prefLabel": "joint inflammation"
+},
+{
+"id": "s0041",
+"prefLabel": "synovitis"
+},
+{
+"id": "s0042",
+"prefLabel": "inability to lie flat"
+},
+{
+"id": "s0043",
+"prefLabel": "soft tissue necrosis"
+},
+{
+"id": "s0044",
+"prefLabel": "clubbing of fingers"
+},
+{
+"id": "s0045",
+"prefLabel": "cellulitis"
+},
+{
+"id": "s0046",
+"prefLabel": "recumbency"
+},
+{
+"id": "s0047",
+"prefLabel": "uncoordinated gait"
+},
+{
+"id": "s0048",
+"prefLabel": "decreased jaw tone"
+},
+{
+"id": "s0049",
+"prefLabel": "staggering gait"
+},
+{
+"id": "s0050",
+"prefLabel": "hypokinesia"
+},
+{
+"id": "s0051",
+"prefLabel": "postural instability hypokinesia"
+},
+{
+"id": "s0052",
+"prefLabel": "freezing hypokinesia"
+},
+{
+"id": "s0053",
+"prefLabel": "bradykinesia"
+},
+{
+"id": "s0054",
+"prefLabel": "rigidity hypokinesia"
+},
+{
+"id": "s0055",
+"prefLabel": "abnormality of gait"
+},
+{
+"id": "s0056",
+"prefLabel": "wobble"
+},
+{
+"id": "s0057",
+"prefLabel": "lameness"
+},
+{
+"id": "s0058",
+"prefLabel": "hemic and immune system symptom"
+},
+{
+"id": "s0059",
+"prefLabel": "hematopoietic system symptom"
+},
+{
+"id": "s0060",
+"prefLabel": "immune system symptom"
+},
+{
+"id": "s0061",
+"prefLabel": "anaphylactic shock"
+},
+{
+"id": "s0062",
+"prefLabel": "lymphatic system symptom"
+},
+{
+"id": "s0063",
+"prefLabel": "enlargement of lymph nodes"
+},
+{
+"id": "s0064",
+"prefLabel": "lymphadenopathy"
+},
+{
+"id": "s0065",
+"prefLabel": "painful reginal lymphadenopathy"
+},
+{
+"id": "s0066",
+"prefLabel": "cervical lymphadenopathy"
+},
+{
+"id": "s0067",
+"prefLabel": "lymphoblastoma"
+},
+{
+"id": "s0068",
+"prefLabel": "lymphopenia"
+},
+{
+"id": "s0069",
+"prefLabel": "lymphangitis"
+},
+{
+"id": "s0070",
+"prefLabel": "lymphadenitis"
+},
+{
+"id": "s0071",
+"prefLabel": "bubo"
+},
+{
+"id": "s0072",
+"prefLabel": "hilar lymphadenitis"
+},
+{
+"id": "s0073",
+"prefLabel": "acute mesenteric lymphadenitis"
+},
+{
+"id": "s0074",
+"prefLabel": "spleen symptom"
+},
+{
+"id": "s0075",
+"prefLabel": "hepatosplenomegaly"
+},
+{
+"id": "s0076",
+"prefLabel": "splenomegaly"
+},
+{
+"id": "s0077",
+"prefLabel": "spleen abscess"
+},
+{
+"id": "s0078",
+"prefLabel": "thymus symptom"
+},
+{
+"id": "s0079",
+"prefLabel": "allergic reaction"
+},
+{
+"id": "s0080",
+"prefLabel": "hemic system symptom"
+},
+{
+"id": "s0081",
+"prefLabel": "toxemia"
+},
+{
+"id": "s0082",
+"prefLabel": "intense toxemia"
+},
+{
+"id": "s0083",
+"prefLabel": "microangiopathy"
+},
+{
+"id": "s0084",
+"prefLabel": "coagulopathy"
+},
+{
+"id": "s0085",
+"prefLabel": "hyponatremia"
+},
+{
+"id": "s0086",
+"prefLabel": "septicemia"
+},
+{
+"id": "s0087",
+"prefLabel": "thrombocytopenia"
+},
+{
+"id": "s0088",
+"prefLabel": "vasculitis"
+},
+{
+"id": "s0089",
+"prefLabel": "leukocytosis"
+},
+{
+"id": "s0090",
+"prefLabel": "anemia"
+},
+{
+"id": "s0091",
+"prefLabel": "hemolytic anemia"
+},
+{
+"id": "s0092",
+"prefLabel": "microangiopathic hemolytic anemia"
+},
+{
+"id": "s0093",
+"prefLabel": "moderate anemia"
+},
+{
+"id": "s0094",
+"prefLabel": "ischemia"
+},
+{
+"id": "s0095",
+"prefLabel": "hemolysis"
+},
+{
+"id": "s0096",
+"prefLabel": "hyperemia"
+},
+{
+"id": "s0097",
+"prefLabel": "functional hyperemia"
+},
+{
+"id": "s0098",
+"prefLabel": "reactive hyperemia"
+},
+{
+"id": "s0099",
+"prefLabel": "active hyperemia"
+},
+{
+"id": "s0100",
+"prefLabel": "congested sclera"
+},
+{
+"id": "s0101",
+"prefLabel": "hypotension"
+},
+{
+"id": "s0102",
+"prefLabel": "mild hypotension"
+},
+{
+"id": "s0103",
+"prefLabel": "hypoxemia"
+},
+{
+"id": "s0104",
+"prefLabel": "hemodynamic instability"
+},
+{
+"id": "s0105",
+"prefLabel": "low white blood cell count"
+},
+{
+"id": "s0106",
+"prefLabel": "hematogenous"
+},
+{
+"id": "s0107",
+"prefLabel": "plasmacytosis"
+},
+{
+"id": "s0108",
+"prefLabel": "cytopenia"
+},
+{
+"id": "s0109",
+"prefLabel": "reticulocytosis"
+},
+{
+"id": "s0110",
+"prefLabel": "macrocytosis"
+},
+{
+"id": "s0111",
+"prefLabel": "digestive system symptom"
+},
+{
+"id": "s0112",
+"prefLabel": "flatulence"
+},
+{
+"id": "s0113",
+"prefLabel": "tenesmus"
+},
+{
+"id": "s0114",
+"prefLabel": "terminal ileitis"
+},
+{
+"id": "s0115",
+"prefLabel": "vomiting"
+},
+{
+"id": "s0116",
+"prefLabel": "hematemesis"
+},
+{
+"id": "s0117",
+"prefLabel": "liver symptom"
+},
+{
+"id": "s0118",
+"prefLabel": "hepatic necrosis"
+},
+{
+"id": "s0119",
+"prefLabel": "massive hepatic necrosis"
+},
+{
+"id": "s0120",
+"prefLabel": "hepatitis"
+},
+{
+"id": "s0121",
+"prefLabel": "hepatic dysfunction"
+},
+{
+"id": "s0122",
+"prefLabel": "hepatic abscess"
+},
+{
+"id": "s0123",
+"prefLabel": "hepatomegaly"
+},
+{
+"id": "s0124",
+"prefLabel": "liver inflammation"
+},
+{
+"id": "s0125",
+"prefLabel": "nausea"
+},
+{
+"id": "s0126",
+"prefLabel": "visible peristalsis"
+},
+{
+"id": "s0127",
+"prefLabel": "enteritis"
+},
+{
+"id": "s0128",
+"prefLabel": "chronic enteritis"
+},
+{
+"id": "s0129",
+"prefLabel": "acute enteritis"
+},
+{
+"id": "s0130",
+"prefLabel": "gastrointestinal bleeding"
+},
+{
+"id": "s0131",
+"prefLabel": "feces and droppings symptom"
+},
+{
+"id": "s0132",
+"prefLabel": "constipation"
+},
+{
+"id": "s0133",
+"prefLabel": "outlet dysfunction constipation"
+},
+{
+"id": "s0134",
+"prefLabel": "melena"
+},
+{
+"id": "s0135",
+"prefLabel": "bloody stool"
+},
+{
+"id": "s0136",
+"prefLabel": "diarrhea"
+},
+{
+"id": "s0137",
+"prefLabel": "severe diarrhea"
+},
+{
+"id": "s0138",
+"prefLabel": "bloody diarrhea"
+},
+{
+"id": "s0139",
+"prefLabel": "hemorrhagic diarrhea"
+},
+{
+"id": "s0140",
+"prefLabel": "acute diarrhea"
+},
+{
+"id": "s0141",
+"prefLabel": "yellowish green diarrhea"
+},
+{
+"id": "s0142",
+"prefLabel": "steatorrhea"
+},
+{
+"id": "s0143",
+"prefLabel": "yellow dropping"
+},
+{
+"id": "s0144",
+"prefLabel": "abnormal feces"
+},
+{
+"id": "s0145",
+"prefLabel": "acholic stool"
+},
+{
+"id": "s0146",
+"prefLabel": "hematochezia"
+},
+{
+"id": "s0147",
+"prefLabel": "intestinal hemorrhage"
+},
+{
+"id": "s0148",
+"prefLabel": "rectorrhagia"
+},
+{
+"id": "s0149",
+"prefLabel": "intestinal hypermotility"
+},
+{
+"id": "s0150",
+"prefLabel": "abnormal bowel sound"
+},
+{
+"id": "s0151",
+"prefLabel": "salivary gland symptom"
+},
+{
+"id": "s0152",
+"prefLabel": "salivation"
+},
+{
+"id": "s0153",
+"prefLabel": "continuous profuse salivation"
+},
+{
+"id": "s0154",
+"prefLabel": "excess salivation"
+},
+{
+"id": "s0155",
+"prefLabel": "acute suppurative parotiditis"
+},
+{
+"id": "s0156",
+"prefLabel": "parotid abscess"
+},
+{
+"id": "s0157",
+"prefLabel": "necrosis of jejunum"
+},
+{
+"id": "s0158",
+"prefLabel": "ischemic necrosis of jejunum"
+},
+{
+"id": "s0159",
+"prefLabel": "belching"
+},
+{
+"id": "s0160",
+"prefLabel": "diminished gastrointestinal motility"
+},
+{
+"id": "s0161",
+"prefLabel": "gastroenteritis"
+},
+{
+"id": "s0162",
+"prefLabel": "hemorrhagic gastroenteritis"
+},
+{
+"id": "s0163",
+"prefLabel": "acute gastroenteritis"
+},
+{
+"id": "s0164",
+"prefLabel": "lesions in pancreas"
+},
+{
+"id": "s0165",
+"prefLabel": "distended loops of intestines on rectal"
+},
+{
+"id": "s0166",
+"prefLabel": "pyrosis"
+},
+{
+"id": "s0167",
+"prefLabel": "bloating"
+},
+{
+"id": "s0168",
+"prefLabel": "dyspepsia"
+},
+{
+"id": "s0169",
+"prefLabel": "cardiovascular system symptom"
+},
+{
+"id": "s0170",
+"prefLabel": "endocarditis"
+},
+{
+"id": "s0171",
+"prefLabel": "shock"
+},
+{
+"id": "s0172",
+"prefLabel": "cardiogenic shock"
+},
+{
+"id": "s0173",
+"prefLabel": "septic shock"
+},
+{
+"id": "s0174",
+"prefLabel": "undiagnosed cardiac murmur"
+},
+{
+"id": "s0175",
+"prefLabel": "blood vessel infection"
+},
+{
+"id": "s0176",
+"prefLabel": "hemorrhage"
+},
+{
+"id": "s0177",
+"prefLabel": "intracranial hemorrhage"
+},
+{
+"id": "s0178",
+"prefLabel": "intracerebral hemorrhage"
+},
+{
+"id": "s0179",
+"prefLabel": "subdural hemorrhage"
+},
+{
+"id": "s0180",
+"prefLabel": "palpitation"
+},
+{
+"id": "s0181",
+"prefLabel": "myocarditis"
+},
+{
+"id": "s0182",
+"prefLabel": "heart failure"
+},
+{
+"id": "s0183",
+"prefLabel": "hypergammaglobulinemia"
+},
+{
+"id": "s0184",
+"prefLabel": "vascular alteration"
+},
+{
+"id": "s0185",
+"prefLabel": "gangrene"
+},
+{
+"id": "s0186",
+"prefLabel": "chest hyperemia"
+},
+{
+"id": "s0187",
+"prefLabel": "lesions in myocardium"
+},
+{
+"id": "s0188",
+"prefLabel": "pericardial effusion"
+},
+{
+"id": "s0189",
+"prefLabel": "postphlebitic ulcer"
+},
+{
+"id": "s0190",
+"prefLabel": "phlebitis"
+},
+{
+"id": "s0191",
+"prefLabel": "arrhythmia"
+},
+{
+"id": "s0192",
+"prefLabel": "cardiac fibrillation"
+},
+{
+"id": "s0193",
+"prefLabel": "ventricular fibrillation"
+},
+{
+"id": "s0194",
+"prefLabel": "atrial fibrillation"
+},
+{
+"id": "s0195",
+"prefLabel": "bradycardia"
+},
+{
+"id": "s0196",
+"prefLabel": "sinus bradycardia"
+},
+{
+"id": "s0197",
+"prefLabel": "ventricular bradycardia"
+},
+{
+"id": "s0198",
+"prefLabel": "tachycardia"
+},
+{
+"id": "s0199",
+"prefLabel": "sinus tachycardia"
+},
+{
+"id": "s0200",
+"prefLabel": "paroxysmal tachycardia"
+},
+{
+"id": "s0201",
+"prefLabel": "ventricular tachycardia"
+},
+{
+"id": "s0202",
+"prefLabel": "junctional tachycardia"
+},
+{
+"id": "s0203",
+"prefLabel": "urinary system symptom"
+},
+{
+"id": "s0204",
+"prefLabel": "extravasation of urine"
+},
+{
+"id": "s0205",
+"prefLabel": "renal involvement"
+},
+{
+"id": "s0206",
+"prefLabel": "renal abscess"
+},
+{
+"id": "s0207",
+"prefLabel": "hematuria"
+},
+{
+"id": "s0208",
+"prefLabel": "gross hematuria"
+},
+{
+"id": "s0209",
+"prefLabel": "urinary stream symptom"
+},
+{
+"id": "s0210",
+"prefLabel": "slowing of urinary stream"
+},
+{
+"id": "s0211",
+"prefLabel": "splitting of urinary stream"
+},
+{
+"id": "s0212",
+"prefLabel": "dysuria"
+},
+{
+"id": "s0213",
+"prefLabel": "urethral discharge"
+},
+{
+"id": "s0214",
+"prefLabel": "urinary incontinence"
+},
+{
+"id": "s0215",
+"prefLabel": "mixed incontinence female male"
+},
+{
+"id": "s0216",
+"prefLabel": "overflow incontinence"
+},
+{
+"id": "s0217",
+"prefLabel": "incontinence without sensory awareness"
+},
+{
+"id": "s0218",
+"prefLabel": "postvoid dribbling"
+},
+{
+"id": "s0219",
+"prefLabel": "urge incontinence"
+},
+{
+"id": "s0220",
+"prefLabel": "continuous leakage of urine"
+},
+{
+"id": "s0221",
+"prefLabel": "stress incontinence"
+},
+{
+"id": "s0222",
+"prefLabel": "male stress incontinence"
+},
+{
+"id": "s0223",
+"prefLabel": "nocturnal enuresis"
+},
+{
+"id": "s0224",
+"prefLabel": "nephritis"
+},
+{
+"id": "s0225",
+"prefLabel": "genitourinary hemorrhage"
+},
+{
+"id": "s0226",
+"prefLabel": "proteinuria"
+},
+{
+"id": "s0227",
+"prefLabel": "incomplete bladder emptying"
+},
+{
+"id": "s0228",
+"prefLabel": "urinary retention"
+},
+{
+"id": "s0229",
+"prefLabel": "renal alteration"
+},
+{
+"id": "s0230",
+"prefLabel": "urinary urgency"
+},
+{
+"id": "s0231",
+"prefLabel": "urinary frequency"
+},
+{
+"id": "s0232",
+"prefLabel": "polyuria"
+},
+{
+"id": "s0233",
+"prefLabel": "nocturia"
+},
+{
+"id": "s0234",
+"prefLabel": "oliguria"
+},
+{
+"id": "s0235",
+"prefLabel": "dark urine"
+},
+{
+"id": "s0236",
+"prefLabel": "anuria"
+},
+{
+"id": "s0237",
+"prefLabel": "renal failure"
+},
+{
+"id": "s0238",
+"prefLabel": "acute renal failure"
+},
+{
+"id": "s0239",
+"prefLabel": "skin and integumentary tissue symptom"
+},
+{
+"id": "s0240",
+"prefLabel": "cold clammy skin"
+},
+{
+"id": "s0241",
+"prefLabel": "abnormal scar formation"
+},
+{
+"id": "s0242",
+"prefLabel": "nail discoloration"
+},
+{
+"id": "s0243",
+"prefLabel": "ruffled feather"
+},
+{
+"id": "s0244",
+"prefLabel": "dry mucous membrane"
+},
+{
+"id": "s0245",
+"prefLabel": "change in skin color"
+},
+{
+"id": "s0246",
+"prefLabel": "urticaria"
+},
+{
+"id": "s0247",
+"prefLabel": "paresthesia"
+},
+{
+"id": "s0248",
+"prefLabel": "itching"
+},
+{
+"id": "s0249",
+"prefLabel": "localized superficial swelling"
+},
+{
+"id": "s0250",
+"prefLabel": "localized superficial mass"
+},
+{
+"id": "s0251",
+"prefLabel": "pustule"
+},
+{
+"id": "s0252",
+"prefLabel": "boil"
+},
+{
+"id": "s0253",
+"prefLabel": "flat keratotic capsule"
+},
+{
+"id": "s0254",
+"prefLabel": "keratotic nodules of the skin"
+},
+{
+"id": "s0255",
+"prefLabel": "disturbance of skin sensation"
+},
+{
+"id": "s0256",
+"prefLabel": "jaundice"
+},
+{
+"id": "s0257",
+"prefLabel": "cyanosis"
+},
+{
+"id": "s0258",
+"prefLabel": "edema"
+},
+{
+"id": "s0259",
+"prefLabel": "anasarca"
+},
+{
+"id": "s0260",
+"prefLabel": "limb edema"
+},
+{
+"id": "s0261",
+"prefLabel": "palpebral edema"
+},
+{
+"id": "s0262",
+"prefLabel": "facial edema"
+},
+{
+"id": "s0263",
+"prefLabel": "change in skin texture"
+},
+{
+"id": "s0264",
+"prefLabel": "spontaneous ecchymoses"
+},
+{
+"id": "s0265",
+"prefLabel": "sweaty"
+},
+{
+"id": "s0266",
+"prefLabel": "diaphoresis"
+},
+{
+"id": "s0267",
+"prefLabel": "necrotic lesion"
+},
+{
+"id": "s0268",
+"prefLabel": "rash"
+},
+{
+"id": "s0269",
+"prefLabel": "ankle rash"
+},
+{
+"id": "s0270",
+"prefLabel": "papular rash"
+},
+{
+"id": "s0271",
+"prefLabel": "maculopapular rash"
+},
+{
+"id": "s0272",
+"prefLabel": "blotchy red rash"
+},
+{
+"id": "s0273",
+"prefLabel": "purpuric rash"
+},
+{
+"id": "s0274",
+"prefLabel": "diffuse rash"
+},
+{
+"id": "s0275",
+"prefLabel": "exanthema"
+},
+{
+"id": "s0276",
+"prefLabel": "skin lesion"
+},
+{
+"id": "s0277",
+"prefLabel": "abnormal wound healing"
+},
+{
+"id": "s0278",
+"prefLabel": "poor wound healing"
+},
+{
+"id": "s0279",
+"prefLabel": "skin ulcer"
+},
+{
+"id": "s0280",
+"prefLabel": "tache noire"
+},
+{
+"id": "s0281",
+"prefLabel": "extensive ulcer"
+},
+{
+"id": "s0282",
+"prefLabel": "apthous ulcer"
+},
+{
+"id": "s0283",
+"prefLabel": "papule"
+},
+{
+"id": "s0284",
+"prefLabel": "hyperpigmentation"
+},
+{
+"id": "s0285",
+"prefLabel": "pale mucous membrane"
+},
+{
+"id": "s0286",
+"prefLabel": "mammary gland inflammation"
+},
+{
+"id": "s0287",
+"prefLabel": "severe mammary gland inflammation"
+},
+{
+"id": "s0288",
+"prefLabel": "enanthem"
+},
+{
+"id": "s0289",
+"prefLabel": "flushing"
+},
+{
+"id": "s0290",
+"prefLabel": "pallor"
+},
+{
+"id": "s0291",
+"prefLabel": "localized superficial lump"
+},
+{
+"id": "s0292",
+"prefLabel": "petechiae"
+},
+{
+"id": "s0293",
+"prefLabel": "blister"
+},
+{
+"id": "s0294",
+"prefLabel": "dermal abscess"
+},
+{
+"id": "s0295",
+"prefLabel": "eschar"
+},
+{
+"id": "s0296",
+"prefLabel": "skin peeling"
+},
+{
+"id": "s0297",
+"prefLabel": "skin desquamation"
+},
+{
+"id": "s0298",
+"prefLabel": "hair symptom"
+},
+{
+"id": "s0299",
+"prefLabel": "hair loss"
+},
+{
+"id": "s0300",
+"prefLabel": "patches of hair loss with a black dot pattern"
+},
+{
+"id": "s0301",
+"prefLabel": "corkscrew hair"
+},
+{
+"id": "s0302",
+"prefLabel": "hair shedding"
+},
+{
+"id": "s0303",
+"prefLabel": "peritonitis"
+},
+{
+"id": "s0304",
+"prefLabel": "pleural effusion"
+},
+{
+"id": "s0305",
+"prefLabel": "decreased facial sensation"
+},
+{
+"id": "s0306",
+"prefLabel": "hemorrhage into skin"
+},
+{
+"id": "s0307",
+"prefLabel": "hemorrhage into mucous membrane"
+},
+{
+"id": "s0308",
+"prefLabel": "hematoma"
+},
+{
+"id": "s0309",
+"prefLabel": "icteric skin"
+},
+{
+"id": "s0310",
+"prefLabel": "icteric mucous membrane"
+},
+{
+"id": "s0311",
+"prefLabel": "bruise"
+},
+{
+"id": "s0312",
+"prefLabel": "eczema"
+},
+{
+"id": "s0313",
+"prefLabel": "darkening of skin"
+},
+{
+"id": "s0314",
+"prefLabel": "nervous system symptom"
+},
+{
+"id": "s0315",
+"prefLabel": "sensation perception"
+},
+{
+"id": "s0316",
+"prefLabel": "pain"
+},
+{
+"id": "s0317",
+"prefLabel": "neck pain"
+},
+{
+"id": "s0318",
+"prefLabel": "throat pain"
+},
+{
+"id": "s0319",
+"prefLabel": "headache"
+},
+{
+"id": "s0320",
+"prefLabel": "frontal headache"
+},
+{
+"id": "s0321",
+"prefLabel": "severe headache"
+},
+{
+"id": "s0322",
+"prefLabel": "bifrontal headache"
+},
+{
+"id": "s0323",
+"prefLabel": "bone pain"
+},
+{
+"id": "s0324",
+"prefLabel": "colicky pain"
+},
+{
+"id": "s0325",
+"prefLabel": "colic"
+},
+{
+"id": "s0326",
+"prefLabel": "renal colic"
+},
+{
+"id": "s0327",
+"prefLabel": "body ache"
+},
+{
+"id": "s0328",
+"prefLabel": "earache"
+},
+{
+"id": "s0329",
+"prefLabel": "toothache"
+},
+{
+"id": "s0330",
+"prefLabel": "abdominal pain"
+},
+{
+"id": "s0331",
+"prefLabel": "periumbilic abdominal pain"
+},
+{
+"id": "s0332",
+"prefLabel": "left upper quadrant abdominal pain"
+},
+{
+"id": "s0333",
+"prefLabel": "right upper quadrant abdominal pain"
+},
+{
+"id": "s0334",
+"prefLabel": "right lower quadrant abdominal pain"
+},
+{
+"id": "s0335",
+"prefLabel": "epigastric abdominal pain"
+},
+{
+"id": "s0336",
+"prefLabel": "generalized abdominal pain"
+},
+{
+"id": "s0337",
+"prefLabel": "multiple sites abdominal pain"
+},
+{
+"id": "s0338",
+"prefLabel": "left lower quadrant abdominal pain"
+},
+{
+"id": "s0339",
+"prefLabel": "muscle pain"
+},
+{
+"id": "s0340",
+"prefLabel": "severe myalgia"
+},
+{
+"id": "s0341",
+"prefLabel": "muscle ache"
+},
+{
+"id": "s0342",
+"prefLabel": "referred pain"
+},
+{
+"id": "s0343",
+"prefLabel": "chest pain"
+},
+{
+"id": "s0344",
+"prefLabel": "pleuritic chest pain"
+},
+{
+"id": "s0345",
+"prefLabel": "precordial pain"
+},
+{
+"id": "s0346",
+"prefLabel": "severe chest pain"
+},
+{
+"id": "s0347",
+"prefLabel": "joint pain"
+},
+{
+"id": "s0348",
+"prefLabel": "shoulder pain"
+},
+{
+"id": "s0349",
+"prefLabel": "elbow pain"
+},
+{
+"id": "s0350",
+"prefLabel": "knee pain"
+},
+{
+"id": "s0351",
+"prefLabel": "hip pain"
+},
+{
+"id": "s0352",
+"prefLabel": "severe joint pain"
+},
+{
+"id": "s0353",
+"prefLabel": "acute painful vision loss"
+},
+{
+"id": "s0354",
+"prefLabel": "painful lymph glands"
+},
+{
+"id": "s0355",
+"prefLabel": "gas pain"
+},
+{
+"id": "s0356",
+"prefLabel": "neuropathic pain"
+},
+{
+"id": "s0357",
+"prefLabel": "visceral pain"
+},
+{
+"id": "s0358",
+"prefLabel": "acute pain"
+},
+{
+"id": "s0359",
+"prefLabel": "nociceptive pain"
+},
+{
+"id": "s0360",
+"prefLabel": "chronic pain"
+},
+{
+"id": "s0361",
+"prefLabel": "phantom pain"
+},
+{
+"id": "s0362",
+"prefLabel": "breakthrough pain"
+},
+{
+"id": "s0363",
+"prefLabel": "retrobulbar pain"
+},
+{
+"id": "s0364",
+"prefLabel": "testicular pain"
+},
+{
+"id": "s0365",
+"prefLabel": "backache"
+},
+{
+"id": "s0366",
+"prefLabel": "inflammatory low back pain"
+},
+{
+"id": "s0367",
+"prefLabel": "low backache"
+},
+{
+"id": "s0368",
+"prefLabel": "severe backache"
+},
+{
+"id": "s0369",
+"prefLabel": "allodynia"
+},
+{
+"id": "s0370",
+"prefLabel": "parotid pain"
+},
+{
+"id": "s0371",
+"prefLabel": "dyspareunia"
+},
+{
+"id": "s0372",
+"prefLabel": "claudication"
+},
+{
+"id": "s0373",
+"prefLabel": "hypoalgesia"
+},
+{
+"id": "s0374",
+"prefLabel": "hyperalgesia"
+},
+{
+"id": "s0375",
+"prefLabel": "hypoesthesia"
+},
+{
+"id": "s0376",
+"prefLabel": "hyperesthesia"
+},
+{
+"id": "s0377",
+"prefLabel": "aphasia"
+},
+{
+"id": "s0378",
+"prefLabel": "poor enunciation"
+},
+{
+"id": "s0379",
+"prefLabel": "inability to comprehend speech"
+},
+{
+"id": "s0380",
+"prefLabel": "receptive aphasia"
+},
+{
+"id": "s0381",
+"prefLabel": "inability to speak"
+},
+{
+"id": "s0382",
+"prefLabel": "anomia"
+},
+{
+"id": "s0383",
+"prefLabel": "inability to form words"
+},
+{
+"id": "s0384",
+"prefLabel": "agraphia"
+},
+{
+"id": "s0385",
+"prefLabel": "alexia"
+},
+{
+"id": "s0386",
+"prefLabel": "expressive aphasia"
+},
+{
+"id": "s0387",
+"prefLabel": "behavioral symptom"
+},
+{
+"id": "s0388",
+"prefLabel": "communication difficulty"
+},
+{
+"id": "s0389",
+"prefLabel": "limited attention"
+},
+{
+"id": "s0390",
+"prefLabel": "hyperactivity"
+},
+{
+"id": "s0391",
+"prefLabel": "obsessive interests"
+},
+{
+"id": "s0392",
+"prefLabel": "repetitive behavior"
+},
+{
+"id": "s0393",
+"prefLabel": "irritability"
+},
+{
+"id": "s0394",
+"prefLabel": "abnormal behavior"
+},
+{
+"id": "s0395",
+"prefLabel": "aggressive behavior"
+},
+{
+"id": "s0396",
+"prefLabel": "paralysis"
+},
+{
+"id": "s0397",
+"prefLabel": "respiratory paralysis"
+},
+{
+"id": "s0398",
+"prefLabel": "transient paralysis of limb"
+},
+{
+"id": "s0399",
+"prefLabel": "lip paralysis"
+},
+{
+"id": "s0400",
+"prefLabel": "throat muscle paralysis"
+},
+{
+"id": "s0401",
+"prefLabel": "paraplegia"
+},
+{
+"id": "s0402",
+"prefLabel": "hemiparesis"
+},
+{
+"id": "s0403",
+"prefLabel": "pareses"
+},
+{
+"id": "s0404",
+"prefLabel": "extraocular muscles paralysis"
+},
+{
+"id": "s0405",
+"prefLabel": "hind limb paralysis"
+},
+{
+"id": "s0406",
+"prefLabel": "partial hind limb paralysis"
+},
+{
+"id": "s0407",
+"prefLabel": "proximal paralysis of arm and leg"
+},
+{
+"id": "s0408",
+"prefLabel": "motor paralysis"
+},
+{
+"id": "s0409",
+"prefLabel": "spastic paralysis"
+},
+{
+"id": "s0410",
+"prefLabel": "descending muscle paralysis"
+},
+{
+"id": "s0411",
+"prefLabel": "facial paralysis"
+},
+{
+"id": "s0412",
+"prefLabel": "flaccid paralysis"
+},
+{
+"id": "s0413",
+"prefLabel": "spasticity"
+},
+{
+"id": "s0414",
+"prefLabel": "meningitis"
+},
+{
+"id": "s0415",
+"prefLabel": "spondylitis"
+},
+{
+"id": "s0416",
+"prefLabel": "encephalitis"
+},
+{
+"id": "s0417",
+"prefLabel": "mild encephalitis"
+},
+{
+"id": "s0418",
+"prefLabel": "reflex symptom"
+},
+{
+"id": "s0419",
+"prefLabel": "areflexia"
+},
+{
+"id": "s0420",
+"prefLabel": "absence of knee jerk reflex"
+},
+{
+"id": "s0421",
+"prefLabel": "absent gag reflex"
+},
+{
+"id": "s0422",
+"prefLabel": "loss of tendon reflex"
+},
+{
+"id": "s0423",
+"prefLabel": "hyperreflexia"
+},
+{
+"id": "s0424",
+"prefLabel": "impaired gag reflex"
+},
+{
+"id": "s0425",
+"prefLabel": "decreased flexor withdrawal reflex"
+},
+{
+"id": "s0426",
+"prefLabel": "diminished gag reflex"
+},
+{
+"id": "s0427",
+"prefLabel": "acute mental dysfunction"
+},
+{
+"id": "s0428",
+"prefLabel": "cerebrovascular accident"
+},
+{
+"id": "s0429",
+"prefLabel": "meningoencephalitis"
+},
+{
+"id": "s0430",
+"prefLabel": "acute meningoencephalitis"
+},
+{
+"id": "s0431",
+"prefLabel": "meningismus"
+},
+{
+"id": "s0432",
+"prefLabel": "neurologic neglect syndrome"
+},
+{
+"id": "s0433",
+"prefLabel": "disturbances of sensation of smell and taste"
+},
+{
+"id": "s0434",
+"prefLabel": "ageusia"
+},
+{
+"id": "s0435",
+"prefLabel": "seizure"
+},
+{
+"id": "s0436",
+"prefLabel": "generalized seizure"
+},
+{
+"id": "s0437",
+"prefLabel": "tonicclonic seizure"
+},
+{
+"id": "s0438",
+"prefLabel": "tonic seizure"
+},
+{
+"id": "s0439",
+"prefLabel": "myoclonic seizure"
+},
+{
+"id": "s0440",
+"prefLabel": "atonic seizure"
+},
+{
+"id": "s0441",
+"prefLabel": "clonic seizure"
+},
+{
+"id": "s0442",
+"prefLabel": "focal seizure"
+},
+{
+"id": "s0443",
+"prefLabel": "complex partial seizure"
+},
+{
+"id": "s0444",
+"prefLabel": "simple partial seizure"
+},
+{
+"id": "s0445",
+"prefLabel": "epileptic seizure"
+},
+{
+"id": "s0446",
+"prefLabel": "neurological dysfunction"
+},
+{
+"id": "s0447",
+"prefLabel": "acute cranial nerve dysfunction"
+},
+{
+"id": "s0448",
+"prefLabel": "convulsion"
+},
+{
+"id": "s0449",
+"prefLabel": "tetanic convulsion"
+},
+{
+"id": "s0450",
+"prefLabel": "mild tetanic convulsion"
+},
+{
+"id": "s0451",
+"prefLabel": "febrile convulsion"
+},
+{
+"id": "s0452",
+"prefLabel": "abnormal involuntary movement"
+},
+{
+"id": "s0453",
+"prefLabel": "circling movement"
+},
+{
+"id": "s0454",
+"prefLabel": "decreased motor response"
+},
+{
+"id": "s0455",
+"prefLabel": "neurological alteration"
+},
+{
+"id": "s0456",
+"prefLabel": "coordination symptom"
+},
+{
+"id": "s0457",
+"prefLabel": "incoordination"
+},
+{
+"id": "s0458",
+"prefLabel": "impaired coordination"
+},
+{
+"id": "s0459",
+"prefLabel": "brain cyst"
+},
+{
+"id": "s0460",
+"prefLabel": "altered mental status"
+},
+{
+"id": "s0461",
+"prefLabel": "diminished spontaneous movement"
+},
+{
+"id": "s0462",
+"prefLabel": "reproductive system symptom"
+},
+{
+"id": "s0463",
+"prefLabel": "epididymitis"
+},
+{
+"id": "s0464",
+"prefLabel": "epididymorchitis"
+},
+{
+"id": "s0465",
+"prefLabel": "scrotal abscess"
+},
+{
+"id": "s0466",
+"prefLabel": "abnormal vaginal bleeding"
+},
+{
+"id": "s0467",
+"prefLabel": "abortion"
+},
+{
+"id": "s0468",
+"prefLabel": "spontaneous abortion"
+},
+{
+"id": "s0469",
+"prefLabel": "miscarriage"
+},
+{
+"id": "s0470",
+"prefLabel": "infertility"
+},
+{
+"id": "s0471",
+"prefLabel": "vaginal discharge"
+},
+{
+"id": "s0472",
+"prefLabel": "prostate symptom"
+},
+{
+"id": "s0473",
+"prefLabel": "prostatic abscess"
+},
+{
+"id": "s0474",
+"prefLabel": "prostatic infection"
+},
+{
+"id": "s0475",
+"prefLabel": "stillbirth"
+},
+{
+"id": "s0476",
+"prefLabel": "menorrhagia"
+},
+{
+"id": "s0477",
+"prefLabel": "metrorrhagia"
+},
+{
+"id": "s0478",
+"prefLabel": "hypermenorrhea"
+},
+{
+"id": "s0479",
+"prefLabel": "vaginismus"
+},
+{
+"id": "s0480",
+"prefLabel": "premature labor"
+},
+{
+"id": "s0481",
+"prefLabel": "respiratory system and chest symptom"
+},
+{
+"id": "s0482",
+"prefLabel": "swelling in chest"
+},
+{
+"id": "s0483",
+"prefLabel": "mass in chest"
+},
+{
+"id": "s0484",
+"prefLabel": "abnormal chest sound"
+},
+{
+"id": "s0485",
+"prefLabel": "rales"
+},
+{
+"id": "s0486",
+"prefLabel": "stridor"
+},
+{
+"id": "s0487",
+"prefLabel": "wheezing"
+},
+{
+"id": "s0488",
+"prefLabel": "caseation"
+},
+{
+"id": "s0489",
+"prefLabel": "bronchospasm"
+},
+{
+"id": "s0490",
+"prefLabel": "cough"
+},
+{
+"id": "s0491",
+"prefLabel": "wet cough"
+},
+{
+"id": "s0492",
+"prefLabel": "paroxysmal cough"
+},
+{
+"id": "s0493",
+"prefLabel": "cough with bloody sputum"
+},
+{
+"id": "s0494",
+"prefLabel": "dry cough"
+},
+{
+"id": "s0495",
+"prefLabel": "dry hacking cough"
+},
+{
+"id": "s0496",
+"prefLabel": "barking croup cough"
+},
+{
+"id": "s0497",
+"prefLabel": "chronic cough"
+},
+{
+"id": "s0498",
+"prefLabel": "respiratory failure"
+},
+{
+"id": "s0499",
+"prefLabel": "bronchiolitis"
+},
+{
+"id": "s0500",
+"prefLabel": "congestion"
+},
+{
+"id": "s0501",
+"prefLabel": "nasal congestion"
+},
+{
+"id": "s0502",
+"prefLabel": "sputum"
+},
+{
+"id": "s0503",
+"prefLabel": "bloody sputum"
+},
+{
+"id": "s0504",
+"prefLabel": "abnormal sputum"
+},
+{
+"id": "s0505",
+"prefLabel": "chest discomfort"
+},
+{
+"id": "s0506",
+"prefLabel": "chest tightness"
+},
+{
+"id": "s0507",
+"prefLabel": "bronchitis"
+},
+{
+"id": "s0508",
+"prefLabel": "mild bronchitis"
+},
+{
+"id": "s0509",
+"prefLabel": "dyspneic enteritis"
+},
+{
+"id": "s0510",
+"prefLabel": "painful respiration"
+},
+{
+"id": "s0511",
+"prefLabel": "pulmonary consolidation"
+},
+{
+"id": "s0512",
+"prefLabel": "bronchiole inflammation"
+},
+{
+"id": "s0513",
+"prefLabel": "suppurative bronchiole inflammation"
+},
+{
+"id": "s0514",
+"prefLabel": "severe bronchiole inflammation"
+},
+{
+"id": "s0515",
+"prefLabel": "lump in chest"
+},
+{
+"id": "s0516",
+"prefLabel": "hemoptysis"
+},
+{
+"id": "s0517",
+"prefLabel": "hiccough"
+},
+{
+"id": "s0518",
+"prefLabel": "lesions in lung"
+},
+{
+"id": "s0519",
+"prefLabel": "respiratory abnormality"
+},
+{
+"id": "s0520",
+"prefLabel": "breathing problems"
+},
+{
+"id": "s0521",
+"prefLabel": "panting respiration"
+},
+{
+"id": "s0522",
+"prefLabel": "cheynestokes respiration"
+},
+{
+"id": "s0523",
+"prefLabel": "dyspnea"
+},
+{
+"id": "s0524",
+"prefLabel": "acute dyspnea"
+},
+{
+"id": "s0525",
+"prefLabel": "rapid respiration"
+},
+{
+"id": "s0526",
+"prefLabel": "bradypnea"
+},
+{
+"id": "s0527",
+"prefLabel": "hypoventilation"
+},
+{
+"id": "s0528",
+"prefLabel": "tachypnea"
+},
+{
+"id": "s0529",
+"prefLabel": "apnea"
+},
+{
+"id": "s0530",
+"prefLabel": "sleep apnea"
+},
+{
+"id": "s0531",
+"prefLabel": "hyperventilation"
+},
+{
+"id": "s0532",
+"prefLabel": "orthopnea"
+},
+{
+"id": "s0533",
+"prefLabel": "sneezing"
+},
+{
+"id": "s0534",
+"prefLabel": "hemorrhagic mediastinitis"
+},
+{
+"id": "s0535",
+"prefLabel": "pulmonary edema"
+},
+{
+"id": "s0536",
+"prefLabel": "airway stenosis"
+},
+{
+"id": "s0537",
+"prefLabel": "bronchopulmonary bleeding"
+},
+{
+"id": "s0538",
+"prefLabel": "respiratory tract mucosa ulcer"
+},
+{
+"id": "s0539",
+"prefLabel": "pneumonitis"
+},
+{
+"id": "s0540",
+"prefLabel": "phlegm"
+},
+{
+"id": "s0541",
+"prefLabel": "abdominal symptom"
+},
+{
+"id": "s0542",
+"prefLabel": "abdominal discomfort"
+},
+{
+"id": "s0543",
+"prefLabel": "abdominal rigidity"
+},
+{
+"id": "s0544",
+"prefLabel": "periumbilic abdominal rigidity"
+},
+{
+"id": "s0545",
+"prefLabel": "right upper quadrant abdominal rigidity"
+},
+{
+"id": "s0546",
+"prefLabel": "left lower quadrant abdominal rigidity"
+},
+{
+"id": "s0547",
+"prefLabel": "generalized abdominal rigidity"
+},
+{
+"id": "s0548",
+"prefLabel": "epigastric abdominal rigidity"
+},
+{
+"id": "s0549",
+"prefLabel": "right lower quadrant abdominal rigidity"
+},
+{
+"id": "s0550",
+"prefLabel": "left upper quadrant abdominal rigidity"
+},
+{
+"id": "s0551",
+"prefLabel": "multiple sites abdominal rigidity"
+},
+{
+"id": "s0552",
+"prefLabel": "ascites"
+},
+{
+"id": "s0553",
+"prefLabel": "abdominal tenderness"
+},
+{
+"id": "s0554",
+"prefLabel": "right lower quadrant abdominal tenderness"
+},
+{
+"id": "s0555",
+"prefLabel": "left lower quadrant abdominal tenderness"
+},
+{
+"id": "s0556",
+"prefLabel": "periumbilic abdominal tenderness"
+},
+{
+"id": "s0557",
+"prefLabel": "epigastric abdominal tenderness"
+},
+{
+"id": "s0558",
+"prefLabel": "multiple sites abdominal tenderness"
+},
+{
+"id": "s0559",
+"prefLabel": "right upper quadrant abdominal tenderness"
+},
+{
+"id": "s0560",
+"prefLabel": "generalized abdominal tenderness"
+},
+{
+"id": "s0561",
+"prefLabel": "left upper quadrant abdominal tenderness"
+},
+{
+"id": "s0562",
+"prefLabel": "pelvic symptom"
+},
+{
+"id": "s0563",
+"prefLabel": "pelvic swelling"
+},
+{
+"id": "s0564",
+"prefLabel": "periumbilic pelvic swelling"
+},
+{
+"id": "s0565",
+"prefLabel": "left lower quadrant pelvic swelling"
+},
+{
+"id": "s0566",
+"prefLabel": "multiple sites pelvic swelling"
+},
+{
+"id": "s0567",
+"prefLabel": "generalized pelvic swelling"
+},
+{
+"id": "s0568",
+"prefLabel": "left upper quadrant pelvic swelling"
+},
+{
+"id": "s0569",
+"prefLabel": "right upper quadrant pelvic swelling"
+},
+{
+"id": "s0570",
+"prefLabel": "epigastric pelvic swelling"
+},
+{
+"id": "s0571",
+"prefLabel": "right lower quadrant pelvic swelling"
+},
+{
+"id": "s0572",
+"prefLabel": "pelvic lump"
+},
+{
+"id": "s0573",
+"prefLabel": "multiple sites pelvic lump"
+},
+{
+"id": "s0574",
+"prefLabel": "periumbilic pelvic lump"
+},
+{
+"id": "s0575",
+"prefLabel": "left lower quadrant pelvic lump"
+},
+{
+"id": "s0576",
+"prefLabel": "epigastric pelvic lump"
+},
+{
+"id": "s0577",
+"prefLabel": "left upper quadrant pelvic lump"
+},
+{
+"id": "s0578",
+"prefLabel": "right upper quadrant pelvic lump"
+},
+{
+"id": "s0579",
+"prefLabel": "right lower quadrant pelvic lump"
+},
+{
+"id": "s0580",
+"prefLabel": "generalized pelvic lump"
+},
+{
+"id": "s0581",
+"prefLabel": "pelvic mass"
+},
+{
+"id": "s0582",
+"prefLabel": "periumbilic pelvic mass"
+},
+{
+"id": "s0583",
+"prefLabel": "right lower quadrant pelvic mass"
+},
+{
+"id": "s0584",
+"prefLabel": "generalized pelvic mass"
+},
+{
+"id": "s0585",
+"prefLabel": "epigastric pelvic mass"
+},
+{
+"id": "s0586",
+"prefLabel": "left upper quadrant pelvic mass"
+},
+{
+"id": "s0587",
+"prefLabel": "right upper quadrant pelvic mass"
+},
+{
+"id": "s0588",
+"prefLabel": "multiple sites pelvic mass"
+},
+{
+"id": "s0589",
+"prefLabel": "left lower quadrant pelvic mass"
+},
+{
+"id": "s0590",
+"prefLabel": "abdominal distention"
+},
+{
+"id": "s0591",
+"prefLabel": "abdominal cramp"
+},
+{
+"id": "s0592",
+"prefLabel": "severe abdominal cramp"
+},
+{
+"id": "s0593",
+"prefLabel": "abdominal mass"
+},
+{
+"id": "s0594",
+"prefLabel": "right lower quadrant abdominal mass"
+},
+{
+"id": "s0595",
+"prefLabel": "left upper quadrant abdominal mass"
+},
+{
+"id": "s0596",
+"prefLabel": "generalized abdominal mass"
+},
+{
+"id": "s0597",
+"prefLabel": "epigastric abdominal mass"
+},
+{
+"id": "s0598",
+"prefLabel": "right upper quadrant abdominal mass"
+},
+{
+"id": "s0599",
+"prefLabel": "multiple sites abdominal mass"
+},
+{
+"id": "s0600",
+"prefLabel": "left lower quadrant abdominal mass"
+},
+{
+"id": "s0601",
+"prefLabel": "periumbilic abdominal mass"
+},
+{
+"id": "s0602",
+"prefLabel": "abdominal lump"
+},
+{
+"id": "s0603",
+"prefLabel": "left upper quadrant abdominal lump"
+},
+{
+"id": "s0604",
+"prefLabel": "left lower quadrant abdominal lump"
+},
+{
+"id": "s0605",
+"prefLabel": "epigastric abdominal lump"
+},
+{
+"id": "s0606",
+"prefLabel": "generalized abdominal lump"
+},
+{
+"id": "s0607",
+"prefLabel": "right upper quadrant abdominal lump"
+},
+{
+"id": "s0608",
+"prefLabel": "right lower quadrant abdominal lump"
+},
+{
+"id": "s0609",
+"prefLabel": "multiple sites abdominal lump"
+},
+{
+"id": "s0610",
+"prefLabel": "periumbilic abdominal lump"
+},
+{
+"id": "s0611",
+"prefLabel": "abdominal swelling"
+},
+{
+"id": "s0612",
+"prefLabel": "left lower quadrant abdominal swelling"
+},
+{
+"id": "s0613",
+"prefLabel": "periumbilic abdominal swelling"
+},
+{
+"id": "s0614",
+"prefLabel": "multiple sites abdominal swelling"
+},
+{
+"id": "s0615",
+"prefLabel": "right lower quadrant abdominal swelling"
+},
+{
+"id": "s0616",
+"prefLabel": "generalized abdominal swelling"
+},
+{
+"id": "s0617",
+"prefLabel": "left upper quadrant abdominal swelling"
+},
+{
+"id": "s0618",
+"prefLabel": "right upper quadrant abdominal swelling"
+},
+{
+"id": "s0619",
+"prefLabel": "epigastric abdominal swelling"
+},
+{
+"id": "s0620",
+"prefLabel": "head and neck symptom"
+},
+{
+"id": "s0621",
+"prefLabel": "throat symptom"
+},
+{
+"id": "s0622",
+"prefLabel": "hemorrhage from throat"
+},
+{
+"id": "s0623",
+"prefLabel": "hoarseness"
+},
+{
+"id": "s0624",
+"prefLabel": "lesions in oropharynx"
+},
+{
+"id": "s0625",
+"prefLabel": "tracheitis"
+},
+{
+"id": "s0626",
+"prefLabel": "laryngitis"
+},
+{
+"id": "s0627",
+"prefLabel": "laryngotracheitis"
+},
+{
+"id": "s0628",
+"prefLabel": "tracheobronchitis"
+},
+{
+"id": "s0629",
+"prefLabel": "dysphagia"
+},
+{
+"id": "s0630",
+"prefLabel": "thyroid symptom"
+},
+{
+"id": "s0631",
+"prefLabel": "thyroid abscesses"
+},
+{
+"id": "s0632",
+"prefLabel": "pharynx inflammation"
+},
+{
+"id": "s0633",
+"prefLabel": "inability to swallow"
+},
+{
+"id": "s0634",
+"prefLabel": "decreased pharyngeal tone"
+},
+{
+"id": "s0635",
+"prefLabel": "neck symptom"
+},
+{
+"id": "s0636",
+"prefLabel": "cervical edema"
+},
+{
+"id": "s0637",
+"prefLabel": "neck weakness"
+},
+{
+"id": "s0638",
+"prefLabel": "hyperemia of the neck"
+},
+{
+"id": "s0639",
+"prefLabel": "stiff neck"
+},
+{
+"id": "s0640",
+"prefLabel": "head symptom"
+},
+{
+"id": "s0641",
+"prefLabel": "head swelling"
+},
+{
+"id": "s0642",
+"prefLabel": "eye symptom"
+},
+{
+"id": "s0643",
+"prefLabel": "sore eyes"
+},
+{
+"id": "s0644",
+"prefLabel": "exophthalmos"
+},
+{
+"id": "s0645",
+"prefLabel": "bloodshot eye"
+},
+{
+"id": "s0646",
+"prefLabel": "cornea symptom"
+},
+{
+"id": "s0647",
+"prefLabel": "cloudy cornea"
+},
+{
+"id": "s0648",
+"prefLabel": "keratitis"
+},
+{
+"id": "s0649",
+"prefLabel": "corneal opacity"
+},
+{
+"id": "s0650",
+"prefLabel": "corneal ulcers"
+},
+{
+"id": "s0651",
+"prefLabel": "corneal scarring"
+},
+{
+"id": "s0652",
+"prefLabel": "conjunctiva symptom"
+},
+{
+"id": "s0653",
+"prefLabel": "conjunctival degeneration"
+},
+{
+"id": "s0654",
+"prefLabel": "conjunctival suffusion"
+},
+{
+"id": "s0655",
+"prefLabel": "conjunctival swelling"
+},
+{
+"id": "s0656",
+"prefLabel": "conjunctival congestion"
+},
+{
+"id": "s0657",
+"prefLabel": "conjunctivitis"
+},
+{
+"id": "s0658",
+"prefLabel": "severe conjunctivitis"
+},
+{
+"id": "s0659",
+"prefLabel": "mild conjunctivitis"
+},
+{
+"id": "s0660",
+"prefLabel": "light sensitivity"
+},
+{
+"id": "s0661",
+"prefLabel": "photophobia"
+},
+{
+"id": "s0662",
+"prefLabel": "excessive tearing"
+},
+{
+"id": "s0663",
+"prefLabel": "vision symptom"
+},
+{
+"id": "s0664",
+"prefLabel": "loss of vision"
+},
+{
+"id": "s0665",
+"prefLabel": "amaurosis"
+},
+{
+"id": "s0666",
+"prefLabel": "amaurosis fugax"
+},
+{
+"id": "s0667",
+"prefLabel": "blindness"
+},
+{
+"id": "s0668",
+"prefLabel": "double vision"
+},
+{
+"id": "s0669",
+"prefLabel": "occasional diplopia"
+},
+{
+"id": "s0670",
+"prefLabel": "blind spot"
+},
+{
+"id": "s0671",
+"prefLabel": "acquired color vision deficiency"
+},
+{
+"id": "s0672",
+"prefLabel": "vision distortion"
+},
+{
+"id": "s0673",
+"prefLabel": "disturbed vision"
+},
+{
+"id": "s0674",
+"prefLabel": "blurred vision"
+},
+{
+"id": "s0675",
+"prefLabel": "blurred vision with haloes"
+},
+{
+"id": "s0676",
+"prefLabel": "inflamed eyes"
+},
+{
+"id": "s0677",
+"prefLabel": "ocular lesion"
+},
+{
+"id": "s0678",
+"prefLabel": "moderate conjuctival injection"
+},
+{
+"id": "s0679",
+"prefLabel": "intraretinal hemorrhage"
+},
+{
+"id": "s0680",
+"prefLabel": "decreased tearing"
+},
+{
+"id": "s0681",
+"prefLabel": "hypopyon"
+},
+{
+"id": "s0682",
+"prefLabel": "eye strain"
+},
+{
+"id": "s0683",
+"prefLabel": "asthenopia"
+},
+{
+"id": "s0684",
+"prefLabel": "nystagmus"
+},
+{
+"id": "s0685",
+"prefLabel": "subconjunctival bleeding"
+},
+{
+"id": "s0686",
+"prefLabel": "yellow exudate from eyes"
+},
+{
+"id": "s0687",
+"prefLabel": "anisocoria"
+},
+{
+"id": "s0688",
+"prefLabel": "anterior scleral inflammation"
+},
+{
+"id": "s0689",
+"prefLabel": "cranial nerve palsies"
+},
+{
+"id": "s0690",
+"prefLabel": "pupil symptom"
+},
+{
+"id": "s0691",
+"prefLabel": "dilated pupil"
+},
+{
+"id": "s0692",
+"prefLabel": "mydriasis"
+},
+{
+"id": "s0693",
+"prefLabel": "unreactive mydriasis"
+},
+{
+"id": "s0694",
+"prefLabel": "fixed dilated pupils"
+},
+{
+"id": "s0695",
+"prefLabel": "contracted pupil"
+},
+{
+"id": "s0696",
+"prefLabel": "miosis"
+},
+{
+"id": "s0697",
+"prefLabel": "icteric eyes"
+},
+{
+"id": "s0698",
+"prefLabel": "eye discharge"
+},
+{
+"id": "s0699",
+"prefLabel": "fixed pupil"
+},
+{
+"id": "s0700",
+"prefLabel": "facial tremor"
+},
+{
+"id": "s0701",
+"prefLabel": "lateroventral deviation of the head"
+},
+{
+"id": "s0702",
+"prefLabel": "hydrocephalus"
+},
+{
+"id": "s0703",
+"prefLabel": "head pressing"
+},
+{
+"id": "s0704",
+"prefLabel": "ear symptom"
+},
+{
+"id": "s0705",
+"prefLabel": "bone conduction hyperacusis"
+},
+{
+"id": "s0706",
+"prefLabel": "tinnitus"
+},
+{
+"id": "s0707",
+"prefLabel": "otitis"
+},
+{
+"id": "s0708",
+"prefLabel": "droopy ears"
+},
+{
+"id": "s0709",
+"prefLabel": "deafness"
+},
+{
+"id": "s0710",
+"prefLabel": "face hyperemia"
+},
+{
+"id": "s0711",
+"prefLabel": "mouth symptom"
+},
+{
+"id": "s0712",
+"prefLabel": "dry mouth"
+},
+{
+"id": "s0713",
+"prefLabel": "lesions in mouth"
+},
+{
+"id": "s0714",
+"prefLabel": "palate weakness"
+},
+{
+"id": "s0715",
+"prefLabel": "slurred speech"
+},
+{
+"id": "s0716",
+"prefLabel": "thick white exudate on tongue"
+},
+{
+"id": "s0717",
+"prefLabel": "mouth bleeding"
+},
+{
+"id": "s0718",
+"prefLabel": "gum bleeding"
+},
+{
+"id": "s0719",
+"prefLabel": "voice disturbance"
+},
+{
+"id": "s0720",
+"prefLabel": "aphonia"
+},
+{
+"id": "s0721",
+"prefLabel": "hoarse voice"
+},
+{
+"id": "s0722",
+"prefLabel": "dysphonia"
+},
+{
+"id": "s0723",
+"prefLabel": "mouth sore"
+},
+{
+"id": "s0724",
+"prefLabel": "mouth papules"
+},
+{
+"id": "s0725",
+"prefLabel": "herpetic lesion on upper lip"
+},
+{
+"id": "s0726",
+"prefLabel": "decreased tongue tone"
+},
+{
+"id": "s0727",
+"prefLabel": "nose symptom"
+},
+{
+"id": "s0728",
+"prefLabel": "epistaxis"
+},
+{
+"id": "s0729",
+"prefLabel": "rhinorrhea"
+},
+{
+"id": "s0730",
+"prefLabel": "postnasal drainage"
+},
+{
+"id": "s0731",
+"prefLabel": "nasal bleeding"
+},
+{
+"id": "s0732",
+"prefLabel": "yellow exudate from nose"
+},
+{
+"id": "s0733",
+"prefLabel": "sinusitis"
+},
+{
+"id": "s0734",
+"prefLabel": "nasal discharge"
+},
+{
+"id": "s0735",
+"prefLabel": "facial weakness"
+},
+{
+"id": "s0736",
+"prefLabel": "general symptom"
+},
+{
+"id": "s0737",
+"prefLabel": "flaccidity"
+},
+{
+"id": "s0738",
+"prefLabel": "asthenia"
+},
+{
+"id": "s0739",
+"prefLabel": "prostration"
+},
+{
+"id": "s0740",
+"prefLabel": "extreme prostration"
+},
+{
+"id": "s0741",
+"prefLabel": "progressive prostration"
+},
+{
+"id": "s0742",
+"prefLabel": "thirst"
+},
+{
+"id": "s0743",
+"prefLabel": "inflammation"
+},
+{
+"id": "s0744",
+"prefLabel": "chronic inflammation"
+},
+{
+"id": "s0745",
+"prefLabel": "granulomatous inflammation"
+},
+{
+"id": "s0746",
+"prefLabel": "chills"
+},
+{
+"id": "s0747",
+"prefLabel": "tremor"
+},
+{
+"id": "s0748",
+"prefLabel": "abscess"
+},
+{
+"id": "s0749",
+"prefLabel": "multiple abscesses"
+},
+{
+"id": "s0750",
+"prefLabel": "anal abscess"
+},
+{
+"id": "s0751",
+"prefLabel": "multiple organ failure"
+},
+{
+"id": "s0752",
+"prefLabel": "discharge"
+},
+{
+"id": "s0753",
+"prefLabel": "wound discharge"
+},
+{
+"id": "s0754",
+"prefLabel": "swelling symptom"
+},
+{
+"id": "s0755",
+"prefLabel": "leg swelling"
+},
+{
+"id": "s0756",
+"prefLabel": "lymph gland swelling"
+},
+{
+"id": "s0757",
+"prefLabel": "change in body sensation"
+},
+{
+"id": "s0758",
+"prefLabel": "ptosis"
+},
+{
+"id": "s0759",
+"prefLabel": "blood pressure"
+},
+{
+"id": "s0760",
+"prefLabel": "high blood pressure"
+},
+{
+"id": "s0761",
+"prefLabel": "low blood pressure"
+},
+{
+"id": "s0762",
+"prefLabel": "hypotensive"
+},
+{
+"id": "s0763",
+"prefLabel": "slow pulse"
+},
+{
+"id": "s0764",
+"prefLabel": "extracellular fluid alteration"
+},
+{
+"id": "s0765",
+"prefLabel": "excess lymphocytes in cerebrospinal fluid"
+},
+{
+"id": "s0766",
+"prefLabel": "sensory disturbance"
+},
+{
+"id": "s0767",
+"prefLabel": "bleeding"
+},
+{
+"id": "s0768",
+"prefLabel": "shakes"
+},
+{
+"id": "s0769",
+"prefLabel": "necrosis"
+},
+{
+"id": "s0770",
+"prefLabel": "severe necrosis"
+},
+{
+"id": "s0771",
+"prefLabel": "sleep disturbance"
+},
+{
+"id": "s0772",
+"prefLabel": "disruptions of 24hour sleepwake cycle"
+},
+{
+"id": "s0773",
+"prefLabel": "sleep related movement disorder"
+},
+{
+"id": "s0774",
+"prefLabel": "hypersomnia"
+},
+{
+"id": "s0775",
+"prefLabel": "hypersomnia with sleep apnea"
+},
+{
+"id": "s0776",
+"prefLabel": "dysfunctions associated with sleep stages"
+},
+{
+"id": "s0777",
+"prefLabel": "dysfunctions associated with arousal from sleep"
+},
+{
+"id": "s0778",
+"prefLabel": "insomnia"
+},
+{
+"id": "s0779",
+"prefLabel": "insomnia with sleep apnea"
+},
+{
+"id": "s0780",
+"prefLabel": "night sweats"
+},
+{
+"id": "s0781",
+"prefLabel": "weakness"
+},
+{
+"id": "s0782",
+"prefLabel": "progressive weakness"
+},
+{
+"id": "s0783",
+"prefLabel": "profound weakness"
+},
+{
+"id": "s0784",
+"prefLabel": "listlessness"
+},
+{
+"id": "s0785",
+"prefLabel": "cramp"
+},
+{
+"id": "s0786",
+"prefLabel": "infant symptom"
+},
+{
+"id": "s0787",
+"prefLabel": "fussy infant"
+},
+{
+"id": "s0788",
+"prefLabel": "excessive crying of infant"
+},
+{
+"id": "s0789",
+"prefLabel": "weak cry"
+},
+{
+"id": "s0790",
+"prefLabel": "hallucination"
+},
+{
+"id": "s0791",
+"prefLabel": "giddiness"
+},
+{
+"id": "s0792",
+"prefLabel": "neurological and physiological symptom"
+},
+{
+"id": "s0793",
+"prefLabel": "fever"
+},
+{
+"id": "s0794",
+"prefLabel": "relapsing fever"
+},
+{
+"id": "s0795",
+"prefLabel": "cyclic fever"
+},
+{
+"id": "s0796",
+"prefLabel": "afebrile"
+},
+{
+"id": "s0797",
+"prefLabel": "sudden onset of fever"
+},
+{
+"id": "s0798",
+"prefLabel": "hyperpyrexia"
+},
+{
+"id": "s0799",
+"prefLabel": "remittent fever"
+},
+{
+"id": "s0800",
+"prefLabel": "mild fever"
+},
+{
+"id": "s0801",
+"prefLabel": "lowgrade fever"
+},
+{
+"id": "s0802",
+"prefLabel": "high fever"
+},
+{
+"id": "s0803",
+"prefLabel": "very high fever"
+},
+{
+"id": "s0804",
+"prefLabel": "hyperthermia"
+},
+{
+"id": "s0805",
+"prefLabel": "pelepstein fever"
+},
+{
+"id": "s0806",
+"prefLabel": "prolonged fever"
+},
+{
+"id": "s0807",
+"prefLabel": "continuous fever"
+},
+{
+"id": "s0808",
+"prefLabel": "transient fever"
+},
+{
+"id": "s0809",
+"prefLabel": "fatigue"
+},
+{
+"id": "s0810",
+"prefLabel": "exhaustion"
+},
+{
+"id": "s0811",
+"prefLabel": "extreme exhaustion"
+},
+{
+"id": "s0812",
+"prefLabel": "weariness"
+},
+{
+"id": "s0813",
+"prefLabel": "tiredness"
+},
+{
+"id": "s0814",
+"prefLabel": "lethargy"
+},
+{
+"id": "s0815",
+"prefLabel": "extreme fatigue"
+},
+{
+"id": "s0816",
+"prefLabel": "malaise"
+},
+{
+"id": "s0817",
+"prefLabel": "memory loss"
+},
+{
+"id": "s0818",
+"prefLabel": "alteration of consciousness"
+},
+{
+"id": "s0819",
+"prefLabel": "concentration difficulty"
+},
+{
+"id": "s0820",
+"prefLabel": "inability to think clearly"
+},
+{
+"id": "s0821",
+"prefLabel": "inability to concentrate"
+},
+{
+"id": "s0822",
+"prefLabel": "transient alteration of awareness"
+},
+{
+"id": "s0823",
+"prefLabel": "persistent vegetative state"
+},
+{
+"id": "s0824",
+"prefLabel": "stupor"
+},
+{
+"id": "s0825",
+"prefLabel": "conscious disturbance"
+},
+{
+"id": "s0826",
+"prefLabel": "syncope"
+},
+{
+"id": "s0827",
+"prefLabel": "syncope and collapse"
+},
+{
+"id": "s0828",
+"prefLabel": "coma"
+},
+{
+"id": "s0829",
+"prefLabel": "proprioception symptom"
+},
+{
+"id": "s0830",
+"prefLabel": "decreased conscious proprioception"
+},
+{
+"id": "s0831",
+"prefLabel": "memory impairment"
+},
+{
+"id": "s0832",
+"prefLabel": "loss of consciousness"
+},
+{
+"id": "s0833",
+"prefLabel": "hypothermia"
+},
+{
+"id": "s0834",
+"prefLabel": "delirium"
+},
+{
+"id": "s0835",
+"prefLabel": "depression"
+},
+{
+"id": "s0836",
+"prefLabel": "drowsiness"
+},
+{
+"id": "s0837",
+"prefLabel": "ataxia"
+},
+{
+"id": "s0838",
+"prefLabel": "sudden ataxis"
+},
+{
+"id": "s0839",
+"prefLabel": "balance symptom"
+},
+{
+"id": "s0840",
+"prefLabel": "dizziness"
+},
+{
+"id": "s0841",
+"prefLabel": "vertigo"
+},
+{
+"id": "s0842",
+"prefLabel": "subjective vertigo"
+},
+{
+"id": "s0843",
+"prefLabel": "objective vertigo"
+},
+{
+"id": "s0844",
+"prefLabel": "loss of balance"
+},
+{
+"id": "s0845",
+"prefLabel": "lightheadedness"
+},
+{
+"id": "s0846",
+"prefLabel": "confusion"
+},
+{
+"id": "s0847",
+"prefLabel": "disorientation"
+},
+{
+"id": "s0848",
+"prefLabel": "agitation"
+},
+{
+"id": "s0849",
+"prefLabel": "catatonia"
+},
+{
+"id": "s0850",
+"prefLabel": "dysarthria"
+},
+{
+"id": "s0851",
+"prefLabel": "anxiety"
+},
+{
+"id": "s0852",
+"prefLabel": "intense anxiety"
+},
+{
+"id": "s0853",
+"prefLabel": "generalized hyperhidrosis"
+},
+{
+"id": "s0854",
+"prefLabel": "nutrition metabolism and development symptom"
+},
+{
+"id": "s0855",
+"prefLabel": "adult failure to thrive"
+},
+{
+"id": "s0856",
+"prefLabel": "weight symptom"
+},
+{
+"id": "s0857",
+"prefLabel": "overweight"
+},
+{
+"id": "s0858",
+"prefLabel": "low birth weight"
+},
+{
+"id": "s0859",
+"prefLabel": "weight loss"
+},
+{
+"id": "s0860",
+"prefLabel": "abnormal weight loss"
+},
+{
+"id": "s0861",
+"prefLabel": "chronic weight loss"
+},
+{
+"id": "s0862",
+"prefLabel": "acute weight loss"
+},
+{
+"id": "s0863",
+"prefLabel": "underweight"
+},
+{
+"id": "s0864",
+"prefLabel": "weight gain"
+},
+{
+"id": "s0865",
+"prefLabel": "acute weight gain"
+},
+{
+"id": "s0866",
+"prefLabel": "chronic weight gain"
+},
+{
+"id": "s0867",
+"prefLabel": "abnormal weight gain"
+},
+{
+"id": "s0868",
+"prefLabel": "polyphagia"
+},
+{
+"id": "s0869",
+"prefLabel": "anorexia"
+},
+{
+"id": "s0870",
+"prefLabel": "feeding difficulties and mismanagement"
+},
+{
+"id": "s0871",
+"prefLabel": "inability to feed"
+},
+{
+"id": "s0872",
+"prefLabel": "feeding problem"
+},
+{
+"id": "s0873",
+"prefLabel": "decreased sucking"
+},
+{
+"id": "s0874",
+"prefLabel": "poor feeding"
+},
+{
+"id": "s0875",
+"prefLabel": "alteration of appetite"
+},
+{
+"id": "s0876",
+"prefLabel": "increased appetite"
+},
+{
+"id": "s0877",
+"prefLabel": "decreased appetite"
+},
+{
+"id": "s0878",
+"prefLabel": "loss of appetite"
+},
+{
+"id": "s0879",
+"prefLabel": "decreased metabolism"
+},
+{
+"id": "s0880",
+"prefLabel": "lack of expected normal physiological development in childhood"
+},
+{
+"id": "s0881",
+"prefLabel": "delayed milestones"
+},
+{
+"id": "s0882",
+"prefLabel": "lack of normal physiological development"
+},
+{
+"id": "s0883",
+"prefLabel": "failure to thrive"
+},
+{
+"id": "s0884",
+"prefLabel": "short stature"
+},
+{
+"id": "s0885",
+"prefLabel": "dehydration"
+},
+{
+"id": "s0886",
+"prefLabel": "polydipsia"
+},
+{
+"id": "s0887",
+"prefLabel": "delayed psychomotor development"
+},
+{
+"id": "s0888",
+"prefLabel": "wasting"
+},
+{
+"id": "s0889",
+"prefLabel": "emaciation"
+},
+{
+"id": "s0890",
+"prefLabel": "progressive emaciation"
+},
+{
+"id": "s0891",
+"prefLabel": "decreased milk production"
+},
+{
+"id": "s0892",
+"prefLabel": "early satiety"
+},
+{
+"id": "s0893",
+"prefLabel": "cachexia"
+}
+]

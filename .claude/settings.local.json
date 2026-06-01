@@ -41,7 +41,9 @@
       "Read(//Applications/**)",
       "Bash(/opt/homebrew/lib/ruby/gems/4.0.0/bin/pod --version)",
       "Bash(sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer)",
-      "Bash(xcode-select -p)"
+      "Bash(xcode-select -p)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"EXIT: $?\")"
     ]
   }
 }

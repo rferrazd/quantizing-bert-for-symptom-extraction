@@ -73,3 +73,8 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Bundled model assets — regenerable build output, not source.
+# Recreate with: python ../../model_prep/bundle_app_assets.py --version <vXX>
+# (Kept out of git like mobile_app/artifacts/; the 100+ MB model must not enter history.)
+/assets/model/
