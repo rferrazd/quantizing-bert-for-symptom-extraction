@@ -31,6 +31,7 @@ import {
   SafeAreaView,
 } from 'react-native-safe-area-context';
 import symptoms from './assets/symptoms.json';
+import examples from './assets/examples.json';
 import { predictSpans } from './src/ner/infer';
 import type { Span } from './src/ner/aggregate';
 import { encode } from './src/ner/tokenizer';
@@ -156,15 +157,36 @@ function MainScreen(): React.JSX.Element {
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
       >
-        {/* Region 1: welcome + disclaimer */}
+        {/* Region 1: welcome + disclaimer + project description */}
         <View style={styles.section}>
           <Text style={styles.title}>Symptom NER</Text>
           <Text style={styles.disclaimer}>
             For learning purposes only. Not for medical use.
           </Text>
+          <Text style={styles.description}>
+            A fine-tuned BioBERT model that detects symptoms a patient reports
+            or denies in &apos;History of Present Illness&apos; style clinical
+            notes.
+          </Text>
         </View>
 
-        {/* Region 2: clinical-note input */}
+        {/* Region 2a: example notes — tap to load into the input below */}
+        <View style={styles.section}>
+          <Text style={styles.label}>Try an example</Text>
+          {examples.map((ex, i) => (
+            <Pressable
+              key={i}
+              style={styles.exampleCard}
+              onPress={() => onChangeNote(ex.text)}
+            >
+              <Text style={styles.exampleText} numberOfLines={2}>
+                {ex.text}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+
+        {/* Region 2b: clinical-note input */}
         <View style={styles.section}>
           <Text style={styles.label}>Clinical note</Text>
           <TextInput
@@ -303,6 +325,23 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontStyle: 'italic',
     color: '#b45309',
+  },
+  description: {
+    fontSize: 13,
+    color: '#4b5563',
+    lineHeight: 18,
+  },
+  exampleCard: {
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    backgroundColor: '#f9fafb',
+  },
+  exampleText: {
+    fontSize: 13,
+    color: '#374151',
   },
   label: {
     fontSize: 15,
