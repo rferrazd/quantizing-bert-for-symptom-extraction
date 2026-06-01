@@ -43,7 +43,9 @@
       "Bash(sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer)",
       "Bash(xcode-select -p)",
       "Bash(npx tsc *)",
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(python3 -c 'import zipfile,re; z=zipfile.ZipFile\\('\\\\''/Users/robertagarcia/Desktop/learning/bert_symptom_ner/bert_symptom_ner_overview.pptx'\\\\''\\); slides=sorted\\([n for n in z.namelist\\(\\) if re.match\\(r'\\\\''ppt/slides/slide\\\\d+\\\\.xml$'\\\\'', n\\)], key=lambda x:int\\(re.search\\(r'\\\\''\\(\\\\d+\\)'\\\\'',x\\).group\\(1\\)\\)\\); print\\('\\\\''slide count:'\\\\'', len\\(slides\\)\\); *)",
+      "Bash(node build.js)"
     ]
   }
 }
