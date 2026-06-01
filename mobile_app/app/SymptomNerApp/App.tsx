@@ -12,7 +12,7 @@
  *   - Collapsible, searchable list of the 893 trained symptoms
  */
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -33,6 +33,17 @@ import {
 import symptoms from './assets/symptoms.json';
 import { predictSpans } from './src/ner/infer';
 import type { Span } from './src/ner/aggregate';
+import { encode } from './src/ner/tokenizer';
+import { MODEL_CONFIG, VOCAB } from './src/ner/modelConfig';
+
+// Model accepts MODEL_CONFIG.maxSeqLen tokens TOTAL including [CLS] and [SEP].
+// Cap user content at maxSeqLen - 2 so we never exceed it.
+const MAX_CONTENT_TOKENS = MODEL_CONFIG.maxSeqLen - 2;
+
+/** Counts the model-side content tokens for `text` ([CLS]/[SEP] excluded). */
+function countContentTokens(text: string): number {
+  return Math.max(0, encode(text, VOCAB).ids.length - 2);
+}
 
 /** A single trained symptom: ontology id + its preferred label. */
 type Symptom = {
@@ -64,24 +75,65 @@ function MainScreen(): React.JSX.Element {
   const [spans, setSpans] = useState<Span[] | null>(null);
   const [running, setRunning] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  // Monotonic counter to ignore stale inference results when the user re-runs.
+  const runIdRef = useRef<number>(0);
 
-  /** Runs on-device NER over the current note and stores the detected spans. */
-  const onRun = async (): Promise<void> => {
-    setRunning(true);
-    setError(null);
-    try {
-      setSpans(await predictSpans(note));
-    } catch (err: unknown) {
-      setError(String(err));
-      setSpans(null);
-    } finally {
-      setRunning(false);
+  /** Live token count of the current note (content only; excludes specials). */
+  const tokenCount = useMemo<number>(() => countContentTokens(note), [note]);
+
+  /**
+   * Accepts a new note only if it fits within the model's token budget. Once
+   * the limit is reached, further keystrokes / pastes that would exceed it are
+   * rejected (the previous text is preserved).
+   */
+  const onChangeNote = (next: string): void => {
+    if (countContentTokens(next) <= MAX_CONTENT_TOKENS) {
+      setNote(next);
     }
   };
 
-  // Only affirmed/denied entities are shown; 'O' spans are structural.
+  /** Runs on-device NER over the current note and stores the detected spans. */
+  const onRun = async (): Promise<void> => {
+    const myRunId = ++runIdRef.current;
+    setRunning(true);
+    setError(null);
+    try {
+      const result = await predictSpans(note);
+      if (myRunId !== runIdRef.current) {
+        return; // a newer run has started — discard this stale result
+      }
+      // CONFLICT (and any unexpected) spans are not shown in the UI per product
+      // decision; log them so the developer can still inspect them in Metro.
+      const conflicts = result.filter(
+        s =>
+          s.label !== 'O' &&
+          s.label !== 'SYMPTOM_POS' &&
+          s.label !== 'SYMPTOM_NEG',
+      );
+      if (conflicts.length > 0) {
+        console.warn('[NER] Spans hidden from UI:', conflicts);
+      }
+      setSpans(result);
+    } catch (err: unknown) {
+      if (myRunId !== runIdRef.current) {
+        return;
+      }
+      setError(String(err));
+      setSpans(null);
+    } finally {
+      if (myRunId === runIdRef.current) {
+        setRunning(false);
+      }
+    }
+  };
+
+  // Only affirmed/denied entities are shown in the UI; 'O' is structural and
+  // CONFLICT is logged to the console (see onRun).
   const entities = useMemo<Span[]>(
-    () => (spans ?? []).filter(s => s.label !== 'O'),
+    () =>
+      (spans ?? []).filter(
+        s => s.label === 'SYMPTOM_POS' || s.label === 'SYMPTOM_NEG',
+      ),
     [spans],
   );
 
@@ -118,12 +170,22 @@ function MainScreen(): React.JSX.Element {
           <TextInput
             style={styles.input}
             value={note}
-            onChangeText={setNote}
+            onChangeText={onChangeNote}
             placeholder="Type the clinical note here..."
             placeholderTextColor="#9ca3af"
             multiline
             textAlignVertical="top"
           />
+          <Text
+            style={
+              tokenCount >= MAX_CONTENT_TOKENS
+                ? styles.tokenCountLimit
+                : styles.tokenCount
+            }
+          >
+            {tokenCount} / {MAX_CONTENT_TOKENS} tokens
+            {tokenCount >= MAX_CONTENT_TOKENS ? ' (limit reached)' : ''}
+          </Text>
           <Pressable
             style={[
               styles.runButton,
@@ -156,19 +218,11 @@ function MainScreen(): React.JSX.Element {
                   <View
                     style={[
                       styles.badge,
-                      s.label === 'SYMPTOM_POS'
-                        ? styles.badgePos
-                        : s.label === 'SYMPTOM_NEG'
-                        ? styles.badgeNeg
-                        : styles.badgeOther,
+                      s.label === 'SYMPTOM_POS' ? styles.badgePos : styles.badgeNeg,
                     ]}
                   >
                     <Text style={styles.badgeText}>
-                      {s.label === 'SYMPTOM_POS'
-                        ? 'POS'
-                        : s.label === 'SYMPTOM_NEG'
-                        ? 'NEG'
-                        : s.label}
+                      {s.label === 'SYMPTOM_POS' ? 'POS' : 'NEG'}
                     </Text>
                   </View>
                   <Text style={styles.entityText}>{s.text}</Text>
@@ -280,6 +334,16 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#b91c1c',
   },
+  tokenCount: {
+    fontSize: 12,
+    color: '#6b7280',
+    textAlign: 'right',
+  },
+  tokenCountLimit: {
+    fontSize: 12,
+    color: '#b91c1c',
+    textAlign: 'right',
+  },
   runButton: {
     backgroundColor: '#2563eb',
     borderRadius: 8,
@@ -312,9 +376,6 @@ const styles = StyleSheet.create({
   },
   badgeNeg: {
     backgroundColor: '#dc2626',
-  },
-  badgeOther: {
-    backgroundColor: '#d97706',
   },
   badgeText: {
     color: '#ffffff',

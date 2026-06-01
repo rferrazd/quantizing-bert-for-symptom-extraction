@@ -60,7 +60,12 @@ export function getSession(): Promise<SessionInfo> {
         inputNames: session.inputNames as string[],
         outputNames: session.outputNames as string[],
       };
-    })();
+    })().catch(err => {
+      // Don't cache the failure — clear the slot so the next call can retry,
+      // otherwise a transient first-load failure would brick the app until restart.
+      sessionInfoPromise = null;
+      throw err;
+    });
   }
   return sessionInfoPromise;
 }

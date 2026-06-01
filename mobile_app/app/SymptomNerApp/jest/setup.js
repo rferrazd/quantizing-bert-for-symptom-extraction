@@ -7,6 +7,10 @@
  * that need real inference behaviour should override this per-test.
  */
 
+// WARNING: the input/output tensor names below are hardcoded to match the
+// CURRENT V05 ONNX export. If a future export (e.g. V06) renames inputs or
+// outputs, Jest tests that use this mock will keep passing while real on-device
+// inference breaks. Tensor-name drift is only caught by running the app.
 jest.mock('onnxruntime-react-native', () => ({
   InferenceSession: {
     create: jest.fn(async () => ({

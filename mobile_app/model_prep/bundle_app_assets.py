@@ -18,6 +18,7 @@ Usage:
 
 import argparse
 import json
+import os
 import shutil
 from pathlib import Path
 
@@ -38,19 +39,38 @@ def resolve_artifacts_dir(version: str | None, artifacts_dir: str | None) -> Pat
     return src
 
 
+def _atomic_write_bytes(src: Path, dest: Path) -> None:
+    """
+    Copies `src` to `dest` atomically: writes to `dest.tmp` then renames. Prevents
+    a half-copied model.onnx (interrupted run, low disk) from being loaded later
+    and surfacing as a cryptic protobuf error inside ONNX Runtime.
+    """
+    tmp = dest.with_suffix(dest.suffix + ".tmp")
+    shutil.copyfile(src, tmp)
+    os.replace(tmp, dest)
+
+
+def _atomic_write_text(text: str, dest: Path) -> None:
+    """Writes text to `dest` via a .tmp + rename, same rationale as the bytes variant."""
+    tmp = dest.with_suffix(dest.suffix + ".tmp")
+    with tmp.open("w", encoding="utf-8") as f:
+        f.write(text)
+    os.replace(tmp, dest)
+
+
 def vocab_txt_to_json(vocab_txt_path: Path, out_path: Path) -> int:
     """
     Converts a BERT vocab.txt (one token per line, line number = id) into a JSON
     array of token strings indexed by id. Returns the number of tokens written.
+    Tolerates BOM and CRLF line endings — a single trailing '\\r' on every token
+    would silently make every WordPiece lookup fail and collapse output to [UNK].
     """
-    with vocab_txt_path.open("r", encoding="utf-8") as f:
-        # Strip only the trailing newline; preserve any other characters in token.
-        tokens = [line.rstrip("\n") for line in f]
+    with vocab_txt_path.open("r", encoding="utf-8-sig") as f:  # strips BOM if present
+        tokens = [line.rstrip("\r\n") for line in f]  # tolerates LF and CRLF
     # Drop a single trailing empty token caused by a final newline, if present.
     if tokens and tokens[-1] == "":
         tokens.pop()
-    with out_path.open("w", encoding="utf-8") as f:
-        json.dump(tokens, f, ensure_ascii=False)
+    _atomic_write_text(json.dumps(tokens, ensure_ascii=False), out_path)
     return len(tokens)
 
 
@@ -69,8 +89,8 @@ def bundle_assets(version: str | None, artifacts_dir: str | None, quant: str) ->
     if not onnx_src.is_file():
         raise FileNotFoundError(f"Model file not found: {onnx_src}")
 
-    shutil.copyfile(onnx_src, dest / "model.onnx")
-    shutil.copyfile(src / "config.json", dest / "config.json")
+    _atomic_write_bytes(onnx_src, dest / "model.onnx")
+    _atomic_write_bytes(src / "config.json", dest / "config.json")
     n_tokens = vocab_txt_to_json(src / "vocab.txt", dest / "vocab.json")
 
     onnx_mb = (dest / "model.onnx").stat().st_size / 1e6
