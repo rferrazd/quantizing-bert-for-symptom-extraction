@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-05-31 — Phase 2 mobile app (Blocks A–C complete)
+
+### New: React Native iOS app at `mobile_app/app/SymptomNerApp/`
+RN 0.85.3 single screen running V05 fully on-device via `onnxruntime-react-native`. iOS-first. Ships the 108 MB INT8 ONNX + vocab + config; version-flexible (v06 swap = one script + rebuild).
+
+### TypeScript NER pipeline (parity-verified against Python)
+- `src/ner/tokenizer.ts` — port of `BertTokenizerFast` (BertNormalizer + BertPreTokenizer + WordPiece) with per-token char offsets into the original text. Lowercase=true matches the exported `tokenizer.json` (see open question in project memory: cased BioBERT fed lowercased input — to investigate, not blocking).
+- `src/ner/aggregate.ts` — port of `inference_utils.aggregate_token_predictions_to_words` + `word_labels_to_spans` (BIO with B-priority, CONFLICT, robust I-without-B).
+- `src/ner/infer.ts` — port of `mobile_app/model_prep/onnx_inference.predict_word_level_onnx` (forward pass + orchestration). Defensive truncation to `max_position_embeddings`.
+- `src/ner/session.ts` — ONNX session loader (fetch → `Uint8Array`, clears promise on failure so retries work).
+- `src/ner/modelConfig.ts` — reads `id2label`, `numLabels`, `maxSeqLen` from bundled `config.json`; no model-version hardcoded in app code.
+
+### Parity tests (33 total, all passing)
+- `src/ner/__tests__/tokenizer.test.ts` — 25 cases vs Python `AutoTokenizer` (IDs, `word_ids`, char offsets; uppercase, punctuation, numbers, subwords, accent stripping, control char, tab).
+- `src/ner/__tests__/aggregate.test.ts` — 8 cases vs Python `inference_utils` (single-entity, multi-subword B-priority, CONFLICT, I-without-B, multi-word continuation).
+- On-device verification: 6 example notes produce spans bit-for-bit identical to Python `onnx_inference.py` over `model_int8.onnx`.
+
+### App
+- `App.tsx` — single screen: brand mark scaffold, disclaimer, project description, 6 tap-to-load example clinical notes (varied negation cues: "denies", "no X", "negative for", "without"), clinical-note input with live token counter enforcing `maxSeqLen − 2` cap, Run button, POS/NEG badge output, searchable collapsible list of 893 trained symptoms.
+- `onRun` race-safe via monotonic `runIdRef`; CONFLICT spans filtered from UI and logged to Metro.
+- Outer container is a `FlatList` with `ListHeaderComponent` (replaces a `FlatList`-inside-`ScrollView` nesting that broke virtualization).
+
+### Asset pipeline
+- `mobile_app/model_prep/bundle_app_assets.py` — copies `<version>/model.onnx` + `vocab.txt` (→ `vocab.json`) + `config.json` into `assets/model/` under generic filenames. Atomic writes, UTF-8 BOM + CRLF tolerant.
+- `metro.config.js` — `.onnx` registered as a Metro asset.
+- `assets/model/` gitignored (regenerable build output).
+
+### App identity + deployment
+- `scripts/generate_app_icon.py` — generates the iOS app icon in 8 sizes (rounded square, POS-green / NEG-red horizontal split, charcoal frame); auto-updates `AppIcon.appiconset/Contents.json`.
+- `mobile_app/app/SymptomNerApp/README.md` — iOS-only run/setup instructions, troubleshooting for the gotchas hit (port 8081 collision, missing iOS Simulator runtime in Xcode 26, `LANG=en_US.UTF-8` pod-install requirement).
+- `mobile_app/DEPLOY_IOS.md` (new) — Apple Developer Program ($99/yr), TestFlight vs. App Store paths, review risks for medical-adjacent content, free-pricing recommendation.
+
 ## 2026-05-19 — WordPiece alignment, validation split, HuggingFace upload
 
 - `data_preparation/wordpiece_alignment.py` — new module. `align_sample()` maps word-level BIO labels to BioBERT subwords via `word_ids()`. `align_file()` processes a full JSONL. LABEL2ID hardcoded (5 labels). `__main__` aligns all three splits.
