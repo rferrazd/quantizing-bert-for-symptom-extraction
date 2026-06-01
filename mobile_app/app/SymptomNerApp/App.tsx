@@ -18,7 +18,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -152,14 +151,43 @@ function MainScreen(): React.JSX.Element {
       style={styles.flex}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
-      <ScrollView
+      {/*
+       * The outer scroller is a FlatList whose data IS the trained-symptom list,
+       * so the heavy 893-item list stays virtualized. Everything else (input,
+       * output, examples, collapsible header) lives in ListHeaderComponent.
+       * When the collapsible is closed, data=[] so only the header renders.
+       * This replaces an earlier FlatList-inside-ScrollView nesting that broke
+       * virtualization and triggered RN's "VirtualizedLists should never be
+       * nested inside plain ScrollViews" error.
+       */}
+      <FlatList
         style={styles.flex}
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
-      >
-        {/* Region 1: welcome + disclaimer + project description */}
+        data={symptomsExpanded ? filteredSymptoms : []}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <Text style={styles.symptomRow}>{item.prefLabel}</Text>
+        )}
+        ListEmptyComponent={
+          symptomsExpanded ? (
+            <Text style={styles.placeholderText}>No matches.</Text>
+          ) : null
+        }
+        ListHeaderComponent={
+          <View style={styles.headerWrap}>
+        {/* Region 1: brand mark + title + disclaimer + project description.
+            The mark is a small bracket-shaped badge with green (POS) and red
+            (NEG) halves — same colors used in the output badges, so the brand
+            identity directly reflects what the app does. */}
         <View style={styles.section}>
-          <Text style={styles.title}>Symptom NER</Text>
+          <View style={styles.brandHeader}>
+            {/* <View style={styles.brandMark}>
+              <View style={styles.brandMarkPos} />
+              <View style={styles.brandMarkNeg} />
+            </View> */}
+            <Text style={styles.title}>Symptom NER</Text>
+          </View>
           <Text style={styles.disclaimer}>
             For learning purposes only. Not for medical use.
           </Text>
@@ -280,23 +308,12 @@ function MainScreen(): React.JSX.Element {
               <Text style={styles.resultCount}>
                 {filteredSymptoms.length} of {SYMPTOMS.length}
               </Text>
-              <FlatList
-                style={styles.symptomList}
-                data={filteredSymptoms}
-                keyExtractor={item => item.id}
-                nestedScrollEnabled
-                keyboardShouldPersistTaps="handled"
-                renderItem={({ item }) => (
-                  <Text style={styles.symptomRow}>{item.prefLabel}</Text>
-                )}
-                ListEmptyComponent={
-                  <Text style={styles.placeholderText}>No matches.</Text>
-                }
-              />
             </View>
           )}
         </View>
-      </ScrollView>
+          </View>
+        }
+      />
     </KeyboardAvoidingView>
   );
 }
@@ -311,10 +328,35 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 16,
+  },
+  // Vertical spacing between top-level sections, kept on the header wrapper so
+  // it doesn't insert gap between the virtualized symptom rows below.
+  headerWrap: {
     gap: 20,
   },
   section: {
     gap: 8,
+  },
+  brandHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  brandMark: {
+    width: 36,
+    height: 36,
+    borderWidth: 2,
+    borderColor: '#111827',
+    borderRadius: 6,
+    overflow: 'hidden',
+  },
+  brandMarkPos: {
+    flex: 1,
+    backgroundColor: '#16a34a',
+  },
+  brandMarkNeg: {
+    flex: 1,
+    backgroundColor: '#dc2626',
   },
   title: {
     fontSize: 24,
@@ -463,9 +505,6 @@ const styles = StyleSheet.create({
   resultCount: {
     fontSize: 12,
     color: '#6b7280',
-  },
-  symptomList: {
-    maxHeight: 280,
   },
   symptomRow: {
     fontSize: 14,
